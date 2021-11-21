@@ -40,24 +40,24 @@ class IntroState extends State<Intro> with SingleTickerProviderStateMixin{
                        controller: tabController,
                        children: [
 
-                     introWidgets(model.data),
-                     introWidgets(model.data),
-                     introWidgets(model.data),
+                         introWidgets(model.data,w,h),
+                         introWidgets(model.data,w,h),
+                         introWidgets(model.data,w,h),
                    ])
                  ) : const Text("Failed");
              })
      );
   }
 
-  Widget introWidgets(IntroModel? model)
+  Widget introWidgets(IntroModel? model,double w,double h)
   {
       return Column(children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8.0),
           child: Image.network(
             model!.imageUrl,
-            height: 150.0,
-            width: 100.0,
+            height: w,
+            width: h/1.5,
           ),
         ),
         Padding(
