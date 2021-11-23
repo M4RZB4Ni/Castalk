@@ -1,4 +1,5 @@
 import 'package:castalk/view/intro.dart';
+import 'package:castalk/view/signin.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,10 +16,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: const Color(0xff242424),
         backgroundColor: const Color(0xff242424),
+        hintColor:const Color(0xff797979),
         colorScheme: ColorScheme.fromSwatch().copyWith(secondary: const Color(0xffFFB800)),
         textTheme: const TextTheme(
           headline1: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 24),
-          bodyText1: TextStyle(color: Colors.white),
+          bodyText1: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 18),
             bodyText2: TextStyle(color: Color(0xffA6A6A6),fontWeight: FontWeight.w400,fontSize: 14),
             button: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w400,fontSize: 18),
         ),
@@ -39,9 +41,10 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/Intro",
+      initialRoute: "/SignIn",
       routes: {
-        "/Intro":(context) => const Directionality(textDirection: TextDirection.rtl, child: Intro()),
+        "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
+        "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
       },
 
     );

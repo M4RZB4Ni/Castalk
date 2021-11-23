@@ -29,7 +29,8 @@ dependencies:
   http: ^0.13.4
   smooth_page_indicator: ^1.0.0+2
   flutter_bloc: ^8.0.0
-
+  pin_code_fields: ^7.3.0
+  country_code_picker: ^2.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -38,9 +39,11 @@ dev_dependencies:
 
 
 flutter:
-
+  assets:
+  - assets/country_codes.txt
 
   uses-material-design: true
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:
