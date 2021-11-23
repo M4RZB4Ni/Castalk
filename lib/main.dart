@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
           headline1: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 24),
           bodyText1: TextStyle(color: Colors.white),
             bodyText2: TextStyle(color: Color(0xffA6A6A6),fontWeight: FontWeight.w400,fontSize: 14),
+            button: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w400,fontSize: 18),
         ),
         elevatedButtonTheme:  ElevatedButtonThemeData(
             style:ButtonStyle(
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
                     )
                 ),
                 backgroundColor:MaterialStateProperty.all(ThemeData().colorScheme.secondary),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff283034),fontSize: 18,fontWeight: FontWeight.w500)) )
+        ),
+        textButtonTheme: TextButtonThemeData(
+            style:ButtonStyle(backgroundColor:MaterialStateProperty.all(ThemeData().backgroundColor),textStyle: MaterialStateProperty.all(TextStyle(color: ThemeData().colorScheme.secondary,fontSize: 18,fontWeight: FontWeight.w400)) )
         )
       ),
       title: 'Castalk',

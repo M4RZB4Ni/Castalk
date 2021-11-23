@@ -17,13 +17,12 @@ class Intro extends StatefulWidget{
 
 class IntroState extends State<Intro> with SingleTickerProviderStateMixin{
   final IntroApiClient introRepository=IntroApiClient();
-  late TabController tabController;
   late PageController pageController;
+  int activeStepe=0;
 
 
   @override
   void initState() {
-    tabController= TabController(length: 3, vsync: this);
     pageController= PageController(initialPage: 0,keepPage: true);
   }
 
@@ -41,16 +40,18 @@ class IntroState extends State<Intro> with SingleTickerProviderStateMixin{
                    resizeToAvoidBottomInset: false, // set it to false
                    appBar: AppBar(
                      backgroundColor: Colors.transparent,
-                     centerTitle: true,title: Text("Welcome",style: Theme.of(context).textTheme.headline1),),
+                     centerTitle: true,title: Text("Welcome",style: Theme.of(context).textTheme.headline1)),
                    backgroundColor: Theme.of(context).backgroundColor,
                    body:
                    Column(
                      children: [
-                       SizedBox(
-                         width: w,
-                           height: h-150,
-                           child: TabBarView(
-                           controller: tabController,
+                       Expanded(child: PageView(
+                         onPageChanged:(value) {
+                           setState(() {
+                             activeStepe=value;
+                           });
+                         },
+                           controller: pageController,
                            children: [
 
                              introWidgets(model.data,w,h),
@@ -58,16 +59,30 @@ class IntroState extends State<Intro> with SingleTickerProviderStateMixin{
                              introWidgets(model.data,w,h),
 
                            ])),
-                       SizedBox(
-                         width: w/4,
-                         height: 80,
-                         child: SmoothPageIndicator(
-                             controller: pageController,  // PageController
-                             count:  3,
-                             effect:  const WormEffect(),  // your preferred effect
-                             onDotClicked: (index){
+                       Padding(
+                         padding: const EdgeInsets.symmetric(horizontal: 53,vertical: 35),
+                         child: Row(
 
-                             }
+                           mainAxisAlignment: MainAxisAlignment.end,
+                           children: [
+                             Expanded(child: InkWell(child: Text("Skip",style: Theme.of(context).textTheme.button,))),
+                             SmoothPageIndicator(
+                               controller: pageController,
+                               count:  3,
+                               axisDirection: Axis.horizontal,
+                               effect:  const ScaleEffect(
+                                   spacing:  13.0,
+                                   dotWidth:  12.0,
+                                   dotHeight:  12.0,
+                                   paintStyle:  PaintingStyle.fill,
+                                   strokeWidth:  1.5,
+                                   dotColor:  Colors.grey,
+                                    activePaintStyle: PaintingStyle.stroke,offset:10 ,
+                                   activeDotColor:  Colors.white,activeStrokeWidth: 6
+                               ),
+                             )
+                             ,
+                           ],
                          ),
                        )
                      ],
@@ -88,8 +103,9 @@ class IntroState extends State<Intro> with SingleTickerProviderStateMixin{
             borderRadius: BorderRadius.circular(15.0),
             child: Image.network(
               //model!.imageUrl,
-              'https://picsum.photos/$w/${h-300}',
-              fit: BoxFit.fill,
+              'https://arga-mag.com/file/img/2021/01/podcast-3.jpg',
+              fit: BoxFit.fitHeight,
+              height: h/1.9,
               width: w,
             ),
           ),
