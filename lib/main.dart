@@ -1,3 +1,4 @@
+import 'package:castalk/view/add_account_info.dart';
 import 'package:castalk/view/enter_code.dart';
 import 'package:castalk/view/intro.dart';
 import 'package:castalk/view/signin.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
             bodyText2: TextStyle(color: Color(0xffA6A6A6),fontWeight: FontWeight.w400,fontSize: 14),
             subtitle1: TextStyle(color: Color(0xff9D9D9D),fontWeight: FontWeight.w400,fontSize: 14),
             subtitle2: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w400,fontSize: 18),
+            headline2: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w400,fontSize: 14),
             button: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w400,fontSize: 18),
         ),
         elevatedButtonTheme:  ElevatedButtonThemeData(
@@ -45,10 +47,11 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/EnterCode",
+      initialRoute: "/AddAccountInfo",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
+        "/AddAccountInfo":(context) => const Directionality(textDirection: TextDirection.ltr, child: AddAccountInfo()),
         "/EnterCode":(context) =>  Directionality(textDirection: TextDirection.ltr, child: EnterCode(phoneNumber: '+989185584088',)),
       },
 

@@ -26,6 +26,7 @@ class SigninState extends State<SignIn>{
       resizeToAvoidBottomInset: false,
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,title: Text("Log in",style: Theme.of(context).textTheme.headline1)),
         body: Padding(

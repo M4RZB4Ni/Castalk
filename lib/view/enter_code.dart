@@ -50,17 +50,13 @@ class EnterCodeState extends State<EnterCode>
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Theme.of(context).backgroundColor,
-      appBar: AppBar(
-        leading:backBtn(),
-          backgroundColor: Colors.transparent,
-          centerTitle: true,title: Text("Enter Code",style: Theme.of(context).textTheme.headline1)),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(height: 100,width: w,),
+            header(),
             Column(
               children: [
                 Text("The code has been sent to",style: Theme.of(context).textTheme.bodyText1),
@@ -268,9 +264,21 @@ class EnterCodeState extends State<EnterCode>
      }
   }
 
-  Container backBtn()
+   header()
   {
-    return Container(decoration: BoxDecoration(color: const Color(0x80808080).withOpacity(50),borderRadius: const BorderRadius.all(Radius.circular(12)),shape: BoxShape.rectangle),child: IconButton(icon:const Icon(Icons.arrow_left), onPressed: () {  },color: Colors.white,iconSize: 30));
+    return   Padding(
+      padding: const EdgeInsets.only(top: 24),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(width: 44,height: 44,child: const Icon(Icons.arrow_back_outlined) ,decoration: BoxDecoration(color: Colors.grey.shade500,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+          Text("Enter Code",style: Theme.of(context).textTheme.headline1),
+           const SizedBox(width: 44,),
+
+        ],
+      ),
+    );
   }
 
   startTimeout() {
