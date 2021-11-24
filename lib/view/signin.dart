@@ -17,17 +17,19 @@ class SigninState extends State<SignIn>{
   static const TextStyle dropStyle=TextStyle(color: Colors.white,fontSize: 12,fontWeight: FontWeight.w400);
   TextEditingController numberController=TextEditingController();
   BoxDecoration boxDecorations=BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(12)),border: Border.all(width: 1,color: const Color(0xff484848)));
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,title: Text("Log in",style: Theme.of(context).textTheme.headline1)),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,7 +72,7 @@ class SigninState extends State<SignIn>{
               ],)
             ],
           ),
-        ),resizeToAvoidBottomInset: false,
+        ),
 
 
 
