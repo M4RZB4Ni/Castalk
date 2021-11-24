@@ -13,15 +13,14 @@ class SignIn extends StatefulWidget{
 
 class SigninState extends State<SignIn>{
 
-  List<dynamic> cCodes=["A","B"];
+  List<dynamic> cCodes=[];
   static const TextStyle dropStyle=TextStyle(color: Colors.white,fontSize: 12,fontWeight: FontWeight.w400);
   TextEditingController numberController=TextEditingController();
-  BoxDecoration boxDecorations=BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(12)),border: Border.all(width: 1,color: Color(0xff484848)));
+  BoxDecoration boxDecorations=BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(12)),border: Border.all(width: 1,color: const Color(0xff484848)));
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-    // TODO: implement build
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
@@ -30,25 +29,36 @@ class SigninState extends State<SignIn>{
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Use your mobile number to signin",style: Theme.of(context).textTheme.bodyText1),
-              Padding(
-                padding: const EdgeInsets.only(top: 15,bottom: 9),
-                child: Container(height: 55,decoration:  boxDecorations,width: w,child: DropdownButtonHideUnderline(child: DropdownButton(style: dropStyle,items:cCodes.map((e) => DropdownMenuItem(child: Text(e.toString(),style: dropStyle,textDirection: TextDirection.ltr))).toList() ))),
+              SizedBox(height: 100,width: w,),
+              Column(
+                children: [
+                  Text("Use your mobile number to signin",style: Theme.of(context).textTheme.bodyText1),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15,bottom: 9),
+                    child: Container(height: 55,decoration:  boxDecorations,width: w,child: DropdownButtonHideUnderline(child: DropdownButton(style: dropStyle,items:cCodes.map((e) => DropdownMenuItem(child: Text(e.toString(),style: dropStyle,textDirection: TextDirection.ltr))).toList() ))),
+                  ),
+                  Container(height: 55,decoration:  boxDecorations,width: w,
+                      child: TextField(
+                          controller: numberController,
+                          textAlign: TextAlign.left,maxLines: 1,decoration: InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
+                          hintText: "Add your Number eg: 123 - 4567 - 890",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
+
+                  ),
+                ],
               ),
-              Container(height: 55,decoration:  boxDecorations,width: w,
-                  child: TextField(
-                      controller: numberController,
-                      textAlign: TextAlign.left,maxLines: 1,decoration: InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
-                      hintText: "Add your Number eg: 123 - 4567 - 890",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
 
-              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: Text("A verification code will send to the number",style: Theme.of(context).textTheme.subtitle1),
+                  ),
 
-
-              Column(children: [
-                ElevatedButton(onPressed:() => print(""), child:const Text("Send OTP",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+                  ElevatedButton(onPressed:() => print(""), child:const Text("Send OTP",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
                     padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(

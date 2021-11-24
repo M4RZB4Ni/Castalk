@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
           headline1: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 24),
           bodyText1: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 18),
             bodyText2: TextStyle(color: Color(0xffA6A6A6),fontWeight: FontWeight.w400,fontSize: 14),
+            subtitle1: TextStyle(color: Color(0xff9D9D9D),fontWeight: FontWeight.w400,fontSize: 14),
             button: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w400,fontSize: 18),
         ),
         elevatedButtonTheme:  ElevatedButtonThemeData(
