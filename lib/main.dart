@@ -1,4 +1,5 @@
 import 'package:castalk/view/add_account_info.dart';
+import 'package:castalk/view/congratulations.dart';
 import 'package:castalk/view/enter_code.dart';
 import 'package:castalk/view/intro.dart';
 import 'package:castalk/view/signin.dart';
@@ -47,12 +48,14 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/AddAccountInfo",
+      initialRoute: "/Congratulations",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
-        "/AddAccountInfo":(context) => const Directionality(textDirection: TextDirection.ltr, child: AddAccountInfo()),
         "/EnterCode":(context) =>  Directionality(textDirection: TextDirection.ltr, child: EnterCode(phoneNumber: '+989185584088',)),
+
+        "/AddAccountInfo":(context) => const Directionality(textDirection: TextDirection.ltr, child: AddAccountInfo()),
+        "/Congratulations":(context) => const Directionality(textDirection: TextDirection.ltr, child: Congratulations()),
       },
 
     );
