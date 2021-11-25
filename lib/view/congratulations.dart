@@ -28,65 +28,65 @@ class CongratulationsState extends State<Congratulations>{
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: PreferredSize(preferredSize: Size(w,190),
+      child:   Padding(
+        padding: const EdgeInsets.only(top: 36),
+        child: Column(children: [
+          header(onlyTitle: true),
+          Padding(
+            padding: const EdgeInsets.only(top: 15,right: 26,left: 26),
+            child: Text("It’s great to see you here. now you can select your intrests to let castalk suggest personalized contents to you",
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.white),),
+          ),
+          Align(alignment: Alignment.centerLeft,child: Padding(
+            padding: const EdgeInsets.only(top: 38,right: 0,left: 42),
+            child: Text("${controller.selectedIndexes.length} Item selected",
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.headline2),
+          )),
+        ],),
+      ),),
       resizeToAvoidBottomInset: false,
       backgroundColor: Theme.of(context).backgroundColor,
 
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(children: [
-              header(onlyTitle: true),
-              Padding(
-                padding: const EdgeInsets.only(top: 15),
-                child: Text("It’s great to see you here. now you can select your intrests to let castalk suggest personalized contents to you",textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.white),),
-              ),
-            ],),
+        padding: const EdgeInsets.symmetric(horizontal: 42),
+        child: GridView.builder(
+          itemCount: 20,
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 150,
+            childAspectRatio: 2/3,
+            mainAxisSpacing: 8,
+            crossAxisSpacing: 7,
+          ), itemBuilder: (BuildContext context, int index) {
+          return MultiSelectItem(
+              isSelecting: controller.isSelecting,
+              onSelected: () {
+                setState(() {
+                  controller.toggle(index);
+                });
+              },
+              child:itemType(!controller.isSelected(index))
 
-
-
-                SizedBox(
-                  width: w,
-                  height: h,
-                  child: GridView.builder(
-                    itemCount: 20,
-                    gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 150,
-                      childAspectRatio: 2/3,
-                      mainAxisSpacing: 8,
-                      crossAxisSpacing: 7,
-                    ), itemBuilder: (BuildContext context, int index) {
-                    return MultiSelectItem(
-                        isSelecting: controller.isSelecting,
-                        onSelected: () {
-                          setState(() {
-                            controller.toggle(index);
-                          });
-                        },
-                        child:itemType(controller.isSelected(index))
-                        
-                        );
-                    },
-                  ),
-                ),
-
-
-            ElevatedButton(onPressed:() => print(""), child:const Text("Let’s Listen",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
-                padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.0),
-                        side: const BorderSide(color: Color(0xffFFB800))
-                    )
-                ),
-                backgroundColor:MaterialStateProperty.all(const Color(0xffFFB800)),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff283034),fontSize: 18,fontWeight: FontWeight.w500)) ),)
-
-          ],
+          );
+        },
         ),
       ),
+      bottomSheet: Padding(
+        padding: const EdgeInsets.only(bottom: 59,left: 26),
+        child: ElevatedButton(onPressed:() => print(""), child:const Text("Let’s Listen",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+            padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                    side: const BorderSide(color: Color(0xffFFB800))
+                )
+            ),
+            backgroundColor:MaterialStateProperty.all(const Color(0xffFFB800)),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff283034),fontSize: 18,fontWeight: FontWeight.w500)) ),),
+      ),
+
+
 
 
 

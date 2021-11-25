@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color(0xff242424),
         backgroundColor: const Color(0xff242424),
         hintColor:const Color(0xff797979),
+        bottomSheetTheme: const BottomSheetThemeData(backgroundColor:Colors.transparent,elevation: 0),
         focusColor: const Color(0xffFFB800),
         colorScheme: ColorScheme.fromSwatch().copyWith(secondary: const Color(0xffFFB800)),
         textTheme: const TextTheme(
