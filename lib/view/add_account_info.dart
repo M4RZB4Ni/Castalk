@@ -15,10 +15,17 @@ class AddAccountInfo extends StatefulWidget{
 
 class AddAccountInfoState extends State<AddAccountInfo>{
 
-  List<dynamic> cCodes=["Prefer not to Say","Male","Female"];
+  List<String> cCodes=["Not rather to say","Male","Female"];
   static const TextStyle dropStyle=TextStyle(color: Colors.white,fontSize: 12,fontWeight: FontWeight.w400);
   TextEditingController numberController=TextEditingController();
   BoxDecoration boxDecorations=BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(12)),border: Border.all(width: 1,color: const Color(0xff484848)));
+  late String _genderValue;
+
+
+  @override
+  void initState() {
+    _genderValue=cCodes.first;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,15 +102,36 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                   children: [
                     Text("Gender",style: Theme.of(context).textTheme.bodyText1),// Padding(
                       Padding(padding: const EdgeInsets.only(top: 15,bottom: 9),
-                      child: Container(height: 55,decoration:  boxDecorations,width: w,child: DropdownButtonHideUnderline(child: DropdownButton(style: dropStyle,items:cCodes.map((e) => DropdownMenuItem(child: Text(e.toString(),style: dropStyle,textDirection: TextDirection.ltr))).toList() ))),
+                      child: Container(height: 55,decoration:  boxDecorations,width: w,child: DropdownButtonHideUnderline(
+                        child:  Padding(
+                          padding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
+                          child: Theme(data: Theme.of(context).copyWith(
+                            canvasColor: Theme.of(context).backgroundColor),
+                              child: DropdownButton<String>(
+                                icon: const Padding(
+                                  padding: EdgeInsets.only(right: 25),
+                                  child: Icon(Icons.keyboard_arrow_down_rounded,color: Color(0xffD1D1D1),size: 32,),
+                                ),
+                                isDense: false,
+                                value: _genderValue,
+                              style: Theme.of(context).textTheme.bodyText2,
+                              items: cCodes.map((e) => DropdownMenuItem(child: Text(e,style: Theme.of(context).textTheme.bodyText2),value: e,)).toList(),
+                              onChanged: (value) {
+                                setState(() {
+                                  // selectedActivity = value;
+                                  _genderValue=value!;
+                                  debugPrint('album choose-> $value');
+
+
+                                });
+                              })),
+                        )
+                      )),
                     ),
                   ],
                 ),
 
-                // Padding(
-                //   padding: const EdgeInsets.only(top: 15,bottom: 9),
-                //   child: Container(height: 55,decoration:  boxDecorations,width: w,child: DropdownButtonHideUnderline(child: DropdownButton(style: dropStyle,items:cCodes.map((e) => DropdownMenuItem(child: Text(e.toString(),style: dropStyle,textDirection: TextDirection.ltr))).toList() ))),
-                // ),
+
 
               ],
             ),
