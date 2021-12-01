@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class Profile extends StatefulWidget{
   const Profile({Key? key}) : super(key: key);
@@ -19,9 +20,7 @@ class ProfileState extends State<Profile>{
     
     
     double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-    
-    
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: PreferredSize(preferredSize: Size(w,300),
@@ -64,13 +63,85 @@ class ProfileState extends State<Profile>{
         ],)),
       ),
 
-      Row(children: [
+      Padding(
+        padding: const EdgeInsets.only(left: 62,bottom: 22,),
+        child: Align(
+            alignment: Alignment.bottomLeft,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text("Listens",style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
+            Text("12K",style: Theme.of(context).textTheme.headline1),
+          ],)),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(left: 0,bottom: 22),
+        child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text("Listens",style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
+                Text("12K",style: Theme.of(context).textTheme.headline1),
+              ],)),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(right: 62,bottom: 22),
+        child: Align(
+            alignment: Alignment.bottomRight,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text("Listens",style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
+                Text("12K",style: Theme.of(context).textTheme.headline1),
+              ],)),
+      )
 
-      ],)
 
 
     ],)),
-    );
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 22),
+        child: ListView(
+          children: [
+          Container(
+            decoration: const BoxDecoration(color: Color(0xff323232),borderRadius: BorderRadius.all(Radius.circular(16))),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
+                    child: Container(width: 43,height: 43,child:  Icon(Icons.edit,color: Theme.of(context).focusColor,) ,decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
+                    child: Text("PlayLists",style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 14),),
+                  ),
+                ],
+              ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 17,right: 32,bottom: 17),
+                  child: Text("0",style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 18),),
+                ),
+
+
+/*
+            Container(width: 44,height: 44,child: IconButton(
+              color: Colors.yellow,
+
+              icon: const Icon(Icons.edit,color: Colors.white,),onPressed:() {
+
+            },) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)))
+*/
+
+    ],),)
+    ],
+    ),
+      ));
   }
 
 }
