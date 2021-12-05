@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:blur/blur.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:music_slider/music_slider.dart';
 
 class Player extends StatefulWidget{
@@ -100,7 +101,9 @@ class PlayerState extends State<Player>
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(padding: const EdgeInsets.all(14),width: 47,height: 47,child: SvgPicture.asset(svgPath+"setting.svg") ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+                InkWell(onTap: () {
+                  settings(w, h);
+                },child: Container(padding: const EdgeInsets.all(14),width: 47,height: 47,child: SvgPicture.asset(svgPath+"setting.svg") ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),)),
                 Container(padding: const EdgeInsets.all(0),width: 102,height: 47,child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -109,7 +112,7 @@ class PlayerState extends State<Player>
 
                   ],
                 ) ,decoration: BoxDecoration(color: Colors.white.withOpacity(0.49),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
-                Container(padding: const EdgeInsets.all(14),width: 47,height: 47,child: SvgPicture.asset(svgPath+"playlist.svg") ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+                Container(padding: const EdgeInsets.all(14),width: 47,height: 47,child: SvgPicture.asset(svgPath+"playlist.svg",) ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
 
               ],),
           )
@@ -221,6 +224,74 @@ class PlayerState extends State<Player>
 
           ]),alignment: Alignment.bottomCenter,));
 
+  }
+
+  settings(w,h)
+  {
+    showMaterialModalBottomSheet(
+      expand: false,
+      context: context,
+
+      backgroundColor: Style.gray38,
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(24),topLeft: Radius.circular(24))),
+      builder: (context) => SizedBox(width: w,height: h/3.5,child:
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 23,left: 18),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween  ,
+                    children: [
+
+                      Container(width: 44,height: 44,child: const Icon(Icons.arrow_back_outlined,color: Colors.white,size: 18,) ,decoration:
+                      BoxDecoration(color: Style.gray48.withOpacity(0.4),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 16),
+                            child: SvgPicture.asset(svgPath+"setting.svg",color:Colors.white38,width: 16,height: 16),
+                          ),
+                          Text("Player Options",style: Theme.of(context).textTheme.bodyText1),
+
+                        ],
+                      ),
+                      Container(width: 44,),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 35),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(padding: const EdgeInsets.all(14),width: 47,height: 47,child: SvgPicture.asset(svgPath+"repeat.svg") ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+                      Container(padding: const EdgeInsets.all(14),width: 47,height: 47,child: SvgPicture.asset(svgPath+"shuffle.svg") ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+                      Container(padding: const EdgeInsets.all(14),width: 47,height: 47,child: SvgPicture.asset(svgPath+"sleep.svg") ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+                      Container(padding: const EdgeInsets.all(14),width: 47,height: 47,child: SvgPicture.asset(svgPath+"cast.svg") ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+
+                    ],),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 23,vertical: 22),
+                  child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 19),
+                      child: Row(children: [
+                        SvgPicture.asset(svgPath+"carmode.svg"),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Text("Drive Mode",style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 16)),
+                        ),
+
+                      ],),
+                    ),
+                    height: 56,decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),color: Style.gray38,border: Border.all(color:Style.gray58,width: 1)),),
+                )
+              ],
+            )
+        ,),
+    );
   }
 
 }

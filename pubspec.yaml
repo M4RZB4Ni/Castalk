@@ -36,6 +36,8 @@ dependencies:
   blur: ^3.0.0
   flutter_svg: ^1.0.0
   music_slider: ^0.0.1
+  modal_bottom_sheet: ^2.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -59,6 +61,11 @@ flutter:
   - assets/icons/pre.svg
   - assets/icons/setting.svg
   - assets/icons/pause.svg
+  - assets/icons/repeat.svg
+  - assets/icons/shuffle.svg
+  - assets/icons/cast.svg
+  - assets/icons/sleep.svg
+  - assets/icons/carmode.svg
 
   uses-material-design: true
 
