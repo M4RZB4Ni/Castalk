@@ -35,7 +35,6 @@ dependencies:
   multi_select_item: ^1.0.3
   blur: ^3.0.0
   flutter_svg: ^1.0.0
-  step_progress_indicator: ^1.0.1
   music_slider: ^0.0.1
 dev_dependencies:
   flutter_test:
@@ -51,6 +50,15 @@ flutter:
   - assets/icons/download.svg
   - assets/icons/like.svg
   - assets/icons/share.svg
+  - assets/icons/mic.svg
+  - assets/icons/circle_left.svg
+  - assets/icons/circle_righ.svg
+  - assets/icons/comment.svg
+  - assets/icons/forw.svg
+  - assets/icons/playlist.svg
+  - assets/icons/pre.svg
+  - assets/icons/setting.svg
+  - assets/icons/pause.svg
 
   uses-material-design: true
 
