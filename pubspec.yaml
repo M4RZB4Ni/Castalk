@@ -37,6 +37,7 @@ dependencies:
   flutter_svg: ^1.0.0
   music_slider: ^0.0.1
   modal_bottom_sheet: ^2.0.0
+  expandable: ^5.0.1
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +59,7 @@ flutter:
   - assets/icons/comment.svg
   - assets/icons/forw.svg
   - assets/icons/playlist.svg
+  - assets/icons/playlistheader.svg
   - assets/icons/pre.svg
   - assets/icons/setting.svg
   - assets/icons/pause.svg
@@ -68,6 +70,8 @@ flutter:
   - assets/icons/carmode.svg
   - assets/icons/swipe.svg
   - assets/icons/carmode_outline.svg
+  - assets/icons/radiochecked.svg
+  - assets/icons/radiounchecked.svg
 
   uses-material-design: true
 

@@ -5,6 +5,7 @@ import 'package:castalk/view/enter_code.dart';
 import 'package:castalk/view/intro.dart';
 import 'package:castalk/view/player.dart';
 import 'package:castalk/view/profile/profile.dart';
+import 'package:castalk/view/save_to_playlist.dart';
 import 'package:castalk/view/signin.dart';
 import 'package:flutter/material.dart';
 
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
             subtitle1: TextStyle(color: Color(0xff9D9D9D),fontWeight: FontWeight.w400,fontSize: 14),
             subtitle2: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w400,fontSize: 18),
             headline2: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w400,fontSize: 14),
+            headline5: TextStyle(color: Color(0xff283034),fontWeight: FontWeight.w500,fontSize: 18),
             button: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w400,fontSize: 18),
           headline3:TextStyle(color: Color(0xff3A3A3A),fontWeight: FontWeight.w700,fontSize: 18),
         ),
@@ -54,7 +56,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/DriveMode",
+      initialRoute: "/SavePlayList",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -64,6 +66,7 @@ class MyApp extends StatelessWidget {
         "/Player":(context) => const Directionality(textDirection: TextDirection.ltr, child: Player()),
         "/Profile":(context) => const Directionality(textDirection: TextDirection.ltr, child: Profile()),
         "/DriveMode":(context) => const Directionality(textDirection: TextDirection.ltr, child: DriveMode()),
+        "/SavePlayList":(context) => const Directionality(textDirection: TextDirection.ltr, child: SavePlayList()),
       },
 
     );
