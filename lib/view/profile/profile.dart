@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Profile extends StatefulWidget{
   const Profile({Key? key}) : super(key: key);
@@ -15,6 +16,10 @@ class Profile extends StatefulWidget{
 
 }
 class ProfileState extends State<Profile>{
+
+  String svgPath="assets/icons/";
+
+
   @override
   Widget build(BuildContext context) {
     
@@ -32,13 +37,13 @@ class ProfileState extends State<Profile>{
         BoxDecoration(color:const Color(0xff414141),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(40))),
       Padding(
         padding: const EdgeInsets.only(top: 24,left: 24),
-        child: Container(width: 44,height: 44,child: const Icon(Icons.edit,color: Colors.white,) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
+        child: Container(padding: EdgeInsets.all(10),width: 44,height: 44,child: SvgPicture.asset(svgPath+"modify.svg",width: 17,height: 17,) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
       ),
 
       Align(alignment: Alignment.topRight,child: Positioned(
           child: Padding(
         padding: const EdgeInsets.only(top: 0,left: 0),
-        child: Container(width: 44,height: 85,child: const Icon(Icons.more,color: Colors.white,) ,decoration: BoxDecoration(color: const Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(34)))),
+        child: Container(padding: EdgeInsets.all(19),width: 44,height: 85,child: SvgPicture.asset(svgPath+"moredots.svg") ,decoration: BoxDecoration(color: const Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(34)))),
       ))),
 
       Padding(
