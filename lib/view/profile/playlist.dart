@@ -123,7 +123,7 @@ class PlaylistState extends State<Playlist> {
                   padding: const EdgeInsets.all(12),
                   child: SvgPicture.asset(svgPath+"filter.svg",width: 14,height: 14,),
                   decoration: BoxDecoration(
-                      color: Style.headerbackBtn,
+                      color: Style.glassBlack,
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(12)),
                 ),
@@ -133,7 +133,7 @@ class PlaylistState extends State<Playlist> {
                   height: 44,
                   child: SvgPicture.asset(svgPath+"sort.svg",width: 14,height: 14,),
                   decoration: BoxDecoration(
-                      color: Style.headerbackBtn,
+                      color: Style.glassBlack,
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(12)),
                 )

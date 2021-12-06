@@ -77,6 +77,8 @@ flutter:
   - assets/icons/search.svg
   - assets/icons/sort.svg
   - assets/icons/filter.svg
+  - assets/icons/play.svg
+  - assets/icons/download_prog.svg
 
   uses-material-design: true
 
