@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../style.dart';
+import '../../style.dart';
 
 class SavePlayList extends StatefulWidget{
   const SavePlayList({Key? key}) : super(key: key);

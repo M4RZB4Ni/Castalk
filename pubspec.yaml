@@ -72,6 +72,8 @@ flutter:
   - assets/icons/carmode_outline.svg
   - assets/icons/radiochecked.svg
   - assets/icons/radiounchecked.svg
+  - assets/icons/moredots.svg
+  - assets/icons/modify.svg
 
   uses-material-design: true
 

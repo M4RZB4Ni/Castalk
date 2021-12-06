@@ -1,13 +1,13 @@
 import 'package:castalk/style.dart';
-import 'package:castalk/view/add_account_info.dart';
-import 'package:castalk/view/congratulations.dart';
-import 'package:castalk/view/drive_mode.dart';
-import 'package:castalk/view/enter_code.dart';
-import 'package:castalk/view/intro.dart';
-import 'package:castalk/view/player.dart';
+import 'package:castalk/view/intro_signin/add_account_info.dart';
+import 'package:castalk/view/intro_signin/congratulations.dart';
+import 'package:castalk/view/player/drive_mode.dart';
+import 'package:castalk/view/intro_signin/enter_code.dart';
+import 'package:castalk/view/intro_signin/intro.dart';
+import 'package:castalk/view/player/player.dart';
 import 'package:castalk/view/profile/profile.dart';
-import 'package:castalk/view/save_to_playlist.dart';
-import 'package:castalk/view/signin.dart';
+import 'package:castalk/view/player/save_to_playlist.dart';
+import 'package:castalk/view/intro_signin/signin.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/SavePlayList",
+      initialRoute: "/Profile",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),

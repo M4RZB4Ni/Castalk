@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:music_slider/music_slider.dart';
 
-import '../style.dart';
+import '../../style.dart';
 
 class DriveMode extends StatefulWidget{
   const DriveMode({Key? key}) : super(key: key);
