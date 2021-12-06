@@ -241,7 +241,7 @@ class PlayerState extends State<Player>
                 Padding(
                   padding: const EdgeInsets.only(top: 23,left: 18),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween  ,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween ,
                     children: [
 
                       Container(width: 44,height: 44,child: const Icon(Icons.arrow_back_outlined,color: Colors.white,size: 18,) ,decoration:

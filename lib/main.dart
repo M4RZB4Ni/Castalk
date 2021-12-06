@@ -1,3 +1,4 @@
+import 'package:castalk/style.dart';
 import 'package:castalk/view/add_account_info.dart';
 import 'package:castalk/view/congratulations.dart';
 import 'package:castalk/view/drive_mode.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
             subtitle2: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w400,fontSize: 18),
             headline2: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w400,fontSize: 14),
             headline5: TextStyle(color: Color(0xff283034),fontWeight: FontWeight.w500,fontSize: 18),
+            headline6: TextStyle(color: Style.grayA1,fontWeight: FontWeight.w400,fontSize: 12),
             button: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w400,fontSize: 18),
           headline3:TextStyle(color: Color(0xff3A3A3A),fontWeight: FontWeight.w700,fontSize: 18),
         ),

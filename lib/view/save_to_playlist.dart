@@ -21,7 +21,10 @@ class SavePlayListState extends State<SavePlayList>
 {
   String svgPath="assets/icons/";
   bool newPlayList=false;
+  bool toYourPlaylist=true;
   late TextTheme _textTheme;
+  TextEditingController numberController=TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -42,11 +45,18 @@ class SavePlayListState extends State<SavePlayList>
               Text("Select a playlist to Save to:",style: _textTheme.headline2!.copyWith(fontWeight: FontWeight.w500),),
               ExpandablePanel(
                 theme: const ExpandableThemeData(hasIcon: false),
-                header: expandedHeader(w),
+                header: expandedHeaderToYourPlaylist(w),
                 collapsed: Container(),
-                expanded: playlistItem(w, h),
+                expanded: Container(width: 100,height: 150,child: playlistItem(w, h))
 
-          )
+          ),
+              ExpandablePanel(
+                  theme: const ExpandableThemeData(hasIcon: false),
+                  header: expandedHeaderNewPlayList(w),
+                  collapsed: Container(),
+                  expanded: Container(width: w,height: 150,child: newPlaylist(w, h),)
+
+              )
             ],
           ),
         )
@@ -82,7 +92,30 @@ class SavePlayListState extends State<SavePlayList>
     );
   }
 
-  expandedHeader(w )
+  expandedHeaderToYourPlaylist(w )
+  {
+    return toYourPlaylist ? Padding(
+      padding: const EdgeInsets.only(top: 36),
+      child: Container(padding: EdgeInsets.only(left: 16),child: Row(children: [
+        SvgPicture.asset(svgPath+"radiochecked.svg",width: 24,height: 23,),
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Text("To your playlists",style: _textTheme.headline5),
+        )
+      ],),width: w,height: 56,decoration: BoxDecoration(color: Style.accentGold,borderRadius: BorderRadius.circular(16))),
+    ) : Padding(
+      padding: const EdgeInsets.only(top: 36),
+      child: Container(padding: EdgeInsets.only(left: 16),child: Row(children: [
+        SvgPicture.asset(svgPath+"radiounchecked.svg",width: 24,height: 23,),
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Text("To your playlists",style: _textTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500)),
+        )
+      ],),width: w,height: 56,decoration: BoxDecoration(color: Style.gray32,borderRadius: BorderRadius.circular(16))),
+    );
+  }
+
+  expandedHeaderNewPlayList(w )
   {
     return newPlayList ? Padding(
       padding: const EdgeInsets.only(top: 36),
@@ -107,8 +140,64 @@ class SavePlayListState extends State<SavePlayList>
 
   playlistItem(w,h)
   {
-    return !newPlayList ?Transform.rotate(angle: 4.2,child: ClipRRect(child: Image.network("https://picsum.photos/70/70",width: 70,height: 70,),borderRadius: BorderRadius.circular(16),)) :
-    Container();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Stack(children: [
+
+          Transform.rotate(angle: -0.2,child: Card( shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),clipBehavior: Clip.antiAlias,elevation: 5,shadowColor: Colors.black.withOpacity(0.5),child: Image.network(
+            //model!.imageUrl,
+            'https://picsum.photos/70/70',
+            fit: BoxFit.cover,
+            height: 70,
+            width: 70,
+          ))),
+          Transform.rotate(angle: 0.2,child: Card( shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),clipBehavior: Clip.antiAlias,elevation: 5,shadowColor: Colors.black.withOpacity(0.5),child: Image.network(
+            //model!.imageUrl,
+            'https://picsum.photos/71/71',
+            fit: BoxFit.cover,
+            height: 70,
+            width: 70,
+          ))),
+
+
+          Positioned(bottom: 2,right: 3,child: Transform.rotate(angle: -0.2,child: Card( shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),clipBehavior: Clip.antiAlias,elevation: 5,shadowColor: Colors.black.withOpacity(0.5),child: Image.network(
+            'https://picsum.photos/70/70',
+            fit: BoxFit.cover,
+            height: 70,
+            width: 70,
+          ))),)
+
+        ],),
+        Text("Playlist Name",style: _textTheme.headline2!.copyWith(fontWeight: FontWeight.w500),),
+        Text("124 Episods",style: _textTheme.headline6),
+      ],
+    );
+  }
+  newPlaylist(w,h)
+  {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+
+        Text("Playlist Name:",style: _textTheme.bodyText1!.copyWith(fontSize: 16),),
+          Container(height: 55,decoration:  BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(12)),border: Border.all(width: 1,color: const Color(0xff484848))),width: w,
+          child: TextField(
+          controller: numberController,
+          textAlign: TextAlign.left,maxLines: 1,decoration: InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
+            hintText: "Add playlist name",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
+
+          )
+      ],
+    );
   }
 
 
