@@ -74,6 +74,9 @@ flutter:
   - assets/icons/radiounchecked.svg
   - assets/icons/moredots.svg
   - assets/icons/modify.svg
+  - assets/icons/search.svg
+  - assets/icons/sort.svg
+  - assets/icons/filter.svg
 
   uses-material-design: true
 
