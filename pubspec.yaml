@@ -79,6 +79,9 @@ flutter:
   - assets/icons/filter.svg
   - assets/icons/play.svg
   - assets/icons/download_prog.svg
+  - assets/icons/timer.svg
+  - assets/icons/heart_white.svg
+  - assets/icons/arrow_left.svg
 
   uses-material-design: true
 

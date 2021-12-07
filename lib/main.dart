@@ -6,6 +6,7 @@ import 'package:castalk/view/intro_signin/enter_code.dart';
 import 'package:castalk/view/intro_signin/intro.dart';
 import 'package:castalk/view/player/player.dart';
 import 'package:castalk/view/profile/downloads.dart';
+import 'package:castalk/view/profile/liked_episodes.dart';
 import 'package:castalk/view/profile/playlist.dart';
 import 'package:castalk/view/profile/profile.dart';
 import 'package:castalk/view/player/save_to_playlist.dart';
@@ -61,7 +62,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/Downloads",
+      initialRoute: "/LikedEpisodes",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -74,6 +75,7 @@ class MyApp extends StatelessWidget {
         "/SavePlayList":(context) => const Directionality(textDirection: TextDirection.ltr, child: SavePlayList()),
         "/Playlist":(context) => const Directionality(textDirection: TextDirection.ltr, child: Playlist()),
         "/Downloads":(context) => const Directionality(textDirection: TextDirection.ltr, child: Downloads()),
+        "/LikedEpisodes":(context) => const Directionality(textDirection: TextDirection.ltr, child: LikedEpisodes()),
       },
 
     );

@@ -6,8 +6,9 @@ class Style  {
   static  Color gray48op50 = const Color(0xff484848).withOpacity(0.5);
   static const Color gray38 = Color(0xff383838);
   static const Color gray58 = Color(0xff585858);
-  static const Color gray32 = Color(0xff323232);
+  static  Color gray32 = const Color(0xff3C3C3C).withOpacity(0.3);
   static const Color grayA1 = Color(0xffA8A8A8);
+
   static const Color grayc4 = Color(0xffC4C4C4);
   static const Color divider = Color(0xff464646);
   static  Color grayTrans = const Color(0xff3C3C3C);
