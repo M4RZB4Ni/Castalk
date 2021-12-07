@@ -82,6 +82,7 @@ flutter:
   - assets/icons/timer.svg
   - assets/icons/heart_white.svg
   - assets/icons/arrow_left.svg
+  - assets/icons/heart_empty.svg
 
   uses-material-design: true
 
