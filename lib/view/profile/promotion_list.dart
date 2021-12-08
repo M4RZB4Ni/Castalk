@@ -99,7 +99,7 @@ class PromotionState extends State<PromotionList> {
                   color: Colors.white,
                 ),
                 decoration: BoxDecoration(
-                    color: Style.headerbackBtn,
+                    color: Style.headerBackBtn,
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.circular(12)),
               ),
@@ -158,7 +158,7 @@ class PromotionState extends State<PromotionList> {
                     height: 14,
                   ),
                   decoration: BoxDecoration(
-                      color: Style.headerbackBtn,
+                      color: Style.headerBackBtn,
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(12)),
                 ),
@@ -262,7 +262,7 @@ class PromotionState extends State<PromotionList> {
                           height: 44,
                           child:  SvgPicture.asset(svgPath+"copy.svg",width: 18.0,height: 18,),
                           decoration: BoxDecoration(
-                              color: Style.headerbackBtn,
+                              color: Style.headerBackBtn,
                               shape: BoxShape.rectangle,
                               borderRadius: BorderRadius.circular(12)),
                         ),
@@ -279,7 +279,7 @@ class PromotionState extends State<PromotionList> {
                     height: 44,
                     child:  SvgPicture.asset(svgPath+"pizza.svg"),
                     decoration: BoxDecoration(
-                        color: Style.headerbackBtn,
+                        color: Style.headerBackBtn,
                         shape: BoxShape.rectangle,
                         borderRadius: BorderRadius.circular(12)),
                   )
@@ -361,7 +361,7 @@ class PromotionState extends State<PromotionList> {
                     height: 44,
                     child:  SvgPicture.asset(svgPath+"pizza.svg"),
                     decoration: BoxDecoration(
-                        color: Style.headerbackBtn,
+                        color: Style.headerBackBtn,
                         shape: BoxShape.rectangle,
                         borderRadius: BorderRadius.circular(12)),
                   )

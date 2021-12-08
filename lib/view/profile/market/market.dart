@@ -70,7 +70,7 @@ class MarketState extends State<Market> with SingleTickerProviderStateMixin
                   color: Colors.white,
                 ),
                 decoration: BoxDecoration(
-                    color: Style.headerbackBtn,
+                    color: Style.headerBackBtn,
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.circular(12)),
               ),

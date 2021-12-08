@@ -111,7 +111,7 @@ class PurchasesState extends State<Purchases>
               height: 14,
             ),
             decoration: BoxDecoration(
-                color: Style.headerbackBtn,
+                color: Style.headerBackBtn,
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(12)),
           ),

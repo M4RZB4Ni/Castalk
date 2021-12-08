@@ -55,7 +55,7 @@ class PlaylistState extends State<Playlist> {
                   color: Colors.white,
                 ),
                 decoration: BoxDecoration(
-                    color: Style.headerbackBtn,
+                    color: Style.headerBackBtn,
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.circular(12)),
               ),
@@ -112,7 +112,7 @@ class PlaylistState extends State<Playlist> {
                   height: 44,
                   child: SvgPicture.asset(svgPath+"search.svg",width: 14,height: 14,),
                   decoration: BoxDecoration(
-                      color: Style.headerbackBtn,
+                      color: Style.headerBackBtn,
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(12)),
                 ),

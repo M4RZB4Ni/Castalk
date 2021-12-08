@@ -51,7 +51,7 @@ class DownloadsState extends State<Downloads> {
                   color: Colors.white,
                 ),
                 decoration: BoxDecoration(
-                    color: Style.headerbackBtn,
+                    color: Style.headerBackBtn,
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.circular(12)),
               ),
@@ -110,7 +110,7 @@ class DownloadsState extends State<Downloads> {
                     height: 14,
                   ),
                   decoration: BoxDecoration(
-                      color: Style.headerbackBtn,
+                      color: Style.headerBackBtn,
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(12)),
                 ),

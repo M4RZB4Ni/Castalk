@@ -38,6 +38,7 @@ dependencies:
   music_slider: ^0.0.1
   modal_bottom_sheet: ^2.0.0
   expandable: ^5.0.1
+  flutter_tags: ^0.4.9+1
 
 dev_dependencies:
   flutter_test:
@@ -86,6 +87,9 @@ flutter:
   - assets/icons/info.svg
   - assets/icons/copy.svg
   - assets/icons/pizza.svg
+  - assets/icons/close.svg
+  - assets/icons/calendar.svg
+  - assets/icons/arrow_down.svg
 
   uses-material-design: true
 
