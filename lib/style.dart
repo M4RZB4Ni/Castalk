@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class Style  {
@@ -21,4 +23,10 @@ class Style  {
   static Color glassBlack = const Color(0xff3B3B3B);
   static Color redAccent = const Color(0xffFF5959);
   static Color headerbackBtn = const Color(0xff808080).withOpacity(0.5);
+
+
+  static TextStyle t_400_12w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 12);
+  static TextStyle t_400_12_9D= const TextStyle(color: gray9D,fontWeight: FontWeight.w400,fontSize: 12);
+  static TextStyle t_500_18g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 18);
+  static TextStyle t_400_12r= TextStyle(color: redAccent,fontWeight: FontWeight.w400,fontSize: 12);
 }

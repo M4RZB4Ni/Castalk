@@ -15,6 +15,7 @@ import 'package:castalk/view/profile/playlist_episodes.dart';
 import 'package:castalk/view/profile/profile.dart';
 import 'package:castalk/view/player/save_to_playlist.dart';
 import 'package:castalk/view/intro_signin/signin.dart';
+import 'package:castalk/view/profile/promotion_list.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/Market",
+      initialRoute: "/PromotionList",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -84,6 +85,7 @@ class MyApp extends StatelessWidget {
         "/Market":(context) => const Directionality(textDirection: TextDirection.ltr, child: Market()),
         "/Products":(context) => const Directionality(textDirection: TextDirection.ltr, child: Products()),
         "/Purchases":(context) => const Directionality(textDirection: TextDirection.ltr, child: Purchases()),
+        "/PromotionList":(context) => const Directionality(textDirection: TextDirection.ltr, child: PromotionList()),
       },
 
     );
