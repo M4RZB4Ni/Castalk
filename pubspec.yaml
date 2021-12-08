@@ -90,6 +90,8 @@ flutter:
   - assets/icons/close.svg
   - assets/icons/calendar.svg
   - assets/icons/arrow_down.svg
+  - assets/icons/random.svg
+  - assets/icons/delete.svg
 
   uses-material-design: true
 

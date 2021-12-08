@@ -24,19 +24,20 @@ class PromotionState extends State<Promotion>
   late dynamic radioTypeValue="fixed";
   late dynamic radioProductValue="Both";
   final GlobalKey<TagsState> _tagStateKey = GlobalKey<TagsState>();
-  late final List _items=[["name","picture","type"],["name","picture","type"],["name","picture","type"]];
 
   @override
   Widget build(BuildContext context) {
 
     _textTheme = Theme.of(context).textTheme;
     double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
+    //double h = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
-      body: SingleChildScrollView(
+      body:   Padding(
+        padding: const EdgeInsets.only(right: 24,left: 24,bottom: 40,top: 28),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,39 +149,37 @@ class PromotionState extends State<Promotion>
                 Visibility(
                     visible: radioProductValue=="Single Product",
                     child: Padding(
-                    padding: const EdgeInsets.only(top: 15,bottom: 9),
-                    child:  Container(
-                      width: w,
-                      height: 55,
-                      decoration:Style.inputBoxDecoration,
-                      child: Row(
-                        children: [
-                          Expanded(flex: 6,child:Tags(
-                            key:_tagStateKey,
-                            textField: TagsTextField(
-                              width: w,
-                              inputDecoration: Style.inputTextDecoration,
-                              constraintSuggestion: true, suggestions: [],
-                            ),
-                          )),
-                          Expanded(
-                              flex: 1,child: SvgPicture.asset(
-                            svgPath + "search.svg",
-                            width: 20,
-                            height: 20,
-                            color: Style.gray86,
-                          ))
-                        ],
-                      ),
-                    )
+                        padding: const EdgeInsets.only(top: 15,bottom: 9),
+                        child:  Container(
+                          width: w,
+                          height: 55,
+                          decoration:Style.inputBoxDecoration,
+                          child: Row(
+                            children: [
+                              Expanded(flex: 6,child:Tags(
+                                key:_tagStateKey,
+                                textField: TagsTextField(
+                                  width: w,
+                                  inputDecoration: Style.inputTextDecoration,
+                                  constraintSuggestion: true, suggestions: [],
+                                ),
+                              )),
+                              Expanded(
+                                  flex: 1,child: SvgPicture.asset(
+                                svgPath + "search.svg",
+                                width: 20,
+                                height: 20,
+                                color: Style.gray86,
+                              ))
+                            ],
+                          ),
+                        )
                     )),
 
 
 
               ],
             ),
-
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -201,15 +200,12 @@ class PromotionState extends State<Promotion>
                             width: 18,
                             height: 18,
                           )),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 18,left: 10),
-                            child: Expanded(
-                                flex: 1,child: SvgPicture.asset(
-                              svgPath + "arrow_down.svg",
-                              width: 10,
-                              height: 10,
-                            )),
-                          )
+                          Expanded(
+                              flex: 1,child: SvgPicture.asset(
+                            svgPath + "arrow_down.svg",
+                            width: 10,
+                            height: 10,
+                          ))
                         ],
                       ),
                     )),
@@ -218,13 +214,100 @@ class PromotionState extends State<Promotion>
 
               ],
             ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                    padding: const EdgeInsets.only(top: 15,bottom: 9),
+                    child:Container(
+                      width: w,
+                      height: 55,
+                      decoration:Style.inputBoxDecoration,
+                      child: Row(
+                        children: [
+                          Expanded(flex: 12,child:TextField(
+                              controller: numberController,
+                              textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)),
+                          Expanded(
+                              flex: 1,child: SvgPicture.asset(
+                            svgPath + "calendar.svg",
+                            width: 18,
+                            height: 18,
+                          )),
+                          Expanded(
+                              flex: 1,child: SvgPicture.asset(
+                            svgPath + "arrow_down.svg",
+                            width: 10,
+                            height: 10,
+                          ))
+                        ],
+                      ),
+                    )),
 
 
+
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Create redeem:",style: Style.t_400_16w,),
+                Row(
+                  children: [
+                    Container(
+                      width: 50,
+                      height: 50,
+                      padding: const EdgeInsets.all(10),
+                      child: SvgPicture.asset(svgPath+"random.svg"),
+                      decoration: BoxDecoration(
+                          color: Style.accentGold,
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(12)),
+                    ),
+                    Expanded(flex:12,child:  Padding(
+                        padding: const EdgeInsets.only(top: 15,bottom: 9,left: 10),
+                        child:Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                            child: TextField(
+                                controller: numberController,
+                                textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)
+
+                        )))
+                  ],
+                )
+
+
+
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(onPressed:() => print(""), child:const Text("Save",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+                    padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                            side: const BorderSide(color: Color(0xffFFB800))
+                        )
+                    ),
+                    backgroundColor:MaterialStateProperty.all(const Color(0xffFFB800)),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff283034),fontSize: 18,fontWeight: FontWeight.w500)) ),),
+                Container(
+                  width: 54,
+                  height: 54,
+                  padding: const EdgeInsets.all(12),
+                  child: SvgPicture.asset(svgPath+"delete.svg"),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Style.redAccent,width: 1),
+                      color: Colors.transparent,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(12)),
+                )
+
+              ],
+            )
           ],
         ),
-      )
-
-    );
+      ));
   }
   header(w) {
     return Padding(

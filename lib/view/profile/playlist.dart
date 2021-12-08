@@ -117,7 +117,6 @@ class PlaylistState extends State<Playlist> {
                       borderRadius: BorderRadius.circular(12)),
                 ),
                 Container(
-
                   width: 44,
                   height: 44,
                   padding: const EdgeInsets.all(12),
