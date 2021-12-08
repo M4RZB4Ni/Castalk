@@ -7,6 +7,9 @@ import 'package:castalk/view/intro_signin/intro.dart';
 import 'package:castalk/view/player/player.dart';
 import 'package:castalk/view/profile/downloads.dart';
 import 'package:castalk/view/profile/liked_episodes.dart';
+import 'package:castalk/view/profile/market/market.dart';
+import 'package:castalk/view/profile/market/products.dart';
+import 'package:castalk/view/profile/market/purchases.dart';
 import 'package:castalk/view/profile/playlist.dart';
 import 'package:castalk/view/profile/playlist_episodes.dart';
 import 'package:castalk/view/profile/profile.dart';
@@ -63,7 +66,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/PlayListEpisodes",
+      initialRoute: "/Market",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -78,6 +81,9 @@ class MyApp extends StatelessWidget {
         "/Downloads":(context) => const Directionality(textDirection: TextDirection.ltr, child: Downloads()),
         "/LikedEpisodes":(context) => const Directionality(textDirection: TextDirection.ltr, child: LikedEpisodes()),
         "/PlayListEpisodes":(context) => const Directionality(textDirection: TextDirection.ltr, child: PlayListEpisodes()),
+        "/Market":(context) => const Directionality(textDirection: TextDirection.ltr, child: Market()),
+        "/Products":(context) => const Directionality(textDirection: TextDirection.ltr, child: Products()),
+        "/Purchases":(context) => const Directionality(textDirection: TextDirection.ltr, child: Purchases()),
       },
 
     );
