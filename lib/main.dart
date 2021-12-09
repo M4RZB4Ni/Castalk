@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/Achivments",
+      initialRoute: "/Monetization",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -94,6 +94,7 @@ class MyApp extends StatelessWidget {
         "/Promotion":(context) => const Directionality(textDirection: TextDirection.ltr, child: Promotion()),
         "/PromotionAnalytics":(context) => const Directionality(textDirection: TextDirection.ltr, child: PromotionAnalytics()),
         "/Achivments":(context) => const Directionality(textDirection: TextDirection.ltr, child: Achivments()),
+        "/Monetization":(context) => const Directionality(textDirection: TextDirection.ltr, child: Monetization()),
       },
 
     );
