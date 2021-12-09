@@ -16,6 +16,7 @@ class Style  {
   static const Color gray2F = Color(0XFF2F2F2F);
   static const Color gray9D = Color(0XFF9D9D9D);
   static const Color gray86 = Color(0xff868686);
+  static const Color grayD1 = Color(0xffD1D1D1);
 
   static const Color grayc4 = Color(0xffC4C4C4);
   static const Color divider = Color(0xff464646);
@@ -33,6 +34,8 @@ class Style  {
 
   static TextStyle t_400_12w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_400_16w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16);
+  static TextStyle t_400_14w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 14);
+  static TextStyle t_400_12g= const TextStyle(color: accentGold,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_400_12_9D= const TextStyle(color: gray9D,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_500_18g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 18);
   static TextStyle t_400_12r= TextStyle(color: redAccent,fontWeight: FontWeight.w400,fontSize: 12);
