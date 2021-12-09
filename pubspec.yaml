@@ -95,6 +95,11 @@ flutter:
   - assets/icons/delete.svg
   - assets/icons/newspaper.svg
   - assets/icons/tick.svg
+  - assets/icons/webmoney.svg
+  - assets/icons/paypal.svg
+  - assets/icons/visa.svg
+  - assets/icons/mastercard.svg
+  - assets/icons/discover.svg
 
   uses-material-design: true
 

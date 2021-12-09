@@ -4,6 +4,7 @@ import 'package:castalk/view/intro_signin/congratulations.dart';
 import 'package:castalk/view/player/drive_mode.dart';
 import 'package:castalk/view/intro_signin/enter_code.dart';
 import 'package:castalk/view/intro_signin/intro.dart';
+import 'package:castalk/view/profile/monetization.dart';
 import 'package:castalk/view/player/player.dart';
 import 'package:castalk/view/profile/achivments.dart';
 import 'package:castalk/view/profile/downloads.dart';
