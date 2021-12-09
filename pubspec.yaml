@@ -93,6 +93,8 @@ flutter:
   - assets/icons/arrow_down.svg
   - assets/icons/random.svg
   - assets/icons/delete.svg
+  - assets/icons/newspaper.svg
+  - assets/icons/tick.svg
 
   uses-material-design: true
 

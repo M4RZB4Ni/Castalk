@@ -5,6 +5,7 @@ import 'package:castalk/view/player/drive_mode.dart';
 import 'package:castalk/view/intro_signin/enter_code.dart';
 import 'package:castalk/view/intro_signin/intro.dart';
 import 'package:castalk/view/player/player.dart';
+import 'package:castalk/view/profile/achivments.dart';
 import 'package:castalk/view/profile/downloads.dart';
 import 'package:castalk/view/profile/liked_episodes.dart';
 import 'package:castalk/view/profile/market/market.dart';
@@ -71,7 +72,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/PromotionAnalytics",
+      initialRoute: "/Achivments",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -92,6 +93,7 @@ class MyApp extends StatelessWidget {
         "/PromotionList":(context) => const Directionality(textDirection: TextDirection.ltr, child: PromotionList()),
         "/Promotion":(context) => const Directionality(textDirection: TextDirection.ltr, child: Promotion()),
         "/PromotionAnalytics":(context) => const Directionality(textDirection: TextDirection.ltr, child: PromotionAnalytics()),
+        "/Achivments":(context) => const Directionality(textDirection: TextDirection.ltr, child: Achivments()),
       },
 
     );
