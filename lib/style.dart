@@ -8,6 +8,7 @@ class Style  {
   static const String _svgPath = "assets/icons/";
 
   static const Color gray48 = Color(0xff484848);
+  static const Color background =  Color(0xff242424);
   static  Color gray48op50 = const Color(0xff484848).withOpacity(0.5);
   static const Color gray38 = Color(0xff383838);
   static const Color gray58 = Color(0xff585858);
@@ -35,12 +36,15 @@ class Style  {
   static TextStyle t_400_12w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_400_16w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16);
   static TextStyle t_400_14w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 14);
+  static TextStyle t_400_14g= const TextStyle(color: accentGold,fontWeight: FontWeight.w400,fontSize: 14);
+  static TextStyle t_500_16w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 16);
   static TextStyle t_400_12g= const TextStyle(color: accentGold,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_400_12_9D= const TextStyle(color: gray9D,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_500_18g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 18);
   static TextStyle t_400_12r= TextStyle(color: redAccent,fontWeight: FontWeight.w400,fontSize: 12);
   
   static BoxDecoration inputBoxDecoration=BoxDecoration(borderRadius:   const BorderRadius.all(Radius.circular(12)),border:  Border.all(width: 1,color: gray48));
+  static BoxDecoration dropDownDecoration=BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(12)),border: Border.all(width: 1,color: const Color(0xff484848)));
   static InputDecoration inputTextDecoration=InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
       hintText: "Copon name",hintStyle: TextStyle(color: hintColor),fillColor: Colors.white);
 
