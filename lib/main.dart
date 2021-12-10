@@ -20,6 +20,7 @@ import 'package:castalk/view/intro_signin/signin.dart';
 import 'package:castalk/view/profile/promotion.dart';
 import 'package:castalk/view/profile/promotion_analytics.dart';
 import 'package:castalk/view/profile/promotion_list.dart';
+import 'package:castalk/view/profile/request_verify_badge.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -73,7 +74,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/Monetization",
+      initialRoute: "/RequestVerifyBadge",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -96,6 +97,7 @@ class MyApp extends StatelessWidget {
         "/PromotionAnalytics":(context) => const Directionality(textDirection: TextDirection.ltr, child: PromotionAnalytics()),
         "/Achivments":(context) => const Directionality(textDirection: TextDirection.ltr, child: Achivments()),
         "/Monetization":(context) => const Directionality(textDirection: TextDirection.ltr, child: Monetization()),
+        "/RequestVerifyBadge":(context) => const Directionality(textDirection: TextDirection.ltr, child: RequestVerifyBadge()),
       },
 
     );
