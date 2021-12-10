@@ -40,6 +40,8 @@ dependencies:
   expandable: ^5.0.1
   flutter_tags: ^0.4.9+1
   fl_chart: ^0.40.5
+  dotted_border: ^2.0.0+2
+
 
 dev_dependencies:
   flutter_test:
@@ -101,6 +103,7 @@ flutter:
   - assets/icons/mastercard.svg
   - assets/icons/discover.svg
   - assets/icons/upload.svg
+  - assets/icons/upload_image.svg
 
   uses-material-design: true
 
