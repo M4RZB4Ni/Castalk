@@ -1,8 +1,8 @@
-import 'package:castalk/view/profile/market/products.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../style.dart';
+import 'my_casts_analytics.dart';
 import 'my_casts_list.dart';
 
 class MyCasts extends StatefulWidget{
@@ -43,7 +43,7 @@ class MyCastsState extends State<MyCasts> with SingleTickerProviderStateMixin
 
         children: const [
           MyCastsList(),
-          Products(),
+          MyCastsAnalytics(),
 
         ],),
 

@@ -111,6 +111,7 @@ flutter:
   - assets/icons/twitter.svg
   - assets/icons/youtube.svg
   - assets/icons/chartcenter.svg
+  - assets/icons/arrow_right.svg
 
   uses-material-design: true
 

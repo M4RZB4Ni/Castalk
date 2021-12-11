@@ -12,9 +12,12 @@ class Style  {
   static  Color gray48op50 = const Color(0xff484848).withOpacity(0.5);
   static const Color gray38 = Color(0xff383838);
   static const Color gray58 = Color(0xff585858);
+  static  Color grayTrans = const Color(0xff3C3C3C);
   static  Color gray32 = const Color(0xff3C3C3C).withOpacity(0.3);
+  static  Color grayC3_half = const Color(0xff3C3C3C).withOpacity(0.5);
   static const Color grayA1 = Color(0xffA8A8A8);
   static const Color grayA = Color(0xffAAAAAA);
+  static const Color gray2b = Color(0xff2B2B2B);
   static const Color gray2F = Color(0XFF2F2F2F);
   static const Color gray9D = Color(0XFF9D9D9D);
   static const Color gray86 = Color(0xff868686);
@@ -22,12 +25,13 @@ class Style  {
   static const Color gray27 = Color(0xff272727);
   static const Color gray5C = Color(0xff5C5C5C);
   static const Color gray4D = Color(0XFF4D4D4D);
+  static const Color gray90 = Color(0xff909090);
   static const Color green = Color(0xff30FF51);
 
 
   static const Color grayc4 = Color(0xffC4C4C4);
+  static  Color whiteHalf = Colors.white.withOpacity(0.5);
   static const Color divider = Color(0xff464646);
-  static  Color grayTrans = const Color(0xff3C3C3C);
   static  Color driveBack = const Color(0xff303030).withOpacity(0.84);
   static const Color accentGold = Color(0xffFFB800);
   static Color iconBack = const Color(0xff121212).withOpacity(0.30);
@@ -42,10 +46,13 @@ class Style  {
   static TextStyle t_400_12w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_400_16w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16);
   static TextStyle t_400_14w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 14);
+  static TextStyle t_400_14wh=  TextStyle(color: whiteHalf,fontWeight: FontWeight.w400,fontSize: 14);
   static TextStyle t_400_13gA= const TextStyle(color: grayA,fontWeight: FontWeight.w400,fontSize: 13);
   static TextStyle t_400_14g= const TextStyle(color: accentGold,fontWeight: FontWeight.w400,fontSize: 14);
   static TextStyle t_500_16w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 16);
+  static TextStyle t_500_16g90= const TextStyle(color: gray90,fontWeight: FontWeight.w500,fontSize: 16);
   static TextStyle t_400_18w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 18);
+  static TextStyle t_400_18g= const TextStyle(color: accentGold,fontWeight: FontWeight.w400,fontSize: 18);
   static TextStyle t_400_12g= const TextStyle(color: accentGold,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_700_24g= const TextStyle(color: accentGold,fontWeight: FontWeight.w700,fontSize: 27);
   static TextStyle t_400_12_9D= const TextStyle(color: gray9D,fontWeight: FontWeight.w400,fontSize: 12);
@@ -54,11 +61,14 @@ class Style  {
   static TextStyle t_400_12r= TextStyle(color: redAccent,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_500_14g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 14);
   static TextStyle t_500_14w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 14);
+  static TextStyle t_500_12w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 12);
+  static TextStyle t_500_12g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 12);
   static TextStyle t_500_14r=  TextStyle(color: redAccent,fontWeight: FontWeight.w500,fontSize: 14);
   static TextStyle t_500_14_G9D= const TextStyle(color: gray9D,fontWeight: FontWeight.w500,fontSize: 14);
   static TextStyle t_400_12_gray= const TextStyle(color: grayA1,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_400_12_green= const TextStyle(color: green,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle buttonDarkStyle= const TextStyle(color: accentGold, fontSize: 18, fontWeight: FontWeight.w500);
+  static List<Color> chartGradiant= [accentGold.withOpacity(0.1), accentGold.withOpacity(0.4)];
 
 
   static BoxDecoration inputBoxDecoration=BoxDecoration(borderRadius:   const BorderRadius.all(Radius.circular(12)),border:  Border.all(width: 1,color: gray48));

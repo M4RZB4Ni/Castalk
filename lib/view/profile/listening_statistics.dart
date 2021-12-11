@@ -22,10 +22,7 @@ class ListeningStatisticsState extends State<ListeningStatistics>{
   TextEditingController numberController = TextEditingController();
   int touchedIndex = -1;
 
-  List<Color> gradientColors = [
-    const Color(0xffffb800).withOpacity(0.1),
-    const Color(0xffffb800).withOpacity(0.4),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -257,7 +254,7 @@ class ListeningStatisticsState extends State<ListeningStatistics>{
             FlSpot(11, 4),
           ],
           isCurved: true,
-          colors: gradientColors,
+          colors: Style.chartGradiant,
           barWidth: 2,
           isStrokeCapRound: true,
           dotData: FlDotData(
@@ -268,7 +265,7 @@ class ListeningStatisticsState extends State<ListeningStatistics>{
                 show: true,
                 flLineStyle: FlLine(color: Style.accentGold, strokeWidth: 1)),
             show: true,
-            colors: gradientColors.map((color) => color).toList(),
+            colors: Style.chartGradiant.map((color) => color).toList(),
           ),
         ),
       ],
