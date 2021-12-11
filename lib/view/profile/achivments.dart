@@ -28,8 +28,10 @@ class AchivmentsState extends State<Achivments>{
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
+
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
+      appBar: PreferredSize(
+          preferredSize: Size(w, 100), child: header(w)),
       backgroundColor: Style.background,
       body: SingleChildScrollView(child: Column(
         children: [_firstPlace(w, h),_achived(w, h)],
@@ -121,10 +123,7 @@ class AchivmentsState extends State<Achivments>{
           width: w,
           height: h / 2,
           child: ListView.builder(
-
-
             physics: const NeverScrollableScrollPhysics(),
-
             itemBuilder: (context, index) {
               return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),

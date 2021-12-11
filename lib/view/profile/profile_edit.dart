@@ -23,16 +23,16 @@ class ProfileEditState extends State<ProfileEdit> {
   Widget build(BuildContext context) {
     _textTheme = Theme.of(context).textTheme;
     double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
+    //double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
       backgroundColor: Style.background,
       body: SingleChildScrollView(
-        child: SizedBox(
-          width: w,
-          height: h,
+        child: Padding(
+          padding: const EdgeInsets.only(right: 26,left: 26,top: 31),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               DottedBorder(
                   color: Style.gray5C,
@@ -59,53 +59,59 @@ class ProfileEditState extends State<ProfileEdit> {
                       ),
                     ),
                   )),
-              Row(children: [
-               Expanded(
-                   flex: 1,
-                   child:  DottedBorder(
-                    color: Style.gray5C,
-                    strokeWidth: 1,
-                    borderType: BorderType.RRect,
-                    radius: const Radius.circular(16),
-                    child: Center(
-                      child: SizedBox(
-                        height: 104,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(svgPath + "upload_image.svg"),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 6),
-                              child: Text(
-                                "Add Cover",
-                                style: Style.t_400_13gA,
+              Padding(
+                padding: const EdgeInsets.only(top: 15),
+                child: Row(children: [
+                  Expanded(
+                      flex: 1,
+                      child:  DottedBorder(
+                          color: Style.gray5C,
+                          strokeWidth: 1,
+                          borderType: BorderType.RRect,
+                          radius: const Radius.circular(16),
+                          child: Center(
+                            child: SizedBox(
+                              height: 104,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(svgPath + "upload_image.svg"),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 6),
+                                    child: Text(
+                                      "Add Cover",
+                                      style: Style.t_400_13gA,
+                                    ),
+                                  )
+                                ],
                               ),
-                            )
-                          ],
+                            ),
+                          ))),
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.only(left: 18),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          child: Text("Your Name:",style: Style.t_400_16w,),
                         ),
-                      ),
-                    ))),
-                Expanded(child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: Text("Upload Your Document:",style: Style.t_400_16w,),
+                        Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                            child: TextField(
+                                controller: numberController,
+                                textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)
+                        )
+                      ],
                     ),
-                    Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
-                        child: TextField(
-                            controller: numberController,
-                            textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)
-                    )
-                  ],
-                ),flex: 2,)
-              ],),
+                  ),flex: 2,)
+                ],),
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.only(top: 20,bottom: 10),
                     child: Text("Introduction Voice:",style: Style.t_400_16w,),
                   ),
                   Row(
@@ -139,7 +145,7 @@ class ProfileEditState extends State<ProfileEdit> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.only(top: 24,bottom: 8),
                     child: Text("About:",style: Style.t_400_16w,),
                   ),
                   Container(height: 196,decoration:  Style.inputBoxDecoration,width: w,
@@ -150,22 +156,181 @@ class ProfileEditState extends State<ProfileEdit> {
                         children: [
                           TextField(
                               controller: numberController,
-                              textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration),
-                          Container(
+                              maxLines: 6,
+                              minLines: 5,
+
+                              textAlign: TextAlign.left,decoration: Style.inputTextDecoration),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 5,bottom: 5),
+                            child: Container(
                               padding: EdgeInsets.all(12),
                               width: 44,
-                            height: 44,
-                            child: SvgPicture.asset(svgPath+"modify.svg",width: 17,height: 17,),
-                            decoration: BoxDecoration(
-                                color: Style.headerBackBtn,
-                                shape: BoxShape.rectangle,
-                                borderRadius: BorderRadius.circular(12)),
+                              height: 44,
+                              child: SvgPicture.asset(svgPath+"modify.svg",width: 17,height: 17,),
+                              decoration: BoxDecoration(
+                                  color: Style.headerBackBtn,
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.circular(12)),
+                            ),
                           )
                         ],
                       )
                   )
                 ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 23,bottom: 13),
+                child: Text("Social links:",style: Style.t_500_14g,),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 12),
+                        child: SvgPicture.asset(svgPath+"website.svg"),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8,top: 13),
+                        child: Text("Website:",style: Style.t_400_16w,),
+                      ),
+                    ],
+                  ),
+                  Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                      child: TextField(
+                          controller: numberController,
+                          textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "Add your Website link"))
+                  )
+                ],
+              ),
+
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 12),
+                        child: SvgPicture.asset(svgPath+"twitter.svg"),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8,top: 13),
+                        child: Text("Twitter:",style: Style.t_400_16w,),
+                      ),
+                    ],
+                  ),
+                  Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                      child: TextField(
+                          controller: numberController,
+                          textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "Add your Twitter link"))
+                  )
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 12),
+                        child: SvgPicture.asset(svgPath+"youtube.svg"),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8,top: 13),
+                        child: Text("YouTube:",style: Style.t_400_16w,),
+                      ),
+                    ],
+                  ),
+                  Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                      child: TextField(
+                          controller: numberController,
+                          textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "Add your YouTube link"))
+                  )
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 12),
+                        child: SvgPicture.asset(svgPath+"instagram.svg"),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8,top: 13),
+                        child: Text("Instagram:",style: Style.t_400_16w,),
+                      ),
+                    ],
+                  ),
+                  Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                      child: TextField(
+                          controller: numberController,
+                          textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "Add your Instagram link"))
+                  )
+                ],
+              ),
+
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 12),
+                        child: SvgPicture.asset(svgPath+"spotify.svg"),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8,top: 13),
+                        child: Text("Spotify:",style: Style.t_400_16w,),
+                      ),
+                    ],
+                  ),
+                  Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                      child: TextField(
+                          controller: numberController,
+                          textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "Add your Spotify link"))
+                  )
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 12),
+                        child: SvgPicture.asset(svgPath+"soundcloud.svg"),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8,top: 13),
+                        child: Text("SoundCloud:",style: Style.t_400_16w,),
+                      ),
+                    ],
+                  ),
+                  Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                      child: TextField(
+                          controller: numberController,
+                          textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "Add your SoundCloud link"))
+                  )
+                ],
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(top: 108),
+                child: ElevatedButton(onPressed:() => print(""), child:const Text("Save",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+                    padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                            side: const BorderSide(color: Color(0xffFFB800))
+                        )
+                    ),
+                    fixedSize: MaterialStateProperty.all(Size(w,54)),
+                    backgroundColor:MaterialStateProperty.all(const Color(0xffFFB800)),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff283034),fontSize: 18,fontWeight: FontWeight.w500)) ),),
               )
+
             ],
           ),
         ),
@@ -194,7 +359,7 @@ class ProfileEditState extends State<ProfileEdit> {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 9),
-            child: Text("Request Verify badge", style: _textTheme.headline1),
+            child: Text("Profile", style: _textTheme.headline1),
           ),
           const SizedBox(
             width: 44,

@@ -104,6 +104,12 @@ flutter:
   - assets/icons/discover.svg
   - assets/icons/upload.svg
   - assets/icons/upload_image.svg
+  - assets/icons/website.svg
+  - assets/icons/instagram.svg
+  - assets/icons/soundcloud.svg
+  - assets/icons/spotify.svg
+  - assets/icons/twitter.svg
+  - assets/icons/youtube.svg
 
   uses-material-design: true
 
