@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../style.dart';
 
 class ListeningStatistics extends StatefulWidget{
@@ -144,6 +145,7 @@ class ListeningStatisticsState extends State<ListeningStatistics>{
                 height: 144,
                 color: Style.background,
                 child: Stack(children: [
+                  Center(child: SvgPicture.asset(svgPath+"chartcenter.svg")),
                   PieChart(
                     PieChartData(
                         sectionsSpace: 5,
