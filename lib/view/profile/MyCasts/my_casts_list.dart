@@ -28,6 +28,8 @@ class MyCastsListState extends State<MyCastsList> {
         backgroundColor: Style.background,
         body: SingleChildScrollView(
           child: Column(
+            mainAxisSize: MainAxisSize.min,
+
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _topTripleButtons(w),
@@ -47,7 +49,15 @@ class MyCastsListState extends State<MyCastsList> {
                 child: Text("All Episodes:",style: Style.t_500_14w),
               ),
               _searchBar(w),
-              _episodeListView(w, h)
+              Flexible(child: ListView(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                children: [
+                  _likedItem(w,h),
+                  _likedItem(w,h),
+                  _likedItem(w,h),
+                ],
+              ))
 
             ],
           ),
@@ -56,21 +66,6 @@ class MyCastsListState extends State<MyCastsList> {
 
 
 
-  _episodeListView(w,h)
-  {
-    return Padding(
-      padding: const EdgeInsets.only(right: 0,left: 0),
-      child: Flexible(child: ListView(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        children: [
-          _likedItem(w,h),
-          _likedItem(w,h),
-          _likedItem(w,h),
-        ],
-      )),
-    );
-  }
 
 
   _likedItem(w,h)
