@@ -110,6 +110,7 @@ flutter:
   - assets/icons/spotify.svg
   - assets/icons/twitter.svg
   - assets/icons/youtube.svg
+  - assets/icons/chartcenter.svg
 
   uses-material-design: true
 

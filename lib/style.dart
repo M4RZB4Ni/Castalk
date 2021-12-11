@@ -21,6 +21,7 @@ class Style  {
   static const Color grayD1 = Color(0xffD1D1D1);
   static const Color gray27 = Color(0xff272727);
   static const Color gray5C = Color(0xff5C5C5C);
+  static const Color green = Color(0xff30FF51);
 
 
   static const Color grayc4 = Color(0xffC4C4C4);
@@ -48,10 +49,14 @@ class Style  {
   static TextStyle t_700_24g= const TextStyle(color: accentGold,fontWeight: FontWeight.w700,fontSize: 27);
   static TextStyle t_400_12_9D= const TextStyle(color: gray9D,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_500_18g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 18);
+  static TextStyle t_500_18w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 18);
   static TextStyle t_400_12r= TextStyle(color: redAccent,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_500_14g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 14);
   static TextStyle t_500_14w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 14);
+  static TextStyle t_500_14r=  TextStyle(color: redAccent,fontWeight: FontWeight.w500,fontSize: 14);
+  static TextStyle t_500_14_G9D= const TextStyle(color: gray9D,fontWeight: FontWeight.w500,fontSize: 14);
   static TextStyle t_400_12_gray= const TextStyle(color: grayA1,fontWeight: FontWeight.w400,fontSize: 12);
+  static TextStyle t_400_12_green= const TextStyle(color: green,fontWeight: FontWeight.w400,fontSize: 12);
 
   static BoxDecoration inputBoxDecoration=BoxDecoration(borderRadius:   const BorderRadius.all(Radius.circular(12)),border:  Border.all(width: 1,color: gray48));
   static BoxDecoration dropDownDecoration=BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(12)),border: Border.all(width: 1,color: const Color(0xff484848)));

@@ -119,7 +119,7 @@ class ProfileEditState extends State<ProfileEdit> {
                       Container(
                         width: 50,
                         height: 50,
-                        padding: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(15),
                         child: SvgPicture.asset(svgPath+"upload.svg"),
                         decoration: BoxDecoration(
                             color: Style.accentGold,
