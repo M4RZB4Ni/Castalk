@@ -44,7 +44,7 @@ class Style  {
 
   static Color headerBackBtn = const Color(0xff808080).withOpacity(0.5);
 
-
+  static TextStyle t_300_10g9D= const TextStyle(color: gray9D,fontWeight: FontWeight.w300,fontSize: 10);
   static TextStyle t_400_12w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_400_16w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16);
   static TextStyle t_400_14w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 14);

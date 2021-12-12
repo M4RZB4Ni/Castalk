@@ -68,7 +68,74 @@ class ExploreState extends State<Explore>{
                 children: [
                   _sectionsTitle("New from followings"),
                   _newFromFollowingsSection(w),
-                  _wideMiniSection(w),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 21),
+                    child: Row(children: [
+                      Expanded(
+                        flex: 1,
+                          child: Padding(
+                          padding: const EdgeInsets.only(left: 16,),
+                          child:  Container(
+                            child: Stack(
+                              alignment: Alignment.bottomLeft,
+                              children: [
+                                SizedBox(
+                                  height: 48,
+                                  child: ClipRRect(
+                                      borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
+                                      child: Blur(
+                                        colorOpacity: 0.45,
+                                        blur: 2,
+                                        child:Row(children: [],),)),
+                                ),
+
+                                Align(child:  Padding(
+                                  padding: const EdgeInsets.only(bottom: 15,top: 8),
+                                  child: Text("Podcast Name",style: Style.t_500_18w,),
+                                ),alignment: Alignment.bottomCenter,)
+                              ],),
+                            height: 126,
+                            decoration: BoxDecoration(
+                                image: const DecorationImage(image: NetworkImage("https://picsum.photos/414/126"),fit: BoxFit.cover),
+                                shape: BoxShape.rectangle,
+                                borderRadius: BorderRadius.circular(20)),
+                          )
+                      )),
+
+                      Expanded(
+                          flex: 1,
+                          child: Padding(
+                              padding: const EdgeInsets.only(left: 14,right: 14),
+                              child:  Container(
+                                child: Stack(
+                                  alignment: Alignment.bottomLeft,
+                                  children: [
+                                    SizedBox(
+                                      height: 48,
+                                      child: ClipRRect(
+                                          borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
+                                          child: Blur(
+                                            colorOpacity: 0.45,
+                                            blur: 2,
+                                            child:Row(children: [],),)),
+                                    ),
+
+                                    Align(child:  Padding(
+                                      padding: const EdgeInsets.only(bottom: 15,top: 8),
+                                      child: Text("Podcast Name",style: Style.t_500_18w,),
+                                    ),alignment: Alignment.bottomCenter,)
+                                  ],),
+
+                                height: 126,
+                                decoration: BoxDecoration(
+                                    image: const DecorationImage(image: NetworkImage("https://picsum.photos/414/126"),fit: BoxFit.cover),
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.circular(20)),
+                              )
+                          ))
+                    ],),
+                  )
+                  // _wideMiniSection(w),
 
 
                 ],),
@@ -76,7 +143,22 @@ class ExploreState extends State<Explore>{
 
 
 
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 23,left: 20,bottom: 11),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("People You may like",style: Style.t_500_14g,),
+                      ],
+                    ),
+                  ),
+                  _peopleSection(w,h),
 
+                ],),
 
 
 
@@ -93,6 +175,63 @@ class ExploreState extends State<Explore>{
     );
   }
 
+
+  _peopleItem(w)
+  {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 15),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Style.gray2F,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        width: w,
+        height: 73,
+        child: Row(children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 14,top: 8,bottom: 8),
+            child: Container(
+              height: 57,
+              width: 57,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                image: const DecorationImage(
+                  image: NetworkImage('https://picsum.photos/57/57'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+          Expanded(child: Padding(
+            padding: const EdgeInsets.only(right: 10,left: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: Text("Amir Mehranfar".length > 30 ? "Amir Mehranfar".substring(0,30)+"..." : "Amir Mehranfar",style: Style.t_400_14g),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8,bottom: 16),
+                  child: Row(
+                    children: [
+                      Text("12 Followers",style: Style.t_300_10g9D,),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 26),
+                        child: Text("2 Playlists",style: Style.t_300_10g9D,),
+                      ),
+                    ],
+                  ),
+                ),
+
+
+              ],
+            ),
+          )),
+        ],),),
+    );
+  }
   _searchBar(w){
     return  Padding(
       padding: const EdgeInsets.symmetric(horizontal: 14,vertical: 24),
@@ -106,6 +245,7 @@ class ExploreState extends State<Explore>{
                   width: 1, color: const Color(0xff484848))),
           child: Row(
             children: [
+              // i must add sort section with state provider
               Expanded(
                   flex: 3,
                   child: TextField(
@@ -194,8 +334,9 @@ class ExploreState extends State<Explore>{
         width: w,
         height: 170,
         child: ListView.builder(
+          itemCount: 2,
           itemBuilder: (context, index) {
-            return  _wideMiniItem();
+            return  _wideMiniItem(w);
           },
           scrollDirection: Axis.horizontal,
         ),
@@ -249,6 +390,20 @@ class ExploreState extends State<Explore>{
         ));
   }
 
+  _peopleSection(w,h)
+  {
+    return Flexible(
+        child: ListView(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          children: [
+            _peopleItem(w),
+            _peopleItem(w),
+            _peopleItem(w),
+          ],
+        ));
+  }
+
 
 
   _thirdItem(){
@@ -287,38 +442,35 @@ class ExploreState extends State<Explore>{
     );
   }
 
-  _wideMiniItem(){
+  _wideMiniItem(w){
     return  Padding(
       padding: const EdgeInsets.only(right: 16),
-      child: Column(
-        children: [
-          Container(
+      child:  Container(
+        child: Stack(
+          alignment: Alignment.bottomLeft,
+          children: [
+            SizedBox(
+              height: 48,
+              child: ClipRRect(
+                  borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
+                  child: Blur(
+                    colorOpacity: 0.45,
+                    blur: 2,
+                    child:Row(children: [],),)),
+            ),
 
-            height: 126,
-            width: 185,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              image: const DecorationImage(
-                image: NetworkImage('https://picsum.photos/122/122'),
-                fit: BoxFit.cover,
-              ),
+            Padding(
+              padding: const EdgeInsets.only(left: 13),
+              child: Text("Podcast Name",style: Style.t_500_18w,),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Episode Name and...",style: Style.t_500_14w,),
-                Padding(
-                  padding: const EdgeInsets.only(top: 4),
-                  child: Text("Artist and the others",style: Style.t_400_12_gray,),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+          ],),
+        width: w/2.3,
+        height: 126,
+        decoration: BoxDecoration(
+            image: const DecorationImage(image: NetworkImage("https://picsum.photos/414/126"),fit: BoxFit.cover),
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(20)),
+      )
     );
   }
 
