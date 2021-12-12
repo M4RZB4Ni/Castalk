@@ -14,6 +14,7 @@ class Playlist extends StatefulWidget {
 }
 
 class PlaylistState extends State<Playlist> {
+
   String svgPath = "assets/icons/";
   late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
@@ -21,7 +22,6 @@ class PlaylistState extends State<Playlist> {
   @override
   Widget build(BuildContext context) {
     _textTheme = Theme.of(context).textTheme;
-
     double w = MediaQuery.of(context).size.width;
     //  double h = MediaQuery.of(context).size.height;
 
@@ -32,9 +32,8 @@ class PlaylistState extends State<Playlist> {
         itemBuilder: (context, index) {
           return SizedBox(width: 130, height: 180, child: playlistItem());
         },
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, childAspectRatio: 2 / 3),
-      ),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 2 / 3),
+        ),
     );
   }
 

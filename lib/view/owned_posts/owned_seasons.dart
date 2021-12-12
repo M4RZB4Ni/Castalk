@@ -7,18 +7,18 @@ import 'package:readmore/readmore.dart';
 
 import '../../style.dart';
 
-class OwnedPodcast extends StatefulWidget{
-  const OwnedPodcast({Key? key}) : super(key: key);
+class OwnedSeasons extends StatefulWidget{
+  const OwnedSeasons({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return OwnedPodcastState();
+    return OwnedSeasonsState();
   }
 
 
 }
 
-class OwnedPodcastState extends State<OwnedPodcast>{
+class OwnedSeasonsState extends State<OwnedSeasons>{
 
   String svgPath = "assets/icons/";
   TextEditingController numberController = TextEditingController();
@@ -43,20 +43,20 @@ class OwnedPodcastState extends State<OwnedPodcast>{
             _podcastNameData(),
             _topTripleButtons(w),
             _aboutSection(),
-            _searchBar(w),
+            _itemTitle(w),
             Flexible(
                 child: ListView(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              children: [
-                _likedItem(w,h),
-                _likedItem(w,h),
-                _likedItem(w,h),
-                _likedItem(w,h),
-                _likedItem(w,h),
-              ],
-            ))
-        ],),
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  children: [
+                    _likedItem(w,h),
+                    _likedItem(w,h),
+                    _likedItem(w,h),
+                    _likedItem(w,h),
+                    _likedItem(w,h),
+                  ],
+                ))
+          ],),
       ),
 
 
@@ -74,38 +74,30 @@ class OwnedPodcastState extends State<OwnedPodcast>{
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                width: 100,
-                height: 110,
-                child: Stack(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(25),
+              Container(
+                padding: const EdgeInsets.all(25),
 
-                      height: 96,
-                      width: 96,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        image: const DecorationImage(
-                          image: NetworkImage('https://picsum.photos/96/96'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      child: Container(
-                        width: 77,
-                        height: 77,
-                        padding: const EdgeInsets.all(15),
-                        child: SvgPicture.asset(
-                          svgPath + "play.svg",
-                        ),
-                        decoration: BoxDecoration(
-                            color: Style.gray32,
-                            shape: BoxShape.rectangle,
-                            borderRadius: BorderRadius.circular(12)),
-                      ) /* add child content here */,
-                    )
-                  ],
+                height: 96,
+                width: 96,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  image: const DecorationImage(
+                    image: NetworkImage('https://picsum.photos/96/96'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
+                child: Container(
+                  width: 77,
+                  height: 77,
+                  padding: const EdgeInsets.all(15),
+                  child: SvgPicture.asset(
+                    svgPath + "play.svg",
+                  ),
+                  decoration: BoxDecoration(
+                      color: Style.gray32,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(12)),
+                ) /* add child content here */,
               ),
               Expanded(child: Padding(
                 padding: const EdgeInsets.only(left: 14),
@@ -122,19 +114,25 @@ class OwnedPodcastState extends State<OwnedPodcast>{
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 15),
+                          padding: const EdgeInsets.only(top: 15,right: 30),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SvgPicture.asset(svgPath+"timer.svg"),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 5),
-                                child: Text("1 : 26 : 45",
-                                    style: _textTheme.headline6),
+                              Row(
+                                children: [
+                                  SvgPicture.asset(svgPath+"timer.svg"),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 5),
+                                    child: Text("1 : 26 : 45",
+                                        style: _textTheme.headline6),
+                                  ),
+                                ],
                               ),
+                              Text("News",
+                                  style:Style.t_400_12g)
                             ],
                           ),
                         ),
@@ -171,7 +169,7 @@ class OwnedPodcastState extends State<OwnedPodcast>{
                 width: 44,
 
                 padding: const EdgeInsets.all(18),
-                decoration: BoxDecoration(color: Style.gray48op50,borderRadius: BorderRadius.circular(12)),
+                decoration: BoxDecoration(color: Style.grayTrans03,borderRadius: BorderRadius.circular(12)),
                 child: SvgPicture.asset(
                     svgPath + "arrow_left.svg",
                     width: 12,
@@ -212,19 +210,27 @@ class OwnedPodcastState extends State<OwnedPodcast>{
               crossAxisAlignment: CrossAxisAlignment.start,
 
               children: [
-                Text("Podcast Name",style: Style.t_700_36w),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Season Name which is...".length > 20 ? "Season Name which is...".substring(0,18)+"..." : "Season Name which is...",style: Style.t_500_22w),
+                    SvgPicture.asset(svgPath+"lock.svg")
+                  ],
+                ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 8),
+                  padding: const EdgeInsets.only(top: 18),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(right: 5),
                             child: SvgPicture.asset(svgPath+"micdouble.svg",color: Style.accentGold,),
                           ),
-                          Text("Podcast name",style:Style.t_500_14g,),
+                          Text("Podcast Name which is...".length > 20 ? "Podcast Name which is...".substring(0,18)+"..." : "Podcast Name which is...",style:Style.t_500_18g,),
                         ],
                       ),
 
@@ -257,13 +263,13 @@ class OwnedPodcastState extends State<OwnedPodcast>{
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-          Text("About:",style: Style.t_500_14w,),
-          Text("Comedy, Culture:",style: Style.t_400_12g,),
-        ],),
+            Text("About:",style: Style.t_500_14w,),
+            Text("Comedy, Culture:",style: Style.t_400_12g,),
+          ],),
       ),
-     Padding(
-       padding: const EdgeInsets.only(top: 9,right: 26,left: 26),
-       child: ReadMoreText(
+      Padding(
+        padding: const EdgeInsets.only(top: 9,right: 26,left: 26),
+        child: ReadMoreText(
           'In this Episode we will talk about lorem ipsum. you may heard of it before but let’s take a new look at it In this Episode we will talk about lorem ipsum. you may heard of it before but let’s take a new look at it...',
           trimLines: 2,
           colorClickableText: Style.accentGold,
@@ -271,8 +277,8 @@ class OwnedPodcastState extends State<OwnedPodcast>{
           trimCollapsedText: 'Read more',
           trimExpandedText: 'Show less',
           moreStyle: Style.t_400_12g.copyWith(fontStyle: FontStyle.italic),
-       ),
-     )
+        ),
+      )
     ],);
   }
 
@@ -330,27 +336,27 @@ class OwnedPodcastState extends State<OwnedPodcast>{
               ),
             ),
           ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: Expanded(
-            flex: 1,
-            child:  ElevatedButton(
-              onPressed: () => print(""),
-              child: SvgPicture.asset(svgPath+"modify.svg",color: Style.gray2F),
-              style: ButtonStyle(
-                  padding: MaterialStateProperty.all(
-                      const EdgeInsets.symmetric(
-                          vertical: 17, horizontal: 0)),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16.0),
-                          side: const BorderSide(color: Style.gray2F))),
-                  fixedSize: MaterialStateProperty.all(const Size(54, 54)),
-                  backgroundColor:
-                  MaterialStateProperty.all(Colors.white)),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Expanded(
+              flex: 1,
+              child:  ElevatedButton(
+                onPressed: () => print(""),
+                child: SvgPicture.asset(svgPath+"modify.svg",color: Style.gray2F),
+                style: ButtonStyle(
+                    padding: MaterialStateProperty.all(
+                        const EdgeInsets.symmetric(
+                            vertical: 17, horizontal: 0)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                            side: const BorderSide(color: Style.gray2F))),
+                    fixedSize: MaterialStateProperty.all(const Size(54, 54)),
+                    backgroundColor:
+                    MaterialStateProperty.all(Colors.white)),
+              ),
             ),
           ),
-        ),
           Padding(
             padding: const EdgeInsets.all(0.0),
             child: Expanded(
@@ -377,76 +383,15 @@ class OwnedPodcastState extends State<OwnedPodcast>{
     );
   }
 
-  _searchBar(w)
+  _itemTitle(w)
   {
     return Padding(
-      padding: const EdgeInsets.only(top: 33),
+      padding: const EdgeInsets.only(top: 36,right: 29,left: 29),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-              height: 55,
-              decoration: BoxDecoration(
-                  borderRadius:
-                  const BorderRadius.all(Radius.circular(12)),
-                  border: Border.all(
-                      width: 1, color: const Color(0xff484848))),
-              width: w / 2,
-              child: TextField(
-                  controller: numberController,
-                  textAlign: TextAlign.left,
-                  maxLines: 1,
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      isDense: false,
-                      contentPadding: const EdgeInsets.only(
-                          top: 12, bottom: 12, left: 19),
-                      hintText: "Type to Search...",
-                      hintStyle:
-                      TextStyle(color: Theme.of(context).hintColor),
-                      fillColor: Colors.white))),
-          Container(
-            padding: const EdgeInsets.all(12),
-            width: 44,
-            height: 44,
-            child: SvgPicture.asset(
-              svgPath + "search.svg",
-              width: 14,
-              height: 14,
-            ),
-            decoration: BoxDecoration(
-                color: Style.headerBackBtn,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(12)),
-          ),
-          Container(
-            width: 44,
-            height: 44,
-            padding: const EdgeInsets.all(12),
-            child: SvgPicture.asset(
-              svgPath + "filter.svg",
-              width: 14,
-              height: 14,
-            ),
-            decoration: BoxDecoration(
-                color: Style.glassBlack,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(12)),
-          ),
-          Container(
-            padding: const EdgeInsets.all(12),
-            width: 44,
-            height: 44,
-            child: SvgPicture.asset(
-              svgPath + "sort.svg",
-              width: 14,
-              height: 14,
-            ),
-            decoration: BoxDecoration(
-                color: Style.glassBlack,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(12)),
-          )
+          Text("Episodes",style: Style.t_500_14g,),
+          Text("12 Episodes",style: Style.t_500_14w,),
         ],
       ),
     );
@@ -454,20 +399,21 @@ class OwnedPodcastState extends State<OwnedPodcast>{
 
 
   header(w,h) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Stack(children: [
+    return  Stack(children: [
 
-          Container(
-            width: w,
-            height: h/2,
-            decoration: BoxDecoration(
-              image: const DecorationImage(image: NetworkImage("https://picsum.photos/414/414"),fit: BoxFit.cover),
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(40)),
-          ),
+      Container(
+        width: w,
+        height: 126,
+        decoration: BoxDecoration(
+            image: const DecorationImage(image: NetworkImage("https://picsum.photos/414/126"),fit: BoxFit.cover),
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(40)),
+      ),
 
+      Expanded(child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
           Padding(
             padding: const EdgeInsets.only(top: 24,left: 24),
             child: Container(
@@ -483,10 +429,23 @@ class OwnedPodcastState extends State<OwnedPodcast>{
                   borderRadius: BorderRadius.circular(12)),
             ),
           ),
-        ],)
+          Padding(
+            padding: const EdgeInsets.only(top: 24,right: 24),
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              width: 44,
+              height: 44,
+              child:SvgPicture.asset(svgPath+"info.svg",color: Colors.white,),
+              decoration: BoxDecoration(
+                  color: Style.headerBackBtn,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(12)),
+            ),
+          ),
+        ],
+      ))
 
-      ],
-    );
+    ],);
   }
 
 

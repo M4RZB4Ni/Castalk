@@ -115,6 +115,7 @@ flutter:
   - assets/icons/micdouble.svg
   - assets/icons/sharebold.svg
   - assets/icons/remove.svg
+  - assets/icons/lock.svg
 
   uses-material-design: true
 
