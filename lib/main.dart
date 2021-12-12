@@ -1,4 +1,5 @@
 import 'package:castalk/style.dart';
+import 'package:castalk/view/explore/explore.dart';
 import 'package:castalk/view/home/home_feed.dart';
 import 'package:castalk/view/home/home_items_expanded.dart';
 import 'package:castalk/view/intro_signin/add_account_info.dart';
@@ -83,7 +84,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/HomeItemsExpanded",
+      initialRoute: "/Explore",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -115,6 +116,7 @@ class MyApp extends StatelessWidget {
         "/OwnedEpisodes":(context) => const Directionality(textDirection: TextDirection.ltr, child: OwnedEpisodes()),
         "/HomeFeed":(context) => const Directionality(textDirection: TextDirection.ltr, child: HomeFeed()),
         "/HomeItemsExpanded":(context) => const Directionality(textDirection: TextDirection.ltr, child: HomeItemsExpanded()),
+        "/Explore":(context) => const Directionality(textDirection: TextDirection.ltr, child: Explore()),
       },
 
     );
