@@ -41,7 +41,7 @@ dependencies:
   flutter_tags: ^0.4.9+1
   fl_chart: ^0.40.5
   dotted_border: ^2.0.0+2
-
+  readmore: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -112,6 +112,9 @@ flutter:
   - assets/icons/youtube.svg
   - assets/icons/chartcenter.svg
   - assets/icons/arrow_right.svg
+  - assets/icons/micdouble.svg
+  - assets/icons/sharebold.svg
+  - assets/icons/remove.svg
 
   uses-material-design: true
 
