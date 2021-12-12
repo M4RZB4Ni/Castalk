@@ -267,7 +267,9 @@ class OwnedPodcastState extends State<OwnedPodcast>{
           'In this Episode we will talk about lorem ipsum. you may heard of it before but let’s take a new look at it In this Episode we will talk about lorem ipsum. you may heard of it before but let’s take a new look at it...',
           trimLines: 2,
           colorClickableText: Style.accentGold,
-          trimMode: TrimMode.Line,
+         style: Style.t_400_14w,
+
+         trimMode: TrimMode.Line,
           trimCollapsedText: 'Read more',
           trimExpandedText: 'Show less',
           moreStyle: Style.t_400_12g.copyWith(fontStyle: FontStyle.italic),

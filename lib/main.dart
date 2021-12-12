@@ -1,6 +1,7 @@
 import 'package:castalk/style.dart';
 import 'package:castalk/view/intro_signin/add_account_info.dart';
 import 'package:castalk/view/intro_signin/congratulations.dart';
+import 'package:castalk/view/owned_posts/owned_episodes.dart';
 import 'package:castalk/view/owned_posts/owned_podcast.dart';
 import 'package:castalk/view/owned_posts/owned_seasons.dart';
 import 'package:castalk/view/player/drive_mode.dart';
@@ -79,7 +80,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/OwnedSeasons",
+      initialRoute: "/OwnedEpisodes",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -108,6 +109,7 @@ class MyApp extends StatelessWidget {
         "/MyCasts":(context) => const Directionality(textDirection: TextDirection.ltr, child: MyCasts()),
         "/OwnedPodcast":(context) => const Directionality(textDirection: TextDirection.ltr, child: OwnedPodcast()),
         "/OwnedSeasons":(context) => const Directionality(textDirection: TextDirection.ltr, child: OwnedSeasons()),
+        "/OwnedEpisodes":(context) => const Directionality(textDirection: TextDirection.ltr, child: OwnedEpisodes()),
       },
 
     );

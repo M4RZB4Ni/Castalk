@@ -40,7 +40,7 @@ class OwnedSeasonsState extends State<OwnedSeasons>{
 
           children: [
             header(w, h),
-            _podcastNameData(),
+            _seasonNameData(),
             _topTripleButtons(w),
             _aboutSection(),
             _itemTitle(w),
@@ -188,7 +188,7 @@ class OwnedSeasonsState extends State<OwnedSeasons>{
   }
 
 
-  _podcastNameData()
+  _seasonNameData()
   {
     return  Padding(
       padding: const EdgeInsets.only(top: 24,left: 14,right: 24),
@@ -272,6 +272,7 @@ class OwnedSeasonsState extends State<OwnedSeasons>{
         child: ReadMoreText(
           'In this Episode we will talk about lorem ipsum. you may heard of it before but let’s take a new look at it In this Episode we will talk about lorem ipsum. you may heard of it before but let’s take a new look at it...',
           trimLines: 2,
+          style: Style.t_400_14w,
           colorClickableText: Style.accentGold,
           trimMode: TrimMode.Line,
           trimCollapsedText: 'Read more',
