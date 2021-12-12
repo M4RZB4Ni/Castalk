@@ -116,6 +116,7 @@ flutter:
   - assets/icons/sharebold.svg
   - assets/icons/remove.svg
   - assets/icons/lock.svg
+  - assets/icons/people_group.svg
 
   uses-material-design: true
 

@@ -51,6 +51,8 @@ class Style  {
   static TextStyle t_400_14wh=  TextStyle(color: whiteHalf,fontWeight: FontWeight.w400,fontSize: 14);
   static TextStyle t_400_13gA= const TextStyle(color: grayA,fontWeight: FontWeight.w400,fontSize: 13);
   static TextStyle t_400_14g= const TextStyle(color: accentGold,fontWeight: FontWeight.w400,fontSize: 14);
+  static TextStyle t_400_14_grayA1= const TextStyle(color: grayA1,fontWeight: FontWeight.w400,fontSize: 14);
+  static TextStyle t_400_12_grayA1= const TextStyle(color: grayA1,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_500_16w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 16);
   static TextStyle t_500_16g90= const TextStyle(color: gray90,fontWeight: FontWeight.w500,fontSize: 16);
   static TextStyle t_400_18w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 18);
@@ -64,6 +66,7 @@ class Style  {
   static TextStyle t_500_18w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 18);
   static TextStyle t_400_12r= TextStyle(color: redAccent,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_500_14g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 14);
+  static TextStyle t_500_24w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 24);
   static TextStyle t_500_14w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 14);
   static TextStyle t_500_12w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 12);
   static TextStyle t_500_12g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 12);
