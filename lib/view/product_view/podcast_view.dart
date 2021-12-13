@@ -6,19 +6,20 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:readmore/readmore.dart';
 import '../../style.dart';
 
-class OwnedPodcast extends StatefulWidget {
-  const OwnedPodcast({Key? key}) : super(key: key);
+class PodcastView extends StatefulWidget {
+  const PodcastView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return OwnedPodcastState();
+    return PodcastViewState();
   }
 }
 
-class OwnedPodcastState extends State<OwnedPodcast> {
+class PodcastViewState extends State<PodcastView> {
   String svgPath = "assets/icons/";
   TextEditingController numberController = TextEditingController();
   late TextTheme _textTheme;
+  bool isFollow=false;
 
   @override
   Widget build(BuildContext context) {
@@ -30,27 +31,28 @@ class OwnedPodcastState extends State<OwnedPodcast> {
       backgroundColor: Theme.of(context).backgroundColor,
       //appBar: PreferredSize(preferredSize: Size(w, h/2), child: header(w,h)),
       body: SingleChildScrollView(
-child: Column(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-  header(w, h),
-  _podcastNameData(),
-  _topTripleButtons(w),
-  _aboutSection(),
-  _searchBar(w),
-  Flexible(
-      child: ListView(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        children: [
-          _likedItem(w, h),
-          _likedItem(w, h),
-          _likedItem(w, h),
-          _likedItem(w, h),
-          _likedItem(w, h),
-        ],
-      ))
-],),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            header(w, h),
+            _podcastNameData(),
+
+            _topTripleButtons(w),
+            _aboutSection(),
+            _searchBar(w),
+            Flexible(
+                child: ListView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  children: [
+                    _likedItem(w, h),
+                    _likedItem(w, h),
+                    _likedItem(w, h),
+                    _likedItem(w, h),
+                    _likedItem(w, h),
+                  ],
+                ))
+          ],),
       ),
     );
   }
@@ -97,63 +99,63 @@ child: Column(
               ),
               Expanded(
                   child: Padding(
-                padding: const EdgeInsets.only(left: 14),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Episode name which is long...".length > 30
-                          ? "Episode name which is long...".substring(0, 30) +
-                              "..."
-                          : "Episode name which is long...",
-                      style: _textTheme.headline1!.copyWith(fontSize: 14),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    padding: const EdgeInsets.only(left: 14),
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 15),
-                          child: Row(
-                            children: [
-                              SvgPicture.asset(svgPath + "timer.svg"),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 5),
-                                child: Text("1 : 26 : 45",
-                                    style: _textTheme.headline6),
-                              ),
-                            ],
-                          ),
+                        Text(
+                          "Episode name which is long...".length > 30
+                              ? "Episode name which is long...".substring(0, 30) +
+                              "..."
+                              : "Episode name which is long...",
+                          style: _textTheme.headline1!.copyWith(fontSize: 14),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 12, right: 30),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 15),
+                              child: Row(
                                 children: [
-                                  SvgPicture.asset(svgPath + "heart_empty.svg"),
+                                  SvgPicture.asset(svgPath + "timer.svg"),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 5),
-                                    child: Text("250",
+                                    child: Text("1 : 26 : 45",
                                         style: _textTheme.headline6),
                                   ),
                                 ],
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 0),
-                                child: Text("2 days ago",
-                                    style: _textTheme.headline6),
-                              )
-                            ],
-                          ),
-                        )
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 12, right: 30),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      SvgPicture.asset(svgPath + "heart_empty.svg"),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 5),
+                                        child: Text("250",
+                                            style: _textTheme.headline6),
+                                      ),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 0),
+                                    child: Text("2 days ago",
+                                        style: _textTheme.headline6),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ],
                     ),
-                  ],
-                ),
-              )),
+                  )),
               Container(
                 height: 96,
                 width: 44,
@@ -182,66 +184,93 @@ child: Column(
   _podcastNameData() {
     return Padding(
       padding: const EdgeInsets.only(top: 24, left: 14, right: 24),
-      child: Row(
+      child: Column(
         children: [
-          Container(
-            width: 68,
-            height: 68,
-            padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(
-              svgPath + "playlist.svg",
-            ),
-            decoration: BoxDecoration(
-                color: Style.headerBackBtn,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(20)),
+          Row(
+            children: [
+              Container(
+                width: 68,
+                height: 68,
+                padding: const EdgeInsets.all(20),
+                child: SvgPicture.asset(
+                  svgPath + "playlist.svg",
+                ),
+                decoration: BoxDecoration(
+                    color: Style.headerBackBtn,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(20)),
+              ),
+              Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Podcast Name", style: Style.t_700_36w),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 5),
+                                    child: SvgPicture.asset(
+                                      svgPath + "micdouble.svg",
+                                      color: Style.accentGold,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Podcast name",
+                                    style: Style.t_500_14g,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 5),
+                                    child:
+                                    SvgPicture.asset(svgPath + "people_group.svg"),
+                                  ),
+                                  Text(
+                                    "250",
+                                    style: Style.t_400_12_9D,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 5),
+                                    child:
+                                    SvgPicture.asset(svgPath + "heart_empty.svg"),
+                                  ),
+                                  Text(
+                                    "250",
+                                    style: Style.t_400_12_9D,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  )),
+
+            ],
           ),
-          Expanded(
-              child: Padding(
-            padding: const EdgeInsets.only(top: 0, left: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          Padding(
+            padding: const EdgeInsets.only(top: 26),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Podcast Name", style: Style.t_700_36w),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 5),
-                            child: SvgPicture.asset(
-                              svgPath + "micdouble.svg",
-                              color: Style.accentGold,
-                            ),
-                          ),
-                          Text(
-                            "Podcast name",
-                            style: Style.t_500_14g,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 5),
-                            child:
-                                SvgPicture.asset(svgPath + "heart_empty.svg"),
-                          ),
-                          Text(
-                            "250",
-                            style: Style.t_400_12_9D,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ))
+                Text("12 Seasons",style: Style.t_500_14w,),
+                Text("128 Episods",style: Style.t_500_14w,),
+              ],),
+          )
         ],
       ),
     );
@@ -282,10 +311,9 @@ child: Column(
       ],
     );
   }
-
   _topTripleButtons(w) {
     return Padding(
-      padding: const EdgeInsets.only(right: 24, left: 23, top: 48, bottom: 28),
+      padding: const EdgeInsets.only(right: 24, left: 14, top: 24, bottom: 28),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -293,9 +321,10 @@ child: Column(
               flex: 3,
               child: ElevatedButton(
                 onPressed: () => print(""),
-                child: const Text(
-                  "Analytics",
-                  style: TextStyle(color: Color(0xff283034)),
+                child:  Text(
+                  isFollow ? "Follow" :
+                  "Buy for 17\$",
+                  style: TextStyle(color: isFollow ?  Style.accentGold :Style.gray4D  ),
                 ),
                 style: ButtonStyle(
                     padding: MaterialStateProperty.all(
@@ -304,10 +333,10 @@ child: Column(
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16.0),
-                            side: const BorderSide(color: Color(0xffFFB800)))),
+                            side:  BorderSide(color: isFollow ?  Style.gray4D:  Style.accentGold))),
                     fixedSize: MaterialStateProperty.all(Size(w, 54)),
                     backgroundColor:
-                        MaterialStateProperty.all(const Color(0xffFFB800)),
+                    MaterialStateProperty.all(isFollow ?  Style.gray4D:  Style.accentGold),
                     textStyle: MaterialStateProperty.all(const TextStyle(
                         color: Color(0xff283034),
                         fontSize: 18,
@@ -319,7 +348,7 @@ child: Column(
               flex: 1,
               child: ElevatedButton(
                 onPressed: () => print(""),
-                child: SvgPicture.asset(svgPath + "sharebold.svg"),
+                child: SvgPicture.asset(svgPath + "addlist.svg",color: Style.whiteHalf,),
                 style: ButtonStyle(
                     padding: MaterialStateProperty.all(
                         const EdgeInsets.symmetric(
@@ -329,28 +358,28 @@ child: Column(
                             borderRadius: BorderRadius.circular(16.0),
                             side: const BorderSide(color: Style.gray2F))),
                     fixedSize: MaterialStateProperty.all(const Size(54, 54)),
-                    backgroundColor: MaterialStateProperty.all(Style.gray4C)),
+                    backgroundColor: MaterialStateProperty.all(Style.glassBlack)),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 6),
             child: Expanded(
               flex: 1,
               child: ElevatedButton(
                 onPressed: () => print(""),
-                child: SvgPicture.asset(svgPath + "modify.svg",
-                    color: Style.gray2F),
+                child: SvgPicture.asset(svgPath + "download.svg",
+                    color: Style.whiteHalf),
                 style: ButtonStyle(
                     padding: MaterialStateProperty.all(
                         const EdgeInsets.symmetric(
-                            vertical: 17, horizontal: 0)),
+                            vertical: 15, horizontal: 0)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16.0),
                             side: const BorderSide(color: Style.gray2F))),
                     fixedSize: MaterialStateProperty.all(const Size(54, 54)),
-                    backgroundColor: MaterialStateProperty.all(Colors.white)),
+                    backgroundColor: MaterialStateProperty.all(Style.glassBlack)),
               ),
             ),
           ),
@@ -360,7 +389,7 @@ child: Column(
               flex: 1,
               child: ElevatedButton(
                 onPressed: () => print(""),
-                child: SvgPicture.asset(svgPath + "remove.svg"),
+                child: SvgPicture.asset(svgPath + "like.svg"),
                 style: ButtonStyle(
                     padding: MaterialStateProperty.all(
                         const EdgeInsets.symmetric(
@@ -368,10 +397,10 @@ child: Column(
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16.0),
-                            side: BorderSide(color: Style.redAccent))),
+                            side: BorderSide(color: Style.glassBlack))),
                     fixedSize: MaterialStateProperty.all(const Size(54, 54)),
                     backgroundColor:
-                        MaterialStateProperty.all(Style.background)),
+                    MaterialStateProperty.all(Style.glassBlack)),
               ),
             ),
           ),
@@ -400,7 +429,7 @@ child: Column(
                       border: InputBorder.none,
                       isDense: false,
                       contentPadding:
-                          const EdgeInsets.only(top: 12, bottom: 12, left: 19),
+                      const EdgeInsets.only(top: 12, bottom: 12, left: 19),
                       hintText: "Type to Search...",
                       hintStyle: TextStyle(color: Theme.of(context).hintColor),
                       fillColor: Colors.white))),
@@ -451,95 +480,57 @@ child: Column(
     );
   }
 
-  collapsedHeader(w, h) {
-    return Stack(
-      children: [
-        Container(
-          width: w,
-          height: 126,
-          decoration: BoxDecoration(
-              image: const DecorationImage(
-                  image: NetworkImage("https://picsum.photos/414/126"),
-                  fit: BoxFit.cover),
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(40)),
-        ),
-        Expanded(
-            child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 24, left: 24),
-              child: Container(
-                width: 44,
-                height: 44,
-                child: const Icon(
-                  Icons.arrow_back_outlined,
-                  color: Colors.white,
-                ),
-                decoration: BoxDecoration(
-                    color: Style.headerBackBtn,
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(12)),
+  header(w,h) {
+    return  Stack(children: [
+
+      Container(
+        width: w,
+        height: h / 2,
+        decoration: BoxDecoration(
+            image: const DecorationImage(
+                image: NetworkImage("https://picsum.photos/414/414"),
+                fit: BoxFit.cover),
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(40)),
+      ),
+
+      Expanded(child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 24,left: 24),
+            child: Container(
+              width: 44,
+              height: 44,
+              child: const Icon(
+                Icons.arrow_back_outlined,
+                color: Colors.white,
               ),
+              decoration: BoxDecoration(
+                  color: Style.headerBackBtn,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(12)),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 24, right: 24),
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                width: 44,
-                height: 44,
-                child: SvgPicture.asset(
-                  svgPath + "info.svg",
-                  color: Colors.white,
-                ),
-                decoration: BoxDecoration(
-                    color: Style.headerBackBtn,
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(12)),
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 24,right: 24),
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              width: 44,
+              height: 44,
+              child:SvgPicture.asset(svgPath+"info.svg",color: Colors.white,),
+              decoration: BoxDecoration(
+                  color: Style.headerBackBtn,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(12)),
             ),
-          ],
-        ))
-      ],
-    );
+          ),
+        ],
+      ))
+
+    ],);
   }
 
-  header(w, h) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Stack(
-          children: [
-            Container(
-              width: w,
-              height: h / 2,
-              decoration: BoxDecoration(
-                  image: const DecorationImage(
-                      image: NetworkImage("https://picsum.photos/414/414"),
-                      fit: BoxFit.cover),
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(40)),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 24, left: 24),
-              child: Container(
-                width: 44,
-                height: 44,
-                child: const Icon(
-                  Icons.arrow_back_outlined,
-                  color: Colors.white,
-                ),
-                decoration: BoxDecoration(
-                    color: Style.headerBackBtn,
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(12)),
-              ),
-            ),
-          ],
-        )
-      ],
-    );
-  }
+
 }
