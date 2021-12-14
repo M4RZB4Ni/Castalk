@@ -17,6 +17,7 @@ class Style  {
   static  Color gray32 = const Color(0xff3C3C3C).withOpacity(0.3);
   static  Color grayC3_half = const Color(0xff3C3C3C).withOpacity(0.5);
   static const Color grayA1 = Color(0xffA8A8A8);
+  static const Color grayA4 = Color(0xff4A4A4A);
   static const Color grayA = Color(0xffAAAAAA);
   static const Color gray2b = Color(0xff2B2B2B);
   static const Color gray2F = Color(0XFF2F2F2F);
@@ -65,6 +66,9 @@ class Style  {
   static TextStyle t_400_12_9D= const TextStyle(color: gray9D,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_500_18g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 18);
   static TextStyle t_500_18w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 18);
+
+  static TextStyle t_500_18a4= const TextStyle(color: Style.grayA4,fontWeight: FontWeight.w500,fontSize: 18);
+
   static TextStyle t_400_12r= TextStyle(color: redAccent,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_500_14g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 14);
   static TextStyle t_500_24w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 24);

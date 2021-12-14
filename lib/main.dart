@@ -20,6 +20,7 @@ import 'package:castalk/view/nav/profile/promotion.dart';
 import 'package:castalk/view/nav/profile/promotion_analytics.dart';
 import 'package:castalk/view/nav/profile/promotion_list.dart';
 import 'package:castalk/view/nav/profile/request_verify_badge.dart';
+import 'package:castalk/view/other_user_profile.dart';
 import 'package:castalk/view/owned_section/owned_episodes.dart';
 import 'package:castalk/view/owned_section/owned_podcast.dart';
 import 'package:castalk/view/owned_section/owned_seasons.dart';
@@ -90,7 +91,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/Activity",
+      initialRoute: "/OtherUserProfile",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -127,6 +128,7 @@ class MyApp extends StatelessWidget {
         "/SeasonView":(context) => const Directionality(textDirection: TextDirection.ltr, child: SeasonView()),
         "/EpisodeView":(context) => const Directionality(textDirection: TextDirection.ltr, child: EpisodeView()),
         "/Activity":(context) => const Directionality(textDirection: TextDirection.ltr, child: Activity()),
+        "/OtherUserProfile":(context) => const Directionality(textDirection: TextDirection.ltr, child: OtherUserProfile()),
       },
 
     );

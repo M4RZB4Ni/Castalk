@@ -120,7 +120,9 @@ flutter:
   - assets/icons/people_group.svg
   - assets/icons/dollarsign.svg
   - assets/icons/arrow_fish_right.svg
+  - assets/icons/arrow_fish_left.svg
   - assets/icons/arrow_up.svg
+  - assets/icons/coin.svg
 
   uses-material-design: true
 
