@@ -1,7 +1,7 @@
+import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../style.dart';
 import 'my_casts_analytics.dart';
 import 'my_casts_list.dart';
 

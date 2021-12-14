@@ -1,10 +1,11 @@
-import 'package:castalk/view/profile/market/products.dart';
-import 'package:castalk/view/profile/market/purchases.dart';
+
+import 'package:castalk/style.dart';
+import 'package:castalk/view/nav/profile/market/products.dart';
+import 'package:castalk/view/nav/profile/market/purchases.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../style.dart';
 
 class Market extends StatefulWidget{
   const Market({Key? key}) : super(key: key);

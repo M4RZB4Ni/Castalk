@@ -1,9 +1,9 @@
+import 'package:castalk/style.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../style.dart';
 
 class MyCastsAnalytics extends StatefulWidget{
   const MyCastsAnalytics({Key? key}) : super(key: key);

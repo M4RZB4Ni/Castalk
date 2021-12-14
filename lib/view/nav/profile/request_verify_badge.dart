@@ -1,8 +1,9 @@
+import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../style.dart';
+
 
 class RequestVerifyBadge extends StatefulWidget{
   const RequestVerifyBadge({Key? key}) : super(key: key);

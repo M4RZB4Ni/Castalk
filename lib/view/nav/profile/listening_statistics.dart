@@ -1,8 +1,8 @@
+import 'package:castalk/style.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../style.dart';
 
 class ListeningStatistics extends StatefulWidget{
   const ListeningStatistics({Key? key}) : super(key: key);

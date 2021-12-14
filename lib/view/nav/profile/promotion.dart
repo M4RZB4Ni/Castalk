@@ -1,10 +1,10 @@
+import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_tags/flutter_tags.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-import '../../style.dart';
 
 class Promotion extends StatefulWidget{
   const Promotion({Key? key}) : super(key: key);
