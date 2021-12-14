@@ -60,7 +60,8 @@ class ActivityState extends State<Activity>{
                     child: Text("Today",style: Style.t_500_14w),
                   ),
                   _newReleaseItem(w, h),
-                  _subsribersItem(w, h)
+                  _subsribersItem(w, h),
+                  _congrasItem(w, h)
 
                 ],
               ),
@@ -294,6 +295,102 @@ class ActivityState extends State<Activity>{
         ));
   }
 
+
+  _congrasItem(w,h)
+  {
+    return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 15),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Style.background,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          width: w,
+          height: 94,
+          child:Blur(
+            borderRadius: BorderRadius.circular(16),
+            blurColor: Style.background.withOpacity(0.5),
+            blur: 0.2,
+            colorOpacity: 0.3,
+            child: Stack(children: [
+
+              Stack(
+                children: [
+                  Container(
+                    width: 252,
+                    height: 94,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(17)),
+
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            'https://picsum.photos/252/94'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Positioned.fill(child: Align(
+                      alignment: Alignment.centerRight,
+                      child:  Container(
+                        width: 160,
+                        height: 94,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(topRight: Radius.circular(16),bottomRight:  Radius.circular(16)),
+                          gradient: LinearGradient(
+                            tileMode: TileMode.clamp,
+                            colors: [
+                              Colors.transparent,
+                              Style.background,
+                            ],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.center,
+                            stops: [0, 0.8],
+                          ),
+                        ),
+                      ))),
+                ],
+              ),
+              Expanded(child: Padding(
+                padding: const EdgeInsets.only(right: 10,left: 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7),
+                      child: Center(child: Text("Congras!",style: Style.t_700_24g)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5,),
+                      child: Center(child: Text("Your Podcast hits 100k Followers in Castalk\n Share it with your audince",style: Style.t_400_12w,maxLines: 2,textAlign: TextAlign.center,)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 3),
+                      child:  Center(child: Text("Today 8:48",style: Style.t_300_10g9D,)),
+                    ),
+                  ],
+                ),
+              )),
+
+              Align(
+                  alignment: Alignment.centerRight,child: Padding(
+                padding: const EdgeInsets.only(right: 12),
+                child: Container(
+                  width: 44,
+                  height: 44,
+                  padding: const EdgeInsets.all(12),
+                  child: SvgPicture.asset(svgPath+"share.svg",color: Style.gray58,),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Style.gray48),
+                      color: Style.background,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(12)),
+                ),
+              ))
+
+            ],),),
+        ));
+  }
 
 
 
