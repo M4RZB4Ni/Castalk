@@ -19,13 +19,11 @@ class PurchasesState extends State<Purchases>
   String svgPath = "assets/icons/";
   late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
-  late TextStyle itemHeaderStyle;
 
   @override
   Widget build(BuildContext context) {
 
     _textTheme = Theme.of(context).textTheme;
-    itemHeaderStyle =_textTheme.headline2!.copyWith(fontWeight: FontWeight.w500);
 
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
@@ -44,7 +42,7 @@ class PurchasesState extends State<Purchases>
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 18,left: 25),
-                    child: Text("Active Subscriptions:",style: itemHeaderStyle),
+                    child: Text("Active Subscriptions:",style: Style.t_500_14g),
                   ),
                   _activeSubscriptionsItem(w, h),
 
@@ -58,7 +56,7 @@ class PurchasesState extends State<Purchases>
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 18,left: 25),
-                    child: Text("Other Purchases:",style: itemHeaderStyle),
+                    child: Text("Other Purchases:",style: Style.t_500_14g),
                   ),
                   _otherPurchasesItem(w, h)
 

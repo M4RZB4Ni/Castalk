@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../style.dart';
+import 'package:castalk/style.dart';
 
 class HomeFeed extends StatefulWidget{
   const HomeFeed({Key? key}) : super(key: key);

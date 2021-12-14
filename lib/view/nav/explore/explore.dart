@@ -1,9 +1,9 @@
 import 'package:blur/blur.dart';
+import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../style.dart';
 
 class Explore extends StatefulWidget{
   const Explore({Key? key}) : super(key: key);
@@ -139,8 +139,6 @@ class ExploreState extends State<Explore>{
 
 
                 ],),
-
-
 
 
               Column(

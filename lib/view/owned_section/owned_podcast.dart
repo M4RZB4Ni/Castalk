@@ -26,31 +26,32 @@ class OwnedPodcastState extends State<OwnedPodcast> {
 
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       //appBar: PreferredSize(preferredSize: Size(w, h/2), child: header(w,h)),
       body: SingleChildScrollView(
-child: Column(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-  header(w, h),
-  _podcastNameData(),
-  _topTripleButtons(w),
-  _aboutSection(),
-  _searchBar(w),
-  Flexible(
-      child: ListView(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        children: [
-          _likedItem(w, h),
-          _likedItem(w, h),
-          _likedItem(w, h),
-          _likedItem(w, h),
-          _likedItem(w, h),
-        ],
-      ))
-],),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+            header(w, h),
+            _podcastNameData(),
+            _topTripleButtons(w),
+            _aboutSection(),
+            _searchBar(w),
+            Flexible(
+                child: ListView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  children: [
+                    _likedItem(w, h),
+                    _likedItem(w, h),
+                    _likedItem(w, h),
+                    _likedItem(w, h),
+                    _likedItem(w, h),
+                  ],
+                ))
+          ],),
       ),
     );
   }

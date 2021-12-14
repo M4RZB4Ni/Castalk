@@ -1,13 +1,11 @@
 import 'package:castalk/style.dart';
-import 'package:castalk/view/explore/explore.dart';
-import 'package:castalk/view/home/home_feed.dart';
-import 'package:castalk/view/home/home_items_expanded.dart';
 import 'package:castalk/view/intro_signin/add_account_info.dart';
 import 'package:castalk/view/intro_signin/congratulations.dart';
+import 'package:castalk/view/nav/activity.dart';
+import 'package:castalk/view/nav/home/home_feed.dart';
 import 'package:castalk/view/owned_section/owned_episodes.dart';
 import 'package:castalk/view/owned_section/owned_podcast.dart';
 import 'package:castalk/view/owned_section/owned_seasons.dart';
-
 import 'package:castalk/view/player/drive_mode.dart';
 import 'package:castalk/view/intro_signin/enter_code.dart';
 import 'package:castalk/view/intro_signin/intro.dart';
@@ -35,6 +33,8 @@ import 'package:castalk/view/profile/promotion_analytics.dart';
 import 'package:castalk/view/profile/promotion_list.dart';
 import 'package:castalk/view/profile/request_verify_badge.dart';
 import 'package:flutter/material.dart';
+import 'view/nav/explore/explore.dart';
+import 'view/nav/home/home_items_expanded.dart';
 
 void main() {
   runApp(const MyApp());
@@ -87,7 +87,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/EpisodeView",
+      initialRoute: "/Activity",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -123,6 +123,7 @@ class MyApp extends StatelessWidget {
         "/PodcastView":(context) => const Directionality(textDirection: TextDirection.ltr, child: PodcastView()),
         "/SeasonView":(context) => const Directionality(textDirection: TextDirection.ltr, child: SeasonView()),
         "/EpisodeView":(context) => const Directionality(textDirection: TextDirection.ltr, child: EpisodeView()),
+        "/Activity":(context) => const Directionality(textDirection: TextDirection.ltr, child: Activity()),
       },
 
     );
