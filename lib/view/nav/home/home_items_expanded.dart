@@ -1,8 +1,8 @@
+import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'package:castalk/style.dart';
 
 class HomeItemsExpanded extends StatefulWidget{
   const HomeItemsExpanded({Key? key}) : super(key: key);
