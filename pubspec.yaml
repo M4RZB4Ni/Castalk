@@ -118,6 +118,8 @@ flutter:
   - assets/icons/remove.svg
   - assets/icons/lock.svg
   - assets/icons/people_group.svg
+  - assets/icons/dollarsign.svg
+  - assets/icons/arrow_fish_right.svg
 
   uses-material-design: true
 
