@@ -61,7 +61,8 @@ class ActivityState extends State<Activity>{
                   ),
                   _newReleaseItem(w, h),
                   _subsribersItem(w, h),
-                  _congrasItem(w, h)
+                  _congrasItem(w, h),
+                  _groupFollower(w, h),
 
                 ],
               ),
@@ -124,8 +125,6 @@ class ActivityState extends State<Activity>{
         ],),),
     );
   }
-
-
 
 
   _newReleaseItem(w,h)
@@ -394,6 +393,89 @@ class ActivityState extends State<Activity>{
 
 
 
+  _groupFollower(w,h)
+  {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 15),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Style.background,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        width: w,
+        height: 50,
+        child: Row(children: [
+          SizedBox(
+            width: 50,
+            height: 50,
+            child: Stack(children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: Container(
+                  height: 44,
+                  width: 44,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    image: const DecorationImage(
+                      image: NetworkImage('https://picsum.photos/44/44'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 7,bottom: 8),
+                child: Blur(
+                    borderRadius: BorderRadius.circular(12),
+                    blurColor: Style.whiteHalf,
+                    colorOpacity: 0.6,
+                    blur: 0.6,
+                    child: Container(
+                      height: 47,
+                      width: 47,
+                      decoration:const BoxDecoration(
+                        image:  DecorationImage(
+                          image: NetworkImage('https://picsum.photos/47/47'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    )),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 7,bottom: 8),
+                child: Center(child: Text("+5",style: Style.t_700_14b,)),
+              )
+            ],),
+          ),
+          Expanded(child: Padding(
+            padding: const EdgeInsets.only(right: 10,left: 24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 7),
+                  child: RichText(text: TextSpan(
+                      children: [
+                        TextSpan(text:"Amir Mehranfar ",style: Style.t_400_12g),
+                        TextSpan(text:"and ",style: Style.t_400_12w),
+                        TextSpan(text:"5 others ",style: Style.t_400_12g),
+                        TextSpan(text:"are following you ",style: Style.t_400_12w),
+                      ])),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 6,bottom: 0,right: 9),
+                  child:  Text("Today 8:48",style: Style.t_300_10g9D,),
+                ),
+              ],
+            ),
+          )),
+        ],),),
+    );
+  }
+
+
+
 
 
   header(w) {
@@ -442,7 +524,7 @@ class ActivityState extends State<Activity>{
 
                 width: 44,
                 height: 44,
-                child: SvgPicture.asset(svgPath+"search.svg",width: 14,height: 14,),
+                child: SvgPicture.asset(svgPath+"arrow_up.svg",width: 14,height: 14,),
                 decoration: BoxDecoration(
                     color: Style.headerBackBtn,
                     shape: BoxShape.rectangle,
