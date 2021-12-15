@@ -145,84 +145,229 @@ class CommentsState extends State<Comments> {
               _searchBar(w)
             ],
           )),
-      body: Timeline.builder(
-        scrollDirection: Axis.horizontal,
-
-        builder: TimelineTileBuilder.connected(
-          connectorBuilder: (context, index, type) => const SolidLineConnector(
-            color: Colors.white,
-            thickness: 1,
-          ),
-          indicatorBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Text(
-              "@12:30",
-              style: Style.t_400_12g,
+      body: Padding(
+        padding: const EdgeInsets.only(top: 24),
+        child: Timeline.tileBuilder(
+          theme: TimelineThemeData(
+            direction: Axis.horizontal,
+            nodePosition: 0,
+            color: Color(0xff989898),
+            indicatorTheme: const IndicatorThemeData(
+              position: 0,
+              size: 20.0,
+            ),
+            connectorTheme: const ConnectorThemeData(
+              thickness: 1,
             ),
           ),
-          contentsAlign: ContentsAlign.basic,
-          contentsBuilder: (context, index) =>
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Container(
-                  width: 312,
-                  height: 182,
-                  decoration: BoxDecoration(
-                      color: Style.glassBlack,
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(24),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: -1,
-                          blurRadius: 1,
-                          offset: Offset(0, -3), // changes position of shadow
-                        ),
-                      ]),
-                  child: Column(children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 14,left: 14),
-                      child: Row(children: [
-                        Container(
-                          width: 30,
-                          height: 30,
+          builder: TimelineTileBuilder.connected(
+            connectionDirection: ConnectionDirection.before,
+            itemCount: 5,
+            contentsBuilder: (_, index) {
 
-                          decoration: BoxDecoration(
-                              color: Style.headerBackBtn,
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.circular(8)),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: Text("UserName",style: Style.t_500_12w,),
-                        )
-                      ],),
-                    ),
+              return  SizedBox(
+                  height: h,
+                  width: w,
+                  child: ListView(children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 12),
-                      child: RichText(textAlign: TextAlign.justify,text: TextSpan(style: Style.t_300_12w,text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque gravida nulla lacus tincidunt sed feugiat magna. Magna sit vulputate quisque amet consectetur morbi. Imperdiet eget a neque adipiscing. Vitae, phasellus turpis elementum neque, euismod commodo donec arcu. 😘😚")),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 12,left: 12,bottom: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("2  days ago",style: Style.t_400_12_grayA1,),
-                          Row(
-                            children: [
-                              SvgPicture.asset(svgPath+"heart_empty.svg",color: Colors.white,),
-                              Text("122",style: Style.t_300_12w,),
-                            ],
+                      padding: const EdgeInsets.all(16.0),
+                      child: Container(
+                        width: 312,
+                        height: 182,
+                        decoration: BoxDecoration(
+                            color: Style.glassBlack,
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(24),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: -1,
+                                blurRadius: 1,
+                                offset: Offset(0, -3), // changes position of shadow
+                              ),
+                            ]),
+                        child: Column(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 14,left: 14),
+                            child: Row(children: [
+                              Container(
+                                width: 30,
+                                height: 30,
+
+                                decoration: BoxDecoration(
+                                    color: Style.headerBackBtn,
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.circular(8)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Text("UserName",style: Style.t_500_12w,),
+                              )
+                            ],),
                           ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 12),
+                            child: RichText(textAlign: TextAlign.justify,text: TextSpan(style: Style.t_300_12w,text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque gravida nulla lacus tincidunt sed feugiat magna. Magna sit vulputate quisque amet consectetur morbi. Imperdiet eget a neque adipiscing. Vitae, phasellus turpis elementum neque, euismod commodo donec arcu. 😘😚")),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 12,left: 12,bottom: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("2  days ago",style: Style.t_400_12_grayA1,),
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(svgPath+"heart_empty.svg",color: Colors.white,),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 5),
+                                      child: Text("122",style: Style.t_300_12w,),
+                                    ),
+                                  ],
+                                ),
 
+                              ],),
+                          )
                         ],),
-                    )
-                  ],),
-                ),
-              ),
-          itemCount: 10,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Container(
+                        width: 312,
+                        height: 182,
+                        decoration: BoxDecoration(
+                            color: Style.glassBlack,
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(24),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: -1,
+                                blurRadius: 1,
+                                offset: Offset(0, -3), // changes position of shadow
+                              ),
+                            ]),
+                        child: Column(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 14,left: 14),
+                            child: Row(children: [
+                              Container(
+                                width: 30,
+                                height: 30,
+
+                                decoration: BoxDecoration(
+                                    color: Style.headerBackBtn,
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.circular(8)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Text("UserName",style: Style.t_500_12w,),
+                              )
+                            ],),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 12),
+                            child: RichText(textAlign: TextAlign.justify,text: TextSpan(style: Style.t_300_12w,text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque gravida nulla lacus tincidunt sed feugiat magna. Magna sit vulputate quisque amet consectetur morbi. Imperdiet eget a neque adipiscing. Vitae, phasellus turpis elementum neque, euismod commodo donec arcu. 😘😚")),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 12,left: 12,bottom: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("2  days ago",style: Style.t_400_12_grayA1,),
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(svgPath+"heart_empty.svg",color: Colors.white,),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 5),
+                                      child: Text("122",style: Style.t_300_12w,),
+                                    ),
+                                  ],
+                                ),
+
+                              ],),
+                          )
+                        ],),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Container(
+                        width: 312,
+                        height: 182,
+                        decoration: BoxDecoration(
+                            color: Style.glassBlack,
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(24),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: -1,
+                                blurRadius: 1,
+                                offset: Offset(0, -3), // changes position of shadow
+                              ),
+                            ]),
+                        child: Column(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 14,left: 14),
+                            child: Row(children: [
+                              Container(
+                                width: 30,
+                                height: 30,
+
+                                decoration: BoxDecoration(
+                                    color: Style.headerBackBtn,
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.circular(8)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Text("UserName",style: Style.t_500_12w,),
+                              )
+                            ],),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 12),
+                            child: RichText(textAlign: TextAlign.justify,text: TextSpan(style: Style.t_300_12w,text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque gravida nulla lacus tincidunt sed feugiat magna. Magna sit vulputate quisque amet consectetur morbi. Imperdiet eget a neque adipiscing. Vitae, phasellus turpis elementum neque, euismod commodo donec arcu. 😘😚")),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 12,left: 12,bottom: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("2  days ago",style: Style.t_400_12_grayA1,),
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(svgPath+"heart_empty.svg",color: Colors.white,),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 5),
+                                      child: Text("122",style: Style.t_300_12w,),
+                                    ),
+                                  ],
+                                ),
+
+                              ],),
+                          )
+                        ],),
+                      ),
+                    ),
+
+                  ],));
+
+            },
+            indicatorBuilder: (_, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Text("@12:30",style: Style.t_400_12g),
+              );
+            },
+            connectorBuilder: (_, index, ___) => const SolidLineConnector(
+              color: Colors.white,
+            ),
+          ),
         ),
-      ),
+      )
     );
   }
 
