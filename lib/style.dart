@@ -15,7 +15,7 @@ class Style  {
   static const Color gray58 = Color(0xff585858);
   static  Color grayTrans = const Color(0xff3C3C3C);
   static  Color grayTrans03 = const Color(0xff3C3C3C).withOpacity(0.5);
-  static  Color gray32 = const Color(0xff3C3C3C).withOpacity(0.3);
+  static  Color gray3cop30 = const Color(0xff3C3C3C).withOpacity(0.3);
   static  Color grayC3_half = const Color(0xff3C3C3C).withOpacity(0.5);
   static const Color grayA1 = Color(0xffA8A8A8);
   static const Color grayA4 = Color(0xff4A4A4A);
@@ -30,6 +30,7 @@ class Style  {
   static const Color gray4D = Color(0XFF4D4D4D);
   static const Color gray90 = Color(0xff909090);
   static const Color gray4C = Color(0XFF4C4C4C);
+  static const Color gray32 = Color(0xff323232);
   static const Color green = Color(0xff30FF51);
 
 

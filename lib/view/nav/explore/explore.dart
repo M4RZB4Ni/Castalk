@@ -539,7 +539,7 @@ class ExploreState extends State<Explore>{
                     svgPath + "play.svg",
                   ),
                   decoration: BoxDecoration(
-                      color: Style.gray32,
+                      color: Style.gray3cop30,
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(12)),
                 ) /* add child content here */,

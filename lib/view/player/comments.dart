@@ -367,7 +367,25 @@ class CommentsState extends State<Comments> {
             ),
           ),
         ),
-      )
+      ),
+      bottomSheet: Container(
+        child: Row(children: [
+          Expanded(flex: 1,child: SvgPicture.asset(svgPath+"emoji.svg")),
+        Expanded(flex: 7,child:Container(
+
+            height: 40 ,decoration:  Style.inputBoxDecoration.copyWith(color: Style.gray4D),width: w,
+              child: TextField(
+                  controller: numberController,
+                  textAlign: TextAlign.left,maxLines: 1,decoration: InputDecoration(border: InputBorder.none,isDense: true,contentPadding: const EdgeInsets.only(top: 10,bottom: 10,left: 15),
+                  hintText: "type your comment...",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
+
+          )),
+        Expanded(flex: 1,child:SvgPicture.asset(svgPath+"send.svg")),
+        ],),
+        width: w,
+        height: 90,
+        decoration: const BoxDecoration(color: Style.gray32,borderRadius: BorderRadius.only(bottomLeft: Radius.circular(24),bottomRight: Radius.circular(24)),),
+      ),
     );
   }
 
@@ -403,7 +421,7 @@ class CommentsState extends State<Comments> {
               width: 44,
               height: 44,
               child: SvgPicture.asset(
-                svgPath + "search.svg",
+                svgPath + "arrow_up.svg",
                 width: 14,
                 height: 14,
               ),
@@ -417,7 +435,7 @@ class CommentsState extends State<Comments> {
               height: 44,
               padding: const EdgeInsets.all(12),
               child: SvgPicture.asset(
-                svgPath + "filter.svg",
+                svgPath + "folders.svg",
                 width: 14,
                 height: 14,
               ),

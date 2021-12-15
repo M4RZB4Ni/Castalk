@@ -125,6 +125,9 @@ flutter:
   - assets/icons/arrow_fish_left.svg
   - assets/icons/arrow_up.svg
   - assets/icons/coin.svg
+  - assets/icons/folders.svg
+  - assets/icons/send.svg
+  - assets/icons/emoji.svg
 
   uses-material-design: true
 

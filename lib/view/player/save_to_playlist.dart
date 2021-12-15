@@ -178,7 +178,7 @@ class SavePlayListState extends State<SavePlayList> {
                 width: w,
                 height: 56,
                 decoration: BoxDecoration(
-                    color: Style.gray32,
+                    color: Style.gray3cop30,
                     borderRadius: BorderRadius.circular(16))),
           );
   }
@@ -231,7 +231,7 @@ class SavePlayListState extends State<SavePlayList> {
                 width: w,
                 height: 56,
                 decoration: BoxDecoration(
-                    color: Style.gray32,
+                    color: Style.gray3cop30,
                     borderRadius: BorderRadius.circular(16))),
           );
   }
