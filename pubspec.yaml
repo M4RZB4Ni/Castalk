@@ -43,6 +43,8 @@ dependencies:
   dotted_border: ^2.0.0+2
   readmore: ^2.1.0
   flutter_sticky_header: ^0.6.0
+  timelines: ^0.1.0
+  flutter_slidable: ^1.1.0
 
 dev_dependencies:
   flutter_test:

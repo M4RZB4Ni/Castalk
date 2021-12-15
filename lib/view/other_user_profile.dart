@@ -34,19 +34,20 @@ class OtherUserProfileState extends State<OtherUserProfile>{
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Style.background,
         appBar: PreferredSize(preferredSize: Size(w,200),
             child:Stack(children: [
+
               Container(
                   width: w,
                   height: 180,
                   decoration:
                   BoxDecoration(color:const Color(0xff414141),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(40))),
+
               Padding(
                 padding: const EdgeInsets.only(top: 24,left: 24),
                 child: Container(padding: const EdgeInsets.all(10),width: 44,height: 44,child: SvgPicture.asset(svgPath+"arrow_fish_left.svg",width: 17,height: 17,) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
               ),
-
 
               Align(alignment: Alignment.topRight,child: Positioned(
                   child: Padding(
@@ -81,14 +82,8 @@ class OtherUserProfileState extends State<OtherUserProfile>{
                           ],
                         ),
                       )
-                    ],)),
+                    ],))
               ),
-
-
-
-
-
-
 
             ],)),
           body: SingleChildScrollView(
