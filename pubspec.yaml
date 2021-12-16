@@ -45,6 +45,8 @@ dependencies:
   flutter_sticky_header: ^0.6.0
   timelines: ^0.1.0
   flutter_slidable: ^1.1.0
+  gradient_widgets: ^0.6.0
+  rulers: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -128,6 +130,17 @@ flutter:
   - assets/icons/folders.svg
   - assets/icons/send.svg
   - assets/icons/emoji.svg
+  - assets/icons/add.svg
+  - assets/icons/cut.svg
+  - assets/icons/doc.svg
+  - assets/icons/dotlist.svg
+  - assets/icons/mosl.svg
+  - assets/icons/mosr.svg
+  - assets/icons/save.svg
+  - assets/icons/sfx.svg
+  - assets/icons/turn_left.svg
+  - assets/icons/turn_right.svg
+  - assets/icons/soundon.svg
 
   uses-material-design: true
 

@@ -39,6 +39,7 @@ class Style  {
   static const Color divider = Color(0xff464646);
   static  Color driveBack = const Color(0xff303030).withOpacity(0.84);
   static const Color accentGold = Color(0xffFFB800);
+  static const Color halfGold = Color(0xffFFDB7D);
   static Color iconBack = const Color(0xff121212).withOpacity(0.30);
   static Color headerDarkLayer = const Color(0xff1D2223);
   static Color glassBlack = const Color(0xff3B3B3B);
@@ -79,6 +80,7 @@ class Style  {
   static TextStyle t_500_24w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 24);
   static TextStyle t_500_14w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 14);
   static TextStyle t_500_12w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 12);
+  static TextStyle t_500_10_9d= const TextStyle(color: gray9D,fontWeight: FontWeight.w500,fontSize: 10);
   static TextStyle t_500_12g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 12);
   static TextStyle t_500_14r=  TextStyle(color: redAccent,fontWeight: FontWeight.w500,fontSize: 14);
   static TextStyle t_500_14_G9D= const TextStyle(color: gray9D,fontWeight: FontWeight.w500,fontSize: 14);
@@ -86,6 +88,12 @@ class Style  {
   static TextStyle t_400_12_green= const TextStyle(color: green,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle buttonDarkStyle= const TextStyle(color: accentGold, fontSize: 18, fontWeight: FontWeight.w500);
   static List<Color> chartGradiant= [accentGold.withOpacity(0.1), accentGold.withOpacity(0.4)];
+  static LinearGradient sliderGradiant= const LinearGradient(
+      colors: <Color> [
+        Color(0xff5CBD3A),
+        Color(0xffFFB800),
+      ]
+  );
 
 
   static BoxDecoration inputBoxDecoration=BoxDecoration(borderRadius:   const BorderRadius.all(Radius.circular(12)),border:  Border.all(width: 1,color: gray48));

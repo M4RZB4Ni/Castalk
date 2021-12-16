@@ -1,4 +1,5 @@
 import 'package:castalk/style.dart';
+import 'package:castalk/view/editor/editor.dart';
 import 'package:castalk/view/intro_signin/add_account_info.dart';
 import 'package:castalk/view/intro_signin/congratulations.dart';
 import 'package:castalk/view/nav/activity.dart';
@@ -92,7 +93,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/Comments",
+      initialRoute: "/Editor",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -131,6 +132,7 @@ class MyApp extends StatelessWidget {
         "/Activity":(context) => const Directionality(textDirection: TextDirection.ltr, child: Activity()),
         "/OtherUserProfile":(context) => const Directionality(textDirection: TextDirection.ltr, child: OtherUserProfile()),
         "/Comments":(context) => const Directionality(textDirection: TextDirection.ltr, child: Comments()),
+        "/Editor":(context) => const Directionality(textDirection: TextDirection.ltr, child: Editor()),
       },
 
     );
