@@ -45,6 +45,7 @@ class Style  {
   static Color glassBlack = const Color(0xff3B3B3B);
   static Color redAccent = const Color(0xffFF5959);
   static Color hintColor=const Color(0xff797979);
+  static Color purple=const Color(0xff6486FF);
 
   static Color headerBackBtn = const Color(0xff808080).withOpacity(0.5);
 
@@ -81,6 +82,7 @@ class Style  {
   static TextStyle t_500_14w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 14);
   static TextStyle t_500_12w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 12);
   static TextStyle t_500_10_9d= const TextStyle(color: gray9D,fontWeight: FontWeight.w500,fontSize: 10);
+  static TextStyle t_500_10w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 10);
   static TextStyle t_500_12g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 12);
   static TextStyle t_500_14r=  TextStyle(color: redAccent,fontWeight: FontWeight.w500,fontSize: 14);
   static TextStyle t_500_14_G9D= const TextStyle(color: gray9D,fontWeight: FontWeight.w500,fontSize: 14);

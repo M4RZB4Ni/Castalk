@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
+import 'package:music_slider/music_slider.dart';
 import 'package:rulers/rulers.dart';
 
 class Editor extends StatefulWidget{
@@ -21,52 +24,190 @@ class Editor extends StatefulWidget{
 class EditorState extends State<Editor>{
 
   String svgPath = "assets/icons/";
+  TextEditingController numberController = TextEditingController();
 
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
 
     return Scaffold(
-      backgroundColor: Style.background,
-      appBar: PreferredSize(child: _header(w, h), preferredSize: Size(w,122)),
-      body: Column(children: [
-        Row(children: [
-          Column(children: [
-            Padding(padding: const EdgeInsets.only(top: 7),child: _44Buttons(buttonName: "soundon")),
-            Padding(padding: const EdgeInsets.only(top: 7),child:_44Buttons(buttonName: "soundon")),
-            Padding(padding: const EdgeInsets.only(top: 7),child:_44Buttons(buttonName: "soundoff")),
-          ],),
+      key: _scaffoldKey,
+      endDrawerEnableOpenDragGesture: false,
+      endDrawer: Drawer(
+        child:  Container(
+          color: Style.background,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 36,left: 44),
+                  child: Text("Sound Fx",style: Style.t_500_24w,),
+                ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 24,right: 33),
+                    child:InkWell(child: _44Buttons(buttonName: "arrow_fish_left"),onTap: () {
+                      // Navigator.pop(context);
+                    },)),
 
-          Container(
-            margin: const EdgeInsets.only(top: 8.0),
+              ],),
+              Container(
+                margin: const EdgeInsets.only(top: 19,left: 33,right: 33),
+                  height: 44,
+                  width: w,
+                  decoration: BoxDecoration(
+                      borderRadius:
+                      const BorderRadius.all(Radius.circular(12)),
+                      border: Border.all(
+                          width: 1, color: const Color(0xff484848))),
+                  child: Row(
+                    children: [
+                      // i must add sort section with state provider
+                      Expanded(
+                          flex: 3,
+                          child: TextField(
+                              controller: numberController,
+                              textAlign: TextAlign.left,
+                              maxLines: 1,
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  isDense: false,
+                                  contentPadding: const EdgeInsets.only(
+                                      top: 12, bottom: 12, left: 19),
+                                  hintText: "Type to Search...",
+                                  hintStyle:
+                                  TextStyle(color: Theme.of(context).hintColor),
+                                  fillColor: Colors.white))),
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        width: 44,
+                        height: 44,
+                        child: SvgPicture.asset(svgPath+"search.svg",width: 14,height: 14,color: Style.accentGold,),
+                        decoration: BoxDecoration(
+                            color: Style.background,
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(12)),
+                      ),
+                    ],
+                  )),
+              SizedBox(
+                height: double.maxFinite,
+                child: ListView(
+                  children: [
+
+                    _drawerItem()
+                  ],
+
+                ),
+              )
+            ],
+          ),
+        )),
+      backgroundColor: Style.background,
+      appBar: PreferredSize(child: _header(w, h,_scaffoldKey), preferredSize: Size(w,100)),
+      body: Stack(
+        children: [
+
+          SizedBox(
+            height: h/2,
             child: RulerWidget(
               scaleSize: 100,
               scaleColor: Style.background,
-              indicatorWidget: Text(''),
               limit: 24,
-              interval: 3,
-              lowerLimit: 2,
-              midLimitLower: 4,
-              midLimitUpper: 7,
-              upperLimit: 8,
+              interval: 5,
               normalBarColor: Colors.grey,
-              inRangeBarColor: Colors.green,
-              behindRangeBarColor: Colors.orangeAccent,
-              outRangeBarColor: Colors.red,
             ),
           ),
-        ],)
-      ],),
+
+          Align(
+              alignment: Alignment.bottomLeft,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+
+            children: [
+              Row(
+                children: [
+                  Padding(padding: const EdgeInsets.only(top: 7),child: _44Buttons(buttonName: "soundon")),
+                  _newSoundContainer(Style.redAccent,true)
+
+                ],
+              ),
+              Row(
+                children: [
+                  Padding(padding: const EdgeInsets.only(top: 7),child: _44Buttons(buttonName: "soundon")),
+                  _newSoundContainer(Style.purple,true)
+
+                ],
+              ),
+              Row(
+                children: [
+                  Padding(padding: const EdgeInsets.only(top: 7),child: _44Buttons(buttonName: "soundoff")),
+                  _newSoundContainer(Style.gray38,true)
+
+                ],
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(bottom: 14),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 60),
+                    child: SvgPicture.asset(svgPath+"prevleft.svg",color: Style.grayA),
+                  ),
+                  SvgPicture.asset(svgPath+"prevsound.svg",color: Style.grayA),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 44),
+                      child: _44Buttons(buttonName: "pausegold")),
+                  SvgPicture.asset(svgPath+"nextsound.svg",color: Style.grayA),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 60),
+                    child: SvgPicture.asset(svgPath+"nextright.svg",color: Style.grayA),
+                  ),
+
+                ],),
+              )
+            ],)),
+        ],),
 
 
     );
   }
 
-  _header(w,h){
+
+  _newSoundContainer(var color,bool isSelected)
+  {
+    return Container(
+      padding: EdgeInsets.all(8),
+        child: Stack(children: [
+          MusicSlider(
+            emptyColors:  [Colors.white.withOpacity(0.2)],
+            fillColors: [Colors.white.withOpacity(0.2)],
+            controller: MusicSliderController(initialValue: 0.5),
+            animateWaveByTime: false,
+            height: 50,
+            division: 53,
+
+            wave: (x, t, a) => a * cos(x * 0.50) * sin(x * 0.23),
+          ),
+
+          Text("Host Voc - 001 .aac",style: Style.t_500_10w,)
+        ],),
+        width: 200,height: 35,decoration: BoxDecoration(color: color,borderRadius: BorderRadius.circular(12),border: isSelected ? Border.all(color: Colors.white,width: 2) : null));
+  }
+
+
+
+  _header(w,h,_scaffoldKey){
     return Row(
       mainAxisSize: MainAxisSize.max,
 
@@ -147,7 +288,9 @@ class EditorState extends State<Editor>{
               _44Buttons(buttonName:"cut"),
               _44Buttons(buttonName:"mosl"),
               _44Buttons(buttonName:"mosr"),
-              _44Buttons(buttonName:"sfx"),
+              InkWell(child: _44Buttons(buttonName:"sfx"),onTap: () {
+                _scaffoldKey.currentState!.openEndDrawer();
+              },),
             ],)
 
            ],
@@ -224,6 +367,25 @@ class EditorState extends State<Editor>{
             color: Style.gray80op50,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(12)));
+  }
+
+  _drawerItem()
+  {
+    return Row(children: [
+      _44Buttons(buttonName: "play",color: Colors.white),
+      Column(children: [
+        Text("Rain Sound.fx",style: Style.t_500_14w,),
+        MusicSlider(
+          emptyColors:  [Style.gray90],
+          fillColors: [Style.accentGold],
+          controller: MusicSliderController(initialValue: 0.5),
+          animateWaveByTime: false,
+          height: 50,
+          division: 53,
+          wave: (x, t, a) => a * cos(x * 0.50) * sin(x * 0.23),
+        ),
+      ],)
+    ],);
   }
 
   @override

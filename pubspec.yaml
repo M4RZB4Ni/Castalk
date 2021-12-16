@@ -141,6 +141,13 @@ flutter:
   - assets/icons/turn_left.svg
   - assets/icons/turn_right.svg
   - assets/icons/soundon.svg
+  - assets/icons/soundoff.svg
+  - assets/icons/redworm.svg
+  - assets/icons/prevsound.svg
+  - assets/icons/pausegold.svg
+  - assets/icons/prevleft.svg
+  - assets/icons/nextsound.svg
+  - assets/icons/nextright.svg
 
   uses-material-design: true
 
