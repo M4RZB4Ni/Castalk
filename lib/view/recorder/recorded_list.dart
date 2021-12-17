@@ -20,14 +20,12 @@ class RecordedList extends StatefulWidget {
 class RecordedListState extends State<RecordedList> {
 
   String svgPath = "assets/icons/";
-  late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    _textTheme = Theme.of(context).textTheme;
     double w = MediaQuery.of(context).size.width;
-    //  double h = MediaQuery.of(context).size.height;
+    double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
@@ -69,7 +67,7 @@ class RecordedListState extends State<RecordedList> {
               Padding(
                 padding: const EdgeInsets.only(left: 16),
                 child:
-                Text("Recorded List", style: _textTheme.headline1),
+                Text("Recorded List", style: Style.t_500_24w),
               ),
             ],
           ),

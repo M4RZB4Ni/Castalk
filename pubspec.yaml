@@ -150,6 +150,7 @@ flutter:
   - assets/icons/nextright.svg
   - assets/icons/playlistsample.svg
   - assets/icons/ssso.svg
+  - assets/icons/balllistener.svg
 
   uses-material-design: true
 
