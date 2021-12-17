@@ -148,6 +148,7 @@ flutter:
   - assets/icons/prevleft.svg
   - assets/icons/nextsound.svg
   - assets/icons/nextright.svg
+  - assets/icons/playlistsample.svg
 
   uses-material-design: true
 

@@ -36,6 +36,8 @@ class Style  {
 
   static const Color grayc4 = Color(0xffC4C4C4);
   static  Color whiteHalf = Colors.white.withOpacity(0.5);
+  static  Color white20 = Colors.white.withOpacity(0.20);
+  static  Color white15 = Colors.white.withOpacity(0.15);
   static const Color divider = Color(0xff464646);
   static  Color driveBack = const Color(0xff303030).withOpacity(0.84);
   static const Color accentGold = Color(0xffFFB800);
