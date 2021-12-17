@@ -119,66 +119,85 @@ class EditorState extends State<Editor>{
 
           SizedBox(
             height: h/2,
-            child: RulerWidget(
-              scaleSize: 100,
-              scaleColor: Style.background,
-              limit: 24,
-              interval: 5,
-              normalBarColor: Colors.grey,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 78),
+              child: RulerWidget(
+                scaleSize: 100,
+                scaleColor: Style.background,
+                limit: 24,
+                interval: 5,
+                normalBarColor: Colors.grey,
+              ),
             ),
           ),
 
           Align(
               alignment: Alignment.bottomLeft,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 24),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
 
             children: [
-              Row(
-                children: [
-                  Padding(padding: const EdgeInsets.only(top: 7),child: _44Buttons(buttonName: "soundon")),
-                  _newSoundContainer(Style.redAccent,true)
-
-                ],
-              ),
-              Row(
-                children: [
-                  Padding(padding: const EdgeInsets.only(top: 7),child: _44Buttons(buttonName: "soundon")),
-                  _newSoundContainer(Style.purple,true)
-
-                ],
-              ),
-              Row(
-                children: [
-                  Padding(padding: const EdgeInsets.only(top: 7),child: _44Buttons(buttonName: "soundoff")),
-                  _newSoundContainer(Style.gray38,true)
-
-                ],
-              ),
-
-              Padding(
-                padding: const EdgeInsets.only(bottom: 14),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 60),
-                    child: SvgPicture.asset(svgPath+"prevleft.svg",color: Style.grayA),
-                  ),
-                  SvgPicture.asset(svgPath+"prevsound.svg",color: Style.grayA),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 44),
-                      child: _44Buttons(buttonName: "pausegold")),
-                  SvgPicture.asset(svgPath+"nextsound.svg",color: Style.grayA),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 60),
-                    child: SvgPicture.asset(svgPath+"nextright.svg",color: Style.grayA),
-                  ),
+                    Padding(padding: const EdgeInsets.only(top: 7),child: _44Buttons(buttonName: "soundon")),
+                     const Padding(
+                       padding: EdgeInsets.symmetric(horizontal: 7),
+                       child: SizedBox(height: 33,child: VerticalDivider(width: 3,color: Colors.white,thickness: 3,)),
+                     ),
+                    _newSoundContainer(Style.redAccent,true)
 
-                ],),
-              )
-            ],)),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Padding(padding: const EdgeInsets.only(top: 7),child: _44Buttons(buttonName: "soundon")),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 7),
+                      child: SizedBox(height: 33,child: VerticalDivider(width: 3,color: Style.gray38,thickness: 3,)),
+                    ),
+                    _newSoundContainer(Style.purple,true)
+
+                  ],
+                ),
+                Row(
+                  children: [
+                    Padding(padding: const EdgeInsets.only(top: 7),child: _44Buttons(buttonName: "soundoff")),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 7),
+                      child: SizedBox(height: 33,child: VerticalDivider(width: 3,color: Style.gray38,thickness: 3,)),
+                    ),
+                    _newSoundContainer(Style.gray38,true)
+
+                  ],
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 14),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 60),
+                      child: SvgPicture.asset(svgPath+"prevleft.svg",color: Style.grayA),
+                    ),
+                    SvgPicture.asset(svgPath+"prevsound.svg",color: Style.grayA),
+                    Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 44),
+                        child: _44Buttons(buttonName: "pausegold")),
+                    SvgPicture.asset(svgPath+"nextsound.svg",color: Style.grayA),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 60),
+                      child: SvgPicture.asset(svgPath+"nextright.svg",color: Style.grayA),
+                    ),
+
+                  ],),
+                )
+            ],),
+              )),
         ],),
 
 
@@ -244,7 +263,9 @@ class EditorState extends State<Editor>{
 
                 _44Buttons(buttonName:"add"),
                 _44Buttons(buttonName:"dotlist"),
-                _44Buttons(buttonName:"save"),
+               InkWell(child:  _44Buttons(buttonName:"save"),
+               onTap: () => _showDialog(),
+               ),
                 _44Buttons(buttonName:"upload",color: Style.grayA),
 
               ],)
@@ -370,6 +391,107 @@ class EditorState extends State<Editor>{
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(12)));
   }
+
+_showDialog(){
+    return   showDialog(
+        context: context,
+        builder: (_) => ClipRRect(child:   AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          titlePadding: EdgeInsets.only(top: 7,left: 7),
+          backgroundColor: Style.background,
+          title: Padding(
+            padding:  EdgeInsets.only(top: 0, left: 7),
+            child:  Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                InkWell(child: Container(
+                  width: 44,
+                  height: 44,
+                  margin:  EdgeInsets.only(right: 79),
+                  child: const Icon(
+
+                    Icons.arrow_back_outlined,
+                    color: Colors.white,
+                  ),
+                  decoration: BoxDecoration(
+                      color: Style.headerBackBtn,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(12)),
+                ),onTap:() => Navigator.pop(context),),
+                Row(
+                  children: [
+                    SvgPicture.asset(svgPath+"modify.svg",  ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(left: 13,right: 100),
+                      child:
+                      Text("Save Project", style: Style.t_400_18w),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  width: 44,
+                ),
+              ],
+            ),
+          ),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 41,top: 50),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Project Name:",style: Style.t_400_16w),
+                    Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child:Container(height: 55,decoration:  Style.inputBoxDecoration,
+                            child: TextField(
+                                controller: numberController,
+                                textAlign: TextAlign.left,maxLines: 1,decoration: InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
+                                hintText: "Project X",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
+
+                        )),
+                  ],
+                ),
+              ),
+               Row(children: [
+                 Expanded(child:  Padding(
+                   padding: const EdgeInsets.only(left: 12),
+                   child: ElevatedButton(
+
+                     onPressed:() => print(""), child:
+                   Text("Save",style: Style.t_500_18a4,) ,style: ButtonStyle(
+                       padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 41,vertical: 17)),
+                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                           RoundedRectangleBorder(
+                               borderRadius: BorderRadius.circular(16.0),
+                               side: const BorderSide(color: Style.accentGold)
+                           )
+                       ),
+                       backgroundColor:MaterialStateProperty.all(Style.accentGold)),),
+                 )),
+            Expanded(child:  Padding(
+              padding: const EdgeInsets.only(left: 12),
+              child: ElevatedButton(onPressed:() => print(""), child:
+              Text("Cancel",style: Style.t_500_18w,) ,style: ButtonStyle(
+                  padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 41,vertical: 17)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.0),
+                          side: const BorderSide(color: Style.gray4D)
+                      )
+                  ),
+                  backgroundColor:MaterialStateProperty.all(Style.gray4D)),),
+            )),
+          ],)
+            ],
+          ),
+        ),borderRadius: BorderRadius.circular(16),)
+    );
+}
 
   _drawerItem(w)
   {
