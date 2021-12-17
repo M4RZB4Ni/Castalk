@@ -25,11 +25,11 @@ class EditorState extends State<Editor>{
 
   String svgPath = "assets/icons/";
   TextEditingController numberController = TextEditingController();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
@@ -54,7 +54,7 @@ class EditorState extends State<Editor>{
                   Padding(
                     padding: const EdgeInsets.only(top: 24,right: 33),
                     child:InkWell(child: _44Buttons(buttonName: "arrow_fish_left"),onTap: () {
-                      // Navigator.pop(context);
+                       Navigator.pop(context);
                     },)),
 
               ],),
@@ -98,11 +98,13 @@ class EditorState extends State<Editor>{
                     ],
                   )),
               SizedBox(
-                height: double.maxFinite,
+                width: w,
+                height: h/2,
                 child: ListView(
+                  shrinkWrap: true,
                   children: [
 
-                    _drawerItem()
+                    _drawerItem(w)
                   ],
 
                 ),
@@ -369,23 +371,38 @@ class EditorState extends State<Editor>{
             borderRadius: BorderRadius.circular(12)));
   }
 
-  _drawerItem()
+  _drawerItem(w)
   {
-    return Row(children: [
-      _44Buttons(buttonName: "play",color: Colors.white),
-      Column(children: [
-        Text("Rain Sound.fx",style: Style.t_500_14w,),
-        MusicSlider(
-          emptyColors:  [Style.gray90],
-          fillColors: [Style.accentGold],
-          controller: MusicSliderController(initialValue: 0.5),
-          animateWaveByTime: false,
-          height: 50,
-          division: 53,
-          wave: (x, t, a) => a * cos(x * 0.50) * sin(x * 0.23),
-        ),
-      ],)
-    ],);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: Row(children: [
+        _44Buttons(buttonName: "play",color: Colors.white),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Text("Rain Sound.fx",style: Style.t_500_14w,),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 7,top: 4),
+            child: SizedBox(
+              height: 14,
+              width: w*0.20,
+              child: MusicSlider(
+                emptyColors:  [Style.gray90],
+                fillColors: [Style.accentGold],
+                controller: MusicSliderController(initialValue: 0.5),
+                animateWaveByTime: false,
+                height: 14,
+                division: 53,
+                wave: (x, t, a) => a * cos(x * 0.50) * sin(x * 0.23),
+              ),
+            ),
+          ),
+        ],)
+      ],),
+    );
   }
 
   @override
