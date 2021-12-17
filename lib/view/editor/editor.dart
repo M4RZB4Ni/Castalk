@@ -264,7 +264,7 @@ class EditorState extends State<Editor>{
                 _44Buttons(buttonName:"add"),
                 _44Buttons(buttonName:"dotlist"),
                InkWell(child:  _44Buttons(buttonName:"save"),
-               onTap: () => _showDialog(),
+               onTap: () => _showSaveDialog(),
                ),
                 _44Buttons(buttonName:"upload",color: Style.grayA),
 
@@ -392,7 +392,7 @@ class EditorState extends State<Editor>{
             borderRadius: BorderRadius.circular(12)));
   }
 
-_showDialog(){
+_showSaveDialog(){
     return   showDialog(
         context: context,
         builder: (_) => ClipRRect(child:   AlertDialog(
