@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -42,14 +43,14 @@ class EnterCodeState extends State<EnterCode>
   @override
   Widget build(BuildContext context) {
 
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
+    // double w = MediaQuery.of(context).size.width;
+    // double h = MediaQuery.of(context).size.height;
     pincodeStyle=Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.white54);
 
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 30),
         child: Column(
@@ -91,7 +92,7 @@ class EnterCodeState extends State<EnterCode>
                     autoDismissKeyboard: true,
                     keyboardType: TextInputType.number,
                     animationDuration: const Duration(milliseconds: 300),
-                    backgroundColor: Theme.of(context).backgroundColor,
+                    backgroundColor: Style.background,
                     enableActiveFill: false,
                     autoFocus: false,
                     errorAnimationController: errorController,

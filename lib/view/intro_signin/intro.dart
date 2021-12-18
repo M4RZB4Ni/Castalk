@@ -1,5 +1,6 @@
 import 'package:castalk/apis/into_api_client.dart';
 import 'package:castalk/models/intro_model.dart';
+import 'package:castalk/style.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -41,7 +42,7 @@ class IntroState extends State<Intro> with SingleTickerProviderStateMixin{
                    appBar: AppBar(
                      backgroundColor: Colors.transparent,
                      centerTitle: true,title: Text("Welcome",style: Theme.of(context).textTheme.headline1)),
-                   backgroundColor: Theme.of(context).backgroundColor,
+                   backgroundColor: Style.background,
                    body:
                    Column(
                      children: [

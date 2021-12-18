@@ -1,3 +1,4 @@
+import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,7 +22,6 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
   List<String> cCodes=["This Week","Last Week","Next Week"];
 
 
-  String svgPath = "assets/icons/";
   //late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
   late String _charDropValue;
@@ -46,7 +46,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
      double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
 
       body: SingleChildScrollView(child:
           Column(children: [
@@ -60,7 +60,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
                     child:  Padding(
                       padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
                       child: Theme(data: Theme.of(context).copyWith(
-                          canvasColor: Theme.of(context).backgroundColor),
+                          canvasColor: Style.background),
                           child: DropdownButton<String>(
                               icon: const Padding(
                                 padding: EdgeInsets.only(right: 15,bottom: 0),
@@ -98,7 +98,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
                     child:  Padding(
                       padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
                       child: Theme(data: Theme.of(context).copyWith(
-                          canvasColor: Theme.of(context).backgroundColor),
+                          canvasColor: Style.background),
                           child: DropdownButton<String>(
                               icon: const Padding(
                                 padding: EdgeInsets.only(right: 15,bottom: 0),
@@ -180,7 +180,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
                     child:  Padding(
                       padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
                       child: Theme(data: Theme.of(context).copyWith(
-                          canvasColor: Theme.of(context).backgroundColor),
+                          canvasColor: Style.background),
                           child: DropdownButton<String>(
                               icon: const Padding(
                                 padding: EdgeInsets.only(right: 15,bottom: 0),
@@ -322,7 +322,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(right: 5),
-                            child: SvgPicture.asset(svgPath+"mic.svg",color: Style.whiteHalf),
+                            child: SvgPicture.asset(Cicon.mic,color: Style.whiteHalf),
                           ),
                           Text("Podcast name",style:Style.t_400_14wh,),
                         ],
@@ -341,7 +341,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
             padding: const EdgeInsets.only(right: 6,top: 6,bottom: 6),
             child: Container(
               padding: const EdgeInsets.all(16),
-              child: SvgPicture.asset(svgPath+"arrow_right.svg",width: 5,height: 5,),
+              child: SvgPicture.asset(Cicon.arrow_right,width: 5,height: 5,),
               height: 44,
               width: 44,
               decoration: BoxDecoration(
@@ -591,7 +591,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
           LineTouchTooltipData(tooltipBgColor: Style.background),
           enabled: true),
       gridData: FlGridData(drawHorizontalLine: false, drawVerticalLine: false),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       minX: 0,
       maxX: 10,
       minY: 0,
@@ -671,7 +671,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
           LineTouchTooltipData(tooltipBgColor: Style.background),
           enabled: true),
       gridData: FlGridData(drawHorizontalLine: false, drawVerticalLine: false),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       minX: 0,
       maxX: 10,
       minY: 0,
@@ -749,7 +749,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
           LineTouchTooltipData(tooltipBgColor: Style.background),
           enabled: true),
       gridData: FlGridData(drawHorizontalLine: false, drawVerticalLine: false),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       minX: 0,
       maxX: 10,
       minY: 0,

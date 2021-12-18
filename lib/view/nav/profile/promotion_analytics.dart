@@ -55,7 +55,7 @@ class PromotionAnalyticsState extends State<PromotionAnalytics> {
                   child:  Padding(
                     padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
                     child: Theme(data: Theme.of(context).copyWith(
-                        canvasColor: Theme.of(context).backgroundColor),
+                        canvasColor: Style.background),
                         child: DropdownButton<String>(
                             icon: const Padding(
                               padding: EdgeInsets.only(right: 15,bottom: 0),
@@ -304,7 +304,7 @@ class PromotionAnalyticsState extends State<PromotionAnalytics> {
               LineTouchTooltipData(tooltipBgColor: Style.background),
           enabled: true),
       gridData: FlGridData(drawHorizontalLine: false, drawVerticalLine: false),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       minX: 0,
       maxX: 10,
       minY: 0,

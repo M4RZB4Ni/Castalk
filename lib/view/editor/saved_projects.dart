@@ -28,7 +28,7 @@ class SavedProjectsState extends State<SavedProjects> {
     //  double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
       body: Padding(
         padding: const EdgeInsets.only(top: 28),

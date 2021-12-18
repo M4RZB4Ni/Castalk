@@ -4,7 +4,6 @@ import 'package:castalk/view/nav/profile/market/products.dart';
 import 'package:castalk/view/nav/profile/market/purchases.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 
 class Market extends StatefulWidget{
@@ -34,10 +33,10 @@ class MarketState extends State<Market> with SingleTickerProviderStateMixin
     _textTheme = Theme.of(context).textTheme;
 
     double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
+    //double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(w, 130), child: header(w)),
 
       body: TabBarView(

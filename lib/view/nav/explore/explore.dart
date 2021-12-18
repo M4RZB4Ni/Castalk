@@ -30,7 +30,7 @@ class ExploreState extends State<Explore>{
 
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       body: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,

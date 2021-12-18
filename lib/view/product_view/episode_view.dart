@@ -31,7 +31,7 @@ class EpisodeViewState extends State<EpisodeView>{
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       body: SingleChildScrollView(
         child: Column(
           children: [

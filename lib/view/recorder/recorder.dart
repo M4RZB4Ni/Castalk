@@ -18,10 +18,10 @@ class RecorderState extends State<Recorder> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
+    //double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,

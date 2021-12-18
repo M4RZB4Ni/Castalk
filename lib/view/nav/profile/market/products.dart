@@ -30,7 +30,7 @@ class ProductsState extends State<Products>
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(w, 80), child: _searchBar(w)),
       body: SingleChildScrollView(
         child: Column(

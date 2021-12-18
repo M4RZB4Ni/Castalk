@@ -26,7 +26,7 @@ class PlaylistState extends State<Playlist> {
     //  double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(w, 180), child: header(w)),
       body: GridView.builder(
         itemBuilder: (context, index) {

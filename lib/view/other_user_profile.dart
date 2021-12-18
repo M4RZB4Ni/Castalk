@@ -78,7 +78,7 @@ class OtherUserProfileState extends State<OtherUserProfile>{
                             Padding(
                               padding: const EdgeInsets.only(left: 8),
                               child: Container(decoration: BoxDecoration(color: Theme.of(context).focusColor,shape: BoxShape.circle),
-                                  width: 13,height: 13,child: Icon(Icons.check,color: Theme.of(context).backgroundColor,size: 13,)),
+                                  width: 13,height: 13,child: Icon(Icons.check,color: Style.background,size: 13,)),
                             )
                           ],
                         ),

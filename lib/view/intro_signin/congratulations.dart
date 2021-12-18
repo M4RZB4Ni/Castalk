@@ -1,3 +1,4 @@
+import 'package:castalk/style.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_select_item/multi_select_item.dart';
 
@@ -25,7 +26,7 @@ class CongratulationsState extends State<Congratulations>{
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
+    //double h = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size(w,190),
       child:   Padding(
@@ -47,7 +48,7 @@ class CongratulationsState extends State<Congratulations>{
         ],),
       ),),
       resizeToAvoidBottomInset: false,
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
 
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 42),
@@ -111,7 +112,7 @@ class CongratulationsState extends State<Congratulations>{
   Container itemType(bool isSelected)
   {
     return  Container(decoration: BoxDecoration(border: Border.all(color: isSelected? const Color(0xff484848) :Theme.of(context).focusColor,width: 1),
-        borderRadius:const BorderRadius.all(Radius.circular(12)),color: !isSelected ? Theme.of(context).focusColor.withOpacity(0.2) : Theme.of(context).backgroundColor),
+        borderRadius:const BorderRadius.all(Radius.circular(12)),color: !isSelected ? Theme.of(context).focusColor.withOpacity(0.2) : Style.background),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -121,7 +122,7 @@ class CongratulationsState extends State<Congratulations>{
                 padding: const EdgeInsets.only(right: 6,top: 6),
                 child: Container(height: 13,width: 13,decoration:
                 BoxDecoration(color: Theme.of(context).focusColor,borderRadius: BorderRadius.circular(12)),
-                    child: Icon(Icons.check,size: 13,color: Theme.of(context).backgroundColor)),
+                    child: Icon(Icons.check,size: 13,color: Style.background)),
               )
             ],
           )),

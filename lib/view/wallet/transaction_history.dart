@@ -28,7 +28,7 @@ class TransactionHistoryState extends State<TransactionHistory>{
     //double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(w, 160), child: header(w)),
       body: ListView.builder(itemBuilder: (context, index) {
           return transItem();

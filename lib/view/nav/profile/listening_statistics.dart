@@ -236,7 +236,7 @@ class ListeningStatisticsState extends State<ListeningStatistics>{
           LineTouchTooltipData(tooltipBgColor: Style.background),
           enabled: true),
       gridData: FlGridData(drawHorizontalLine: false, drawVerticalLine: false),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       minX: 0,
       maxX: 10,
       minY: 0,

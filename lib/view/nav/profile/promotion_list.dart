@@ -41,7 +41,7 @@ class PromotionState extends State<PromotionList> {
               ),
               backgroundColor:MaterialStateProperty.all(const Color(0xffFFB800)),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff283034),fontSize: 18,fontWeight: FontWeight.w500)) ),),
         ),
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Style.background,
         appBar: PreferredSize(preferredSize: Size(w, 140), child: header(w)),
         body: SingleChildScrollView(
           child: Column(

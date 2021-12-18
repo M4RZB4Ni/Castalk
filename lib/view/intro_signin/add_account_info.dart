@@ -1,3 +1,4 @@
+import 'package:castalk/style.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -33,7 +34,7 @@ class AddAccountInfoState extends State<AddAccountInfo>{
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
 
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 30),
@@ -106,7 +107,7 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                         child:  Padding(
                           padding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
                           child: Theme(data: Theme.of(context).copyWith(
-                            canvasColor: Theme.of(context).backgroundColor),
+                            canvasColor: Style.background),
                               child: DropdownButton<String>(
                                 icon: const Padding(
                                   padding: EdgeInsets.only(right: 25),

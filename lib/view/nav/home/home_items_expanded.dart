@@ -31,7 +31,7 @@ class HomeItemsExpandedState extends State<HomeItemsExpanded>{
 
     return Scaffold(
       appBar: PreferredSize(preferredSize:  Size(w, 100), child: header(w)),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       body:   Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,

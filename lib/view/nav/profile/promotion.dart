@@ -34,7 +34,7 @@ class PromotionState extends State<Promotion>
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
       body:   Padding(
         padding: const EdgeInsets.only(right: 24,left: 24,bottom: 40,top: 28),
@@ -360,61 +360,6 @@ class PromotionState extends State<Promotion>
 
 
 
-  _episodesItem(w,h)
-  {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 15),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Style.gray2F,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        width: w,
-        height: 60,
-        child: Row(children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 6,top: 6,bottom: 6),
-            child: Container(
-              height: 47,
-              width: 47,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                image: const DecorationImage(
-                  image: NetworkImage('https://picsum.photos/47/47'),
-                  fit: BoxFit.cover,
-                ),
-              ), /* add child content here */
-            ),
-          ),
-          Expanded(child: Padding(
-            padding: const EdgeInsets.only(right: 10,left: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text("Item’s name which may be as long as my...".length > 30 ? "Item’s name which may be as long as my...".substring(0,30)+"..." : "Item’s name which may be as long as my...",style: _textTheme.bodyText1!.copyWith(fontSize: 14),),
-                Text("25\$",style: _textTheme.bodyText1!.copyWith(fontSize: 12,color: Style.accentGold),),
-              ],
-            ),
-          )),
-          Padding(
-            padding: const EdgeInsets.only(right: 6,top: 6,bottom: 6),
-            child: Container(
-              padding: const EdgeInsets.all(12),
-              child: SvgPicture.asset(svgPath+"close.svg",width: 18,height: 18,),
-              height: 44,
-              width: 44,
-              decoration: BoxDecoration(
-                color: Style.gray48,
-                borderRadius: BorderRadius.circular(12),
-              ), /* add child content here */
-            ),
-          )
-
-
-        ],),),
-    );
-  }
 
 
 

@@ -1,3 +1,4 @@
+import 'package:castalk/style.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget{
@@ -24,7 +25,7 @@ class SigninState extends State<SignIn>{
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,

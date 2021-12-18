@@ -27,7 +27,7 @@ class DownloadsState extends State<Downloads> {
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(w, 180), child: header(w)),
       body: SingleChildScrollView(child: Column(
         children: [inProgress(w, h),downloaded(w, h)],

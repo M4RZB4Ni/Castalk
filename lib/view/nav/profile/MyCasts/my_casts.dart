@@ -35,7 +35,7 @@ class MyCastsState extends State<MyCasts> with SingleTickerProviderStateMixin
    // double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(w, 130), child: header(w)),
 
       body: TabBarView(

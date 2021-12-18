@@ -1,3 +1,4 @@
+import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -27,7 +28,7 @@ class ProfileState extends State<Profile>{
     double w = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(w,300),
     child:Stack(children: [
         Container(
@@ -60,7 +61,7 @@ class ProfileState extends State<Profile>{
                     Padding(
                       padding: const EdgeInsets.only(left: 8),
                       child: Container(decoration: BoxDecoration(color: Theme.of(context).focusColor,shape: BoxShape.circle),
-                          width: 13,height: 13,child: Icon(Icons.check,color: Theme.of(context).backgroundColor,size: 13,)),
+                          width: 13,height: 13,child: Icon(Icons.check,color: Style.background,size: 13,)),
                     )
                   ],
                 ),

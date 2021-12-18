@@ -32,7 +32,7 @@ class NotificationsState extends State<Notifications>{
 
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size(w, 170), child: header(w)),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,

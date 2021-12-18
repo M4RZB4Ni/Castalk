@@ -28,7 +28,7 @@ class SavePlayListState extends State<SavePlayList> {
     double h = MediaQuery.of(context).size.height;
     _textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

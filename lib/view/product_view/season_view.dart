@@ -33,7 +33,7 @@ class SeasonViewState extends State<SeasonView>{
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       //appBar: PreferredSize(preferredSize: Size(w, h/2), child: header(w,h)),
       body: SingleChildScrollView(
         child: Column(

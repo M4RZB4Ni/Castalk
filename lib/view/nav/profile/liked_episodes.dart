@@ -30,7 +30,7 @@ class LikedEpisodesState extends State<LikedEpisodes>
       double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(w, 180), child: header(w)),
       body: ListView.builder(itemBuilder: (context, index) {
          return _likedItem(w,h);
