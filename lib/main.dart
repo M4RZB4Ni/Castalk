@@ -4,8 +4,9 @@ import 'package:castalk/view/editor/exported.dart';
 import 'package:castalk/view/editor/saved_projects.dart';
 import 'package:castalk/view/intro_signin/add_account_info.dart';
 import 'package:castalk/view/intro_signin/congratulations.dart';
-import 'package:castalk/view/nav/activity.dart';
+import 'package:castalk/view/nav/notifications.dart';
 import 'package:castalk/view/nav/home/home_feed.dart';
+import 'package:castalk/view/nav/nav_mother.dart';
 import 'package:castalk/view/nav/profile/MyCasts/my_casts.dart';
 import 'package:castalk/view/nav/profile/achivments.dart';
 import 'package:castalk/view/nav/profile/downloads.dart';
@@ -41,6 +42,7 @@ import 'package:castalk/view/player/save_to_playlist.dart';
 import 'package:castalk/view/intro_signin/signin.dart';
 import 'package:castalk/view/recorder/recorded_list.dart';
 import 'package:castalk/view/recorder/recorder.dart';
+import 'package:castalk/view/wallet/wallet.dart';
 
 import 'package:flutter/material.dart';
 import 'view/nav/explore/explore.dart';
@@ -97,7 +99,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/Recorder",
+      initialRoute: "/Wallet",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -133,7 +135,7 @@ class MyApp extends StatelessWidget {
         "/PodcastView":(context) => const Directionality(textDirection: TextDirection.ltr, child: PodcastView()),
         "/SeasonView":(context) => const Directionality(textDirection: TextDirection.ltr, child: SeasonView()),
         "/EpisodeView":(context) => const Directionality(textDirection: TextDirection.ltr, child: EpisodeView()),
-        "/Activity":(context) => const Directionality(textDirection: TextDirection.ltr, child: Activity()),
+        "/Notifications":(context) => const Directionality(textDirection: TextDirection.ltr, child: Notifications()),
         "/OtherUserProfile":(context) => const Directionality(textDirection: TextDirection.ltr, child: OtherUserProfile()),
         "/Comments":(context) => const Directionality(textDirection: TextDirection.ltr, child: Comments()),
         "/Editor":(context) => const Directionality(textDirection: TextDirection.ltr, child: Editor()),
@@ -141,6 +143,8 @@ class MyApp extends StatelessWidget {
         "/SavedProjects":(context) => const Directionality(textDirection: TextDirection.ltr, child: SavedProjects()),
         "/RecordedList":(context) => const Directionality(textDirection: TextDirection.ltr, child: RecordedList()),
         "/Recorder":(context) => const Directionality(textDirection: TextDirection.ltr, child: Recorder()),
+        "/Wallet":(context) => const Directionality(textDirection: TextDirection.ltr, child: Wallet()),
+        "/NavMother":(context) => const Directionality(textDirection: TextDirection.ltr, child: NavMother()),
       },
 
     );

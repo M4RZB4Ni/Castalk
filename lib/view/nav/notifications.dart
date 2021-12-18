@@ -4,19 +4,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Activity extends StatefulWidget{
-  const Activity({Key? key}) : super(key: key);
+class Notifications extends StatefulWidget{
+  const Notifications({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
 
-    return ActivityState();
+    return NotificationsState();
   }
 
 
 }
 
-class ActivityState extends State<Activity>{
+class NotificationsState extends State<Notifications>{
 
   String svgPath = "assets/icons/";
 

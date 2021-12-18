@@ -151,6 +151,12 @@ flutter:
   - assets/icons/playlistsample.svg
   - assets/icons/ssso.svg
   - assets/icons/balllistener.svg
+  - assets/icons/question_mark.svg
+  - assets/icons/notif.svg
+  - assets/icons/headphone.svg
+  - assets/icons/profile.svg
+  - assets/icons/withdraw.svg
+  - assets/icons/deposite.svg
 
   uses-material-design: true
 
