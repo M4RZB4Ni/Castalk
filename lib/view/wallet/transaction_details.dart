@@ -39,7 +39,7 @@ class TransactionDetailsState extends State<TransactionDetails>{
           Align(child: Column(
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 153,bottom: 0),
+                margin: const EdgeInsets.only(top: 153,bottom: 15),
 
                 width: 82,
                 height: 82,
