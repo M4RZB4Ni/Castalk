@@ -1,3 +1,4 @@
+import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -186,7 +187,7 @@ class AchivmentsState extends State<Achivments>{
             padding: const EdgeInsets.only(right: 6,top: 6,bottom: 6),
             child: Container(
               padding: const EdgeInsets.all(12),
-              child: SvgPicture.asset(svgPath+"share.svg",width: 18,height: 18,),
+              child: SvgPicture.asset(Cicon.share,width: 18,height: 18,),
               height: 44,
               width: 44,
               decoration: BoxDecoration(

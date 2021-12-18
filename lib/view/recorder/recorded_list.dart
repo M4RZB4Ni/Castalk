@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,13 +20,12 @@ class RecordedList extends StatefulWidget {
 
 class RecordedListState extends State<RecordedList> {
 
-  String svgPath = "assets/icons/";
   TextEditingController numberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
+    //double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
@@ -62,7 +62,7 @@ class RecordedListState extends State<RecordedList> {
           ),
           Row(
             children: [
-              SvgPicture.asset(svgPath+"playlistsample.svg",  ),
+              SvgPicture.asset(Cicon.playlistsample),
 
               Padding(
                 padding: const EdgeInsets.only(left: 16),
@@ -90,9 +90,9 @@ class RecordedListState extends State<RecordedList> {
           // All actions are defined in the children parameter.
           children:  [
             Row(children: [
-              _47Buttons(buttonName: "delete"),
-              _47Buttons(buttonName: "share"),
-              InkWell(child: _47Buttons(buttonName: "modify"),onTap: () => _showSaveDialog(),),
+              _47Buttons(buttonName: Cicon.delete),
+              _47Buttons(buttonName: Cicon.share),
+              InkWell(child: _47Buttons(buttonName:Cicon.modify),onTap: () => _showSaveDialog(),),
             ],)
           ],
         ),
@@ -107,7 +107,7 @@ class RecordedListState extends State<RecordedList> {
                 width: 57,
                 height: 57,
                 child: SvgPicture.asset(
-                  svgPath + "play.svg",
+                  Cicon.play ,
                   width: 17,
                   height: 17,
                   color: Colors.white,
@@ -152,7 +152,7 @@ class RecordedListState extends State<RecordedList> {
               padding: const EdgeInsets.all(9),
               decoration: BoxDecoration(color: Style.grayC3_half,borderRadius: BorderRadius.circular(12)),
               child: SvgPicture.asset(
-                  svgPath + "arrow_left.svg",
+                  Cicon.arrow_left ,
                   width: 12,
                   height: 6),
             )
@@ -169,7 +169,8 @@ class RecordedListState extends State<RecordedList> {
         width: 47,
         height: 47,
         child: SvgPicture.asset(
-          svgPath + "$buttonName.svg",
+
+          buttonName,
           width: 17,
           height: 17,
           color: color,
@@ -215,7 +216,7 @@ class RecordedListState extends State<RecordedList> {
                 ),onTap:() => Navigator.pop(context),),
                 Row(
                   children: [
-                    SvgPicture.asset(svgPath+"modify.svg",  ),
+                    SvgPicture.asset(Cicon.modify),
 
                     Padding(
                       padding: const EdgeInsets.only(left: 13,right: 0),

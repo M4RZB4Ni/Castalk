@@ -1,4 +1,5 @@
 import 'package:blur/blur.dart';
+import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -378,7 +379,7 @@ class NotificationsState extends State<Notifications>{
                   width: 44,
                   height: 44,
                   padding: const EdgeInsets.all(12),
-                  child: SvgPicture.asset(svgPath+"share.svg",color: Style.gray58,),
+                  child: SvgPicture.asset(Cicon.share,color: Style.gray58,),
                   decoration: BoxDecoration(
                     border: Border.all(color: Style.gray48),
                       color: Style.background,

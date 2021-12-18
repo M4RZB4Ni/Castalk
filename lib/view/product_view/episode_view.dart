@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:castalk/cicon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -173,7 +174,7 @@ class EpisodeViewState extends State<EpisodeView>{
               flex: 1,
               child: ElevatedButton(
                 onPressed: () => print(""),
-                child: SvgPicture.asset(svgPath + "addlist.svg",color: Style.whiteHalf,),
+                child: SvgPicture.asset(Cicon.addlist,color: Style.whiteHalf,),
                 style: ButtonStyle(
                     padding: MaterialStateProperty.all(
                         const EdgeInsets.symmetric(
@@ -193,7 +194,7 @@ class EpisodeViewState extends State<EpisodeView>{
               flex: 1,
               child: ElevatedButton(
                 onPressed: () => print(""),
-                child: SvgPicture.asset(svgPath + "download.svg",
+                child: SvgPicture.asset(Cicon.download,
                     color: Style.whiteHalf),
                 style: ButtonStyle(
                     padding: MaterialStateProperty.all(
@@ -214,7 +215,7 @@ class EpisodeViewState extends State<EpisodeView>{
               flex: 1,
               child: ElevatedButton(
                 onPressed: () => print(""),
-                child: SvgPicture.asset(svgPath + "like.svg"),
+                child: SvgPicture.asset(Cicon.like),
                 style: ButtonStyle(
                     padding: MaterialStateProperty.all(
                         const EdgeInsets.symmetric(

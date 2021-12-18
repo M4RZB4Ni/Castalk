@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -337,7 +338,7 @@ class OtherUserProfileState extends State<OtherUserProfile>{
 
             width: 44,
             height: 44,
-            child: SvgPicture.asset(svgPath+"search.svg",width: 14,height: 14,),
+            child: SvgPicture.asset(Cicon.search,width: 14,height: 14,),
             decoration: BoxDecoration(
                 color: Style.headerBackBtn,
                 shape: BoxShape.rectangle,
@@ -347,7 +348,7 @@ class OtherUserProfileState extends State<OtherUserProfile>{
             width: 44,
             height: 44,
             padding: const EdgeInsets.all(12),
-            child: SvgPicture.asset(svgPath+"filter.svg",width: 14,height: 14,),
+            child: SvgPicture.asset(Cicon.filter,width: 14,height: 14,),
             decoration: BoxDecoration(
                 color: Style.glassBlack,
                 shape: BoxShape.rectangle,
@@ -357,7 +358,7 @@ class OtherUserProfileState extends State<OtherUserProfile>{
             padding: const EdgeInsets.all(12),
             width: 44,
             height: 44,
-            child: SvgPicture.asset(svgPath+"sort.svg",width: 14,height: 14,),
+            child: SvgPicture.asset(Cicon.sort,width: 14,height: 14,),
             decoration: BoxDecoration(
                 color: Style.glassBlack,
                 shape: BoxShape.rectangle,

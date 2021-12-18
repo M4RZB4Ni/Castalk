@@ -23,6 +23,7 @@ class Style  {
   static const Color gray2b = Color(0xff2B2B2B);
   static const Color gray2F = Color(0XFF2F2F2F);
   static const Color gray9D = Color(0XFF9D9D9D);
+  static const Color whiteF3 = Color(0xffF3F3F3);
   static const Color gray86 = Color(0xff868686);
   static const Color grayD1 = Color(0xffD1D1D1);
   static const Color gray27 = Color(0xff272727);
@@ -32,6 +33,10 @@ class Style  {
   static const Color gray4C = Color(0XFF4C4C4C);
   static const Color gray32 = Color(0xff323232);
   static const Color green = Color(0xff30FF51);
+  static const Color greenDark = Color(0xff425236);
+  static const Color greenDarker = Color(0xff364D52);
+  static const Color redDark = Color(0xff523636);
+  static const Color lightBrown = Color(0xff524A36);
 
 
   static const Color grayc4 = Color(0xffC4C4C4);
@@ -52,6 +57,7 @@ class Style  {
   static Color headerBackBtn = const Color(0xff808080).withOpacity(0.5);
 
   static TextStyle t_300_10g9D= const TextStyle(color: gray9D,fontWeight: FontWeight.w300,fontSize: 10);
+  static TextStyle t_300_12_WhiteF3= const TextStyle(color: whiteF3,fontWeight: FontWeight.w300,fontSize: 12);
   static TextStyle t_300_12w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w300,fontSize: 12);
   static TextStyle t_400_12w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_400_16w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16);
@@ -114,4 +120,7 @@ class Style  {
         height: 14,
         color: gray86,
       ));
+
+
+
 }

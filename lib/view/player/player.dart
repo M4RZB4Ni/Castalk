@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'dart:ui';
+import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -173,19 +174,19 @@ class PlayerState extends State<Player>
      children: [
        Padding(
          padding: const EdgeInsets.only(top: 39,left: 0),
-         child: Container(padding: EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(svgPath+"share.svg") ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+         child: Container(padding: EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(Cicon.share) ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
        ),
        Padding(
          padding: const EdgeInsets.only(top: 39,left: 0),
-         child: Container(padding: EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(svgPath+"addlist.svg") ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+         child: Container(padding: EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(Cicon.addlist) ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
        ),
        Padding(
          padding: const EdgeInsets.only(top: 39,left: 0),
-         child: Container(padding: EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(svgPath+"like.svg") ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+         child: Container(padding: EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(Cicon.like) ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
        ),
        Padding(
          padding: const EdgeInsets.only(top: 39,left: 0),
-         child: Container(padding: EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(svgPath+"download.svg") ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+         child: Container(padding: EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(Cicon.download) ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
        ),
      ],));
   }
@@ -198,7 +199,7 @@ class PlayerState extends State<Player>
             Text("Episode name which is long...",style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 22,fontWeight: FontWeight.w400),),
             Row(
               children: [
-                SvgPicture.asset(svgPath+"mic.svg"),
+                SvgPicture.asset(Cicon.mic),
                 Padding(
                   padding: const EdgeInsets.only(left:5),
                   child: Text("Host Name",style: Theme.of(context).textTheme.bodyText2!.copyWith(color: const Color(0xff0E0E0E)),),
@@ -250,7 +251,7 @@ class PlayerState extends State<Player>
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(right: 16),
-                            child: SvgPicture.asset(svgPath+"setting.svg",color:Colors.white38,width: 16,height: 16),
+                            child: SvgPicture.asset(Cicon.setting,color:Colors.white38,width: 16,height: 16),
                           ),
                           Text("Player Options",style: Theme.of(context).textTheme.bodyText1),
 

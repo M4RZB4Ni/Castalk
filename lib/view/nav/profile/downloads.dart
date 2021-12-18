@@ -1,3 +1,4 @@
+import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -284,7 +285,7 @@ class DownloadsState extends State<Downloads> {
                                     ],
                                   )
                                 : SvgPicture.asset(
-                                    svgPath + "download.svg",
+                                    Cicon.download,
                                     width: 19,
                                     height: 16,
                                     color: Style.grayc4,
@@ -452,7 +453,7 @@ class DownloadsState extends State<Downloads> {
                           ],
                         )
                             : SvgPicture.asset(
-                          svgPath + "download.svg",
+                          Cicon.download,
                           width: 19,
                           height: 16,
                           color: Style.grayc4,

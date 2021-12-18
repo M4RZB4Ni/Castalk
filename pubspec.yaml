@@ -157,6 +157,7 @@ flutter:
   - assets/icons/profile.svg
   - assets/icons/withdraw.svg
   - assets/icons/deposite.svg
+  - assets/icons/arrow_withdraw.svg
 
   uses-material-design: true
 
