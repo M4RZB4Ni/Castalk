@@ -47,6 +47,7 @@ dependencies:
   flutter_slidable: ^1.1.0
   gradient_widgets: ^0.6.0
   rulers: ^1.0.3
+  new_virtual_keyboard: ^0.1.4
 
 dev_dependencies:
   flutter_test:

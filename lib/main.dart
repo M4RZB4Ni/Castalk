@@ -42,6 +42,7 @@ import 'package:castalk/view/player/save_to_playlist.dart';
 import 'package:castalk/view/intro_signin/signin.dart';
 import 'package:castalk/view/recorder/recorded_list.dart';
 import 'package:castalk/view/recorder/recorder.dart';
+import 'package:castalk/view/wallet/deposit.dart';
 import 'package:castalk/view/wallet/transaction_history.dart';
 import 'package:castalk/view/wallet/wallet.dart';
 import 'package:castalk/view/wallet/wallet_analytics.dart';
@@ -101,7 +102,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/WalletAnalytics",
+      initialRoute: "/Deposit",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -149,6 +150,7 @@ class MyApp extends StatelessWidget {
         "/NavMother":(context) => const Directionality(textDirection: TextDirection.ltr, child: NavMother()),
         "/TransactionHistory":(context) => const Directionality(textDirection: TextDirection.ltr, child: TransactionHistory()),
         "/WalletAnalytics":(context) => const Directionality(textDirection: TextDirection.ltr, child: WalletAnalytics()),
+        "/Deposit":(context) => const Directionality(textDirection: TextDirection.ltr, child: Deposit()),
       },
 
     );

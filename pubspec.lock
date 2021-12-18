@@ -240,6 +240,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.0"
+  new_virtual_keyboard:
+    dependency: "direct main"
+    description:
+      name: new_virtual_keyboard
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.4"
   path:
     dependency: transitive
     description:
