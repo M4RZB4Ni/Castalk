@@ -33,6 +33,7 @@ class Style  {
   static const Color gray4C = Color(0XFF4C4C4C);
   static const Color gray32 = Color(0xff323232);
   static const Color green = Color(0xff30FF51);
+  static const Color lightGreen = Color(0xff7CFF4E);
   static const Color greenDark = Color(0xff425236);
   static const Color greenDarker = Color(0xff364D52);
   static const Color redDark = Color(0xff523636);
@@ -59,6 +60,8 @@ class Style  {
 
   static TextStyle t_300_10g9D= const TextStyle(color: gray9D,fontWeight: FontWeight.w300,fontSize: 10);
   static TextStyle t_300_12_WhiteF3= const TextStyle(color: whiteF3,fontWeight: FontWeight.w300,fontSize: 12);
+  static TextStyle t_300_14_WhiteF3= const TextStyle(color: whiteF3,fontWeight: FontWeight.w300,fontSize: 14);
+  static TextStyle t_300_14_lightGreen= const TextStyle(color: lightGreen,fontWeight: FontWeight.w300,fontSize: 14);
   static TextStyle t_300_12w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w300,fontSize: 12);
   static TextStyle t_400_12w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_400_16w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16);
@@ -68,6 +71,7 @@ class Style  {
   static TextStyle t_400_14g= const TextStyle(color: accentGold,fontWeight: FontWeight.w400,fontSize: 14);
   static TextStyle t_400_14_grayA1= const TextStyle(color: grayA1,fontWeight: FontWeight.w400,fontSize: 14);
   static TextStyle t_400_12_grayA1= const TextStyle(color: grayA1,fontWeight: FontWeight.w400,fontSize: 12);
+  static TextStyle t_400_24_lightGreen= const TextStyle(color: lightGreen,fontWeight: FontWeight.w400,fontSize: 24);
   static TextStyle t_500_16w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 16);
   static TextStyle t_500_16g90= const TextStyle(color: gray90,fontWeight: FontWeight.w500,fontSize: 16);
   static TextStyle t_400_18w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 18);

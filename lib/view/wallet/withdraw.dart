@@ -1,8 +1,6 @@
-import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:new_virtual_keyboard/virtual_keyboard.dart';
 
 class Withdraw extends StatefulWidget{
