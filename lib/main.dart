@@ -46,6 +46,7 @@ import 'package:castalk/view/wallet/deposit.dart';
 import 'package:castalk/view/wallet/transaction_history.dart';
 import 'package:castalk/view/wallet/wallet.dart';
 import 'package:castalk/view/wallet/wallet_analytics.dart';
+import 'package:castalk/view/wallet/withdraw.dart';
 
 import 'package:flutter/material.dart';
 import 'view/nav/explore/explore.dart';
@@ -102,7 +103,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/Deposit",
+      initialRoute: "/Withdraw",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -151,6 +152,7 @@ class MyApp extends StatelessWidget {
         "/TransactionHistory":(context) => const Directionality(textDirection: TextDirection.ltr, child: TransactionHistory()),
         "/WalletAnalytics":(context) => const Directionality(textDirection: TextDirection.ltr, child: WalletAnalytics()),
         "/Deposit":(context) => const Directionality(textDirection: TextDirection.ltr, child: Deposit()),
+        "/Withdraw":(context) => const Directionality(textDirection: TextDirection.ltr, child: Withdraw()),
       },
 
     );

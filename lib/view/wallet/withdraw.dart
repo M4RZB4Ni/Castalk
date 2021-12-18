@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:new_virtual_keyboard/virtual_keyboard.dart';
 
-class Deposit extends StatefulWidget{
-  const Deposit({Key? key}) : super(key: key);
+class Withdraw extends StatefulWidget{
+  const Withdraw({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return DepositState();
+    return WithdrawState();
   }
 
 
 }
 
-class DepositState extends State<Deposit>{
+class WithdrawState extends State<Withdraw>{
 
 
 
@@ -39,10 +39,10 @@ class DepositState extends State<Deposit>{
             padding: const EdgeInsets.only(top: 91),
             child: Column(
               children: [
-                Text("Wallet Balance",style: Style.t_500_18g,),
+                Text("Wallet Balance",style: Style.t_500_18b,),
                 Padding(
                   padding: const EdgeInsets.only(top: 28),
-                  child: Text("27 \$",style: Style.t_500_36g,),
+                  child: Text("0.00 \$",style: Style.t_500_36b,),
                 ),
               ],
             ),
@@ -53,41 +53,32 @@ class DepositState extends State<Deposit>{
             padding: const EdgeInsets.only(bottom: 37,top: 61),
             width: w/2,
             child: VirtualKeyboard(
-              textColor: Style.gray90,
-              fontSize: 24,
-              alwaysCaps: true,
-              height: 231,
-
-              // [0-9] + .
+                textColor: Style.gray90,
+                fontSize: 24,
+                alwaysCaps: true,
+                height: 231,
+                // [0-9] + .
                 type: VirtualKeyboardType.Numeric,
                 // Callback for key press event
                 onKeyPress: (key) => print(key.text)),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 24,bottom: 16),
-                child: Text("Select your payment method:",style: Style.t_400_16w,),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SvgPicture.asset(Cicon.webmoney),
-                  SvgPicture.asset(Cicon.visa),
-                  SvgPicture.asset(Cicon.paypal),
-                  SvgPicture.asset(Cicon.discover),
-                  SvgPicture.asset(Cicon.mastercard),
-                ],),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(left: 24,bottom: 16),
+            child: Text("Your Balance is 27 \$",style: Style.t_400_16w,),
           ),
 
-    Padding(
-    padding: const EdgeInsets.only(bottom: 21,top: 16,left: 25),
-    child:Align(alignment: Alignment.centerLeft,child: Text("You will be redirected to Paypal gateway",style: Style.t_400_14_grayA1,),)),
+          Padding(
+              padding: const EdgeInsets.only(bottom: 21,top: 16,left: 25),
+              child:Align(alignment: Alignment.centerLeft,child: RichText(
+
+                  text: TextSpan(
+                  children: [
+                    TextSpan(text:"Your Request will be processed and deposit to your\n",style: Style.t_400_14_grayA1),
+                    TextSpan(text:"verified Financial Account",style: Style.t_400_14g),
+                  ])),)),
           Padding(
             padding: const EdgeInsets.only(bottom: 49,left: 27),
-            child: Align(alignment: Alignment.centerLeft,child:_bigButton(text: "Proceed", textColor: Style.t_500_18_back, backColor: Style.accentGold)),
+            child: Align(alignment: Alignment.centerLeft,child:_bigButton(text: "Request Withdraw", textColor: Style.t_500_18_back, backColor: Colors.white)),
           ),
         ],
       ),
@@ -101,7 +92,7 @@ class DepositState extends State<Deposit>{
       onPressed: () => print(""),
       child: Text(text,style: textColor,),
       style: ButtonStyle(
-          fixedSize: MaterialStateProperty.all(Size(148,54)),
+          fixedSize: MaterialStateProperty.all(Size(263,54)),
           padding: MaterialStateProperty.all(
               const EdgeInsets.only(left: 6,top: 6,bottom: 6)),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -132,8 +123,9 @@ class DepositState extends State<Deposit>{
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(12)),
           ),
-          Text("Deposit", style: Style.t_500_24w),
+          Text("Withdraw", style: Style.t_500_24w),
           const SizedBox(width: 44,),
+
 
         ],
       ),
