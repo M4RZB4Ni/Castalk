@@ -27,6 +27,7 @@ class DraftsState extends State<Drafts>{
       backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
       body: ListView.builder(
+        padding: const EdgeInsets.only(top: 41),
         shrinkWrap: true, itemBuilder: (BuildContext context, int index) {
           return _likedItem(w,h);
       },
