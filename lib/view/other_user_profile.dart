@@ -222,7 +222,7 @@ class OtherUserProfileState extends State<OtherUserProfile>{
                       height: 77,
                       padding: const EdgeInsets.all(15),
                       child: SvgPicture.asset(
-                        svgPath + "play.svg",
+                        Cicon.play,
                       ),
                       decoration: BoxDecoration(
                           color: Style.gray3cop30,
@@ -254,7 +254,7 @@ class OtherUserProfileState extends State<OtherUserProfile>{
                           padding: const EdgeInsets.only(top: 15),
                           child: Row(
                             children: [
-                              SvgPicture.asset(svgPath+"timer.svg"),
+                              SvgPicture.asset(Cicon.timer),
                               Padding(
                                 padding: const EdgeInsets.only(left: 5),
                                 child: Text("1 : 26 : 45",
@@ -267,7 +267,7 @@ class OtherUserProfileState extends State<OtherUserProfile>{
                           padding: const EdgeInsets.only(top: 12),
                           child: Row(
                             children: [
-                              SvgPicture.asset(svgPath+"heart_empty.svg"),
+                              SvgPicture.asset(Cicon.heart_empty),
                               Padding(
                                 padding: const EdgeInsets.only(left: 5),
                                 child: Text("250",
@@ -288,7 +288,7 @@ class OtherUserProfileState extends State<OtherUserProfile>{
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(color: Style.gray48op50,borderRadius: BorderRadius.circular(12)),
                 child: SvgPicture.asset(
-                    svgPath + "arrow_left.svg",
+                    Cicon.arrow_left,
                     width: 12,
                     height: 6),
               )

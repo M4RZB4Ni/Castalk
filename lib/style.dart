@@ -55,6 +55,7 @@ class Style  {
   static Color hintColor=const Color(0xff797979);
   static Color purple=const Color(0xff6486FF);
   static Color blue=const Color(0xff00A3FF);
+  static Color gray88= const Color(0xff888888).withOpacity(0.50);
 
   static Color headerBackBtn = const Color(0xff808080).withOpacity(0.5);
 
