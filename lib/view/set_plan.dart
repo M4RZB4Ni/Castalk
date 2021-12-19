@@ -24,6 +24,7 @@ class SetPlanState extends State<SetPlan>{
   bool toYourPlaylist = false;
   bool newPlayList = false;
   TextEditingController numberController = TextEditingController();
+  String svgPath = "assets/icons/";
 
 
   @override
@@ -36,90 +37,143 @@ class SetPlanState extends State<SetPlan>{
     return Scaffold(
       backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
-      body: SingleChildScrollView(child:
-    Column(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    Padding(
-      padding: const EdgeInsets.only(left: 24, top: 35, right: 23),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Name of Plan",
-                style: Style.t_500_18w,
+      body: Padding(
+        padding: const EdgeInsets.only(left: 24, top: 35, right: 23),
+        child: SingleChildScrollView(child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Name of Plan",
+                      style: Style.t_500_18w,
+                    ),
+                    Text(
+                      "0 plans selected",
+                      style: Style.t_400_18r,
+                    ),
+                  ],
+                ),
+                Container(
+                    height: 55,
+                    margin: const EdgeInsets.only(top: 8,bottom: 36),
+                    decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.all(Radius.circular(12)),
+                        border: Border.all(width: 1, color: const Color(0xff484848))),
+                    width: w,
+                    child: TextField(
+                        controller: numberController,
+                        textAlign: TextAlign.left,
+                        maxLines: 1,
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            isDense: false,
+                            contentPadding:
+                            const EdgeInsets.only(top: 12, bottom: 12, left: 19),
+                            hintText: "Name of plan",
+                            hintStyle: TextStyle(color: Theme.of(context).hintColor),
+                            fillColor: Colors.white))),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 180),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Activate",
+                        style: Style.t_400_14_grayA1,
+                      ),
+                      Text(
+                        "Tap on plans to edit them",
+                        style: Style.t_400_14_grayA1,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      ExpandablePanel(
+                          theme: const ExpandableThemeData(hasIcon: false),
+                          header: expandedHeaderToYourPlaylist(w,title: "1 Month",price: "9"),
+                          collapsed: Container(),
+                          expanded: playlistItem(w, h)),
+                      ExpandablePanel(
+                          theme: const ExpandableThemeData(hasIcon: false),
+                          header: expandedHeaderToYourPlaylist(w,title: "3 Month",price: "9"),
+                          collapsed: Container(),
+                          expanded: playlistItem(w, h)),
+                      ExpandablePanel(
+                          theme: const ExpandableThemeData(hasIcon: false),
+                          header: expandedHeaderToYourPlaylist(w,title: "6 Month",price: "9"),
+                          collapsed: Container(),
+                          expanded: playlistItem(w, h)),
+                      ExpandablePanel(
+                          theme: const ExpandableThemeData(hasIcon: false),
+                          header: expandedHeaderToYourPlaylist(w,title: "A Year",price: "9"),
+                          collapsed: Container(),
+                          expanded: playlistItem(w, h)),
+                    ],
+                  ),
+                ],
               ),
-              Text(
-                "0 plans selected",
-                style: Style.t_400_18r,
-              ),
-            ],
-          ),
-          Container(
-              height: 55,
-              margin: const EdgeInsets.only(top: 8,bottom: 36),
-              decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(12)),
-                  border: Border.all(width: 1, color: const Color(0xff484848))),
-              width: w,
-              child: TextField(
-                  controller: numberController,
-                  textAlign: TextAlign.left,
-                  maxLines: 1,
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      isDense: false,
-                      contentPadding:
-                      const EdgeInsets.only(top: 12, bottom: 12, left: 19),
-                      hintText: "Name of plan",
-                      hintStyle: TextStyle(color: Theme.of(context).hintColor),
-                      fillColor: Colors.white))),
+            ),
 
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Activate",
-                style: Style.t_400_14_grayA1,
+
+            Padding(
+              padding: const EdgeInsets.only(bottom: 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => print(""),
+                    child: const Text(
+                      "Save",
+                      style: TextStyle(color: Color(0xff283034)),
+                    ),
+                    style: ButtonStyle(
+                        padding: MaterialStateProperty.all(
+                            const EdgeInsets.symmetric(vertical: 17, horizontal: 58)),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16.0),
+                                side: const BorderSide(color: Color(0xffFFB800)))),
+                        backgroundColor:
+                        MaterialStateProperty.all(const Color(0xffFFB800)),
+                        textStyle: MaterialStateProperty.all(const TextStyle(
+                            color: Color(0xff283034),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500))),
+                  ),
+                  Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      padding: const EdgeInsets.all(12),
+                      width: 54,
+                      height: 54,
+                      child: SvgPicture.asset(
+                        Cicon.delete,
+                        width: 17,
+                        height: 17,
+                        color: Style.redAccent,
+                      ),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Style.redAccent),
+                          color: Colors.transparent,
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(12)))
+                ],
               ),
-              Text(
-                "Tap on plans to edit them",
-                style: Style.t_400_14_grayA1,
-              ),
-            ],
-          ),
-          ExpandablePanel(
-              theme: const ExpandableThemeData(hasIcon: false),
-              header: expandedHeaderToYourPlaylist(w,title: "1 Month",price: "9"),
-              collapsed: Container(),
-              expanded: playlistItem(w, h)),
-          ExpandablePanel(
-              theme: const ExpandableThemeData(hasIcon: false),
-              header: expandedHeaderToYourPlaylist(w,title: "3 Month",price: "9"),
-              collapsed: Container(),
-              expanded: playlistItem(w, h)),
-          ExpandablePanel(
-              theme: const ExpandableThemeData(hasIcon: false),
-              header: expandedHeaderToYourPlaylist(w,title: "6 Month",price: "9"),
-              collapsed: Container(),
-              expanded: playlistItem(w, h)),
-          ExpandablePanel(
-              theme: const ExpandableThemeData(hasIcon: false),
-              header: expandedHeaderToYourPlaylist(w,title: "A Year",price: "9"),
-              collapsed: Container(),
-              expanded: playlistItem(w, h)),
-        ],
-      ),
-    ),
-  ],
-),
+            )
+          ],
+        ))
     ));
   }
-
+//        padding: const EdgeInsets.only(left: 24, top: 35, right: 23),+
   newPlaylist(w, h) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

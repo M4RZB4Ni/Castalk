@@ -1,4 +1,5 @@
 
+import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -84,8 +85,8 @@ class SavedProjectsState extends State<SavedProjects> {
           // All actions are defined in the children parameter.
           children:  [
             Row(children: [
-              _47Buttons(buttonName: "delete"),
-              _47Buttons(buttonName: "modify"),
+              _47Buttons(buttonName: Cicon.delete),
+              _47Buttons(buttonName: Cicon.modify),
             ],)
           ],
         ),
