@@ -32,6 +32,7 @@ import 'package:castalk/view/player/comments.dart';
 import 'package:castalk/view/player/drive_mode.dart';
 import 'package:castalk/view/intro_signin/enter_code.dart';
 import 'package:castalk/view/intro_signin/intro.dart';
+import 'package:castalk/view/post_draft/draft_item.dart';
 import 'package:castalk/view/post_draft/drafts.dart';
 import 'package:castalk/view/product_view/episode_view.dart';
 import 'package:castalk/view/product_view/podcast_view.dart';
@@ -106,7 +107,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/Drafts",
+      initialRoute: "/DraftItem",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -159,6 +160,7 @@ class MyApp extends StatelessWidget {
         "/TransactionDetails":(context) => const Directionality(textDirection: TextDirection.ltr, child: TransactionDetails()),
         "/SetPlan":(context) => const Directionality(textDirection: TextDirection.ltr, child: SetPlan()),
         "/Drafts":(context) => const Directionality(textDirection: TextDirection.ltr, child: Drafts()),
+        "/DraftItem":(context) => const Directionality(textDirection: TextDirection.ltr, child: DraftItem()),
       },
 
     );

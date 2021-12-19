@@ -56,6 +56,7 @@ class Style  {
   static Color purple=const Color(0xff6486FF);
   static Color blue=const Color(0xff00A3FF);
   static Color gray88= const Color(0xff888888).withOpacity(0.50);
+  static Color gold29= const Color(0xffFFB800).withOpacity(0.29);
 
   static Color headerBackBtn = const Color(0xff808080).withOpacity(0.5);
 
@@ -67,6 +68,7 @@ class Style  {
   static TextStyle t_400_12w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_400_16w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16);
   static TextStyle t_400_14w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 14);
+  static TextStyle t_400_14_9d= const TextStyle(color: gray9D,fontWeight: FontWeight.w400,fontSize: 14);
   static TextStyle t_400_18r=  TextStyle(color: redAccent,fontWeight: FontWeight.w400,fontSize: 14);
   static TextStyle t_400_14wh=  TextStyle(color: whiteHalf,fontWeight: FontWeight.w400,fontSize: 14);
   static TextStyle t_400_13gA= const TextStyle(color: grayA,fontWeight: FontWeight.w400,fontSize: 13);
@@ -80,6 +82,7 @@ class Style  {
   static TextStyle t_400_18g= const TextStyle(color: accentGold,fontWeight: FontWeight.w400,fontSize: 18);
   static TextStyle t_400_12g= const TextStyle(color: accentGold,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_700_24g= const TextStyle(color: accentGold,fontWeight: FontWeight.w700,fontSize: 24);
+  static TextStyle t_700_20g= const TextStyle(color: accentGold,fontWeight: FontWeight.w700,fontSize: 20);
   static TextStyle t_700_14b= const TextStyle(color: background,fontWeight: FontWeight.w700,fontSize: 14);
   static TextStyle t_700_18w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 18);
   static TextStyle t_400_22w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 22);
