@@ -78,6 +78,7 @@ class Style  {
   static TextStyle t_400_24_lightGreen= const TextStyle(color: lightGreen,fontWeight: FontWeight.w400,fontSize: 24);
   static TextStyle t_500_16w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 16);
   static TextStyle t_500_16g90= const TextStyle(color: gray90,fontWeight: FontWeight.w500,fontSize: 16);
+  static TextStyle t_500_16g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 16);
   static TextStyle t_400_18w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 18);
   static TextStyle t_400_18g= const TextStyle(color: accentGold,fontWeight: FontWeight.w400,fontSize: 18);
   static TextStyle t_400_12g= const TextStyle(color: accentGold,fontWeight: FontWeight.w400,fontSize: 12);

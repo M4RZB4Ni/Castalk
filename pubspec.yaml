@@ -161,6 +161,10 @@ flutter:
   - assets/icons/deposite.svg
   - assets/icons/arrow_withdraw.svg
   - assets/icons/radiounchecedtrans.svg
+  - assets/icons/arrow_up_gold.svg
+  - assets/icons/arrow_down_gold.svg
+  - assets/icons/cancel.svg
+  - assets/icons/tick_bold.svg
 
   uses-material-design: true
 

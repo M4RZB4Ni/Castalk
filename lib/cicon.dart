@@ -105,4 +105,8 @@ class Cicon{
   static const String deposite= _prefix+"deposite"+_svg;
   static const String arrow_withdraw= _prefix+"arrow_withdraw"+_svg;
   static const String radiounchecedtrans= _prefix+"radiounchecedtrans"+_svg;
+  static const String arrow_up_gold= _prefix+"arrow_up_gold"+_svg;
+  static const String arrow_down_gold= _prefix+"arrow_down_gold"+_svg;
+  static const String cancel= _prefix+"cancel"+_svg;
+  static const String tick_bold= _prefix+"tick_bold"+_svg;
 }
