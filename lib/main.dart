@@ -58,6 +58,7 @@ import 'package:castalk/view/wallet/withdraw.dart';
 import 'package:flutter/material.dart';
 import 'view/nav/explore/explore.dart';
 import 'view/nav/home/home_items_expanded.dart';
+import 'view/new_post/new_episode.dart';
 
 void main() {
   runApp(const MyApp());
@@ -110,7 +111,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/NewSeason",
+      initialRoute: "/NewEpisode",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -167,6 +168,7 @@ class MyApp extends StatelessWidget {
         "/NewPost":(context) => const Directionality(textDirection: TextDirection.ltr, child: NewPost()),
         "/NewPodcast":(context) => const Directionality(textDirection: TextDirection.ltr, child: NewPodcast()),
         "/NewSeason":(context) => const Directionality(textDirection: TextDirection.ltr, child: NewSeason()),
+        "/NewEpisode":(context) => const Directionality(textDirection: TextDirection.ltr, child: NewEpisode()),
       },
 
     );
