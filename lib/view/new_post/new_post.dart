@@ -31,52 +31,87 @@ class NewPostState extends State<NewPost>{
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      extendBody: true,
+
       backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(w, 50), child: header(w)),
       body: SingleChildScrollView(child:
 
       Padding(
         padding: const EdgeInsets.only(left: 24, top: 48,bottom: 18, right: 23),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
+        child: SizedBox(
+          height: h,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "What do you want to post?",
+                    style: Style.t_400_18w,
+                  ),
+                    ExpandablePanel(
+                        theme: const ExpandableThemeData(hasIcon: false),
+                        header: expandedHeaderToYourPlaylist(w,icon: Cicon.folder, title: "Create New Podcast"),
+                        collapsed: Container(),
+                        expanded: Container()),
 
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "What do you want to post?",
-                  style: Style.t_400_18w,
-                ),
-                ExpandablePanel(
-                    theme: const ExpandableThemeData(hasIcon: false),
-                    header: expandedHeaderToYourPlaylist(w,icon: Cicon.folder, title: "Create New Podcast"),
-                    collapsed: Container(),
-                    expanded: Container()),
+                    ExpandablePanel(
+                        theme: const ExpandableThemeData(hasIcon: false),
+                        header: expandedHeaderToYourPlaylist(w,icon: Cicon.playlist, title: "Add as New Season",color: Colors.black),
+                        collapsed: Container(),
+                        expanded: Container(
+                            width: w, height: 320, child: _ItemSection(w))),
 
-                ExpandablePanel(
-                    theme: const ExpandableThemeData(hasIcon: false),
-                    header: expandedHeaderToYourPlaylist(w,icon: Cicon.playlist, title: "Add as New Season",color: Colors.black),
-                    collapsed: Container(),
-                    expanded: Container(
-                        width: w, height: 320, child: _ItemSection(w))),
+                    ExpandablePanel(
+                        theme: const ExpandableThemeData(hasIcon: false),
+                        header: expandedHeaderToYourPlaylist(w,icon: Cicon.mic, title: "Add as New Episode"),
+                        collapsed: Container(),
+                        expanded: Container(
+                            width: w, height: 320, child: _ItemSection(w))),
+                ],
+              ),
 
-                ExpandablePanel(
-                    theme: const ExpandableThemeData(hasIcon: false),
-                    header: expandedHeaderToYourPlaylist(w,icon: Cicon.mic, title: "Add as New Episode"),
-                    collapsed: Container(),
-                    expanded: Container(
-                        width: w, height: 320, child: _ItemSection(w))),
-              ],
-            ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
 
-            Text("You have 5 Open Podcasts",style: Style.t_400_14_9d,)
+                children: [
+                  Text("You have 5 Open Podcasts",style: Style.t_400_14_9d,),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 22,bottom: 59,left: 0),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10),
+                              child: Text(
+                                "Proceed",
+                                style: Style.t_500_18_back,
+                              ),
+                            ),
+                            SvgPicture.asset(Cicon.arrow_fish_right,color: Style.background,),
 
-          ],
+                          ]),
+                      style: ButtonStyle(
+                          fixedSize: MaterialStateProperty.all(const Size(213, 54)),
+                          padding: MaterialStateProperty.all(
+                              const EdgeInsets.only(left: 6, top: 6, bottom: 6)),
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16.0),
+                                  side: const BorderSide(color: Style.accentGold))),
+                          backgroundColor: MaterialStateProperty.all(Style.accentGold)),
+                    ),
+                  ),
+                ],
+              )
+
+            ],
+          ),
         ),
       )),
 
