@@ -10,12 +10,12 @@ class SavePlayList extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return SavePlayListState();
   }
 }
 
 class SavePlayListState extends State<SavePlayList> {
+
   String svgPath = "assets/icons/";
   bool newPlayList = false;
   bool toYourPlaylist = true;

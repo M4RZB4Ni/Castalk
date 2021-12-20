@@ -165,6 +165,7 @@ flutter:
   - assets/icons/arrow_down_gold.svg
   - assets/icons/cancel.svg
   - assets/icons/tick_bold.svg
+  - assets/icons/folder.svg
 
   uses-material-design: true
 

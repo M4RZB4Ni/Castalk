@@ -24,6 +24,7 @@ import 'package:castalk/view/nav/profile/promotion.dart';
 import 'package:castalk/view/nav/profile/promotion_analytics.dart';
 import 'package:castalk/view/nav/profile/promotion_list.dart';
 import 'package:castalk/view/nav/profile/request_verify_badge.dart';
+import 'package:castalk/view/new_post/new_post.dart';
 import 'package:castalk/view/other_user_profile.dart';
 import 'package:castalk/view/owned_section/owned_episodes.dart';
 import 'package:castalk/view/owned_section/owned_podcast.dart';
@@ -107,7 +108,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/DraftItem",
+      initialRoute: "/NewPost",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -161,6 +162,7 @@ class MyApp extends StatelessWidget {
         "/SetPlan":(context) => const Directionality(textDirection: TextDirection.ltr, child: SetPlan()),
         "/Drafts":(context) => const Directionality(textDirection: TextDirection.ltr, child: Drafts()),
         "/DraftItem":(context) => const Directionality(textDirection: TextDirection.ltr, child: DraftItem()),
+        "/NewPost":(context) => const Directionality(textDirection: TextDirection.ltr, child: NewPost()),
       },
 
     );

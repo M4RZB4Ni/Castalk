@@ -439,7 +439,7 @@ class PodcastViewState extends State<PodcastView> {
             width: 44,
             height: 44,
             child: SvgPicture.asset(
-              svgPath + "search.svg",
+              Cicon.search,
               width: 14,
               height: 14,
             ),
@@ -453,7 +453,7 @@ class PodcastViewState extends State<PodcastView> {
             height: 44,
             padding: const EdgeInsets.all(12),
             child: SvgPicture.asset(
-              svgPath + "filter.svg",
+              Cicon.filter,
               width: 14,
               height: 14,
             ),
@@ -467,7 +467,7 @@ class PodcastViewState extends State<PodcastView> {
             width: 44,
             height: 44,
             child: SvgPicture.asset(
-              svgPath + "sort.svg",
+              Cicon.sort,
               width: 14,
               height: 14,
             ),
