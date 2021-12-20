@@ -28,6 +28,7 @@ import 'package:castalk/view/new_post/new_podcast.dart';
 import 'package:castalk/view/new_post/new_post.dart';
 import 'package:castalk/view/new_post/new_season.dart';
 import 'package:castalk/view/order_process/cart_invoice.dart';
+import 'package:castalk/view/order_process/cart_proceed.dart';
 import 'package:castalk/view/order_process/choose_subscription.dart';
 import 'package:castalk/view/other_user_profile.dart';
 import 'package:castalk/view/owned_section/owned_episodes.dart';
@@ -113,7 +114,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/CartInvoice",
+      initialRoute: "/CartProceed",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -172,7 +173,7 @@ class MyApp extends StatelessWidget {
         "/NewSeason":(context) => const Directionality(textDirection: TextDirection.ltr, child: NewSeason()),
         "/NewEpisode":(context) => const Directionality(textDirection: TextDirection.ltr, child: NewEpisode()),
         "/ChooseSubscription":(context) => const Directionality(textDirection: TextDirection.ltr, child: ChooseSubscription()),
-        "/CartInvoice":(context) => const Directionality(textDirection: TextDirection.ltr, child: CartInvoice()),
+        "/CartProceed":(context) => const Directionality(textDirection: TextDirection.ltr, child: CartProceed()),
       },
 
     );

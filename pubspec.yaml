@@ -166,6 +166,9 @@ flutter:
   - assets/icons/tick_bold.svg
   - assets/icons/folder.svg
   - assets/icons/arrow_right_bold.svg
+  - assets/icons/wallet.svg
+  - assets/icons/bank_cart.svg
+  - assets/icons/gateway.svg
 
   uses-material-design: true
 
