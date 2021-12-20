@@ -128,7 +128,7 @@ class Style  {
 
   static BoxDecoration inputBoxDecoration=BoxDecoration(borderRadius:   const BorderRadius.all(Radius.circular(12)),border:  Border.all(width: 1,color: gray48));
   static BoxDecoration dropDownDecoration=BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(12)),border: Border.all(width: 1,color: const Color(0xff484848)));
-  static InputDecoration inputTextDecoration=InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
+  static InputDecoration inputTextDecoration=InputDecoration(border: InputBorder.none,isDense: true,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
       hintText: "Copon name",hintStyle: TextStyle(color: hintColor),fillColor: Colors.white);
 
   static InputDecoration inputSearchTextDecoration=InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
