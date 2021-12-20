@@ -27,6 +27,7 @@ import 'package:castalk/view/nav/profile/request_verify_badge.dart';
 import 'package:castalk/view/new_post/new_podcast.dart';
 import 'package:castalk/view/new_post/new_post.dart';
 import 'package:castalk/view/new_post/new_season.dart';
+import 'package:castalk/view/order_process/choose_subscription.dart';
 import 'package:castalk/view/other_user_profile.dart';
 import 'package:castalk/view/owned_section/owned_episodes.dart';
 import 'package:castalk/view/owned_section/owned_podcast.dart';
@@ -111,7 +112,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/NewEpisode",
+      initialRoute: "/ChooseSubscription",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -169,6 +170,7 @@ class MyApp extends StatelessWidget {
         "/NewPodcast":(context) => const Directionality(textDirection: TextDirection.ltr, child: NewPodcast()),
         "/NewSeason":(context) => const Directionality(textDirection: TextDirection.ltr, child: NewSeason()),
         "/NewEpisode":(context) => const Directionality(textDirection: TextDirection.ltr, child: NewEpisode()),
+        "/ChooseSubscription":(context) => const Directionality(textDirection: TextDirection.ltr, child: ChooseSubscription()),
       },
 
     );
