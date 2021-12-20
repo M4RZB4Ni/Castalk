@@ -93,7 +93,7 @@ class NewPostState extends State<NewPost>{
                                 style: Style.t_500_18_back,
                               ),
                             ),
-                            SvgPicture.asset(Cicon.arrow_fish_right,color: Style.background,),
+                            SvgPicture.asset(Cicon.arrow_right_bold,color: Style.background,),
 
                           ]),
                       style: ButtonStyle(

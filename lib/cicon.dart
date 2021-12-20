@@ -110,4 +110,5 @@ class Cicon{
   static const String cancel= _prefix+"cancel"+_svg;
   static const String tick_bold= _prefix+"tick_bold"+_svg;
   static const String folder= _prefix+"folder"+_svg;
+  static const String arrow_right_bold= _prefix+"arrow_right_bold"+_svg;
 }
