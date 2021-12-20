@@ -97,6 +97,7 @@ class Style  {
   static TextStyle t_500_22w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 22);
   static TextStyle t_400_12_9D= const TextStyle(color: gray9D,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_500_18g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 18);
+  static TextStyle t_500_18_LG= const TextStyle(color: lightGreen,fontWeight: FontWeight.w500,fontSize: 18);
   static TextStyle t_500_18b=  TextStyle(color: blue,fontWeight: FontWeight.w500,fontSize: 18);
   static TextStyle t_500_18w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 18);
   static TextStyle t_500_18_5c= const TextStyle(color: gray5C,fontWeight: FontWeight.w500,fontSize: 18);
@@ -107,6 +108,7 @@ class Style  {
   static TextStyle t_400_12r= TextStyle(color: redAccent,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_500_14g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 14);
   static TextStyle t_500_24w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 24);
+  static TextStyle t_500_24g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 24);
   static TextStyle t_500_36g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 36);
   static TextStyle t_500_36b=  TextStyle(color: blue,fontWeight: FontWeight.w500,fontSize: 36);
   static TextStyle t_500_14w= const TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 14);
@@ -117,6 +119,7 @@ class Style  {
   static TextStyle t_500_12g= const TextStyle(color: accentGold,fontWeight: FontWeight.w500,fontSize: 12);
   static TextStyle t_500_14r=  TextStyle(color: redAccent,fontWeight: FontWeight.w500,fontSize: 14);
   static TextStyle t_500_14_G9D= const TextStyle(color: gray9D,fontWeight: FontWeight.w500,fontSize: 14);
+  static TextStyle t_500_14_G34= const TextStyle(color: gray34,fontWeight: FontWeight.w500,fontSize: 14);
   static TextStyle t_400_12_gray= const TextStyle(color: grayA1,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle t_400_12_green= const TextStyle(color: green,fontWeight: FontWeight.w400,fontSize: 12);
   static TextStyle buttonDarkStyle= const TextStyle(color: accentGold, fontSize: 18, fontWeight: FontWeight.w500);
