@@ -31,66 +31,64 @@ class IntroState extends State<Intro> with SingleTickerProviderStateMixin{
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    // TODO: implement build
-     return WillPopScope(
-         onWillPop:() async => false,
-         child: FutureBuilder(
-             future: introRepository.fetchIntros(),
-             builder: (context,AsyncSnapshot<IntroModel> model) {
-               return !model.hasData ? Scaffold(
-                   resizeToAvoidBottomInset: false, // set it to false
-                   appBar: AppBar(
-                     backgroundColor: Colors.transparent,
-                     centerTitle: true,title: Text("Welcome",style: Theme.of(context).textTheme.headline1)),
-                   backgroundColor: Style.background,
-                   body:
-                   Column(
-                     children: [
-                       Expanded(child: PageView(
-                         onPageChanged:(value) {
-                           setState(() {
-                             activeStepe=value;
-                           });
-                         },
+
+     return FutureBuilder(
+         future: introRepository.fetchIntros(),
+         builder: (context,AsyncSnapshot<IntroModel> model) {
+           return !model.hasData ? Scaffold(
+               resizeToAvoidBottomInset: false, // set it to false
+               appBar: AppBar(
+                   automaticallyImplyLeading: false,
+                   backgroundColor: Colors.transparent,
+                   centerTitle: true,title: Text("Welcome",style: Theme.of(context).textTheme.headline1)),
+               backgroundColor: Style.background,
+               body:
+               Column(
+                 children: [
+                   Expanded(child: PageView(
+                       onPageChanged:(value) {
+                         setState(() {
+                           activeStepe=value;
+                         });
+                       },
+                       controller: pageController,
+                       children: [
+
+                         introWidgets(model.data,w,h),
+                         introWidgets(model.data,w,h),
+                         introWidgets(model.data,w,h),
+
+                       ])),
+                   Padding(
+                     padding: const EdgeInsets.symmetric(horizontal: 53,vertical: 35),
+                     child: Row(
+
+                       mainAxisAlignment: MainAxisAlignment.end,
+                       children: [
+                         Expanded(child: InkWell(child: Text("Skip",style: Theme.of(context).textTheme.button,))),
+                         SmoothPageIndicator(
                            controller: pageController,
-                           children: [
-
-                             introWidgets(model.data,w,h),
-                             introWidgets(model.data,w,h),
-                             introWidgets(model.data,w,h),
-
-                           ])),
-                       Padding(
-                         padding: const EdgeInsets.symmetric(horizontal: 53,vertical: 35),
-                         child: Row(
-
-                           mainAxisAlignment: MainAxisAlignment.end,
-                           children: [
-                             Expanded(child: InkWell(child: Text("Skip",style: Theme.of(context).textTheme.button,))),
-                             SmoothPageIndicator(
-                               controller: pageController,
-                               count:  3,
-                               axisDirection: Axis.horizontal,
-                               effect:  const ScaleEffect(
-                                   spacing:  13.0,
-                                   dotWidth:  12.0,
-                                   dotHeight:  12.0,
-                                   paintStyle:  PaintingStyle.fill,
-                                   strokeWidth:  1.5,
-                                   dotColor:  Colors.grey,
-                                    activePaintStyle: PaintingStyle.stroke,offset:10 ,
-                                   activeDotColor:  Colors.white,activeStrokeWidth: 6
-                               ),
-                             )
-                             ,
-                           ],
-                         ),
-                       )
-                     ],
+                           count:  3,
+                           axisDirection: Axis.horizontal,
+                           effect:  const ScaleEffect(
+                               spacing:  13.0,
+                               dotWidth:  12.0,
+                               dotHeight:  12.0,
+                               paintStyle:  PaintingStyle.fill,
+                               strokeWidth:  1.5,
+                               dotColor:  Colors.grey,
+                               activePaintStyle: PaintingStyle.stroke,offset:10 ,
+                               activeDotColor:  Colors.white,activeStrokeWidth: 6
+                           ),
+                         )
+                         ,
+                       ],
+                     ),
                    )
-                 ) : const Text("Failed");
-             })
-     );
+                 ],
+               )
+           ) : const Text("Failed");
+         });
   }
 
   Widget introWidgets(IntroModel? model,double w,double h)

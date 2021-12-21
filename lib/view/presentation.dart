@@ -113,7 +113,7 @@ class PresentationState extends State<Presentation>{
         child: Padding(
           padding: const EdgeInsets.only(left: 0),
           child: Text(
-            name,
+            name.toString().substring(1,name.toString().length),
             style: Style.t_500_18_back,
           ),
         ),
