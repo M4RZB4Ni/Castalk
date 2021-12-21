@@ -169,6 +169,8 @@ flutter:
   - assets/icons/wallet.svg
   - assets/icons/bank_cart.svg
   - assets/icons/gateway.svg
+  - assets/icons/pay_successful.svg
+  - assets/icons/pay_unsuccessful.svg
 
   uses-material-design: true
 

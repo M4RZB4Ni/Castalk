@@ -114,4 +114,6 @@ class Cicon{
   static const String wallet= _prefix+"wallet"+_svg;
   static const String bank_cart= _prefix+"bank_cart"+_svg;
   static const String gateway= _prefix+"gateway"+_svg;
+  static const String pay_successful= _prefix+"pay_successful"+_svg;
+  static const String pay_unsuccessful= _prefix+"pay_unsuccessful"+_svg;
 }
