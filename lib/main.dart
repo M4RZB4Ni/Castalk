@@ -27,7 +27,6 @@ import 'package:castalk/view/nav/profile/request_verify_badge.dart';
 import 'package:castalk/view/new_post/new_podcast.dart';
 import 'package:castalk/view/new_post/new_post.dart';
 import 'package:castalk/view/new_post/new_season.dart';
-import 'package:castalk/view/order_process/cart_invoice.dart';
 import 'package:castalk/view/order_process/cart_proceed.dart';
 import 'package:castalk/view/order_process/choose_subscription.dart';
 import 'package:castalk/view/order_process/payment_response.dart';
@@ -41,6 +40,7 @@ import 'package:castalk/view/intro_signin/enter_code.dart';
 import 'package:castalk/view/intro_signin/intro.dart';
 import 'package:castalk/view/post_draft/draft_item.dart';
 import 'package:castalk/view/post_draft/drafts.dart';
+import 'package:castalk/view/presentation.dart';
 import 'package:castalk/view/product_view/episode_view.dart';
 import 'package:castalk/view/product_view/podcast_view.dart';
 import 'package:castalk/view/product_view/season_view.dart';
@@ -115,7 +115,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/PaymentResponse",
+      initialRoute: "/Presentation",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
@@ -176,6 +176,7 @@ class MyApp extends StatelessWidget {
         "/ChooseSubscription":(context) => const Directionality(textDirection: TextDirection.ltr, child: ChooseSubscription()),
         "/CartProceed":(context) => const Directionality(textDirection: TextDirection.ltr, child: CartProceed()),
         "/PaymentResponse":(context) => const Directionality(textDirection: TextDirection.ltr, child: PaymentResponse()),
+        "/Presentation":(context) => const Directionality(textDirection: TextDirection.ltr, child: Presentation()),
       },
 
     );

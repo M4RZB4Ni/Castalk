@@ -27,7 +27,7 @@ class PaymentResponseState extends State<PaymentResponse>{
 
 
     double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
+    //double h = MediaQuery.of(context).size.height;
 
     return  Scaffold(
       backgroundColor: Style.background,
@@ -182,22 +182,6 @@ class PaymentResponseState extends State<PaymentResponse>{
   }
 
 
-  ElevatedButton  _bigButton({required text,required var textColor,required backColor}){
-    return ElevatedButton(
-      onPressed: () => print(""),
-      child: Text(text,style: textColor,),
-      style: ButtonStyle(
-          fixedSize: MaterialStateProperty.all(Size(263,54)),
-          padding: MaterialStateProperty.all(
-              const EdgeInsets.only(left: 6,top: 6,bottom: 6)),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16.0),
-                  side:  BorderSide(color: backColor))),
-          backgroundColor:
-          MaterialStateProperty.all(backColor)),
-    );
-  }
 
   header(w) {
     return Padding(
@@ -214,6 +198,7 @@ class PaymentResponseState extends State<PaymentResponse>{
       ),
     );
   }
+
 
 
 
