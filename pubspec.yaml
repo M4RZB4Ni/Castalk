@@ -50,8 +50,8 @@ dependencies:
   new_virtual_keyboard: ^0.1.4
   syncfusion_flutter_datepicker: ^19.4.38
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+
+
 
   flutter_lints: ^1.0.0
 
