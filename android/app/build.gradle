@@ -37,7 +37,6 @@ android {
         applicationId "com.dyneemadev.castalk"
         minSdkVersion 16
         targetSdkVersion 30
-        kotlin_version = '1.6.10'
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
