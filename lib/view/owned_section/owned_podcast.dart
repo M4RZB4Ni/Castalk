@@ -291,7 +291,7 @@ class OwnedPodcastState extends State<OwnedPodcast> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-              flex: 3,
+              flex: 2,
               child: ElevatedButton(
                 onPressed: () => print(""),
                 child: const Text(
@@ -306,7 +306,7 @@ class OwnedPodcastState extends State<OwnedPodcast> {
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16.0),
                             side: const BorderSide(color: Color(0xffFFB800)))),
-                    fixedSize: MaterialStateProperty.all(Size(w, 54)),
+                    fixedSize: MaterialStateProperty.all(Size(w/2, 54)),
                     backgroundColor:
                         MaterialStateProperty.all(const Color(0xffFFB800)),
                     textStyle: MaterialStateProperty.all(const TextStyle(
@@ -316,65 +316,53 @@ class OwnedPodcastState extends State<OwnedPodcast> {
               )),
           Padding(
             padding: const EdgeInsets.only(left: 16),
-            child: Expanded(
-              flex: 1,
-              child: ElevatedButton(
-                onPressed: () => print(""),
-                child: SvgPicture.asset(svgPath + "sharebold.svg"),
-                style: ButtonStyle(
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            vertical: 17, horizontal: 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0),
-                            side: const BorderSide(color: Style.gray2F))),
-                    fixedSize: MaterialStateProperty.all(const Size(54, 54)),
-                    backgroundColor: MaterialStateProperty.all(Style.gray4C)),
-              ),
+            child: ElevatedButton(
+              onPressed: () => print(""),
+              child: SvgPicture.asset(svgPath + "sharebold.svg"),
+              style: ButtonStyle(
+                  padding: MaterialStateProperty.all(
+                      const EdgeInsets.symmetric(
+                          vertical: 17, horizontal: 0)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.0),
+                          side: const BorderSide(color: Style.gray2F))),
+                  fixedSize: MaterialStateProperty.all(const Size(54, 54)),
+                  backgroundColor: MaterialStateProperty.all(Style.gray4C)),
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Expanded(
-              flex: 1,
-              child: ElevatedButton(
-                onPressed: () => print(""),
-                child: SvgPicture.asset(svgPath + "modify.svg",
-                    color: Style.gray2F),
-                style: ButtonStyle(
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            vertical: 17, horizontal: 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0),
-                            side: const BorderSide(color: Style.gray2F))),
-                    fixedSize: MaterialStateProperty.all(const Size(54, 54)),
-                    backgroundColor: MaterialStateProperty.all(Colors.white)),
-              ),
+            child: ElevatedButton(
+              onPressed: () => print(""),
+              child: SvgPicture.asset(svgPath + "modify.svg",
+                  color: Style.gray2F),
+              style: ButtonStyle(
+                  padding: MaterialStateProperty.all(
+                      const EdgeInsets.symmetric(
+                          vertical: 17, horizontal: 0)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.0),
+                          side: const BorderSide(color: Style.gray2F))),
+                  fixedSize: MaterialStateProperty.all(const Size(54, 54)),
+                  backgroundColor: MaterialStateProperty.all(Colors.white)),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: Expanded(
-              flex: 1,
-              child: ElevatedButton(
-                onPressed: () => print(""),
-                child: SvgPicture.asset(svgPath + "remove.svg"),
-                style: ButtonStyle(
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            vertical: 17, horizontal: 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0),
-                            side: BorderSide(color: Style.redAccent))),
-                    fixedSize: MaterialStateProperty.all(const Size(54, 54)),
-                    backgroundColor:
-                        MaterialStateProperty.all(Style.background)),
-              ),
-            ),
+          ElevatedButton(
+            onPressed: () => print(""),
+            child: SvgPicture.asset(svgPath + "remove.svg"),
+            style: ButtonStyle(
+                padding: MaterialStateProperty.all(
+                    const EdgeInsets.symmetric(
+                        vertical: 17, horizontal: 0)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                        side: BorderSide(color: Style.redAccent))),
+                fixedSize: MaterialStateProperty.all(const Size(54, 54)),
+                backgroundColor:
+                MaterialStateProperty.all(Style.background)),
           ),
         ],
       ),

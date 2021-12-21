@@ -50,20 +50,19 @@ class OtherUserProfileState extends State<OtherUserProfile>{
                 child: Container(padding: const EdgeInsets.all(10),width: 44,height: 44,child: SvgPicture.asset(svgPath+"arrow_fish_left.svg",width: 17,height: 17,) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
               ),
 
-              Align(alignment: Alignment.topRight,child: Positioned(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 24,right: 24),
-                    child:Container(
-                      padding: const EdgeInsets.all(12),
-                      child: SvgPicture.asset(svgPath+"info.svg",width: 18,height: 18,),
-                      height: 44,
-                      width: 44,
-                      decoration: BoxDecoration(
-                        color: Style.gray48,
-                        borderRadius: BorderRadius.circular(12),
-                      ), /* add child content here */
-                    ),
-                  ))),
+              Align(alignment: Alignment.topRight,child: Padding(
+                padding: const EdgeInsets.only(top: 24,right: 24),
+                child:Container(
+                  padding: const EdgeInsets.all(12),
+                  child: SvgPicture.asset(svgPath+"info.svg",width: 18,height: 18,),
+                  height: 44,
+                  width: 44,
+                  decoration: BoxDecoration(
+                    color: Style.gray48,
+                    borderRadius: BorderRadius.circular(12),
+                  ), /* add child content here */
+                ),
+              )),
 
               Padding(
                 padding: const EdgeInsets.only(left: 24),

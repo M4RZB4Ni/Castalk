@@ -506,7 +506,7 @@ class NewEpisodeState extends State<NewEpisode> {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 0),
-            child: Text("New Podcast", style: _textTheme.headline1),
+            child: Text("New Episode", style: _textTheme.headline1),
           ),
           const SizedBox(
             width: 44,

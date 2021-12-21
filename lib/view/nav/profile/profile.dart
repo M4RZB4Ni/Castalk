@@ -41,11 +41,7 @@ class ProfileState extends State<Profile>{
         child: Container(padding: EdgeInsets.all(10),width: 44,height: 44,child: SvgPicture.asset(svgPath+"modify.svg",width: 17,height: 17,) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
       ),
 
-      Align(alignment: Alignment.topRight,child: Positioned(
-          child: Padding(
-        padding: const EdgeInsets.only(top: 0,left: 0),
-        child: Container(padding: EdgeInsets.all(19),width: 44,height: 85,child: SvgPicture.asset(svgPath+"moredots.svg") ,decoration: BoxDecoration(color: const Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(34)))),
-      ))),
+      Align(alignment: Alignment.topRight,child: Container(padding: EdgeInsets.all(19),width: 44,height: 85,child: SvgPicture.asset(svgPath+"moredots.svg") ,decoration: BoxDecoration(color: const Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(34))))),
 
       Padding(
         padding: const EdgeInsets.only(left: 24,top: 39),

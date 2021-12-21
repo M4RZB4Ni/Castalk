@@ -32,14 +32,14 @@ class HomeItemsExpandedState extends State<HomeItemsExpanded>{
     return Scaffold(
       appBar: PreferredSize(preferredSize:  Size(w, 100), child: header(w)),
       backgroundColor: Style.background,
-      body:   Column(
+      body:   SingleChildScrollView(child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _sectionsTitle("New from Gaming"),
           _newFromSecondSection(w,h),
 
-        ],),
+        ],)),
     );
   }
   _newFromSecondSection(w,h)

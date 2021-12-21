@@ -182,7 +182,7 @@ class NotificationsState extends State<Notifications>{
                     ))),
               ],
             ),
-            Expanded(child: Padding(
+            Padding(
               padding: const EdgeInsets.only(right: 10,left: 90),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -210,7 +210,7 @@ class NotificationsState extends State<Notifications>{
                   ),
                 ],
               ),
-            )),
+            ),
 
             Align(
                 alignment: Alignment.centerRight,child: Padding(
@@ -254,7 +254,7 @@ class NotificationsState extends State<Notifications>{
                 padding: const EdgeInsets.only(left: 21,top: 14),
                 child: SvgPicture.asset(svgPath+"dollarsign.svg"),
               ),
-              Expanded(child: Padding(
+              Padding(
                 padding: const EdgeInsets.only(right: 10,left: 90),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -274,7 +274,7 @@ class NotificationsState extends State<Notifications>{
                     ),
                   ],
                 ),
-              )),
+              ),
 
               Align(
                   alignment: Alignment.centerRight,child: Padding(
@@ -350,7 +350,7 @@ class NotificationsState extends State<Notifications>{
                       ))),
                 ],
               ),
-              Expanded(child: Padding(
+              Padding(
                 padding: const EdgeInsets.only(right: 10,left: 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -370,7 +370,7 @@ class NotificationsState extends State<Notifications>{
                     ),
                   ],
                 ),
-              )),
+              ),
 
               Align(
                   alignment: Alignment.centerRight,child: Padding(

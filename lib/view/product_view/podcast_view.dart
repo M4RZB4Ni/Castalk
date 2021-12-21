@@ -343,10 +343,10 @@ class PodcastViewState extends State<PodcastView> {
                         fontSize: 18,
                         fontWeight: FontWeight.w500))),
               )),
-          Padding(
-            padding: const EdgeInsets.only(left: 16),
-            child: Expanded(
-              flex: 1,
+          Expanded(
+            flex: 1,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 16),
               child: ElevatedButton(
                 onPressed: () => print(""),
                 child: SvgPicture.asset(Cicon.addlist,color: Style.whiteHalf,),
@@ -363,10 +363,10 @@ class PodcastViewState extends State<PodcastView> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6),
-            child: Expanded(
-              flex: 1,
+          Expanded(
+            flex: 1,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 6),
               child: ElevatedButton(
                 onPressed: () => print(""),
                 child: SvgPicture.asset(Cicon.download,
@@ -384,25 +384,22 @@ class PodcastViewState extends State<PodcastView> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: Expanded(
-              flex: 1,
-              child: ElevatedButton(
-                onPressed: () => print(""),
-                child: SvgPicture.asset(Cicon.like),
-                style: ButtonStyle(
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            vertical: 17, horizontal: 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0),
-                            side: BorderSide(color: Style.glassBlack))),
-                    fixedSize: MaterialStateProperty.all(const Size(54, 54)),
-                    backgroundColor:
-                    MaterialStateProperty.all(Style.glassBlack)),
-              ),
+          Expanded(
+            flex: 1,
+            child: ElevatedButton(
+              onPressed: () => print(""),
+              child: SvgPicture.asset(Cicon.like),
+              style: ButtonStyle(
+                  padding: MaterialStateProperty.all(
+                      const EdgeInsets.symmetric(
+                          vertical: 17, horizontal: 0)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.0),
+                          side: BorderSide(color: Style.glassBlack))),
+                  fixedSize: MaterialStateProperty.all(const Size(54, 54)),
+                  backgroundColor:
+                  MaterialStateProperty.all(Style.glassBlack)),
             ),
           ),
         ],
@@ -495,7 +492,7 @@ class PodcastViewState extends State<PodcastView> {
             borderRadius: BorderRadius.circular(40)),
       ),
 
-      Expanded(child: Row(
+      Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -528,7 +525,7 @@ class PodcastViewState extends State<PodcastView> {
             ),
           ),
         ],
-      ))
+      )
 
     ],);
   }

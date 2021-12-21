@@ -35,7 +35,68 @@ class AchivmentsState extends State<Achivments>{
           preferredSize: Size(w, 100), child: header(w)),
       backgroundColor: Style.background,
       body: SingleChildScrollView(child: Column(
-        children: [_firstPlace(w, h),_achived(w, h)],
+        mainAxisSize: MainAxisSize.min,
+        children: [
+
+            Flexible(
+            child:ListView(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+                 children: [
+                   Padding(
+                       padding: const EdgeInsets.symmetric(horizontal: 16),
+                       child: _firstPlaceItem(w,h)),
+                   Padding(
+                       padding: const EdgeInsets.symmetric(horizontal: 16),
+                       child: _firstPlaceItem(w,h)),
+                   Padding(
+                       padding: const EdgeInsets.symmetric(horizontal: 16),
+                       child: _firstPlaceItem(w,h)),
+                   Padding(
+                       padding: const EdgeInsets.symmetric(horizontal: 16),
+                       child: _firstPlaceItem(w,h)),
+                 ],
+                )),
+
+          Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize:MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 12, left: 31,top: 31),
+              child: Text(
+                "Achieved:",
+                style: Style.t_500_14w,
+              ),
+            ),
+            Flexible(
+              child: ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: _achivedItem(w,h)),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: _achivedItem(w,h)),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: _achivedItem(w,h)),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: _achivedItem(w,h)),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: _achivedItem(w,h)),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: _achivedItem(w,h)),
+                ],
+              ),
+            )
+          ],
+        )],
       )),
     );
   }

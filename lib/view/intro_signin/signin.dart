@@ -6,13 +6,12 @@ class SignIn extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return SigninState();
   }
 }
 
 class SigninState extends State<SignIn> {
-  List<String> cCodes=["Not rather to say","Male","Female"];
+  List<String> cCodes=["Male","Female"];
   static const TextStyle dropStyle =
       TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400);
   TextEditingController numberController = TextEditingController();
@@ -20,6 +19,12 @@ class SigninState extends State<SignIn> {
       borderRadius: const BorderRadius.all(Radius.circular(12)),
       border: Border.all(width: 1, color: const Color(0xff484848)));
   late String _genderValue;
+
+
+  @override
+  void initState() {
+    _genderValue="Male";
+  }
 
   @override
   Widget build(BuildContext context) {
