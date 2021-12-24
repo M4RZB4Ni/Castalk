@@ -33,7 +33,7 @@ class EnterCodeState extends State<EnterCode>
   var nextState="ResendOff";
   var subtitleTextStyle="ResendOff";
 
-  final interval = const Duration(seconds: 1);
+  final interval = const Duration(seconds: 30);
   final int timerMaxSeconds = 3;
   int currentSeconds = 0;
   String get timerText =>
@@ -52,7 +52,7 @@ class EnterCodeState extends State<EnterCode>
       resizeToAvoidBottomInset: false,
       backgroundColor: Style.background,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,12 +62,13 @@ class EnterCodeState extends State<EnterCode>
               children: [
                 Text("The code has been sent to",style: Theme.of(context).textTheme.bodyText1),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10,bottom: 10),
+                  padding: const EdgeInsets.only(top: 10,bottom: 0),
                   child: Text(widget.phoneNumber ?? "None",style: Theme.of(context).textTheme.subtitle2),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 15,bottom: 9),
+                  padding: const EdgeInsets.only(top: 29,bottom: 9,right: 70,left: 70),
                   child: PinCodeTextField(
+
                     appContext: context,
                     length: 6,
                     obscureText: false,
@@ -75,7 +76,7 @@ class EnterCodeState extends State<EnterCode>
                     pinTheme: PinTheme(
                       shape: PinCodeFieldShape.box,
                       borderRadius: BorderRadius.circular(12),
-                      fieldHeight: 50,
+                      fieldHeight: 44,
                       fieldWidth: 40,
                       activeFillColor: Colors.white,
                       borderWidth: 1,
@@ -125,14 +126,21 @@ class EnterCodeState extends State<EnterCode>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(bottom: 20,left: 25),
                   child:nextButtonHintTextType(nextState),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    nextButtonType(nextState),
-                    nextState=="ResendOff" ? Text(timerText,style: Theme.of(context).textTheme.subtitle2,) : const Text(" ")
+                  children:
+                  [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 57,left: 27),
+                      child: nextButtonType(nextState),
+                    ),
+                    nextState=="ResendOff" ? Padding(
+                      padding: const EdgeInsets.only(right: 48,bottom: 57),
+                      child:  Text(timerText,style: Theme.of(context).textTheme.subtitle2,),
+                    ) : const Text(" ")
                   ],
                 )
               ],)
@@ -268,7 +276,7 @@ class EnterCodeState extends State<EnterCode>
    header()
   {
     return   Padding(
-      padding: const EdgeInsets.only(top: 24),
+      padding: const EdgeInsets.only(top: 36,left: 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
