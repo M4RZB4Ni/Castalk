@@ -42,7 +42,7 @@ class PlayerState extends State<Player>
       tripleImageCorner(w, h),
       rightBottons(),
       Padding(
-        padding: const EdgeInsets.only(top: 24,left: 24),
+        padding: const EdgeInsets.only(top: 11,left: 24),
         child: Container(width: 44,height: 44,child: const Icon(Icons.arrow_back_outlined) ,decoration: BoxDecoration(color: Colors.white.withOpacity(0.4),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
       ),
       Positioned(child: Column(
@@ -98,7 +98,7 @@ class PlayerState extends State<Player>
           ),
 
           Padding(
-            padding: const EdgeInsets.only(top: 23),
+            padding: const EdgeInsets.only(top: 47),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -120,7 +120,7 @@ class PlayerState extends State<Player>
 
 
         ],
-      ),top: h/1.9,left: 42,right: 42,),
+      ),top: h/2,left: 42,right: 42,),
 
 
 
@@ -133,7 +133,7 @@ class PlayerState extends State<Player>
     return  Stack(children: [
 
 
-      Positioned(left: -150,top: -30,child: Transform.rotate(angle: -6.45,child: ClipRRect(
+      Positioned(left: -180,top: -80,child: Transform.rotate(angle: -6.45,child: ClipRRect(
         borderRadius: BorderRadius.circular(52.0),
         child: Image.network(
           //model!.imageUrl,
@@ -143,7 +143,7 @@ class PlayerState extends State<Player>
           width: w,
         ),
       ))),
-      Positioned(left: -130,top: -40,child: Transform.rotate(angle: 0.22,child:
+      Positioned(left: -160,top: -100,child: Transform.rotate(angle: 0.22,child:
       Card( shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(50),
       ),clipBehavior: Clip.antiAliasWithSaveLayer,elevation: 5,shadowColor: Color(0xff1E2224B2).withOpacity(0.3),child: Image.network(
@@ -154,7 +154,7 @@ class PlayerState extends State<Player>
         width: w,
       ))
       )),
-      Positioned(left: -130,top: -50,child: Transform.rotate(angle: 0.11,child:
+      Positioned(left: -160,top: -120,child: Transform.rotate(angle: 0.11,child:
       Card( shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(50),
       ),clipBehavior: Clip.antiAlias,elevation: 5,shadowColor: Colors.black.withOpacity(0.5),child: Image.network(
@@ -170,23 +170,23 @@ class PlayerState extends State<Player>
 
   rightBottons()
   {
-   return Positioned(right: 30,top: 50,child: Column(
+   return Positioned(right: 53,top: 50,child: Column(
      children: [
        Padding(
          padding: const EdgeInsets.only(top: 39,left: 0),
-         child: Container(padding: EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(Cicon.share) ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+         child: Container(padding: const EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(Cicon.share) ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
        ),
        Padding(
          padding: const EdgeInsets.only(top: 39,left: 0),
-         child: Container(padding: EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(Cicon.addlist) ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+         child: Container(padding: const EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(Cicon.addlist) ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
        ),
        Padding(
          padding: const EdgeInsets.only(top: 39,left: 0),
-         child: Container(padding: EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(Cicon.like) ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+         child: Container(padding: const EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(Cicon.like) ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
        ),
        Padding(
          padding: const EdgeInsets.only(top: 39,left: 0),
-         child: Container(padding: EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(Cicon.download) ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+         child: Container(padding: const EdgeInsets.all(14),width: 50,height: 50,child: SvgPicture.asset(Cicon.download) ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
        ),
      ],));
   }

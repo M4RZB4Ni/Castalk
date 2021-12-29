@@ -28,19 +28,19 @@ class CongratulationsState extends State<Congratulations>{
     double w = MediaQuery.of(context).size.width;
     //double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size(w,190),
+      appBar: PreferredSize(preferredSize: Size(w,200),
       child:   Padding(
         padding: const EdgeInsets.only(top: 36),
         child: Column(children: [
           header(onlyTitle: true),
           Padding(
-            padding: const EdgeInsets.only(top: 15,right: 26,left: 26),
+            padding: const EdgeInsets.only(top: 15,right: 26,left: 26,bottom: 38),
             child: Text("It’s great to see you here. now you can select your intrests to let castalk suggest personalized contents to you",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.white),),
           ),
           Align(alignment: Alignment.centerLeft,child: Padding(
-            padding: const EdgeInsets.only(top: 38,right: 0,left: 42),
+            padding: const EdgeInsets.only(left: 42,bottom: 8),
             child: Text("${controller.selectedIndexes.length} Item selected",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headline2),
