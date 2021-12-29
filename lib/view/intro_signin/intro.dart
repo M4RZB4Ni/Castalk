@@ -65,8 +65,7 @@ class IntroState extends State<Intro> with SingleTickerProviderStateMixin{
 
                        mainAxisAlignment: MainAxisAlignment.end,
                        children: [
-                         Expanded(child: InkWell(child: Text("Skip",style: Theme.of(context).textTheme.button,))),
-                         SmoothPageIndicator(
+                         Expanded(child:  SmoothPageIndicator(
                            controller: pageController,
                            count:  3,
                            axisDirection: Axis.horizontal,
@@ -76,12 +75,14 @@ class IntroState extends State<Intro> with SingleTickerProviderStateMixin{
                                dotHeight:  12.0,
                                paintStyle:  PaintingStyle.fill,
                                strokeWidth:  1.5,
-                               dotColor:  Colors.grey,
+                               dotColor:  Colors.white,
                                activePaintStyle: PaintingStyle.stroke,offset:10 ,
-                               activeDotColor:  Colors.white,activeStrokeWidth: 6
+                               activeDotColor:  Colors.grey,activeStrokeWidth: 6
                            ),
-                         )
-                         ,
+                         )),
+                        InkWell(child: Text("Skip",style: Theme.of(context).textTheme.button,)),
+
+
                        ],
                      ),
                    )
