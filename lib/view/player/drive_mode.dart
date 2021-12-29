@@ -113,7 +113,7 @@ class DriveModeState extends State<DriveMode>
                 ),
           
               ],
-            ),top: 200,left: 42,right: 42,),
+            ),top: 230,left: 42,right: 42,),
               Positioned(bottom: 80,child: Align(child: SizedBox( width: w,child: Divider(color: Colors.white.withOpacity(0.5),height: 1,)),alignment: Alignment.bottomCenter,)),
               Positioned(bottom: 30,left: 38,child: Align(child: Row(
                 children: [
@@ -185,41 +185,6 @@ class DriveModeState extends State<DriveMode>
   }
 
 
-  playerSection()
-  {
-    return  Positioned.fill(child: Align(child: Column(
-        children: [
-          Text("Podcast Name",style: Theme.of(context).textTheme.headline3,),
-          Text("Episode name which is long...",style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 22,fontWeight: FontWeight.w400),),
-          Row(
-            children: [
-              SvgPicture.asset(svgPath+"mic.svg"),
-              Padding(
-                padding: const EdgeInsets.only(left:5),
-                child: Text("Host Name",style: Theme.of(context).textTheme.bodyText2!.copyWith(color: const Color(0xff0E0E0E)),),
-              ),
-            ],
-          ),
-
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: MusicSlider(
-              emptyColors: const [Colors.white],
-              fillColors: const [
-                Color(0xff484848),
-              ],
-              controller: MusicSliderController(initialValue: 0.5),
-              animateWaveByTime: false,
-              height: 50,
-              division: 53,
-
-              wave: (x, t, a) => a * cos(x * 0.32) * sin(x * 0.23),
-            ),
-          ),
-
-        ]),alignment: Alignment.bottomCenter,));
-
-  }
 
   settings(w,h)
   {

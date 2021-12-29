@@ -29,10 +29,11 @@ class PlaylistState extends State<Playlist> {
       backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(w, 180), child: header(w)),
       body: GridView.builder(
+        padding: const EdgeInsets.symmetric(horizontal: 34),
         itemBuilder: (context, index) {
           return SizedBox(width: 130, height: 180, child: playlistItem());
         },
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 2 / 3),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 2 / 2.1,mainAxisSpacing: 31,crossAxisSpacing: 33),
         ),
     );
   }
@@ -84,7 +85,7 @@ class PlaylistState extends State<Playlist> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                    height: 55,
+                    height: 44,
                     decoration: BoxDecoration(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(12)),

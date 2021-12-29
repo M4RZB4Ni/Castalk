@@ -47,13 +47,13 @@ class SavePlayListState extends State<SavePlayList> {
                     theme: const ExpandableThemeData(hasIcon: false),
                     header: expandedHeaderToYourPlaylist(w),
                     collapsed: Container(),
-                    expanded: Container(
-                        width: 100, height: 150, child: playlistItem(w, h))),
+                    expanded: SizedBox(
+                        width: 120, height: 150, child: playlistItem(w, h))),
                 ExpandablePanel(
                     theme: const ExpandableThemeData(hasIcon: false),
                     header: expandedHeaderNewPlayList(w),
                     collapsed: Container(),
-                    expanded: Container(
+                    expanded: SizedBox(
                       width: w,
                       height: 150,
                       child: newPlaylist(w, h),
@@ -135,7 +135,7 @@ class SavePlayListState extends State<SavePlayList> {
         ? Padding(
             padding: const EdgeInsets.only(top: 36),
             child: Container(
-                padding: EdgeInsets.only(left: 16),
+                padding: const EdgeInsets.only(left: 16),
                 child: Row(
                   children: [
                     SvgPicture.asset(
@@ -159,7 +159,7 @@ class SavePlayListState extends State<SavePlayList> {
         : Padding(
             padding: const EdgeInsets.only(top: 36),
             child: Container(
-                padding: EdgeInsets.only(left: 16),
+                padding: const EdgeInsets.only(left: 16),
                 child: Row(
                   children: [
                     SvgPicture.asset(
@@ -188,7 +188,7 @@ class SavePlayListState extends State<SavePlayList> {
         ? Padding(
             padding: const EdgeInsets.only(top: 36),
             child: Container(
-                padding: EdgeInsets.only(left: 16),
+                padding: const EdgeInsets.only(left: 16),
                 child: Row(
                   children: [
                     SvgPicture.asset(
@@ -210,9 +210,9 @@ class SavePlayListState extends State<SavePlayList> {
                     borderRadius: BorderRadius.circular(16))),
           )
         : Padding(
-            padding: const EdgeInsets.only(top: 36),
+            padding: const EdgeInsets.only(top: 12),
             child: Container(
-                padding: EdgeInsets.only(left: 16),
+                padding: const EdgeInsets.only(left: 16),
                 child: Row(
                   children: [
                     SvgPicture.asset(
@@ -237,84 +237,93 @@ class SavePlayListState extends State<SavePlayList> {
   }
 
   playlistItem(w, h) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Stack(
-          children: [
-            Transform.rotate(
-                angle: -0.2,
-                child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    elevation: 5,
-                    shadowColor: Colors.black.withOpacity(0.5),
-                    child: Image.network(
-                      //model!.imageUrl,
-                      'https://picsum.photos/70/70',
-                      fit: BoxFit.cover,
-                      height: 70,
-                      width: 70,
-                    ))),
-            Transform.rotate(
-                angle: 0.2,
-                child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    elevation: 5,
-                    shadowColor: Colors.black.withOpacity(0.5),
-                    child: Image.network(
-                      //model!.imageUrl,
-                      'https://picsum.photos/71/71',
-                      fit: BoxFit.cover,
-                      height: 70,
-                      width: 70,
-                    ))),
-            Positioned(
-              bottom: 2,
-              right: 3,
-              child: Transform.rotate(
-                  angle: -0.2,
-                  child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      clipBehavior: Clip.antiAlias,
-                      elevation: 5,
-                      shadowColor: Colors.black.withOpacity(0.5),
-                      child: Image.network(
-                        'https://picsum.photos/70/70',
-                        fit: BoxFit.cover,
-                        height: 70,
-                        width: 70,
-                      ))),
-            )
-          ],
-        ),
-        Text(
-          "Playlist Name",
-          style: _textTheme.headline2!.copyWith(fontWeight: FontWeight.w500),
-        ),
-        Text("124 Episods", style: _textTheme.headline6),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 19),
+            child: Stack(
+              children: [
+                Transform.rotate(
+                    angle: -0.2,
+                    child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        elevation: 5,
+                        shadowColor: Colors.black.withOpacity(0.5),
+                        child: Image.network(
+                          //model!.imageUrl,
+                          'https://picsum.photos/70/70',
+                          fit: BoxFit.cover,
+                          height: 70,
+                          width: 70,
+                        ))),
+                Transform.rotate(
+                    angle: 0.2,
+                    child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        elevation: 5,
+                        shadowColor: Colors.black.withOpacity(0.5),
+                        child: Image.network(
+                          //model!.imageUrl,
+                          'https://picsum.photos/71/71',
+                          fit: BoxFit.cover,
+                          height: 70,
+                          width: 70,
+                        ))),
+                Positioned(
+                  bottom: 2,
+                  right: 3,
+                  child: Transform.rotate(
+                      angle: -0.2,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          clipBehavior: Clip.antiAlias,
+                          elevation: 5,
+                          shadowColor: Colors.black.withOpacity(0.5),
+                          child: Image.network(
+                            'https://picsum.photos/70/70',
+                            fit: BoxFit.cover,
+                            height: 70,
+                            width: 70,
+                          ))),
+                )
+              ],
+            ),
+          ),
+          Text(
+            "Playlist Name",
+            style: _textTheme.headline2!.copyWith(fontWeight: FontWeight.w500),
+          ),
+          Text("124 Episods", style: _textTheme.headline6),
+        ],
+      ),
     );
   }
 
   newPlaylist(w, h) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Text(
-          "Playlist Name:",
-          style: _textTheme.bodyText1!.copyWith(fontSize: 16),
+        Padding(
+          padding: const EdgeInsets.only(top: 23,),
+          child: Text(
+            "Playlist Name:",
+            style: _textTheme.bodyText1!.copyWith(fontSize: 16),
+          ),
         ),
         Container(
+          margin: const EdgeInsets.only(top: 8),
             height: 55,
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(12)),
