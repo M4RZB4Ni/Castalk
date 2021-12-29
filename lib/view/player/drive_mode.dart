@@ -145,7 +145,7 @@ class DriveModeState extends State<DriveMode>
   {
     return  Stack(children: [
 
-      Positioned(left: 80,top: -325,child: Transform.rotate(angle: -0.15,child:
+      Positioned(left: 80,top: -302,child: Transform.rotate(angle: -0.15,child:
       Card( shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(50),
       ),clipBehavior: Clip.antiAliasWithSaveLayer,elevation: 0,shadowColor: Style.headerDarkLayer,child: Image.network(
@@ -156,7 +156,7 @@ class DriveModeState extends State<DriveMode>
         width: w,
       ))
       )),
-      Positioned(left: 15,top: -325,child: Transform.rotate(angle: 0.40,child:
+      Positioned(left: 15,top: -302,child: Transform.rotate(angle: 0.40,child:
       Card( shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(50),
       ),clipBehavior: Clip.antiAliasWithSaveLayer,elevation: 0,shadowColor: Style.headerDarkLayer,child: Image.network(
@@ -169,12 +169,12 @@ class DriveModeState extends State<DriveMode>
       )),
       //shadow for prevoius
 
-      Positioned(left: 25,top: -323,child: Transform.rotate(angle: 0.22,child:
-      Card( shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(50),
+      Positioned(left: 25,top: -300,child: Transform.rotate(angle: 0.22,child:
+      Card( shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(bottomRight: Radius.circular(50)),
       ),clipBehavior: Clip.antiAliasWithSaveLayer,elevation: 20,shadowColor: Colors.black.withOpacity(0.5),child: Image.network(
         //model!.imageUrl,
-        'https://picsum.photos/468/468',
+        'https://picsum.photos/1920/468',
         fit: BoxFit.cover,
         height: h/1.9,
         width: w,
