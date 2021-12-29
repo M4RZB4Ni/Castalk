@@ -19,12 +19,10 @@ class ProductsState extends State<Products>
   String svgPath = "assets/icons/";
   late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
-  late TextStyle itemHeaderStyle;
   @override
   Widget build(BuildContext context) {
 
     _textTheme = Theme.of(context).textTheme;
-    itemHeaderStyle =_textTheme.headline2!.copyWith(fontWeight: FontWeight.w500,color: Colors.white);
 
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
@@ -42,8 +40,8 @@ class ProductsState extends State<Products>
                 shrinkWrap: true,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 18,left: 25),
-                    child: Text("Podcasts:",style: itemHeaderStyle),
+                    padding: const EdgeInsets.only(top: 25,left: 25),
+                    child: Text("Podcasts:",style: Style.t_500_14w),
                   ),
                   _productItem(w, h),
 
@@ -57,7 +55,7 @@ class ProductsState extends State<Products>
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 18,left: 25),
-                    child: Text("Seasons:",style: itemHeaderStyle,),
+                    child: Text("Seasons:",style: Style.t_500_14w,),
                   ),
                   _seasonsItem(w, h)
 
@@ -71,7 +69,7 @@ class ProductsState extends State<Products>
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 18,left: 25),
-                    child: Text("Episodes:",style: itemHeaderStyle),
+                    child: Text("Episodes:",style: Style.t_500_14w),
                   ),
                   _episodesItem(w, h),
 
@@ -89,13 +87,13 @@ class ProductsState extends State<Products>
 
   _searchBar(w)
   {
-   return Padding(
-      padding: const EdgeInsets.only(top: 33),
+    return Padding(
+      padding: const EdgeInsets.only(top: 13,right: 15,left: 15),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-              height: 55,
+              height: 44,
               decoration: BoxDecoration(
                   borderRadius:
                   const BorderRadius.all(Radius.circular(12)),

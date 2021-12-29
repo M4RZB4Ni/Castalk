@@ -55,7 +55,7 @@ class PurchasesState extends State<Purchases>
                 shrinkWrap: true,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 18,left: 25),
+                    padding: const EdgeInsets.only(top: 33,left: 25),
                     child: Text("Other Purchases:",style: Style.t_500_14g),
                   ),
                   _otherPurchasesItem(w, h)
@@ -74,12 +74,12 @@ class PurchasesState extends State<Purchases>
   _searchBar(w)
   {
     return Padding(
-      padding: const EdgeInsets.only(top: 33),
+      padding: const EdgeInsets.only(top: 13,right: 15,left: 15),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-              height: 55,
+              height: 44,
               decoration: BoxDecoration(
                   borderRadius:
                   const BorderRadius.all(Radius.circular(12)),
