@@ -1,3 +1,4 @@
+import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -103,7 +104,7 @@ class PlayListEpisodesState extends State<PlayListEpisodes>
                           padding: const EdgeInsets.only(top: 15),
                           child: Row(
                             children: [
-                              SvgPicture.asset(svgPath+"timer.svg"),
+                              SvgPicture.asset(Cicon.timer),
                               Padding(
                                 padding: const EdgeInsets.only(left: 5),
                                 child: Text("1 : 26 : 45",
@@ -113,19 +114,27 @@ class PlayListEpisodesState extends State<PlayListEpisodes>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 12),
+                          padding: const EdgeInsets.only(top: 9),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SvgPicture.asset(svgPath+"heart_empty.svg"),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 5),
-                                child: Text("250",
-                                    style: _textTheme.headline6),
+                              Row(
+                                children: [
+                                  SvgPicture.asset(Cicon.heart_empty),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 5),
+                                    child: Text("250",
+                                        style: _textTheme.headline6),
+                                  ),
+                                ],
                               ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 30),
+                                child: Text("2 days ago",style: Style.t_400_12_grayA1,),
+                              )
                             ],
                           ),
-                        )
-                      ],
+                        )                      ],
                     ),
                   ],
                 ),
@@ -163,11 +172,11 @@ class PlayListEpisodesState extends State<PlayListEpisodes>
   )*/
 
   header(w) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 36, left: 24),
-      child: Column(
-        children: [
-          Row(
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 36,right: 24,left: 24,bottom: 25),
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -185,12 +194,7 @@ class PlayListEpisodesState extends State<PlayListEpisodes>
               ),
               Row(
                 children: [
-                  // SvgPicture.asset(
-                  //   svgPath + "Downloads.svg",
-                  //   width: 24,
-                  //   height: 23,
-                  //   color: Style.accentGold,
-                  // ),
+
                   Padding(
                     padding: const EdgeInsets.only(left: 9),
                     child: Text("Playlist", style: _textTheme.headline1),
@@ -202,79 +206,79 @@ class PlayListEpisodesState extends State<PlayListEpisodes>
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 33),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                    height: 55,
-                    decoration: BoxDecoration(
-                        borderRadius:
-                        const BorderRadius.all(Radius.circular(12)),
-                        border: Border.all(
-                            width: 1, color: const Color(0xff484848))),
-                    width: w / 2,
-                    child: TextField(
-                        controller: numberController,
-                        textAlign: TextAlign.left,
-                        maxLines: 1,
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            isDense: false,
-                            contentPadding: const EdgeInsets.only(
-                                top: 12, bottom: 12, left: 19),
-                            hintText: "Type to Search...",
-                            hintStyle:
-                            TextStyle(color: Theme.of(context).hintColor),
-                            fillColor: Colors.white))),
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  width: 44,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 15,left: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
                   height: 44,
-                  child: SvgPicture.asset(
-                    svgPath + "search.svg",
-                    width: 14,
-                    height: 14,
-                  ),
                   decoration: BoxDecoration(
-                      color: Style.headerBackBtn,
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(12)),
+                      borderRadius:
+                      const BorderRadius.all(Radius.circular(12)),
+                      border: Border.all(
+                          width: 1, color: const Color(0xff484848))),
+                  width: w / 2,
+                  child: TextField(
+                      controller: numberController,
+                      textAlign: TextAlign.left,
+                      maxLines: 1,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          isDense: false,
+                          contentPadding: const EdgeInsets.only(
+                              top: 12, bottom: 12, left: 19),
+                          hintText: "Type to Search...",
+                          hintStyle:
+                          TextStyle(color: Theme.of(context).hintColor),
+                          fillColor: Colors.white))),
+              Container(
+                padding: const EdgeInsets.all(12),
+                width: 44,
+                height: 44,
+                child: SvgPicture.asset(
+                  svgPath + "search.svg",
+                  width: 14,
+                  height: 14,
                 ),
-                Container(
-                  width: 44,
-                  height: 44,
-                  padding: const EdgeInsets.all(12),
-                  child: SvgPicture.asset(
-                    svgPath + "filter.svg",
-                    width: 14,
-                    height: 14,
-                  ),
-                  decoration: BoxDecoration(
-                      color: Style.glassBlack,
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(12)),
+                decoration: BoxDecoration(
+                    color: Style.headerBackBtn,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(12)),
+              ),
+              Container(
+                width: 44,
+                height: 44,
+                padding: const EdgeInsets.all(12),
+                child: SvgPicture.asset(
+                  svgPath + "filter.svg",
+                  width: 14,
+                  height: 14,
                 ),
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  width: 44,
-                  height: 44,
-                  child: SvgPicture.asset(
-                    svgPath + "sort.svg",
-                    width: 14,
-                    height: 14,
-                  ),
-                  decoration: BoxDecoration(
-                      color: Style.glassBlack,
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(12)),
-                )
-              ],
-            ),
+                decoration: BoxDecoration(
+                    color: Style.glassBlack,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(12)),
+              ),
+              Container(
+                padding: const EdgeInsets.all(12),
+                width: 44,
+                height: 44,
+                child: SvgPicture.asset(
+                  svgPath + "sort.svg",
+                  width: 14,
+                  height: 14,
+                ),
+                decoration: BoxDecoration(
+                    color: Style.glassBlack,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(12)),
+              )
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
