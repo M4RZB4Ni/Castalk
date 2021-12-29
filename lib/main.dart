@@ -98,7 +98,7 @@ class MyApp extends StatelessWidget {
             button: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w400,fontSize: 18),
           headline3:TextStyle(color: Color(0xff3A3A3A),fontWeight: FontWeight.w700,fontSize: 18),
         ),
-        elevatedButtonTheme:  ElevatedButtonThemeData(
+        elevatedButtonTheme: ElevatedButtonThemeData(
             style:ButtonStyle(
               padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -115,11 +115,11 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/Presentation",
+      initialRoute: "/Congratulations",
       routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
-        "/EnterCode":(context) =>  Directionality(textDirection: TextDirection.ltr, child: EnterCode(phoneNumber: '+989185584088',)),
+        "/EnterCode":(context) =>  Directionality(textDirection: TextDirection.ltr, child: EnterCode(phoneNumber: '+989185584088')),
         "/AddAccountInfo":(context) => const Directionality(textDirection: TextDirection.ltr, child: AddAccountInfo()),
         "/Congratulations":(context) => const Directionality(textDirection: TextDirection.ltr, child: Congratulations()),
         "/Player":(context) => const Directionality(textDirection: TextDirection.ltr, child: Player()),

@@ -52,7 +52,7 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                   children: [
                     Text("Enter your Full name*",style: Theme.of(context).textTheme.bodyText1),
                     Padding(
-                      padding: const EdgeInsets.only(top: 15,bottom: 9),
+                      padding: const EdgeInsets.only(top: 10,bottom: 9),
                       child:Container(height: 55,decoration:  boxDecorations,width: w,
                         child: TextField(
                             controller: numberController,
@@ -69,7 +69,7 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                     children: [
                       Text("Enter your Account name*",style: Theme.of(context).textTheme.bodyText1),
                       Padding(
-                        padding: const EdgeInsets.only(top: 15,bottom: 9),
+                        padding: const EdgeInsets.only(top: 10,bottom: 9),
                         child:Container(height: 55,decoration:  boxDecorations,width: w,
                           child: TextField(
                               controller: numberController,
@@ -87,7 +87,7 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                     children: [
                       Text("Add your Birthday",style: Theme.of(context).textTheme.bodyText1),
                       Padding(
-                        padding: const EdgeInsets.only(top: 15,bottom: 9),
+                        padding: const EdgeInsets.only(top: 10,bottom: 9),
                         child:Container(height: 55,decoration:  boxDecorations,width: w,
                           child: TextField(
                               controller: numberController,
@@ -105,7 +105,7 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                       Padding(padding: const EdgeInsets.only(top: 15,bottom: 9),
                       child: Container(height: 55,decoration:  boxDecorations,width: w,child: DropdownButtonHideUnderline(
                         child:  Padding(
-                          padding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
+                          padding: const EdgeInsets.only(top: 10,bottom: 12,left: 19),
                           child: Theme(data: Theme.of(context).copyWith(
                             canvasColor: Style.background),
                               child: DropdownButton<String>(
@@ -151,7 +151,7 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                 ),
 
                 ElevatedButton(onPressed:() => print(""), child:const Text("Accept and Save",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
-                    padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
+                    padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 14,horizontal: 58)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16.0),
