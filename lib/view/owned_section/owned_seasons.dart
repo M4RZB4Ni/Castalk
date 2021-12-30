@@ -106,11 +106,14 @@ class OwnedSeasonsState extends State<OwnedSeasons>{
 
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Episode name which is long...".length > 30
-                          ? "Episode name which is long...".substring(0, 30) + "..."
-                          : "Episode name which is long...",
-                      style: _textTheme.headline1!.copyWith(fontSize: 14),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: Text(
+                        "Episode name which is long...".length > 30
+                            ? "Episode name which is long...".substring(0, 30) + "..."
+                            : "Episode name which is long...",
+                        style: _textTheme.headline1!.copyWith(fontSize: 14),
+                      ),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -191,7 +194,7 @@ class OwnedSeasonsState extends State<OwnedSeasons>{
   _seasonNameData()
   {
     return  Padding(
-      padding: const EdgeInsets.only(top: 24,left: 14,right: 24),
+      padding: const EdgeInsets.only(top: 28,left: 14,right: 24),
       child: Row(
         children: [
           Container(
@@ -272,7 +275,7 @@ class OwnedSeasonsState extends State<OwnedSeasons>{
         child: ReadMoreText(
           'In this Episode we will talk about lorem ipsum. you may heard of it before but let’s take a new look at it In this Episode we will talk about lorem ipsum. you may heard of it before but let’s take a new look at it...',
           trimLines: 2,
-          style: Style.t_400_14w,
+          style: Style.t_400_14_9d,
           colorClickableText: Style.accentGold,
           trimMode: TrimMode.Line,
           trimCollapsedText: 'Read more',
@@ -285,36 +288,34 @@ class OwnedSeasonsState extends State<OwnedSeasons>{
 
   _topTripleButtons(w) {
     return Padding(
-      padding: const EdgeInsets.only(right: 24, left: 23, top: 48, bottom: 28),
+      padding: const EdgeInsets.only(right: 24, left: 23, top: 36, bottom: 28),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
-              flex: 2,
-              child: ElevatedButton(
-                onPressed: () => print(""),
-                child: const Text(
-                  "Analytics",
-                  style: TextStyle(color: Color(0xff283034)),
-                ),
-                style: ButtonStyle(
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            vertical: 17, horizontal: 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0),
-                            side: const BorderSide(color: Color(0xffFFB800)))),
-                    fixedSize: MaterialStateProperty.all(Size(w/2, 54)),
-                    backgroundColor:
-                    MaterialStateProperty.all(const Color(0xffFFB800)),
-                    textStyle: MaterialStateProperty.all(const TextStyle(
-                        color: Color(0xff283034),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500))),
-              )),
+          ElevatedButton(
+            onPressed: () => print(""),
+            child: const Text(
+              "Analytics",
+              style: TextStyle(color: Color(0xff283034)),
+            ),
+            style: ButtonStyle(
+                padding: MaterialStateProperty.all(
+                    const EdgeInsets.symmetric(
+                        vertical: 17, horizontal: 0)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                        side: const BorderSide(color: Color(0xffFFB800)))),
+                fixedSize: MaterialStateProperty.all(Size(w*0.40, 54)),
+                backgroundColor:
+                MaterialStateProperty.all(const Color(0xffFFB800)),
+                textStyle: MaterialStateProperty.all(const TextStyle(
+                    color: Color(0xff283034),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500))),
+          ),
           Padding(
-            padding: const EdgeInsets.only(left: 16),
+            padding: const EdgeInsets.only(left: 13),
             child: ElevatedButton(
               onPressed: () => print(""),
               child: SvgPicture.asset(svgPath + "sharebold.svg"),
@@ -326,12 +327,12 @@ class OwnedSeasonsState extends State<OwnedSeasons>{
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
                           side: const BorderSide(color: Style.gray2F))),
-                  fixedSize: MaterialStateProperty.all(const Size(54, 54)),
+                  minimumSize: MaterialStateProperty.all(const Size(54, 54)),
                   backgroundColor: MaterialStateProperty.all(Style.gray4C)),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 0),
             child: ElevatedButton(
               onPressed: () => print(""),
               child: SvgPicture.asset(svgPath + "modify.svg",
@@ -344,7 +345,7 @@ class OwnedSeasonsState extends State<OwnedSeasons>{
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
                           side: const BorderSide(color: Style.gray2F))),
-                  fixedSize: MaterialStateProperty.all(const Size(54, 54)),
+                  minimumSize: MaterialStateProperty.all(const Size(54, 54)),
                   backgroundColor: MaterialStateProperty.all(Colors.white)),
             ),
           ),
@@ -359,7 +360,7 @@ class OwnedSeasonsState extends State<OwnedSeasons>{
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16.0),
                         side: BorderSide(color: Style.redAccent))),
-                fixedSize: MaterialStateProperty.all(const Size(54, 54)),
+                minimumSize: MaterialStateProperty.all(const Size(54, 54)),
                 backgroundColor:
                 MaterialStateProperty.all(Style.background)),
           ),
@@ -389,10 +390,10 @@ class OwnedSeasonsState extends State<OwnedSeasons>{
       Container(
         width: w,
         height: 126,
-        decoration: BoxDecoration(
-            image: const DecorationImage(image: NetworkImage("https://picsum.photos/414/126"),fit: BoxFit.cover),
+        decoration: const BoxDecoration(
+            image: DecorationImage(image: NetworkImage("https://picsum.photos/414/126"),fit: BoxFit.cover),
             shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(40)),
+            borderRadius: BorderRadius.only(bottomRight: Radius.circular(40),bottomLeft: Radius.circular(40))),
       ),
 
       Row(

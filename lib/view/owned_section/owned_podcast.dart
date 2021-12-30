@@ -273,7 +273,7 @@ class OwnedPodcastState extends State<OwnedPodcast> {
             'In this Episode we will talk about lorem ipsum. you may heard of it before but let’s take a new look at it In this Episode we will talk about lorem ipsum. you may heard of it before but let’s take a new look at it...',
             trimLines: 2,
             colorClickableText: Style.accentGold,
-            style: Style.t_400_14w,
+            style: Style.t_400_14_9d,
             trimMode: TrimMode.Line,
             trimCollapsedText: 'Read more',
             trimExpandedText: 'Show less',
@@ -286,36 +286,34 @@ class OwnedPodcastState extends State<OwnedPodcast> {
 
   _topTripleButtons(w) {
     return Padding(
-      padding: const EdgeInsets.only(right: 24, left: 23, top: 48, bottom: 28),
+      padding: const EdgeInsets.only(right: 24, left: 23, top: 23, bottom: 28),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
-              flex: 2,
-              child: ElevatedButton(
-                onPressed: () => print(""),
-                child: const Text(
-                  "Analytics",
-                  style: TextStyle(color: Color(0xff283034)),
-                ),
-                style: ButtonStyle(
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            vertical: 17, horizontal: 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0),
-                            side: const BorderSide(color: Color(0xffFFB800)))),
-                    fixedSize: MaterialStateProperty.all(Size(w/2, 54)),
-                    backgroundColor:
-                        MaterialStateProperty.all(const Color(0xffFFB800)),
-                    textStyle: MaterialStateProperty.all(const TextStyle(
-                        color: Color(0xff283034),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500))),
-              )),
+          ElevatedButton(
+            onPressed: () => print(""),
+            child: const Text(
+              "Analytics",
+              style: TextStyle(color: Color(0xff283034)),
+            ),
+            style: ButtonStyle(
+                padding: MaterialStateProperty.all(
+                    const EdgeInsets.symmetric(
+                        vertical: 17, horizontal: 0)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                        side: const BorderSide(color: Color(0xffFFB800)))),
+                fixedSize: MaterialStateProperty.all(Size(w*0.40, 54)),
+                backgroundColor:
+                MaterialStateProperty.all(const Color(0xffFFB800)),
+                textStyle: MaterialStateProperty.all(const TextStyle(
+                    color: Color(0xff283034),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500))),
+          ),
           Padding(
-            padding: const EdgeInsets.only(left: 16),
+            padding: const EdgeInsets.only(left: 13),
             child: ElevatedButton(
               onPressed: () => print(""),
               child: SvgPicture.asset(svgPath + "sharebold.svg"),
@@ -327,12 +325,12 @@ class OwnedPodcastState extends State<OwnedPodcast> {
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
                           side: const BorderSide(color: Style.gray2F))),
-                  fixedSize: MaterialStateProperty.all(const Size(54, 54)),
+                  minimumSize: MaterialStateProperty.all(const Size(54, 54)),
                   backgroundColor: MaterialStateProperty.all(Style.gray4C)),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 0),
             child: ElevatedButton(
               onPressed: () => print(""),
               child: SvgPicture.asset(svgPath + "modify.svg",
@@ -345,7 +343,7 @@ class OwnedPodcastState extends State<OwnedPodcast> {
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
                           side: const BorderSide(color: Style.gray2F))),
-                  fixedSize: MaterialStateProperty.all(const Size(54, 54)),
+                  minimumSize: MaterialStateProperty.all(const Size(54, 54)),
                   backgroundColor: MaterialStateProperty.all(Colors.white)),
             ),
           ),
@@ -360,7 +358,7 @@ class OwnedPodcastState extends State<OwnedPodcast> {
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16.0),
                         side: BorderSide(color: Style.redAccent))),
-                fixedSize: MaterialStateProperty.all(const Size(54, 54)),
+                minimumSize: MaterialStateProperty.all(const Size(54, 54)),
                 backgroundColor:
                 MaterialStateProperty.all(Style.background)),
           ),
@@ -371,12 +369,12 @@ class OwnedPodcastState extends State<OwnedPodcast> {
 
   _searchBar(w) {
     return Padding(
-      padding: const EdgeInsets.only(top: 33),
+      padding: const EdgeInsets.only(top: 29,right: 14,left: 14,bottom: 26),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
-              height: 55,
+              height: 44,
               decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(12)),
                   border: Border.all(width: 1, color: const Color(0xff484848))),
@@ -504,12 +502,12 @@ class OwnedPodcastState extends State<OwnedPodcast> {
             Container(
               width: w,
               height: h / 2,
-              decoration: BoxDecoration(
-                  image: const DecorationImage(
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
                       image: NetworkImage("https://picsum.photos/414/414"),
                       fit: BoxFit.cover),
                   shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(40)),
+                  borderRadius: BorderRadius.only(bottomRight: Radius.circular(40),bottomLeft: Radius.circular(40))),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 24, left: 24),

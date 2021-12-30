@@ -679,7 +679,9 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
   LineChartData _secondSectionChart() {
 
     return LineChartData(
+
       lineTouchData: LineTouchData(
+
           touchTooltipData:
           LineTouchTooltipData(tooltipBgColor: Style.background),
           enabled: true),

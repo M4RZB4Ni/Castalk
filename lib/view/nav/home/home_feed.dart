@@ -1,3 +1,4 @@
+import 'package:castalk/cicon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -55,15 +56,51 @@ class HomeFeedState extends State<HomeFeed>{
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _sectionsTitle("New from Gaming"),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20,top: 21,left: 14,right: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("New from Gaming",style: Style.t_500_14g,),
+                      Text("See All",style: Style.t_500_14g,),
+                    ],
+                  ),
+                ),
+
                 _newFromSecondSection(w,h),
 
               ],),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20,top: 21,left: 14,right: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Tops from followings",style: Style.t_500_14g,),
+                      Text("See All",style: Style.t_500_14g,),
+                    ],
+                  ),
+                ),
 
+                _newFromSecondSection(w,h),
+
+              ],),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _sectionsTitle("Listen where you left"),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 13,top: 21,left: 29,right: 14),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Listen where you left",style: Style.t_500_14g,),
+                      Text("See All",style: Style.t_500_14g,),
+                    ],
+                  ),
+                ),
                 _newFromThirdSection(w),
 
               ],),
@@ -78,7 +115,16 @@ class HomeFeedState extends State<HomeFeed>{
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _sectionsTitle("New from Arts"),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20,top: 21,left: 17,right: 14),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("New from Arts",style: Style.t_500_14g,),
+                      Text("See All",style: Style.t_500_14g,),
+                    ],
+                  ),
+                ),
                 _fourthSection(w,h),
 
               ],),
@@ -87,7 +133,16 @@ class HomeFeedState extends State<HomeFeed>{
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _sectionsTitle("Top podcasts"),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20,top: 21,left: 17,right: 14),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Top podcasts",style: Style.t_500_14g,),
+                      Text("See All",style: Style.t_500_14g,),
+                    ],
+                  ),
+                ),
                 _fifthSection(w,h),
 
               ],),
@@ -103,7 +158,7 @@ class HomeFeedState extends State<HomeFeed>{
   _sectionsTitle(String name)
   {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 13,top: 20,left: 14,right: 14),
+      padding: const EdgeInsets.only(bottom: 13,top: 21,left: 14,right: 14),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -116,9 +171,9 @@ class HomeFeedState extends State<HomeFeed>{
 
   _newFromThirdSection(w)
   {
-    return SizedBox(
-      width: w,
-      height: 220,
+    return Container(
+      margin: const EdgeInsets.only(left: 29),
+      height: 190,
       child: ListView.builder(
         itemBuilder: (context, index) {
           return  _thirdItem();
@@ -132,9 +187,9 @@ class HomeFeedState extends State<HomeFeed>{
 
   _newFromFollowingsSection(w)
   {
-    return SizedBox(
-      width: w,
-      height: 220,
+    return Container(
+      margin: const EdgeInsets.only(left: 14),
+      height: 180,
       child: ListView.builder(
         itemBuilder: (context, index) {
           return  _newFromFollowingsItem();
@@ -195,18 +250,32 @@ class HomeFeedState extends State<HomeFeed>{
     return  Padding(
       padding: const EdgeInsets.only(right: 16),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
+            padding: const EdgeInsets.all(40),
 
             height: 122,
-            width: 122,
+            width: 126,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(12),
               image: const DecorationImage(
-                image: NetworkImage('https://picsum.photos/122/122'),
+                image: NetworkImage('https://picsum.photos/122/126'),
                 fit: BoxFit.cover,
               ),
             ),
+            child: Container(
+              width: 44,
+              height: 44,
+              padding: const EdgeInsets.all(10),
+              child: SvgPicture.asset(
+                Cicon.play,
+              ),
+              decoration: BoxDecoration(
+                  color: Style.gray3cop30,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(12)),
+            ) /* add child content here */,
           ),
           Container(
             margin: const EdgeInsets.only(top: 9),
@@ -243,18 +312,18 @@ class HomeFeedState extends State<HomeFeed>{
 
   _newFromFollowingsItem(){
     return  Padding(
-      padding: const EdgeInsets.only(right: 16),
+      padding: const EdgeInsets.only(right: 18.5),
       child: Column(
         children: [
           Container(
 
-            height: 122,
+            height: 126,
             width: 122,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               image: const DecorationImage(
-                image: NetworkImage('https://picsum.photos/122/122'),
-                fit: BoxFit.cover,
+                image: NetworkImage('https://picsum.photos/122/126'),
+                fit: BoxFit.fill,
               ),
             ),
           ),
@@ -406,7 +475,7 @@ class HomeFeedState extends State<HomeFeed>{
   _newFromSecondItem(w,h)
   {
     return Padding(
-      padding: const EdgeInsets.only(left: 20,right: 20),
+      padding: const EdgeInsets.only(left: 20,right: 14),
       child: Column(
         children: [
           Row(
@@ -444,11 +513,14 @@ class HomeFeedState extends State<HomeFeed>{
 
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Episode name which is long...".length > 30
-                          ? "Episode name which is long...".substring(0, 30) + "..."
-                          : "Episode name which is long...",
-                      style: Style.t_400_14_grayA1,
+                    Padding(
+                      padding: const EdgeInsets.only(top:8.0),
+                      child: Text(
+                        "Episode name which is long...".length > 30
+                            ? "Episode name which is long...".substring(0, 30) + "..."
+                            : "Episode name which is long...",
+                        style: Style.t_400_14_grayA1,
+                      ),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -660,7 +732,7 @@ class HomeFeedState extends State<HomeFeed>{
         children: [
 
           Padding(
-            padding: const EdgeInsets.only(left: 28,top: 36),
+            padding: const EdgeInsets.only(left: 29,top: 36),
             child: Text("Feed", style:Style.t_500_24w),
           ),
 
