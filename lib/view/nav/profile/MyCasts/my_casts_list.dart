@@ -217,10 +217,10 @@ class MyCastsListState extends State<MyCastsList> {
             ),
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Expanded(
-                flex: 1,
-                child:  ElevatedButton(
+               ElevatedButton(
                   onPressed: () => print(""),
                   child: const Text(
                     "Drafts",
@@ -234,38 +234,32 @@ class MyCastsListState extends State<MyCastsList> {
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16.0),
                               side: const BorderSide(color: Style.gray2F))),
-                      fixedSize: MaterialStateProperty.all(Size(w, 54)),
+                      fixedSize: MaterialStateProperty.all(Size(w/3.7, 54)),
                       backgroundColor:
                       MaterialStateProperty.all(Colors.white)),
                 ),
-              ),
-              Expanded(
-                flex: 1,
-                child:  Padding(
-                  padding:const EdgeInsets.symmetric(horizontal: 11),
-                  child: ElevatedButton(
-                    onPressed: () => print(""),
-                    child: const Text(
-                      "Recorder",
-                      style: TextStyle(color: Style.accentGold),
-                    ),
-                    style: ButtonStyle(
-                        padding: MaterialStateProperty.all(
-                            const EdgeInsets.symmetric(
-                                vertical: 17, horizontal: 0)),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16.0),
-                                side: const BorderSide(color: Style.gray4D  ))),
-                        fixedSize: MaterialStateProperty.all(Size(w, 54)),
-                        backgroundColor:
-                        MaterialStateProperty.all( Style.gray4D)),
+               Padding(
+                 padding: const EdgeInsets.symmetric(horizontal: 11),
+                 child: ElevatedButton(
+                  onPressed: () => print(""),
+                  child: const Text(
+                    "Recorder",
+                    style: TextStyle(color: Style.accentGold),
                   ),
-                ),
+                  style: ButtonStyle(
+                      padding: MaterialStateProperty.all(
+                          const EdgeInsets.symmetric(
+                              vertical: 17, horizontal: 0)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                              side: const BorderSide(color: Style.gray4D  ))),
+                      fixedSize: MaterialStateProperty.all(Size(w/3.7, 54)),
+                      backgroundColor:
+                      MaterialStateProperty.all( Style.gray4D)),
               ),
-              Expanded(
-                flex: 1,
-                child:  ElevatedButton(
+               )  ,
+             ElevatedButton(
                   onPressed: () => print(""),
                   child: const Text(
                     "Editor",
@@ -279,11 +273,13 @@ class MyCastsListState extends State<MyCastsList> {
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16.0),
                               side: const BorderSide(color: Style.gray4D  ))),
-                      fixedSize: MaterialStateProperty.all(Size(w, 54)),
+                      fixedSize: MaterialStateProperty.all(Size(w/3.7, 54)),
                       backgroundColor:
                       MaterialStateProperty.all( Style.gray4D)),
                 ),
-              )                    ],
+
+
+                 ],
           )
         ],
       ),

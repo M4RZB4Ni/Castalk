@@ -11,8 +11,6 @@ class ListeningStatistics extends StatefulWidget{
   State<StatefulWidget> createState() {
     return ListeningStatisticsState();
   }
-
-
 }
 
 class ListeningStatisticsState extends State<ListeningStatistics>{
@@ -54,11 +52,8 @@ class ListeningStatisticsState extends State<ListeningStatistics>{
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text("352",style: Style.t_500_18w),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Text("Episodes",style: Style.t_500_14_G9D),
-                    ),
+                    Text("352",style: Style.t_500_24w),
+                    Text("Episodes",style: Style.t_500_14_G9D),
                   ],
                 )
               ],)
@@ -216,10 +211,7 @@ class ListeningStatisticsState extends State<ListeningStatistics>{
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(12)),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 9),
-            child: Text("Listening Statistics", style: _textTheme.headline1),
-          ),
+          Text("Listening Statistics", style: _textTheme.headline1),
           const SizedBox(
             width: 44,
           ),

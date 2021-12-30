@@ -33,11 +33,10 @@ class DriveModeState extends State<DriveMode>
     return Scaffold(
           body:
             Stack(children: [
-              Container(color: Style.accentGold,width: w,height: h,),
-              Container(color: Style.driveBack,width: w,height: h,),
 
+              Container(color: Style.accentGold,width: w,height: h),
+              Container(color: Style.driveBack,width: w,height: h),
 
-          
             tripleImageCorner(w, h),
             Padding(
               padding: const EdgeInsets.only(top: 24,left: 24),
@@ -144,7 +143,6 @@ class DriveModeState extends State<DriveMode>
   tripleImageCorner(w,h)
   {
     return  Stack(children: [
-
       Positioned(left: 80,top: -302,child: Transform.rotate(angle: -0.15,child:
       Card( shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(50),

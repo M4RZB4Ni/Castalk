@@ -97,7 +97,7 @@ class ProfileEditState extends State<ProfileEdit> {
                           padding: const EdgeInsets.symmetric(vertical: 8),
                           child: Text("Your Name:",style: Style.t_400_16w,),
                         ),
-                        Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                        Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
                             child: TextField(
                                 controller: numberController,
                                 textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)
@@ -117,8 +117,8 @@ class ProfileEditState extends State<ProfileEdit> {
                   Row(
                     children: [
                       Container(
-                        width: 50,
-                        height: 50,
+                        width: 44,
+                        height: 44,
                         padding: const EdgeInsets.all(15),
                         child: SvgPicture.asset(svgPath+"upload.svg"),
                         decoration: BoxDecoration(
@@ -128,7 +128,7 @@ class ProfileEditState extends State<ProfileEdit> {
                       ),
                       Expanded(flex:12,child:  Padding(
                           padding: const EdgeInsets.only(top: 0,bottom: 9,left: 10),
-                          child:Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                          child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
                               child: TextField(
                                   controller: numberController,
                                   textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)
@@ -197,7 +197,7 @@ class ProfileEditState extends State<ProfileEdit> {
                       ),
                     ],
                   ),
-                  Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                  Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
                       child: TextField(
                           controller: numberController,
                           textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "Add your Website link"))
@@ -220,7 +220,7 @@ class ProfileEditState extends State<ProfileEdit> {
                       ),
                     ],
                   ),
-                  Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                  Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
                       child: TextField(
                           controller: numberController,
                           textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "Add your Twitter link"))
@@ -242,7 +242,7 @@ class ProfileEditState extends State<ProfileEdit> {
                       ),
                     ],
                   ),
-                  Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                  Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
                       child: TextField(
                           controller: numberController,
                           textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "Add your YouTube link"))
@@ -264,7 +264,7 @@ class ProfileEditState extends State<ProfileEdit> {
                       ),
                     ],
                   ),
-                  Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                  Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
                       child: TextField(
                           controller: numberController,
                           textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "Add your Instagram link"))
@@ -287,7 +287,7 @@ class ProfileEditState extends State<ProfileEdit> {
                       ),
                     ],
                   ),
-                  Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                  Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
                       child: TextField(
                           controller: numberController,
                           textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "Add your Spotify link"))
@@ -309,7 +309,7 @@ class ProfileEditState extends State<ProfileEdit> {
                       ),
                     ],
                   ),
-                  Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                  Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
                       child: TextField(
                           controller: numberController,
                           textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "Add your SoundCloud link"))

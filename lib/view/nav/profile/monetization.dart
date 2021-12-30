@@ -1,3 +1,4 @@
+import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,6 @@ class Monetization extends StatefulWidget{
 
 class MonetizationState extends State<Monetization>{
 
-  String svgPath = "assets/icons/";
   late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
 
@@ -39,16 +39,17 @@ class MonetizationState extends State<Monetization>{
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 80,bottom: 120,right: 14,left:14),
-                child: RichText(text: TextSpan(
+                padding: const EdgeInsets.only(top: 80, bottom: 120, right: 14, left: 14),
+                child: RichText(
+                    text: TextSpan(
                     children: [
-                      TextSpan(text:"To make a creator account you have to add a working credit id/number to let us transfer money to you as uttered in \n",style: Style.t_400_14w),
-                      TextSpan(text:"creator users agreement.\n",style: Style.t_400_14g),
-                      TextSpan(text:"By doing this you will be considerd a creator member and will have access to pro tools and options to analys and promot\n your contents.\nthis procedure may take 1 or 2 days. ",style: Style.t_400_14w),
+                      TextSpan(text:"To make a creator account you have to add a working credit id/number to let us transfer money to you as uttered in \n",style: Style.t_400_14w.copyWith(height: 1.8)),
+                      TextSpan(text:"creator users agreement.\n",style: Style.t_400_14g.copyWith(height: 1.8)),
+                      TextSpan(text:"By doing this you will be considerd a creator member and will have access to pro tools and options to analys and promot\n your contents.\nthis procedure may take 1 or 2 days. ",style: Style.t_400_14w.copyWith(height: 1.8)),
                     ])),
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 14,left:14),
+                padding: const EdgeInsets.only(right: 14, left: 14),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -59,11 +60,11 @@ class MonetizationState extends State<Monetization>{
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SvgPicture.asset(svgPath+"webmoney.svg"),
-                        SvgPicture.asset(svgPath+"visa.svg"),
-                        SvgPicture.asset(svgPath+"paypal.svg"),
-                        SvgPicture.asset(svgPath+"discover.svg"),
-                        SvgPicture.asset(svgPath+"mastercard.svg"),
+                        SvgPicture.asset(Cicon.webmoney),
+                        SvgPicture.asset(Cicon.visa),
+                        SvgPicture.asset(Cicon.paypal),
+                        SvgPicture.asset(Cicon.discover),
+                        SvgPicture.asset(Cicon.mastercard),
                       ],),
                   ],
                 ),
@@ -80,10 +81,10 @@ class MonetizationState extends State<Monetization>{
                         Text("Add your Email:",style: Style.t_400_16w),
                         Padding(
                             padding: const EdgeInsets.only(top: 8,bottom: 9),
-                            child:Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                            child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
                                 child: TextField(
                                     controller: numberController,
-                                    textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)
+                                    textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "your email address"))
 
                             )),
 
@@ -98,14 +99,11 @@ class MonetizationState extends State<Monetization>{
                           Text("Other options:",style: Style.t_400_16w),
                           Padding(
                               padding: const EdgeInsets.only(top: 8,bottom: 9),
-                              child:Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                              child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
                                   child: TextField(
                                       controller: numberController,
-                                      textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)
-
+                                      textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "options and stuffs..."))
                               )),
-
-
                         ],
                       ),
                     ),

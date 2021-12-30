@@ -1,3 +1,4 @@
+import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,8 @@ class RequestVerifyBadgeState extends State<RequestVerifyBadge>{
             padding: const EdgeInsets.only(top: 80,bottom: 120,right: 14,left:14),
             child: RichText(text: TextSpan(
                 children: [
-                  TextSpan(text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec bibendum velit, neque morbi. Lacus nisl auctor faucibus enim, pretium. Diam sollicitudin pellentesque eu odio venenatis, in congue et, ultricies. Nunc quis nullam tellus urna nisl aliquam.",style: Style.t_400_14w),
+                  TextSpan(text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec bibendum velit, neque morbi. Lacus nisl auctor faucibus enim, pretium. Diam sollicitudin pellentesque eu odio venenatis, in congue et, ultricies. Nunc quis nullam tellus urna nisl aliquam.",
+                      style: Style.t_400_14w.copyWith(height: 1.8)),
                 ])),
           ),
           Padding(
@@ -49,24 +51,25 @@ class RequestVerifyBadgeState extends State<RequestVerifyBadge>{
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Text("Upload Your Document:",style: Style.t_400_16w,),
                 ),
                 Row(
                   children: [
                     Container(
-                      width: 50,
-                      height: 50,
+                      width: 44,
+                      height: 44,
                       padding: const EdgeInsets.all(10),
-                      child: SvgPicture.asset(svgPath+"upload.svg"),
+                      child: SvgPicture.asset(Cicon.upload),
                       decoration: BoxDecoration(
                           color: Style.accentGold,
                           shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(12)),
+                          borderRadius: BorderRadius.circular(12)
+                      ),
                     ),
                     Expanded(flex:12,child:  Padding(
-                        padding: const EdgeInsets.only(top: 0,bottom: 9,left: 10),
-                        child:Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                        padding: const EdgeInsets.only(left: 10),
+                        child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
                             child: TextField(
                                 controller: numberController,
                                 textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)

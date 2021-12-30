@@ -135,35 +135,45 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
             ),
             Padding(
               padding: const EdgeInsets.only(right: 25,left: 25,top: 33),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  SizedBox(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
 
-                  Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0,left: 0,bottom: 6),
+                    child: Text("Audience :",style: Style.t_500_16w,),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text("32% Female",style: Style.t_500_12w,),
-                      Container(
-                          width: w/2,
-                          height: 144,
-                          color: Style.background,
-                          child: Stack(children: [
-                            Center(child: Text("Gender",style: Style.t_500_16g90,)),
-                            PieChart(
-                              PieChartData(
-                                  sectionsSpace: 5,
-                                  centerSpaceRadius: 50,
-                                  sections: showingSections()),
-                            ),
-                          ],)
-                      ),
-                      Text("68% Male",style: Style.t_500_12g,),
+                      SizedBox(),
+
+                      Column(
+                        children: [
+                          Text("32% Female",style: Style.t_500_12w,),
+                          Container(
+                              width: w/2,
+                              height: 144,
+                              color: Style.background,
+                              child: Stack(children: [
+                                Center(child: Text("Gender",style: Style.t_500_16g90,)),
+                                PieChart(
+                                  PieChartData(
+                                      sectionsSpace: 5,
+                                      centerSpaceRadius: 50,
+                                      sections: showingSections()),
+                                ),
+                              ],)
+                          ),
+                          Text("68% Male",style: Style.t_500_12g,),
+
+                        ],
+                      )
+
+
 
                     ],
-                  )
-
-
-
+                  ),
                 ],
               ),
             ),
@@ -365,14 +375,14 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
       padding: const EdgeInsets.only(top: 35,bottom: 30,right: 25,left: 25),
       child: Container(
           padding: const EdgeInsets.all(38),
-          height: 130,width: w,decoration:  Style.inputBoxDecoration.copyWith(borderRadius: const BorderRadius.all(Radius.circular(24))),
+          height: 135,width: w,decoration:  Style.inputBoxDecoration.copyWith(borderRadius: const BorderRadius.all(Radius.circular(24))),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("12K",style: Style.t_500_18w),
+                  Text("12K",style: Style.t_500_24w),
                   Padding(
                     padding: const EdgeInsets.only(top: 5),
                     child: Text("Listens",style: Style.t_500_14_G9D),
@@ -382,7 +392,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("12K",style: Style.t_500_18w),
+                  Text("12K",style: Style.t_500_24w),
                   Padding(
                     padding: const EdgeInsets.only(top: 5),
                     child: Text("Followers",style: Style.t_500_14_G9D),
@@ -392,7 +402,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("12K",style: Style.t_500_18w),
+                  Text("102",style: Style.t_500_24w),
                   Padding(
                     padding: const EdgeInsets.only(top: 5),
                     child: Text("Posts",style: Style.t_500_14_G9D),
@@ -411,7 +421,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
       padding: const EdgeInsets.only(top: 35,bottom: 30,right: 25,left: 25),
       child: Container(
           padding: const EdgeInsets.only(top: 14,bottom: 14,right: 12,left: 12),
-          height: 88,width: w,decoration:  Style.inputBoxDecoration.copyWith(borderRadius: const BorderRadius.all(Radius.circular(24)),color: Style.gray2b,border: Border.all(color: Style.gray2b)),
+          height: 100,width: w,decoration:  Style.inputBoxDecoration.copyWith(borderRadius: const BorderRadius.all(Radius.circular(24)),color: Style.gray2b,border: Border.all(color: Style.gray2b)),
           child: Column(
             children: [
               Expanded(
@@ -442,31 +452,34 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
                   ],)),
                 ],
               )),
-              Expanded(child: Row(
+              Expanded(child: Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: Row(
 
-                children: [
-              Expanded(child:  Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                Expanded(child:  Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
 
-                children: [
-                      Text("Search",style: Style.t_400_14g,),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 28),
-                    child: Text("40%",style: Style.t_400_14w,),
-                  ),
+                  children: [
+                        Text("Search",style: Style.t_400_14g,),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 28),
+                      child: Text("40%",style: Style.t_400_14w,),
+                    ),
 
-                    ],)),
-                  Expanded(child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Search",style: Style.t_400_14g,),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 28),
-                        child: Text("40%",style: Style.t_400_14w,),
-                      ),
+                      ],)),
+                    Expanded(child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Search",style: Style.t_400_14g,),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 28),
+                          child: Text("40%",style: Style.t_400_14w,),
+                        ),
 
-                    ],)),
-                ],
+                      ],)),
+                  ],
+                ),
               ))
             ],
           )

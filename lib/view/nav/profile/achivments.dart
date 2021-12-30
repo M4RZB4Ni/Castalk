@@ -18,7 +18,6 @@ class Achivments extends StatefulWidget{
 
 class AchivmentsState extends State<Achivments>{
 
-  String svgPath = "assets/icons/";
   late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
 
@@ -34,69 +33,51 @@ class AchivmentsState extends State<Achivments>{
       appBar: PreferredSize(
           preferredSize: Size(w, 100), child: header(w)),
       backgroundColor: Style.background,
-      body: SingleChildScrollView(child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-
-            Flexible(
-            child:ListView(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-                 children: [
-                   Padding(
-                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                       child: _firstPlaceItem(w,h)),
-                   Padding(
-                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                       child: _firstPlaceItem(w,h)),
-                   Padding(
-                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                       child: _firstPlaceItem(w,h)),
-                   Padding(
-                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                       child: _firstPlaceItem(w,h)),
-                 ],
-                )),
-
-          Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize:MainAxisSize.min,
+      body: SingleChildScrollView(child: Padding(
+        padding: const EdgeInsets.only(top: 24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12, left: 31,top: 31),
-              child: Text(
-                "Achieved:",
-                style: Style.t_500_14w,
-              ),
-            ),
-            Flexible(
-              child: ListView(
+
+              Flexible(
+              child:ListView(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                children: [
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: _achivedItem(w,h)),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: _achivedItem(w,h)),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: _achivedItem(w,h)),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: _achivedItem(w,h)),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: _achivedItem(w,h)),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: _achivedItem(w,h)),
-                ],
+                   children: [
+                 _firstPlaceItem(w,h),
+                 _firstPlaceItem(w,h),
+                 _firstPlaceItem(w,h),
+                 _firstPlaceItem(w,h),
+                  ])),
+
+            Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize:MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12, left: 31,top: 31),
+                child: Text(
+                  "Achieved:",
+                  style: Style.t_500_14w,
+                ),
               ),
-            )
-          ],
-        )],
+              Flexible(
+                child: ListView(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    _achivedItem(w,h),
+                    _achivedItem(w,h),
+                    _achivedItem(w,h),
+                    _achivedItem(w,h),
+                    _achivedItem(w,h),
+                    _achivedItem(w,h),
+                  ],
+                ),
+              )
+            ],
+          )],
+        ),
       )),
     );
   }
@@ -119,7 +100,7 @@ class AchivmentsState extends State<Achivments>{
   _firstPlaceItem(w,h)
   {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 15),
+      padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 15),
       child: Container(
         decoration: BoxDecoration(
           color: Style.gray2F,
@@ -130,7 +111,7 @@ class AchivmentsState extends State<Achivments>{
         child: Row(children: [
           Padding(
             padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(svgPath+"newspaper.svg"),
+            child: SvgPicture.asset(Cicon.newspaper),
           ),
           Expanded(child: Column(
             children: [
@@ -202,7 +183,7 @@ class AchivmentsState extends State<Achivments>{
   _achivedItem(w,h)
   {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 15),
+      padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 14),
       child: Container(
         decoration: BoxDecoration(
           color: Style.gray27,
@@ -212,7 +193,7 @@ class AchivmentsState extends State<Achivments>{
         height: 60,
         child: Row(children: [
           Padding(
-            padding: const EdgeInsets.only(left: 6,top: 6,bottom: 6),
+            padding: const EdgeInsets.only(left: 20,top: 6,bottom: 6),
             child: Container(
               height: 47,
               width: 47,
@@ -226,17 +207,17 @@ class AchivmentsState extends State<Achivments>{
             ),
           ),
           Expanded(child: Padding(
-            padding: const EdgeInsets.only(right: 10,left: 10),
+            padding: const EdgeInsets.only(right: 10,left: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text("Congrats!",style: Style.t_700_24g,),
+                Text("Congrats!",style: Style.t_700_24g),
                 Row(
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(right: 5),
-                      child: SvgPicture.asset(svgPath+"tick.svg"),
+                      child: SvgPicture.asset(Cicon.tick),
                     ),
                     Text("You Reached 100 Followers",style: Style.t_400_12_gray,),
                   ],
@@ -245,10 +226,10 @@ class AchivmentsState extends State<Achivments>{
             ),
           )),
           Padding(
-            padding: const EdgeInsets.only(right: 6,top: 6,bottom: 6),
+            padding: const EdgeInsets.only(right: 9,top: 6,bottom: 6),
             child: Container(
               padding: const EdgeInsets.all(12),
-              child: SvgPicture.asset(Cicon.share,width: 18,height: 18,),
+              child: SvgPicture.asset(Cicon.share,width: 18,height: 18),
               height: 44,
               width: 44,
               decoration: BoxDecoration(

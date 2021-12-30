@@ -1,3 +1,4 @@
+import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,6 @@ class Promotion extends StatefulWidget{
   State<StatefulWidget> createState() {
     return PromotionState();
   }
-
 
 }
 
@@ -35,9 +35,9 @@ class PromotionState extends State<Promotion>
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(w, 120), child: header(w)),
       body:   Padding(
-        padding: const EdgeInsets.only(right: 24,left: 24,bottom: 40,top: 28),
+        padding: const EdgeInsets.only(right: 24,left: 24,bottom: 40,top: 29),
         child: SingleChildScrollView(child:
           SizedBox(
             height:h,
@@ -49,8 +49,8 @@ class PromotionState extends State<Promotion>
                       children: [
                         Text("Name:",style: Theme.of(context).textTheme.bodyText1),
                         Padding(
-                            padding: const EdgeInsets.only(top: 15,bottom: 9),
-                            child:Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                            padding: const EdgeInsets.only(top: 8,bottom: 9),
+                            child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
                                 child: TextField(
                                     controller: numberController,
                                     textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)
@@ -65,8 +65,8 @@ class PromotionState extends State<Promotion>
                 children: [
                   Text("Amount:",style: Theme.of(context).textTheme.bodyText1),
                   Padding(
-                      padding: const EdgeInsets.only(top: 15,bottom: 9),
-                      child:Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                      padding: const EdgeInsets.only(top: 8,bottom: 9),
+                      child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
                           child: TextField(
                               controller: numberController,
                               textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)
@@ -157,8 +157,8 @@ class PromotionState extends State<Promotion>
                           padding: const EdgeInsets.only(top: 15,bottom: 9),
                           child:  Container(
                             width: w,
-                            height: 55,
-                            decoration:Style.inputBoxDecoration,
+                            height: 44,
+                            decoration:Style.inputBoxDecoration.copyWith(border: Border.all(color: Style.gray9D,width: 1)),
                             child: Row(
                               children: [
                                 Expanded(flex: 6,child:Tags(
@@ -194,7 +194,7 @@ class PromotionState extends State<Promotion>
                       padding: const EdgeInsets.only(top: 15,bottom: 9),
                       child:Container(
                         width: w,
-                        height: 55,
+                        height: 44,
                         decoration:Style.inputBoxDecoration,
                         child: Row(
                           children: [
@@ -228,7 +228,7 @@ class PromotionState extends State<Promotion>
                       padding: const EdgeInsets.only(top: 15,bottom: 9),
                       child:Container(
                         width: w,
-                        height: 55,
+                        height: 44,
                         decoration:Style.inputBoxDecoration,
                         child: Row(
                           children: [
@@ -258,14 +258,17 @@ class PromotionState extends State<Promotion>
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Create redeem:",style: Style.t_400_16w,),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Text("Create redeem:",style: Style.t_400_16w,),
+                  ),
                   Row(
                     children: [
                       Container(
-                        width: 50,
-                        height: 50,
+                        width: 44,
+                        height: 44,
                         padding: const EdgeInsets.all(10),
-                        child: SvgPicture.asset(svgPath+"random.svg"),
+                        child: SvgPicture.asset(Cicon.random),
                         decoration: BoxDecoration(
                             color: Style.accentGold,
                             shape: BoxShape.rectangle,
@@ -273,7 +276,7 @@ class PromotionState extends State<Promotion>
                       ),
                       Expanded(flex:12,child:  Padding(
                           padding: const EdgeInsets.only(top: 0,bottom: 9,left: 10),
-                          child:Container(height: 55,decoration:  Style.inputBoxDecoration,width: w,
+                          child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
                               child: TextField(
                                   controller: numberController,
                                   textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)
@@ -286,31 +289,34 @@ class PromotionState extends State<Promotion>
 
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(onPressed:() => print(""), child:const Text("Save",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
-                      padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16.0),
-                              side: const BorderSide(color: Color(0xffFFB800))
-                          )
-                      ),
-                      backgroundColor:MaterialStateProperty.all(const Color(0xffFFB800)),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff283034),fontSize: 18,fontWeight: FontWeight.w500)) ),),
-                  Container(
-                    width: 54,
-                    height: 54,
-                    padding: const EdgeInsets.all(12),
-                    child: SvgPicture.asset(svgPath+"delete.svg"),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Style.redAccent,width: 1),
-                        color: Colors.transparent,
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(12)),
-                  )
+              Padding(
+                padding: const EdgeInsets.only(top: 39),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(onPressed:() => print(""), child:const Text("Save",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+                        padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16.0),
+                                side: const BorderSide(color: Color(0xffFFB800))
+                            )
+                        ),
+                        backgroundColor:MaterialStateProperty.all(const Color(0xffFFB800)),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff283034),fontSize: 18,fontWeight: FontWeight.w500)) ),),
+                    Container(
+                      width: 54,
+                      height: 54,
+                      padding: const EdgeInsets.all(12),
+                      child: SvgPicture.asset(Cicon.delete),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Style.redAccent,width: 1),
+                          color: Colors.transparent,
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(12)),
+                    )
 
-                ],
+                  ],
+                ),
               )
             ],
           ),

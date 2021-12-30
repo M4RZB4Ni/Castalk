@@ -77,7 +77,7 @@ class MyCastsState extends State<MyCasts> with SingleTickerProviderStateMixin
                 children: [
 
                   Padding(
-                    padding: const EdgeInsets.only(left: 9),
+                    padding: const EdgeInsets.only(left: 0),
                     child: Text("My Casts", style: _textTheme.headline1),
                   ),
                 ],

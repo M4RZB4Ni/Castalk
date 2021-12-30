@@ -143,7 +143,7 @@ class PromotionAnalyticsState extends State<PromotionAnalytics> {
   _searchItems(w,h)
   {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 15),
+      padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 15),
       child: Container(
         decoration: BoxDecoration(
           color: Style.gray2F,
@@ -153,10 +153,10 @@ class PromotionAnalyticsState extends State<PromotionAnalytics> {
         height: 80,
         child: Row(children: [
           Padding(
-            padding: const EdgeInsets.only(left: 6,top: 6,bottom: 6),
+            padding: const EdgeInsets.only(left: 10,top: 9,bottom: 13),
             child: Container(
-              height: 66,
-              width: 66,
+              height: 57,
+              width: 57,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 image: const DecorationImage(
@@ -167,7 +167,7 @@ class PromotionAnalyticsState extends State<PromotionAnalytics> {
             ),
           ),
           Expanded(child: Padding(
-            padding: const EdgeInsets.only(right: 10,left: 10),
+            padding: const EdgeInsets.only(right: 10,left: 10,top: 6,bottom: 11),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -189,12 +189,12 @@ class PromotionAnalyticsState extends State<PromotionAnalytics> {
   _searchBar(w)
   {
     return Padding(
-      padding: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.only(right: 17,left: 13),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
-              height: 55,
+              height: 44,
               decoration: BoxDecoration(
                   borderRadius:
                   const BorderRadius.all(Radius.circular(12)),
@@ -326,6 +326,7 @@ class PromotionAnalyticsState extends State<PromotionAnalytics> {
           barWidth: 2,
           isStrokeCapRound: true,
           dotData: FlDotData(
+
             show: true,
           ),
           belowBarData: BarAreaData(
