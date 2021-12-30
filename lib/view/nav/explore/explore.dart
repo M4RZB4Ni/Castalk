@@ -50,7 +50,16 @@ class ExploreState extends State<Explore>{
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _sectionsTitle("New from followings"),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 13,top: 20,left: 29,right: 13),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("New from followings",style: Style.t_500_14g,),
+                        Text("See All",style: Style.t_500_14g,),
+                      ],
+                    ),
+                  ),
                   _newFromFollowingsSection(w),
 
                 ],),
@@ -84,8 +93,10 @@ class ExploreState extends State<Explore>{
                                   child: ClipRRect(
                                       borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
                                       child: Blur(
-                                        colorOpacity: 0.45,
+                                        colorOpacity: 0.24,
                                         blur: 2,
+                                        blurColor: Style.gray5C,
+
                                         child:Row(children: [],),)),
                                 ),
 
@@ -115,8 +126,9 @@ class ExploreState extends State<Explore>{
                                       child: ClipRRect(
                                           borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
                                           child: Blur(
-                                            colorOpacity: 0.45,
+                                            colorOpacity: 0.24,
                                             blur: 2,
+                                            blurColor: Style.gray5C,
                                             child:Row(children: [],),)),
                                     ),
 
@@ -177,7 +189,7 @@ class ExploreState extends State<Explore>{
   _peopleItem(w)
   {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 15),
+      padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 15),
       child: Container(
         decoration: BoxDecoration(
           color: Style.gray2F,
@@ -240,7 +252,7 @@ class ExploreState extends State<Explore>{
               borderRadius:
               const BorderRadius.all(Radius.circular(12)),
               border: Border.all(
-                  width: 1, color: const Color(0xff484848))),
+                  width: 1, color: Style.gray9D)),
           child: Row(
             children: [
               // i must add sort section with state provider
@@ -257,7 +269,7 @@ class ExploreState extends State<Explore>{
                               top: 12, bottom: 12, left: 19),
                           hintText: "Type to Search...",
                           hintStyle:
-                          TextStyle(color: Theme.of(context).hintColor),
+                          TextStyle(color: Style.gray9D),
                           fillColor: Colors.white))),
               Container(
                 padding: const EdgeInsets.all(12),
@@ -477,6 +489,7 @@ class ExploreState extends State<Explore>{
     return  Padding(
       padding: const EdgeInsets.only(right: 16),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
 
@@ -638,7 +651,7 @@ class ExploreState extends State<Explore>{
   _newFromSecondItem(w,h)
   {
     return Padding(
-      padding: const EdgeInsets.only(left: 20,right: 20,bottom: 15),
+      padding: const EdgeInsets.only(left: 14,right: 14,bottom: 15),
       child: Container(
         child: Stack(
           alignment: Alignment.bottomLeft,
@@ -650,6 +663,7 @@ class ExploreState extends State<Explore>{
                 child: Blur(
                   colorOpacity: 0.45,
                   blur: 2,
+                  blurColor: Style.gray5C,
                   child:Row(children: [],),)),
           ),
 
