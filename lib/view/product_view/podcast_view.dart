@@ -100,17 +100,20 @@ class PodcastViewState extends State<PodcastView> {
               ),
               Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 14),
+                    padding: const EdgeInsets.only(left: 14,right: 8),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Episode name which is long...".length > 30
-                              ? "Episode name which is long...".substring(0, 30) +
-                              "..."
-                              : "Episode name which is long...",
-                          style: _textTheme.headline1!.copyWith(fontSize: 14),
+                        Padding(
+                          padding: const EdgeInsets.only(top:8),
+                          child: Text(
+                            "Episode name which is long...".length > 30
+                                ? "Episode name which is long...".substring(0, 30) +
+                                "..."
+                                : "Episode name which is long...",
+                            style: _textTheme.headline1!.copyWith(fontSize: 14),
+                          ),
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,7 +187,7 @@ class PodcastViewState extends State<PodcastView> {
 
   _podcastNameData() {
     return Padding(
-      padding: const EdgeInsets.only(top: 24, left: 14, right: 24),
+      padding: const EdgeInsets.only(top: 31, left: 14, right: 14),
       child: Column(
         children: [
           Row(
@@ -281,7 +284,7 @@ class PodcastViewState extends State<PodcastView> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 27),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -302,7 +305,7 @@ class PodcastViewState extends State<PodcastView> {
             'In this Episode we will talk about lorem ipsum. you may heard of it before but let’s take a new look at it In this Episode we will talk about lorem ipsum. you may heard of it before but let’s take a new look at it...',
             trimLines: 2,
             colorClickableText: Style.accentGold,
-            style: Style.t_400_14w,
+            style: Style.t_400_14_9d,
             trimMode: TrimMode.Line,
             trimCollapsedText: 'Read more',
             trimExpandedText: 'Show less',
@@ -314,81 +317,37 @@ class PodcastViewState extends State<PodcastView> {
   }
   _topTripleButtons(w) {
     return Padding(
-      padding: const EdgeInsets.only(right: 24, left: 14, top: 24, bottom: 28),
+      padding: const EdgeInsets.only(right: 14, left: 14, top: 40, bottom: 28),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
-              flex: 3,
-              child: ElevatedButton(
-                onPressed: () => print(""),
-                child:  Text(
-                  isFollow ? "Follow" :
-                  "Buy for 17\$",
-                  style: TextStyle(color: isFollow ?  Style.accentGold :Style.gray4D  ),
-                ),
-                style: ButtonStyle(
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            vertical: 17, horizontal: 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0),
-                            side:  BorderSide(color: isFollow ?  Style.gray4D:  Style.accentGold))),
-                    fixedSize: MaterialStateProperty.all(Size(w, 54)),
-                    backgroundColor:
-                    MaterialStateProperty.all(isFollow ?  Style.gray4D:  Style.accentGold),
-                    textStyle: MaterialStateProperty.all(const TextStyle(
-                        color: Color(0xff283034),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500))),
-              )),
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 16),
-              child: ElevatedButton(
-                onPressed: () => print(""),
-                child: SvgPicture.asset(Cicon.addlist,color: Style.whiteHalf,),
-                style: ButtonStyle(
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            vertical: 17, horizontal: 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0),
-                            side: const BorderSide(color: Style.gray2F))),
-                    fixedSize: MaterialStateProperty.all(const Size(54, 54)),
-                    backgroundColor: MaterialStateProperty.all(Style.glassBlack)),
-              ),
+          ElevatedButton(
+            onPressed: () => print(""),
+            child: const Text(
+              "Buy for 17\$",
+              style: TextStyle(color: Color(0xff283034)),
             ),
+            style: ButtonStyle(
+                padding: MaterialStateProperty.all(
+                    const EdgeInsets.symmetric(
+                        vertical: 17, horizontal: 0)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                        side: const BorderSide(color: Color(0xffFFB800)))),
+                fixedSize: MaterialStateProperty.all(Size(w*0.40, 54)),
+                backgroundColor:
+                MaterialStateProperty.all(const Color(0xffFFB800)),
+                textStyle: MaterialStateProperty.all(const TextStyle(
+                    color: Color(0xff283034),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500))),
           ),
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 6),
-              child: ElevatedButton(
-                onPressed: () => print(""),
-                child: SvgPicture.asset(Cicon.download,
-                    color: Style.whiteHalf),
-                style: ButtonStyle(
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            vertical: 15, horizontal: 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0),
-                            side: const BorderSide(color: Style.gray2F))),
-                    fixedSize: MaterialStateProperty.all(const Size(54, 54)),
-                    backgroundColor: MaterialStateProperty.all(Style.glassBlack)),
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 1,
+          Padding(
+            padding: const EdgeInsets.only(left: 13),
             child: ElevatedButton(
               onPressed: () => print(""),
-              child: SvgPicture.asset(Cicon.like),
+              child: SvgPicture.asset(Cicon.addlist),
               style: ButtonStyle(
                   padding: MaterialStateProperty.all(
                       const EdgeInsets.symmetric(
@@ -396,11 +355,42 @@ class PodcastViewState extends State<PodcastView> {
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
-                          side: BorderSide(color: Style.glassBlack))),
-                  fixedSize: MaterialStateProperty.all(const Size(54, 54)),
-                  backgroundColor:
-                  MaterialStateProperty.all(Style.glassBlack)),
+                          side:  BorderSide(color: Style.glassBlack))),
+                  minimumSize: MaterialStateProperty.all(const Size(54, 54)),
+                  backgroundColor: MaterialStateProperty.all(Style.glassBlack)),
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: ElevatedButton(
+              onPressed: () => print(""),
+              child: SvgPicture.asset(Cicon.download),
+              style: ButtonStyle(
+                  padding: MaterialStateProperty.all(
+                      const EdgeInsets.symmetric(
+                          vertical: 17, horizontal: 0)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.0),
+                          side: const BorderSide(color: Style.gray2F))),
+                  minimumSize: MaterialStateProperty.all(const Size(54, 54)),
+                  backgroundColor: MaterialStateProperty.all(Style.glassBlack)),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () => print(""),
+            child: SvgPicture.asset(Cicon.heart_empty,color: Colors.white,width: 21,height: 18,),
+            style: ButtonStyle(
+                padding: MaterialStateProperty.all(
+                    const EdgeInsets.symmetric(
+                        vertical: 17, horizontal: 0)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                        side: BorderSide(color: Style.glassBlack))),
+                minimumSize: MaterialStateProperty.all(const Size(54, 54)),
+                backgroundColor:
+                MaterialStateProperty.all(Style.glassBlack)),
           ),
         ],
       ),
@@ -409,12 +399,12 @@ class PodcastViewState extends State<PodcastView> {
 
   _searchBar(w) {
     return Padding(
-      padding: const EdgeInsets.only(top: 33),
+      padding: const EdgeInsets.only(top: 33,left:14,right:14),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
-              height: 55,
+              height: 44,
               decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(12)),
                   border: Border.all(width: 1, color: const Color(0xff484848))),

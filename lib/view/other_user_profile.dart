@@ -126,7 +126,7 @@ class OtherUserProfileState extends State<OtherUserProfile>{
                   padding: const EdgeInsets.only(top: 9,right: 26,left: 26,bottom: 17),
                   child: ReadMoreText(
                     'In this Episode we will talk about lorem ipsum. you may sd heard of it before but let’s take a new look at it you may as In this Episode we will talk about lorem ipsum. you maya a heard of it before but let’s take a new look at it In thi zcefg Episode we will talk about lorem ipsum. you may you may heard of it before but let’s take a new look at it...',
-                    trimLines: 5,
+                    trimLines: 2,
                     style: Style.t_400_14_grayA1,
                     colorClickableText: Style.accentGold,
                     trimMode: TrimMode.Line,

@@ -69,7 +69,7 @@ class SeasonViewState extends State<SeasonView>{
   _likedItem(w,h)
   {
     return Padding(
-      padding: const EdgeInsets.only(left: 20,right: 20),
+      padding: const EdgeInsets.only(left: 17,right: 14),
       child: Column(
         children: [
           Row(
@@ -107,11 +107,14 @@ class SeasonViewState extends State<SeasonView>{
 
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Episode name which is long...".length > 30
-                          ? "Episode name which is long...".substring(0, 30) + "..."
-                          : "Episode name which is long...",
-                      style: _textTheme.headline1!.copyWith(fontSize: 14),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: Text(
+                        "Episode name which is long...".length > 30
+                            ? "Episode name which is long...".substring(0, 30) + "..."
+                            : "Episode name which is long...",
+                        style: _textTheme.headline1!.copyWith(fontSize: 14),
+                      ),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -192,7 +195,7 @@ class SeasonViewState extends State<SeasonView>{
   _seasonNameData()
   {
     return  Padding(
-      padding: const EdgeInsets.only(top: 24,left: 14,right: 24),
+      padding: const EdgeInsets.only(top: 28,left: 14,right: 14),
       child: Row(
         children: [
           Container(
@@ -263,7 +266,7 @@ class SeasonViewState extends State<SeasonView>{
         child: ReadMoreText(
           'In this Episode we will talk about lorem ipsum. you may heard of it before but let’s take a new look at it In this Episode we will talk about lorem ipsum. you may heard of it before but let’s take a new look at it...',
           trimLines: 2,
-          style: Style.t_400_14w,
+          style: Style.t_400_14_9d,
           colorClickableText: Style.accentGold,
           trimMode: TrimMode.Line,
           trimCollapsedText: 'Read more',
@@ -276,81 +279,37 @@ class SeasonViewState extends State<SeasonView>{
 
   _topTripleButtons(w) {
     return Padding(
-      padding: const EdgeInsets.only(right: 24, left: 14, top: 24, bottom: 28),
+      padding: const EdgeInsets.only(right: 14, left: 14, top: 40, bottom: 28),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
-              flex: 3,
-              child: ElevatedButton(
-                onPressed: () => print(""),
-                child:  const Text(
-                  "Buy for 17\$",
-
-                  style: TextStyle(color: Style.gray4D  ),
-                ),
-                style: ButtonStyle(
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            vertical: 17, horizontal: 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0),
-                            side:  const BorderSide(color: Style.accentGold))),
-                    fixedSize: MaterialStateProperty.all(Size(w, 54)),
-                    backgroundColor:
-                    MaterialStateProperty.all(Style.accentGold),
-                    textStyle: MaterialStateProperty.all(const TextStyle(
-                        color: Color(0xff283034),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500))),
-              )),
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 16),
-              child: ElevatedButton(
-                onPressed: () => print(""),
-                child: SvgPicture.asset(Cicon.addlist,color: Style.whiteHalf,),
-                style: ButtonStyle(
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            vertical: 17, horizontal: 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0),
-                            side: const BorderSide(color: Style.gray2F))),
-                    fixedSize: MaterialStateProperty.all(const Size(54, 54)),
-                    backgroundColor: MaterialStateProperty.all(Style.glassBlack)),
-              ),
+          ElevatedButton(
+            onPressed: () => print(""),
+            child: const Text(
+              "Buy for 17\$",
+              style: TextStyle(color: Color(0xff283034)),
             ),
+            style: ButtonStyle(
+                padding: MaterialStateProperty.all(
+                    const EdgeInsets.symmetric(
+                        vertical: 17, horizontal: 0)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                        side: const BorderSide(color: Color(0xffFFB800)))),
+                fixedSize: MaterialStateProperty.all(Size(w*0.40, 54)),
+                backgroundColor:
+                MaterialStateProperty.all(const Color(0xffFFB800)),
+                textStyle: MaterialStateProperty.all(const TextStyle(
+                    color: Color(0xff283034),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500))),
           ),
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 6),
-              child: ElevatedButton(
-                onPressed: () => print(""),
-                child: SvgPicture.asset(Cicon.download,
-                    color: Style.whiteHalf),
-                style: ButtonStyle(
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            vertical: 15, horizontal: 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0),
-                            side: const BorderSide(color: Style.gray2F))),
-                    fixedSize: MaterialStateProperty.all(const Size(54, 54)),
-                    backgroundColor: MaterialStateProperty.all(Style.glassBlack)),
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 1,
+          Padding(
+            padding: const EdgeInsets.only(left: 13),
             child: ElevatedButton(
               onPressed: () => print(""),
-              child: SvgPicture.asset(Cicon.like),
+              child: SvgPicture.asset(Cicon.addlist),
               style: ButtonStyle(
                   padding: MaterialStateProperty.all(
                       const EdgeInsets.symmetric(
@@ -358,11 +317,42 @@ class SeasonViewState extends State<SeasonView>{
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
-                          side: BorderSide(color: Style.glassBlack))),
-                  fixedSize: MaterialStateProperty.all(const Size(54, 54)),
-                  backgroundColor:
-                  MaterialStateProperty.all(Style.glassBlack)),
+                          side:  BorderSide(color: Style.glassBlack))),
+                  minimumSize: MaterialStateProperty.all(const Size(54, 54)),
+                  backgroundColor: MaterialStateProperty.all(Style.glassBlack)),
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: ElevatedButton(
+              onPressed: () => print(""),
+              child: SvgPicture.asset(Cicon.download),
+              style: ButtonStyle(
+                  padding: MaterialStateProperty.all(
+                      const EdgeInsets.symmetric(
+                          vertical: 17, horizontal: 0)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.0),
+                          side: const BorderSide(color: Style.gray2F))),
+                  minimumSize: MaterialStateProperty.all(const Size(54, 54)),
+                  backgroundColor: MaterialStateProperty.all(Style.glassBlack)),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () => print(""),
+            child: SvgPicture.asset(Cicon.heart_empty,color: Colors.white,width: 21,height: 18,),
+            style: ButtonStyle(
+                padding: MaterialStateProperty.all(
+                    const EdgeInsets.symmetric(
+                        vertical: 17, horizontal: 0)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                        side: BorderSide(color: Style.glassBlack))),
+                minimumSize: MaterialStateProperty.all(const Size(54, 54)),
+                backgroundColor:
+                MaterialStateProperty.all(Style.glassBlack)),
           ),
         ],
       ),

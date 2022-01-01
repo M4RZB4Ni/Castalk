@@ -27,6 +27,7 @@ class Style  {
   static const Color gray86 = Color(0xff868686);
   static const Color grayD1 = Color(0xffD1D1D1);
   static const Color gray27 = Color(0xff272727);
+  static const Color gray29 = Color(0xff292929);
   static const Color gray5C = Color(0xff5C5C5C);
   static const Color gray4D = Color(0XFF4D4D4D);
   static const Color gray90 = Color(0xff909090);
@@ -54,6 +55,7 @@ class Style  {
   static Color iconBack = const Color(0xff121212).withOpacity(0.30);
   static Color headerDarkLayer = const Color(0xff1D2223);
   static Color glassBlack = const Color(0xff3B3B3B);
+  static Color glassBlack20 = const Color(0xff3B3B3B).withOpacity(0.20);
   static Color glassBlackHalf = const Color(0xff3B3B3B).withOpacity(0.45);
   static Color redAccent = const Color(0xffFF5959);
   static Color hintColor=const Color(0xff797979);

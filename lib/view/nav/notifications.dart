@@ -31,7 +31,7 @@ class NotificationsState extends State<Notifications>{
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size(w, 170), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(w, 120), child: header(w)),
       backgroundColor: Style.background,
       body: SingleChildScrollView(
         child: Column(
@@ -500,7 +500,7 @@ class NotificationsState extends State<Notifications>{
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
-                  height: 55,
+                  height: 44,
                   decoration: BoxDecoration(
                       borderRadius:
                       const BorderRadius.all(Radius.circular(12)),

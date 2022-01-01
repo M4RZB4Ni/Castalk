@@ -156,7 +156,7 @@ class PaymentResponseState extends State<PaymentResponse>{
                         RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16.0),
-                            side: const BorderSide(color: Style.gray4C))),
+                            side:  BorderSide(color: Style.gray4C))),
                     backgroundColor:
                     MaterialStateProperty.all(Style.gray4C)),
               ),
