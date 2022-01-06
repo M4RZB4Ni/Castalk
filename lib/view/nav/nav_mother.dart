@@ -62,25 +62,37 @@ class NavMotherState extends State<NavMother>{
           BottomNavigationBarItem(
             backgroundColor: Style.gray38,
             label: "Feed",
-            icon: SvgPicture.asset(svgPath+"headphone.svg",color: _currentIndex==0 ? Style.accentGold : Colors.white,),
+            icon: Padding(
+              padding: const EdgeInsets.only(bottom: 6),
+              child: SvgPicture.asset(svgPath+"headphone.svg",color: _currentIndex==0 ? Style.accentGold : Colors.white,),
+            ),
           ),
           BottomNavigationBarItem(
             backgroundColor: Style.gray38,
 
             label: "Explore",
-            icon: SvgPicture.asset(svgPath+"search.svg",color: _currentIndex==1 ? Style.accentGold : Colors.white),
+            icon: Padding(
+              padding: const EdgeInsets.only(bottom: 6),
+              child: SvgPicture.asset(svgPath+"search.svg",color: _currentIndex==1 ? Style.accentGold : Colors.white),
+            ),
           ),
           BottomNavigationBarItem(
             backgroundColor: Style.gray38,
 
             label: "Notifications",
-            icon: SvgPicture.asset(svgPath+"notif.svg",color: _currentIndex==2 ? Style.accentGold : Colors.white),
+            icon: Padding(
+              padding: const EdgeInsets.only(bottom: 6),
+              child: SvgPicture.asset(svgPath+"notif.svg",color: _currentIndex==2 ? Style.accentGold : Colors.white),
+            ),
           ),
           BottomNavigationBarItem(
             backgroundColor: Style.gray38,
 
             label: "Profile",
-            icon: SvgPicture.asset(svgPath+"profile.svg",color: _currentIndex==3 ? Style.accentGold : Colors.white),
+            icon: Padding(
+              padding: const EdgeInsets.only(bottom: 6),
+              child: SvgPicture.asset(svgPath+"profile.svg",color: _currentIndex==3 ? Style.accentGold : Colors.white),
+            ),
           ),
         ],
     ),

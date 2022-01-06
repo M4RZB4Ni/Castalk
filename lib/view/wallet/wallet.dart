@@ -68,8 +68,10 @@ class WalletState extends State<Wallet>{
               ],),
             ),
               SizedBox(
-                height: h/2.5,
+                height: h/2.0,
                 child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 4,
                   itemBuilder: (context, index) {
                     return transItem();
                   },

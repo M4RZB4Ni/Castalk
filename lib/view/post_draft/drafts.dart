@@ -126,11 +126,14 @@ class DraftsState extends State<Drafts>{
 
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Episode name which is long...".length > 30
-                          ? "Episode name which is long...".substring(0, 30) + "..."
-                          : "Episode name which is long...",
-                      style: Style.t_500_14w,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 6),
+                      child: Text(
+                        "Episode name which is long...".length > 30
+                            ? "Episode name which is long...".substring(0, 30) + "..."
+                            : "Episode name which is long...",
+                        style: Style.t_500_14w,
+                      ),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

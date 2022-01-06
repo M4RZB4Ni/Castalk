@@ -125,7 +125,7 @@ class NewPostState extends State<NewPost>{
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
-              height: 55,
+              height: 44,
               decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(12)),
                   border: Border.all(width: 1, color: const Color(0xff484848))),

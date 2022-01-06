@@ -50,13 +50,14 @@ class DepositState extends State<Deposit>{
 
 
           Container(
-            padding: const EdgeInsets.only(bottom: 37,top: 61),
-            width: w/2,
+            padding: const EdgeInsets.only(bottom: 37,top: 61,right: 100,left: 100),
+            width: w,
             child: VirtualKeyboard(
               textColor: Style.gray90,
               fontSize: 24,
               alwaysCaps: true,
-              height: 231,
+              height: h/3.8,
+
 
               // [0-9] + .
                 type: VirtualKeyboardType.Numeric,

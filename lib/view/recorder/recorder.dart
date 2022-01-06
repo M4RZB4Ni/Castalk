@@ -51,7 +51,7 @@ class RecorderState extends State<Recorder> {
             color: Style.gray4D,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 40,bottom: 0),
+            padding: const EdgeInsets.only(left: 50,bottom: 0),
             child: Row(
               children: [
                 ElevatedButton(
