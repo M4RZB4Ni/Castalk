@@ -34,35 +34,42 @@ class NewPostState extends State<NewPost>{
 
       backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(w, 50), child: header(w)),
-      body: SingleChildScrollView(child:
-
-      Padding(
-        padding: const EdgeInsets.only(left: 24, top: 48,bottom: 18, right: 23),
-        child: SizedBox(
-          height: h,
+      body: SingleChildScrollView(
+        child:
+        ConstrainedBox(
+          constraints: BoxConstraints(minHeight: h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "What do you want to post?",
-                    style: Style.t_400_18w,
-                  ),
+              Padding(
+              //  padding: const EdgeInsets.only(left: 24, top: 48, right: 23),
+                padding: const EdgeInsets.only(left: 24, top: 48, right: 23),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 17),
+                      child: Text(
+                        "What do you want to post?",
+                        style: Style.t_400_18w,
+                      ),
+                    ),
                     ExpandablePanel(
                         theme: const ExpandableThemeData(hasIcon: false),
                         header: expandedHeaderToYourPlaylist(w,icon: Cicon.folder, title: "Create New Podcast"),
                         collapsed: Container(),
                         expanded: Container()),
 
-                    ExpandablePanel(
-                        theme: const ExpandableThemeData(hasIcon: false),
-                        header: expandedHeaderToYourPlaylist(w,icon: Cicon.playlist, title: "Add as New Season",color: Colors.black),
-                        collapsed: Container(),
-                        expanded: Container(
-                            width: w, height: 320, child: _ItemSection(w))),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 0),
+                      child: ExpandablePanel(
+                          theme: const ExpandableThemeData(hasIcon: false),
+                          header: expandedHeaderToYourPlaylist(w,icon: Cicon.playlist, title: "Add as New Season",color: Colors.black),
+                          collapsed: Container(),
+                          expanded: Container(
+                              width: w, height: 320, child: _ItemSection(w))),
+                    ),
 
                     ExpandablePanel(
                         theme: const ExpandableThemeData(hasIcon: false),
@@ -70,16 +77,20 @@ class NewPostState extends State<NewPost>{
                         collapsed: Container(),
                         expanded: Container(
                             width: w, height: 320, child: _ItemSection(w))),
-                ],
+                  ],
+                ),
               ),
 
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
 
                 children: [
-                  Text("You have 5 Open Podcasts",style: Style.t_400_14_9d,),
                   Padding(
-                    padding: const EdgeInsets.only(top: 22,bottom: 59,left: 0),
+                    padding: const EdgeInsets.only(left: 31,top: 40),
+                    child: Text("You have 5 Open Podcasts",style: Style.t_400_14_9d,),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 22,bottom: 80,left: 27),
                     child: ElevatedButton(
                       onPressed: () {},
                       child: Row(
@@ -112,11 +123,13 @@ class NewPostState extends State<NewPost>{
 
             ],
           ),
-        ),
-      )),
+        )
+      /*Padding(
+        padding: const EdgeInsets.only(left: 24, top: 48,bottom: 18, right: 23),
+        child: )*/,
 
 
-    );
+    ));
   }
   _searchBar(w) {
     return Padding(

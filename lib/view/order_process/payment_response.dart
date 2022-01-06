@@ -148,15 +148,13 @@ class PaymentResponseState extends State<PaymentResponse>{
                   style: Style.t_500_18g,
                 ),
                 style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all(Size(156, 54)),
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.only(
-                            left: 6, top: 6, bottom: 6)),
+
+
                     shape: MaterialStateProperty.all<
                         RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16.0),
-                            side:  BorderSide(color: Style.gray4C))),
+                            side:  const BorderSide(color: Style.gray4C))),
                     backgroundColor:
                     MaterialStateProperty.all(Style.gray4C)),
               ),
