@@ -171,13 +171,6 @@ class ExploreState extends State<Explore>{
                 ],),
 
 
-
-
-
-
-
-
-
             ],)
       ),
 

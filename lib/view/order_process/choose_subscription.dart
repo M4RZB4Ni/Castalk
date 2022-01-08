@@ -206,7 +206,10 @@ class ChooseSubscriptionState extends State<ChooseSubscription>{
              children: [
              Container(
                alignment: Alignment.topCenter,
-               child: Text(header,style: Style.t_500_12_g48_i,),
+               child: Padding(
+                 padding: const EdgeInsets.only(top: 2),
+                 child: Text(header,style: Style.t_500_12_g48_i,),
+               ),
                width: 117,
                decoration: BoxDecoration(color: Style.cream,  border: Border.all(color: Style.cream,width: 2),
                  borderRadius: BorderRadius.circular(16)),height: 77,),

@@ -85,8 +85,8 @@ class NewSeasonState extends State<NewSeason> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 23,bottom: 10),
-                    child: Text("Season Name:",style: Style.t_400_16w,),
+                    padding: const EdgeInsets.only(top: 23,bottom: 8),
+                    child: Text("Season Name:",style: Style.t_400_16w.copyWith(height: 1.5),),
                   ),
                   Padding(
                       padding: const EdgeInsets.only(top: 0,bottom: 9,left: 0),
@@ -104,7 +104,7 @@ class NewSeasonState extends State<NewSeason> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 20,bottom: 8),
-                    child: Text("About:",style: Style.t_400_16w,),
+                    child: Text("About:",style: Style.t_400_16w.copyWith(height: 1.5),),
                   ),
                   Container(height: 196,decoration:  Style.inputBoxDecoration,width: w,
                       child: Column(
@@ -141,7 +141,7 @@ class NewSeasonState extends State<NewSeason> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 32),
-                    child: Text("Tags:",style: Style.t_400_16w,),
+                    child: Text("Tags:",style: Style.t_400_16w.copyWith(height: 1.5),),
                   ),
 
                   Row(
@@ -207,7 +207,7 @@ class NewSeasonState extends State<NewSeason> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 56),
-                    child: Text("Premium Content :",style: Style.t_400_16w,),
+                    child: Text("Premium Content :",style: Style.t_400_16w.copyWith(height: 1.5),),
                   ),
                   Row(children: [
                     Row(
