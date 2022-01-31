@@ -49,6 +49,8 @@ dependencies:
   rulers: ^1.0.3
   new_virtual_keyboard: ^0.1.4
   syncfusion_flutter_datepicker: ^19.4.38
+  get: ^4.6.1
+
 dev_dependencies:
 
 
