@@ -74,4 +74,28 @@ class AuthApi{
 
   }
 
+  checkUsername({required var username,required var mobile,required var token}) async
+  {
+    var headers = {
+      'Authorization': 'bearer $token',
+      'Content-Type': 'application/json'
+    };
+    var request = http.Request('POST', Uri.parse(BaseApi.baseAddressSlash+'check/username'));
+    request.body = json.encode({
+      "username_to_check": username
+    });
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+    }
+    else {
+      print(response.reasonPhrase);
+    }
+
+
+  }
+
 }
