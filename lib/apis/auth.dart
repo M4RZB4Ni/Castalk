@@ -98,4 +98,79 @@ class AuthApi{
 
   }
 
+  tokenCheck({required var token}) async
+  {
+    var headers = {
+      'Authorization': 'bearer $token',
+    };
+
+    var request = http.Request('GET', Uri.parse(BaseApi.baseAddressSlash+'check'));
+
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+    }
+    else {
+      print(response.reasonPhrase);
+    }
+
+
+
+  }
+
+
+
+  updateProfile({required Map<String,dynamic> data,required var token}) async
+  {
+    var headers = {
+      'Authorization': 'bearer $token',
+      'Content-Type': 'application/json'
+    };
+    var request = http.Request('POST', Uri.parse(BaseApi.baseAddressSlash+'profile'));
+    request.body = json.encode({
+      "keys": [
+        data
+      ]
+    });
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+    }
+    else {
+      print(response.reasonPhrase);
+    }
+
+
+
+  }
+
+  refreshToeken({required var token}) async
+  {
+    var headers = {
+      'Authorization': 'bearer $token',
+    };
+    var request = http.Request('GET', Uri.parse(BaseApi.baseAddressSlash+'refresh'));
+
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+    }
+    else {
+      print(response.reasonPhrase);
+    }
+
+
+
+  }
+
+
 }
