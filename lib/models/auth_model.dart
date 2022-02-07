@@ -5,7 +5,7 @@ import 'dart:convert';
 /// code : 201
 
 AuthModel authModelFromJson(String str) => AuthModel.fromJson(json.decode(str));
-String authModelToJson(AuthModel data) => json.encode(data.toJson());
+String authModelToJson(AuthModel data) => jsonEncode(data.toJson());
 
 class AuthModel {
   AuthModel({
@@ -57,7 +57,7 @@ class AuthModel {
 /// expires_in : 3600
 
 Data dataFromJson(String str) => Data.fromJson(json.decode(str));
-String dataToJson(Data data) => json.encode(data.toJson());
+String dataToJson(Data data) => jsonEncode(data.toJson());
 
 class Data {
   Data({

@@ -11,7 +11,7 @@ class AuthApi{
       'Content-Type': 'application/json'
     };
     var request = http.Request('POST', Uri.parse(BaseApi.baseAddressSlash+"login"));
-    request.body = json.encode({
+    request.body = jsonEncode({
       "mobile": mobile,
       "password": password
     });
@@ -35,7 +35,7 @@ class AuthApi{
       'Content-Type': 'application/json'
     };
     var request = http.Request('POST', Uri.parse(BaseApi.baseAddressSlash+"register"));
-    request.body = json.encode({
+    request.body = jsonEncode({
       "mobile": mobile
     });
     request.headers.addAll(headers);
@@ -58,7 +58,7 @@ class AuthApi{
       'Content-Type': 'application/json'
     };
     var request = http.Request('POST', Uri.parse(BaseApi.baseAddressSlash+'update-username'));
-    request.body = json.encode({
+    request.body = jsonEncode({
       "username": username
     });
     request.headers.addAll(headers);
@@ -81,7 +81,7 @@ class AuthApi{
       'Content-Type': 'application/json'
     };
     var request = http.Request('POST', Uri.parse(BaseApi.baseAddressSlash+'check/username'));
-    request.body = json.encode({
+    request.body = jsonEncode({
       "username_to_check": username
     });
     request.headers.addAll(headers);
@@ -130,7 +130,7 @@ class AuthApi{
       'Content-Type': 'application/json'
     };
     var request = http.Request('POST', Uri.parse(BaseApi.baseAddressSlash+'profile'));
-    request.body = json.encode({
+    request.body = jsonEncode({
       "keys": [
         data
       ]
