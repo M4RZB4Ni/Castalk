@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:castalk/apis/base_api.dart';
 import 'package:http/http.dart' as http;
 
-class IntroApiClient{
+class Other{
 
 
-  introGetSingle(
+  categoryIndex(
       {required var token,required var id}) async
   {
 
@@ -14,7 +14,7 @@ class IntroApiClient{
       'Authorization': 'Bearer $token',
     };
 
-    var request = http.Request('POST', Uri.parse(BaseApi.baseAddressSlash+'api/rest/Castalk/IntroGetSingle?id=$id'));
+    var request = http.Request('GET', Uri.parse(BaseApi.baseAddressSlash+'api/rest/Castalk/CategoryIndex'));
 
     request.headers.addAll(headers);
 
@@ -27,7 +27,8 @@ class IntroApiClient{
       print(response.reasonPhrase);
     }
   }
-  introGetAll(
+
+  countryIndex(
       {required var token,required var id}) async
   {
 
@@ -35,7 +36,7 @@ class IntroApiClient{
       'Authorization': 'Bearer $token',
     };
 
-    var request = http.Request('GET', Uri.parse(BaseApi.baseAddressSlash+'api/rest/Castalk/IntroGetAll'));
+    var request = http.Request('GET', Uri.parse(BaseApi.baseAddressSlash+'api/rest/Castalk/CountryIndex'));
 
     request.headers.addAll(headers);
 
@@ -48,6 +49,8 @@ class IntroApiClient{
       print(response.reasonPhrase);
     }
   }
+
+
 
 
 
