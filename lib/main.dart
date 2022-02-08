@@ -1,69 +1,10 @@
+import 'package:castalk/routes/pages.dart';
 import 'package:castalk/style.dart';
-import 'package:castalk/view/editor/editor.dart';
-import 'package:castalk/view/editor/exported.dart';
-import 'package:castalk/view/editor/saved_projects.dart';
-import 'package:castalk/view/intro_signin/add_account_info.dart';
-import 'package:castalk/view/intro_signin/congratulations.dart';
-import 'package:castalk/view/nav/notifications.dart';
-import 'package:castalk/view/nav/home/home_feed.dart';
-import 'package:castalk/view/nav/nav_mother.dart';
-import 'package:castalk/view/nav/profile/MyCasts/my_casts.dart';
-import 'package:castalk/view/nav/profile/achivments.dart';
-import 'package:castalk/view/nav/profile/downloads.dart';
-import 'package:castalk/view/nav/profile/liked_episodes.dart';
-import 'package:castalk/view/nav/profile/listening_statistics.dart';
-import 'package:castalk/view/nav/profile/market/market.dart';
-import 'package:castalk/view/nav/profile/market/products.dart';
-import 'package:castalk/view/nav/profile/market/purchases.dart';
-import 'package:castalk/view/nav/profile/monetization.dart';
-import 'package:castalk/view/nav/profile/playlist.dart';
-import 'package:castalk/view/nav/profile/playlist_episodes.dart';
-import 'package:castalk/view/nav/profile/profile.dart';
-import 'package:castalk/view/nav/profile/profile_edit.dart';
-import 'package:castalk/view/nav/profile/promotion.dart';
-import 'package:castalk/view/nav/profile/promotion_analytics.dart';
-import 'package:castalk/view/nav/profile/promotion_list.dart';
-import 'package:castalk/view/nav/profile/request_verify_badge.dart';
-import 'package:castalk/view/new_post/new_podcast.dart';
-import 'package:castalk/view/new_post/new_post.dart';
-import 'package:castalk/view/new_post/new_season.dart';
-import 'package:castalk/view/order_process/cart_proceed.dart';
-import 'package:castalk/view/order_process/choose_subscription.dart';
-import 'package:castalk/view/order_process/payment_response.dart';
-import 'package:castalk/view/other_user_profile.dart';
-import 'package:castalk/view/owned_section/owned_episodes.dart';
-import 'package:castalk/view/owned_section/owned_podcast.dart';
-import 'package:castalk/view/owned_section/owned_seasons.dart';
-import 'package:castalk/view/player/comments.dart';
-import 'package:castalk/view/player/drive_mode.dart';
-import 'package:castalk/view/intro_signin/enter_code.dart';
-import 'package:castalk/view/intro_signin/intro.dart';
-import 'package:castalk/view/post_draft/draft_item.dart';
-import 'package:castalk/view/post_draft/drafts.dart';
-import 'package:castalk/view/presentation.dart';
-import 'package:castalk/view/product_view/episode_view.dart';
-import 'package:castalk/view/product_view/podcast_view.dart';
-import 'package:castalk/view/product_view/season_view.dart';
 
-import 'package:castalk/view/player/player.dart';
 
-import 'package:castalk/view/player/save_to_playlist.dart';
-import 'package:castalk/view/intro_signin/signin.dart';
-import 'package:castalk/view/recorder/recorded_list.dart';
-import 'package:castalk/view/recorder/recorder.dart';
-import 'package:castalk/view/set_plan.dart';
-import 'package:castalk/view/wallet/deposit.dart';
-import 'package:castalk/view/wallet/transaction_details.dart';
-import 'package:castalk/view/wallet/transaction_history.dart';
-import 'package:castalk/view/wallet/wallet.dart';
-import 'package:castalk/view/wallet/wallet_analytics.dart';
-import 'package:castalk/view/wallet/wallet_nav.dart';
-import 'package:castalk/view/wallet/withdraw.dart';
 
 import 'package:flutter/material.dart';
-import 'view/nav/explore/explore.dart';
-import 'view/nav/home/home_items_expanded.dart';
-import 'view/new_post/new_episode.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -75,7 +16,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return  GetMaterialApp(
       theme: ThemeData(
         unselectedWidgetColor: Style.accentGold,
         disabledColor: Style.accentGold,
@@ -116,8 +57,9 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Castalk',
       debugShowCheckedModeBanner: true,
-      initialRoute: "/ChooseSubscription",
-      routes: {
+      initialRoute: Pages.INITIAL_ROUTE,
+      getPages: Pages.pages,
+    /*  routes: {
         "/Intro":(context) => const Directionality(textDirection: TextDirection.ltr, child: Intro()),
         "/SignIn":(context) => const Directionality(textDirection: TextDirection.ltr, child: SignIn()),
         "/EnterCode":(context) =>  Directionality(textDirection: TextDirection.ltr, child: EnterCode(phoneNumber: '+989185584088')),
@@ -179,7 +121,7 @@ class MyApp extends StatelessWidget {
         "/CartProceed":(context) => const Directionality(textDirection: TextDirection.ltr, child: CartProceed()),
         "/PaymentResponse":(context) => const Directionality(textDirection: TextDirection.ltr, child: PaymentResponse()),
         "/Presentation":(context) => const Directionality(textDirection: TextDirection.ltr, child: Presentation()),
-      },
+      },*/
 
     );
   }
