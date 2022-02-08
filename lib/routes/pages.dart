@@ -53,6 +53,7 @@ import 'package:castalk/view/product_view/season_view.dart';
 import 'package:castalk/view/recorder/recorded_list.dart';
 import 'package:castalk/view/recorder/recorder.dart';
 import 'package:castalk/view/set_plan.dart';
+import 'package:castalk/view/splash.dart';
 import 'package:castalk/view/wallet/deposit.dart';
 import 'package:castalk/view/wallet/transaction_details.dart';
 import 'package:castalk/view/wallet/transaction_history.dart';
@@ -62,10 +63,11 @@ import 'package:castalk/view/wallet/withdraw.dart';
 import 'package:get/get.dart';
 
 class Pages{
-  static const INITIAL_ROUTE = Routes.Intro;
+  static const INITIAL_ROUTE = Routes.Splash;
 
   static final List<GetPage> pages=[
 
+    GetPage(name: Routes.Splash, page: () =>  Splash()),
     GetPage(name: Routes.Intro, page: () => const Intro()),
     GetPage(name: Routes.SignIn, page: () => const SignIn()),
     GetPage(name: Routes.EnterCode, page: () =>  EnterCode(phoneNumber: '+989185584088')),

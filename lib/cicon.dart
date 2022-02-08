@@ -119,4 +119,5 @@ class Cicon{
   static const String wallet_chart= _prefix+"wallet_chart"+_svg;
   static const String wallet_on= _prefix+"wallet_on"+_svg;
   static const String trans_history= _prefix+"trans_history"+_svg;
+  static const String logo= _prefix+"logo"+_svg;
 }

@@ -122,11 +122,10 @@ class EditorState extends State<Editor>{
             child: Padding(
               padding: const EdgeInsets.only(left: 78),
               child: RulerWidget(
-                scaleSize: 100,
-                scaleColor: Style.background,
-                limit: 24,
-                interval: 5,
-                normalBarColor: Colors.grey,
+
+              /*  limit: 24,
+                interval: 5,*/
+                scaleBackgroundColor: Style.background, barsColor:  Colors.grey, height: 100, largeScaleBarsInterval: 100, smallScaleBarsInterval: 100,
               ),
             ),
           ),

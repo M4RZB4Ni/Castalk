@@ -1,3 +1,4 @@
+import 'package:castalk/controllers/splash_controller.dart';
 import 'package:castalk/routes/pages.dart';
 import 'package:castalk/style.dart';
 
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
+ // Get.put(SplashController());
   runApp(const MyApp());
 }
 

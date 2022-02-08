@@ -45,7 +45,7 @@ dependencies:
   timelines: ^0.1.0
   flutter_slidable: ^1.1.0
   gradient_widgets: ^0.6.0
-  rulers: ^1.0.3
+  rulers: ^1.0.7
   new_virtual_keyboard: ^0.1.4
   syncfusion_flutter_datepicker: ^19.4.38
   get: ^4.6.1
@@ -175,6 +175,7 @@ flutter:
   - assets/icons/trans_history.svg
   - assets/icons/wallet_on.svg
   - assets/icons/wallet_chart.svg
+  - assets/icons/logo.svg
 
   uses-material-design: true
 

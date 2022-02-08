@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:castalk/apis/base_api.dart';
+import 'package:castalk/models/auth_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
@@ -20,7 +21,10 @@ class AuthApi{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 201) {
-      debugPrint(await response.stream.bytesToString());
+      var respo=await response.stream.bytesToString();
+      return AuthModel.fromJson(jsonDecode(respo.toString()));
+      // debugPrint("expire-->"+data.data!.accessToken.toString());
+
       return response.statusCode;
   }
   else {
