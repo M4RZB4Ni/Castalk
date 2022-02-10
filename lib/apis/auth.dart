@@ -47,6 +47,10 @@ class AuthApi{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 201) {
+      var respo=await response.stream.bytesToString();
+
+      debugPrint("registerResponse-->"+respo);
+
       return response.statusCode;
     }
     else {

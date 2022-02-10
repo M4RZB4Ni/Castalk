@@ -15,6 +15,15 @@ class SplashController extends GetxController with StateMixin{
 
   }
 
+
+
+  void register({required var mobile}) async
+  {
+
+    dynamic token= await AuthApi().register(mobile: mobile);
+    debugPrint("token--> ${token}");
+
+  }
   @override
   void onInit() {
       debugPrint("SplashController onInit yayaya");

@@ -16,7 +16,7 @@ class Splash extends GetView<SplashController>{
 
   @override
   Widget build(BuildContext context) {
-
+    controller.register(mobile: "09185584088");
     return Scaffold(
       backgroundColor: Style.background,
       body: Center(child: SvgPicture.asset(Cicon.logo,width:  Utils(context).getWidth()/3)),

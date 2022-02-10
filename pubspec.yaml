@@ -49,9 +49,14 @@ dependencies:
   new_virtual_keyboard: ^0.1.4
   syncfusion_flutter_datepicker: ^19.4.38
   get: ^4.6.1
+  freezed_annotation: ^1.1.0
+  json_annotation: ^4.4.0
 
 dev_dependencies:
 
+  freezed: ^1.1.1
+  build_runner: ^2.1.7
+  json_serializable: ^6.1.4
 
 
   flutter_lints: ^1.0.0
