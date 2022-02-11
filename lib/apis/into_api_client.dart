@@ -27,22 +27,19 @@ class IntroApiClient{
       print(response.reasonPhrase);
     }
   }
-  introGetAll(
-      {required var token,required var id}) async
+ Future introGetAll() async
   {
 
-    var headers = {
-      'Authorization': 'Bearer $token',
-    };
 
     var request = http.Request('GET', Uri.parse(BaseApi.baseAddressSlash+'api/rest/Castalk/IntroGetAll'));
 
-    request.headers.addAll(headers);
 
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      var data=await response.stream.bytesToString();
+      Map<String,dynamic>  resp = jsonDecode(data);
+      return resp;
     }
     else {
       print(response.reasonPhrase);

@@ -9,19 +9,6 @@ import 'package:http/http.dart' as http;
 
 class AuthApi{
 
-  final storage = const FlutterSecureStorage();
-
-
-  void checkToken() async
-  {
-    var token= await storage.read(key: "TokenKey");
-    if(token!=null){
-      Get.toNamed(Routes.Explore);
-    }else{
-      Get.toNamed(Routes.Intro);
-    }
-
-  }
 
   login({required var mobile,required var password}) async
   {

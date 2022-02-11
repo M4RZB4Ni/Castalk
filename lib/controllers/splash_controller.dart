@@ -1,12 +1,27 @@
 import 'package:castalk/apis/auth.dart';
 import 'package:castalk/customs/utils.dart';
 import 'package:castalk/models/auth_model.dart';
+import 'package:castalk/routes/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 
-class SplashController extends GetxController with StateMixin{
+class SplashController extends GetxController{
 
-
+  //
+  // final storage = const FlutterSecureStorage();
+  //
+  //
+  // void checkToken() async
+  // {
+  //   var token= await storage.read(key: "TokenKey");
+  //   if(token!=null){
+  //     Get.toNamed(Routes.Explore);
+  //   }else{
+  //     Get.toNamed(Routes.Intro);
+  //   }
+  //
+  // }
 
 
   void login({required var mobile,required var password}) async
@@ -25,10 +40,11 @@ class SplashController extends GetxController with StateMixin{
     dynamic token= await AuthApi().register(mobile: mobile);
     debugPrint("token--> ${token}");
 
+
   }
   @override
   void onInit() {
-    Utils()
+   // Utils()
   }
 
 
