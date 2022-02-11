@@ -1,9 +1,11 @@
 import 'package:castalk/apis/auth.dart';
+import 'package:castalk/customs/utils.dart';
 import 'package:castalk/models/auth_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController with StateMixin{
+
 
 
 
@@ -26,8 +28,11 @@ class SplashController extends GetxController with StateMixin{
   }
   @override
   void onInit() {
-      debugPrint("SplashController onInit yayaya");
+    Utils()
   }
+
+
+
 
 
 }

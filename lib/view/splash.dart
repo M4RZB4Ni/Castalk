@@ -11,12 +11,11 @@ import 'package:get/get.dart';
 class Splash extends GetView<SplashController>{
     Splash({Key? key}) : super(key: key);
 
-   @override
-  final controller=Get.put(SplashController());
+
 
   @override
   Widget build(BuildContext context) {
-    controller.register(mobile: "09185584088");
+    controller.register(mobile: "09026036199");
     return Scaffold(
       backgroundColor: Style.background,
       body: Center(child: SvgPicture.asset(Cicon.logo,width:  Utils(context).getWidth()/3)),

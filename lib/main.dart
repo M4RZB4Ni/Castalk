@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
- // Get.put(SplashController());
+  Get.put(SplashController());
   runApp(const MyApp());
 }
 
