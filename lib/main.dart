@@ -10,7 +10,9 @@ import 'package:get/get.dart';
 
 void main() {
   Get.put(AuthController());
+
   Get.put(IntroController());
+
   runApp(const MyApp());
 }
 

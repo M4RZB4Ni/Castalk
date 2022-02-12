@@ -1,78 +1,20 @@
-import 'dart:convert';
+import 'package:castalk/models/token_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
 
+part 'auth_model.freezed.dart';
+part 'auth_model.g.dart';
 
-AuthModel authModelFromJson(String str) => AuthModel.fromJson(json.decode(str));
-String authModelToJson(AuthModel data) => jsonEncode(data.toJson());
+@freezed
+class AuthModel with _$AuthModel{
 
-class AuthModel {
-  AuthModel({
-      TokenData? data,
+  const AuthModel._();
 
-      int? code,}){
-    _data = data;
+  factory AuthModel({
+    required TokenModel? data,
+    required int code,
+  })= _AuthModel;
 
-    _code = code;
-}
-
-  AuthModel.fromJson(dynamic json) {
-    _data = json['data'] != null ? TokenData.fromJson(json['data']) : null;
-
-
-    _code = json['code'];
-  }
-  TokenData? _data;
-
-  int? _code;
-
-  TokenData? get data => _data;
-
-  int? get code => _code;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    if (_data != null) {
-      map['data'] = _data?.toJson();
-    }
-
-    map['code'] = _code;
-    return map;
-  }
-
-}
-
-
-TokenData dataFromJson(String str) => TokenData.fromJson(json.decode(str));
-String dataToJson(TokenData data) => jsonEncode(data.toJson());
-
-class TokenData {
-  TokenData({
-      String? accessToken, 
-      String? tokenType, 
-      int? expiresIn,}){
-    _accessToken = accessToken;
-    _tokenType = tokenType;
-    _expiresIn = expiresIn;
-}
-
-  TokenData.fromJson(dynamic json) {
-    _accessToken = json['access_token'];
-    _tokenType = json['token_type'];
-    _expiresIn = json['expires_in'];
-  }
-  String? _accessToken;
-  String? _tokenType;
-  int? _expiresIn;
-
-  String? get accessToken => _accessToken;
-  String? get tokenType => _tokenType;
-  int? get expiresIn => _expiresIn;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['access_token'] = _accessToken;
-    map['token_type'] = _tokenType;
-    map['expires_in'] = _expiresIn;
-    return map;
-  }
+  factory AuthModel.fromJson(Map<String, dynamic> map) => _$AuthModelFromJson(map);
 
 }

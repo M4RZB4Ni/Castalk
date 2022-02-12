@@ -88,6 +88,7 @@ class SignIn extends StatelessWidget {
                     decoration: boxDecorations,
                     width: Utils(context).getWidth(),
                     child: TextField(
+                        keyboardType: TextInputType.phone,
                         controller: numberController,
                         textAlign: TextAlign.left,
                         maxLines: 1,
@@ -113,7 +114,7 @@ class SignIn extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     debugPrint("sentOTP");
-                    authService.login(mobile: "09185584088", password: "1234");
+                    authService.login(mobile: numberController.text, password: "1234");
                   },
                   child: const Text(
                     "Send OTP",

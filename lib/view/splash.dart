@@ -16,10 +16,9 @@ class Splash extends GetView<AuthController>{
 
   @override
   Widget build(BuildContext context) {
-    controller.checkToken();
     return Scaffold(
-        backgroundColor: Style.background,
-        body: Center(child: SvgPicture.asset(Cicon.logo,width:  Utils(context).getWidth()/3)),
+      backgroundColor: Style.background,
+      body: Center(child: SvgPicture.asset(Cicon.logo,width:  Utils(context).getWidth()/3)),
     );
 
   }

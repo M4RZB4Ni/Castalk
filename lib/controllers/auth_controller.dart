@@ -27,11 +27,15 @@ class AuthController extends GetxController{
   }
 
 
-  void login({required var mobile,required var password}) async
+  void login({required String mobile,required var password}) async
   {
     debugPrint("tokenmobile--> ${mobile}");
-
-    AuthModel token= await AuthApi().login(mobile: mobile, password: password);
+    if(mobile.isNotEmpty) {
+      AuthModel token = await AuthApi().login(
+          mobile: mobile, password: password);
+    }else{
+      Get.snackbar("Error...", "Check Number!");
+    }
    // debugPrint("token--> ${token.data!.accessToken}");
   }
 
@@ -45,8 +49,15 @@ class AuthController extends GetxController{
 
   }
 
+  @override
+  void onInit() {
+    WidgetsFlutterBinding.ensureInitialized();
+    checkToken();
 
+  }
 
-
-
+  @override
+  void onReady() {
+    debugPrint("${Get.currentRoute+ "Controller Ready"}");
+  }
 }
