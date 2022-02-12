@@ -67,9 +67,9 @@ class Pages{
 
   static final List<GetPage> pages=[
 
-    GetPage(name: Routes.Splash, page: () =>  Splash()),
-    GetPage(name: Routes.Intro, page: () => const Intro()),
-    GetPage(name: Routes.SignIn, page: () => const SignIn()),
+    GetPage(name: Routes.Splash, page: () =>  const Splash()),
+    GetPage(name: Routes.Intro, page: () =>  Intro()),
+    GetPage(name: Routes.SignIn, page: () =>  SignIn()),
     GetPage(name: Routes.EnterCode, page: () =>  EnterCode(phoneNumber: '+989185584088')),
     GetPage(name: Routes.AddAccountInfo, page: () =>  const AddAccountInfo()),
     GetPage(name: Routes.Congratulations, page: () =>  const Congratulations()),

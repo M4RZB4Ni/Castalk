@@ -1,10 +1,7 @@
 import 'dart:convert';
 import 'package:castalk/apis/base_api.dart';
 import 'package:castalk/models/auth_model.dart';
-import 'package:castalk/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class AuthApi{
@@ -15,7 +12,7 @@ class AuthApi{
     var headers = {
       'Content-Type': 'application/json'
     };
-    var request = http.Request('POST', Uri.parse(BaseApi.baseAddressSlash+"login"));
+    var request = http.Request('POST', Uri.parse(BaseApi.authBaseAddressSlash+"login"));
     request.body = jsonEncode({
       "mobile": mobile,
       "password": password
@@ -42,7 +39,7 @@ class AuthApi{
     var headers = {
       'Content-Type': 'application/json'
     };
-    var request = http.Request('POST', Uri.parse(BaseApi.baseAddressSlash+"register"));
+    var request = http.Request('POST', Uri.parse(BaseApi.authBaseAddressSlash+"register"));
     request.body = jsonEncode({
       "mobile": mobile
     });
@@ -69,7 +66,7 @@ class AuthApi{
       'Authorization': 'bearer $token',
       'Content-Type': 'application/json'
     };
-    var request = http.Request('POST', Uri.parse(BaseApi.baseAddressSlash+'update-username'));
+    var request = http.Request('POST', Uri.parse(BaseApi.authBaseAddressSlash+'update-username'));
     request.body = jsonEncode({
       "username": username
     });
@@ -92,7 +89,7 @@ class AuthApi{
       'Authorization': 'bearer $token',
       'Content-Type': 'application/json'
     };
-    var request = http.Request('POST', Uri.parse(BaseApi.baseAddressSlash+'check/username'));
+    var request = http.Request('POST', Uri.parse(BaseApi.authBaseAddressSlash+'check/username'));
     request.body = jsonEncode({
       "username_to_check": username
     });
@@ -116,7 +113,7 @@ class AuthApi{
       'Authorization': 'bearer $token',
     };
 
-    var request = http.Request('GET', Uri.parse(BaseApi.baseAddressSlash+'check'));
+    var request = http.Request('GET', Uri.parse(BaseApi.authBaseAddressSlash+'check'));
 
     request.headers.addAll(headers);
 
@@ -141,7 +138,7 @@ class AuthApi{
       'Authorization': 'bearer $token',
       'Content-Type': 'application/json'
     };
-    var request = http.Request('POST', Uri.parse(BaseApi.baseAddressSlash+'profile'));
+    var request = http.Request('POST', Uri.parse(BaseApi.authBaseAddressSlash+'profile'));
     request.body = jsonEncode({
       "keys": [
         data
@@ -167,7 +164,7 @@ class AuthApi{
     var headers = {
       'Authorization': 'bearer $token',
     };
-    var request = http.Request('GET', Uri.parse(BaseApi.baseAddressSlash+'refresh'));
+    var request = http.Request('GET', Uri.parse(BaseApi.authBaseAddressSlash+'refresh'));
 
     request.headers.addAll(headers);
 

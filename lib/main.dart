@@ -1,4 +1,5 @@
-import 'package:castalk/controllers/splash_controller.dart';
+import 'package:castalk/controllers/intro_controller.dart';
+import 'package:castalk/controllers/auth_controller.dart';
 import 'package:castalk/routes/pages.dart';
 import 'package:castalk/style.dart';
 
@@ -8,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
-  Get.put(SplashController());
+  Get.put(AuthController());
+  Get.put(IntroController());
   runApp(const MyApp());
 }
 
@@ -61,8 +63,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: true,
       initialRoute: Pages.INITIAL_ROUTE,
       getPages: Pages.pages,
-
-
     );
   }
 }

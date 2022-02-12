@@ -1,17 +1,13 @@
+import 'package:castalk/controllers/auth_controller.dart';
+import 'package:castalk/customs/utils.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
 
-  @override
-  State<StatefulWidget> createState() {
-    return SigninState();
-  }
-}
 
-class SigninState extends State<SignIn> {
-  List<String> cCodes=["Male","Female"];
+class SignIn extends StatelessWidget {
+  //List<String> cCodes=["Male","Female"];
   static const TextStyle dropStyle =
       TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400);
   TextEditingController numberController = TextEditingController();
@@ -20,15 +16,15 @@ class SigninState extends State<SignIn> {
       border: Border.all(width: 1, color: const Color(0xff484848)));
   late String _genderValue;
 
+  final authService = Get.find<AuthController>();
 
   @override
   void initState() {
-    _genderValue="Male";
+    //_genderValue="Male";
   }
 
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -46,13 +42,16 @@ class SigninState extends State<SignIn> {
           children: [
             SizedBox(
               height: 100,
-              width: w,
+              width: Utils(context).getWidth(),
             ),
             Column(
               children: [
-                Text("Use your mobile number to signin",
-                    style: Theme.of(context).textTheme.bodyText1),
                 Padding(
+                  padding: const EdgeInsets.only(top: 15, bottom: 9),
+                  child: Text("Use your mobile number to signin",
+                      style: Theme.of(context).textTheme.bodyText1),
+                ),
+               /* Padding(
                   padding: const EdgeInsets.only(top: 15, bottom: 9),
                   child: Container(
                       height: 55,
@@ -83,11 +82,11 @@ class SigninState extends State<SignIn> {
                                     })),
                           )
                       )),
-                ),
+                ),*/
                 Container(
                     height: 55,
                     decoration: boxDecorations,
-                    width: w,
+                    width: Utils(context).getWidth(),
                     child: TextField(
                         controller: numberController,
                         textAlign: TextAlign.left,
@@ -112,7 +111,10 @@ class SigninState extends State<SignIn> {
                       style: Theme.of(context).textTheme.subtitle1),
                 ),
                 ElevatedButton(
-                  onPressed: () => print(""),
+                  onPressed: () {
+                    debugPrint("sentOTP");
+                    authService.login(mobile: "09185584088", password: "1234");
+                  },
                   child: const Text(
                     "Send OTP",
                     style: TextStyle(color: Color(0xff283034)),

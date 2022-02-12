@@ -3,19 +3,21 @@ import 'package:castalk/models/intro_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class IntroController extends GetxController{
+class IntroController extends GetxController with StateMixin<List<IntroModel>>{
+  final IntroApiClient _introApiClient=IntroApiClient();
 
-late List<IntroModel> introList;
+   late List<IntroModel> introList=[];
 
-final IntroApiClient _introApiClient=IntroApiClient();
 
-introGetAll() async{
-    _introApiClient.introGetAll().then((l) => {
-      debugPrint('introGetAllResponseDate $l'),
-        introList=List<IntroModel>.from(l.map((model) => IntroModel.fromJson(model)))
-    });
+  introGetAll() async{
+    change(introList, status: RxStatus.loading());
+    await _introApiClient.introGetAll().then((l) => {
+          debugPrint('introGetAllResponseDatemap $l'),
+          introList= List<IntroModel>.from(l.map((model) => IntroModel.fromJson(model))),
+          change(introList, status: RxStatus.success()),
+          debugPrint('introList ${introList.first}')
+      });
 }
-
 
 
 }

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:castalk/apis/base_api.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class IntroApiClient{
@@ -30,18 +31,21 @@ class IntroApiClient{
  Future introGetAll() async
   {
 
-
     var request = http.Request('GET', Uri.parse(BaseApi.baseAddressSlash+'api/rest/Castalk/IntroGetAll'));
-
 
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      var data=await response.stream.bytesToString();
-      Map<String,dynamic>  resp = jsonDecode(data);
-      return resp;
+
+    var data=await response.stream.bytesToString();
+    debugPrint('introGetAllResponseDate $data');
+
+    Map<String,dynamic>  resp =await jsonDecode(data);
+      return resp['data']['data'];
     }
     else {
+
+
       print(response.reasonPhrase);
     }
   }
