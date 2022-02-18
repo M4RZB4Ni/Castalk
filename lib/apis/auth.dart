@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:castalk/apis/base_api.dart';
 import 'package:castalk/models/auth_model.dart';
+import 'package:castalk/models/token_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
@@ -23,10 +24,8 @@ class AuthApi{
 
     if (response.statusCode == 201) {
       var respo=await response.stream.bytesToString();
-      return AuthModel.fromJson(jsonDecode(respo.toString()));
-      // debugPrint("expire-->"+data.data!.accessToken.toString());
-
-      return response.statusCode;
+      var decoded= await jsonDecode(respo);
+      return AuthModel.fromJson(decoded);
   }
   else {
   print(response.reasonPhrase);
@@ -46,16 +45,16 @@ class AuthApi{
     request.headers.addAll(headers);
 
     http.StreamedResponse response = await request.send();
+    var respo=await response.stream.bytesToString();
+    debugPrint("registerResponse-->"+respo);
 
     if (response.statusCode == 201) {
       var respo=await response.stream.bytesToString();
-
-      debugPrint("registerResponse-->"+respo);
-
-      return response.statusCode;
+      var decoded= await jsonDecode(respo);
+      return AuthModel.fromJson(decoded);
     }
     else {
-      print(response.reasonPhrase);
+      print(respo);
     }
 
   }

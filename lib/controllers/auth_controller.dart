@@ -33,6 +33,7 @@ class AuthController extends GetxController{
     if(mobile.isNotEmpty) {
       AuthModel token = await AuthApi().login(
           mobile: mobile, password: password);
+      debugPrint("loginResponse-->>>${token.data.accessToken}");
     }else{
       Get.snackbar("Error...", "Check Number!");
     }
@@ -44,7 +45,7 @@ class AuthController extends GetxController{
   void register({required var mobile}) async
   {
     dynamic token = await AuthApi().register(mobile: mobile);
-    // debugPrint("token--> ${token}");
+
 
 
   }

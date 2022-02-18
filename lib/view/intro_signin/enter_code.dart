@@ -2,30 +2,15 @@
 
 import 'dart:async';
 
+import 'package:castalk/controllers/auth_controller.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class EnterCode extends StatefulWidget{
 
-  String? phoneNumber;
-  String? code="111111";
-
-
-  EnterCode({Key? key,required this.phoneNumber}) : super(key: key);
-
-
-  EnterCode.empty({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return EnterCodeState();
-  }
-
-}
-
-class EnterCodeState extends State<EnterCode>
+class EnterCodeState extends GetView<AuthController>
 {
 
   StreamController<ErrorAnimationType>? errorController;
@@ -45,7 +30,7 @@ class EnterCodeState extends State<EnterCode>
 
     // double w = MediaQuery.of(context).size.width;
     // double h = MediaQuery.of(context).size.height;
-    pincodeStyle=Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.white54);
+    pincodeStyle=Get.textTheme.subtitle1!.copyWith(color: Colors.white54);
 
 
     return Scaffold(
@@ -60,10 +45,10 @@ class EnterCodeState extends State<EnterCode>
             header(),
             Column(
               children: [
-                Text("The code has been sent to",style: Theme.of(context).textTheme.bodyText1),
+                Text("The code has been sent to",style: Get.textTheme.bodyText1),
                 Padding(
                   padding: const EdgeInsets.only(top: 10,bottom: 0),
-                  child: Text(widget.phoneNumber ?? "None",style: Theme.of(context).textTheme.subtitle2),
+                  child: Text(widget.phoneNumber ?? "None",style: Get.textTheme.subtitle2),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 29,bottom: 9,right: 70,left: 70),
@@ -80,15 +65,15 @@ class EnterCodeState extends State<EnterCode>
                       fieldWidth: 40,
                       activeFillColor: Colors.white,
                       borderWidth: 1,
-                      activeColor: Theme.of(context).focusColor,
+                      activeColor: Get.theme.focusColor,
                       inactiveColor: const Color(0xffD2D2D2),
-                      selectedColor: Theme.of(context).focusColor,
+                      selectedColor: Get.theme.focusColor,
                       errorBorderColor:const Color(0xffFF5959),
 
                     ),
                     textStyle: pincodeStyle,
                     hintStyle: pincodeStyle,
-                    cursorColor: Theme.of(context).focusColor,
+                    cursorColor: Get.theme.focusColor,
                     autoDisposeControllers: true,
                     autoDismissKeyboard: true,
                     keyboardType: TextInputType.number,
@@ -105,9 +90,7 @@ class EnterCodeState extends State<EnterCode>
                     },
                     onChanged: (value) {
                       print(value);
-                      setState(() {
-                       // currentText = value;
-                      });
+                    
                     },
                     beforeTextPaste: (text) {
                       print("Allowing to paste $text");
@@ -139,7 +122,7 @@ class EnterCodeState extends State<EnterCode>
                     ),
                     nextState=="ResendOff" ? Padding(
                       padding: const EdgeInsets.only(right: 48,bottom: 57),
-                      child:  Text(timerText,style: Theme.of(context).textTheme.subtitle2,),
+                      child:  Text(timerText,style: Get.textTheme.subtitle2,),
                     ) : const Text(" ")
                   ],
                 )
@@ -217,16 +200,16 @@ class EnterCodeState extends State<EnterCode>
     switch(type)
     {
       case "ResendOn":
-      return Text("If you have not received code,press resend code or try another number",style: Theme.of(context).textTheme.subtitle1);
+      return Text("If you have not received code,press resend code or try another number",style: Get.textTheme.subtitle1);
 
 
       case "ResendOff":
-        return Text("A verification code will send to the number",style: Theme.of(context).textTheme.subtitle1);
+        return Text("A verification code will send to the number",style: Get.textTheme.subtitle1);
 
       case "Next":
-        return Text("",style: Theme.of(context).textTheme.subtitle1);
+        return Text("",style: Get.textTheme.subtitle1);
       default :
-        return Text("If you have not received code,press resend code or try another number",style: Theme.of(context).textTheme.subtitle1);
+        return Text("If you have not received code,press resend code or try another number",style: Get.textTheme.subtitle1);
     }
 
   }
@@ -237,11 +220,11 @@ class EnterCodeState extends State<EnterCode>
     {
       case "Verified":
 
-        return Text("Your number has been verified successfully",style:Theme.of(context).textTheme.subtitle1!.copyWith(color: const Color(0xff7CFF4E)));
+        return Text("Your number has been verified successfully",style:Get.textTheme.subtitle1!.copyWith(color: const Color(0xff7CFF4E)));
 
 
       case "Wrong":
-        return Text("Code is not Correct. recheck your code or get new code",style: Theme.of(context).textTheme.subtitle1!.copyWith(color: const Color(0xffFF5959)));
+        return Text("Code is not Correct. recheck your code or get new code",style: Get.textTheme.subtitle1!.copyWith(color: const Color(0xffFF5959)));
 
       default :
         return Text("");
@@ -259,7 +242,7 @@ class EnterCodeState extends State<EnterCode>
 
         setState(() {
           subtitleTextStyle="Wrong";
-          pincodeStyle= Theme.of(context).textTheme.subtitle1!.copyWith(color: const Color(0xffFF5959));
+          pincodeStyle= Get.textTheme.subtitle1!.copyWith(color: const Color(0xffFF5959));
         });
       }else if(submitted==widget.code){
       debugPrint("submitted==widget.code");
@@ -267,8 +250,7 @@ class EnterCodeState extends State<EnterCode>
       setState(() {
         subtitleTextStyle="Verified";
         nextState="Next";
-
-        pincodeStyle= Theme.of(context).textTheme.subtitle1!.copyWith(color: const Color(0xff7CFF4E));
+        pincodeStyle= Get.textTheme.subtitle1!.copyWith(color: const Color(0xff7CFF4E));
       });
      }
   }
@@ -282,7 +264,7 @@ class EnterCodeState extends State<EnterCode>
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(width: 44,height: 44,child: const Icon(Icons.arrow_back_outlined) ,decoration: BoxDecoration(color: Colors.grey.shade500,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
-          Text("Enter Code",style: Theme.of(context).textTheme.headline1),
+          Text("Enter Code",style: Get.textTheme.headline1),
            const SizedBox(width: 44,),
 
         ],

@@ -114,7 +114,7 @@ class SignIn extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     debugPrint("sentOTP");
-                    authService.login(mobile: numberController.text, password: "1234");
+                    authService.register(mobile: numberController.text);
                   },
                   child: const Text(
                     "Send OTP",
