@@ -8,8 +8,6 @@ import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 
-
-
 class Intro extends GetView<IntroController>  {
 
   late PageController pageController=PageController(initialPage: 0,keepPage: true);
@@ -67,7 +65,6 @@ class Intro extends GetView<IntroController>  {
                    InkWell(child: Text("Skip",style: Theme.of(context).textTheme.button,),onTap: (){
                      Get.toNamed(Routes.SignIn);
                    }),
-
 
                  ],
                ),

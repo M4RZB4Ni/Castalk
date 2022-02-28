@@ -1,5 +1,5 @@
+import 'dart:async';
 import 'dart:math';
-
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
-import 'package:music_slider/music_slider.dart';
+import 'package:audio_slider/audio_slider.dart';
+//import 'package:music_slider/music_slider.dart';
 import 'package:rulers/rulers.dart';
 
 class Editor extends StatefulWidget{
@@ -22,7 +23,8 @@ class Editor extends StatefulWidget{
 }
 
 class EditorState extends State<Editor>{
-
+  Timer? timer;
+  List<double> valueData = <double>[];
   String svgPath = "assets/icons/";
   TextEditingController numberController = TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
@@ -209,16 +211,21 @@ class EditorState extends State<Editor>{
     return Container(
       padding: EdgeInsets.all(8),
         child: Stack(children: [
-          MusicSlider(
-            emptyColors:  [Colors.white.withOpacity(0.2)],
-            fillColors: [Colors.white.withOpacity(0.2)],
-            controller: MusicSliderController(initialValue: 0.5),
-            animateWaveByTime: false,
-            height: 50,
-            division: 53,
-
-            wave: (x, t, a) => a * cos(x * 0.50) * sin(x * 0.23),
+          CopyXiaoMiSliderWidget(
+            datas: valueData,
+            isPlayer: true,
+            duration: const Duration(milliseconds: 333),
           ),
+          // MusicSlider(
+          //   emptyColors:  [Colors.white.withOpacity(0.2)],
+          //   fillColors: [Colors.white.withOpacity(0.2)],
+          //   controller: MusicSliderController(initialValue: 0.5),
+          //   animateWaveByTime: false,
+          //   height: 50,
+          //   division: 53,
+          //
+          //   wave: (x, t, a) => a * cos(x * 0.50) * sin(x * 0.23),
+          // ),
 
           Text("Host Voc - 001 .aac",style: Style.t_500_10w,)
         ],),
@@ -510,15 +517,20 @@ _showSaveDialog(){
             child: SizedBox(
               height: 14,
               width: w*0.20,
-              child: MusicSlider(
-                emptyColors:  [Style.gray90],
-                fillColors: [Style.accentGold],
-                controller: MusicSliderController(initialValue: 0.5),
-                animateWaveByTime: false,
-                height: 14,
-                division: 53,
-                wave: (x, t, a) => a * cos(x * 0.50) * sin(x * 0.23),
+              child: CopyXiaoMiSliderWidget(
+                datas: valueData,
+                isPlayer: true,
+                duration: const Duration(milliseconds: 333),
               ),
+              // MusicSlider(
+              //   emptyColors:  [Style.gray90],
+              //   fillColors: [Style.accentGold],
+              //   controller: MusicSliderController(initialValue: 0.5),
+              //   animateWaveByTime: false,
+              //   height: 14,
+              //   division: 53,
+              //   wave: (x, t, a) => a * cos(x * 0.50) * sin(x * 0.23),
+              // ),
             ),
           ),
         ],)
@@ -528,9 +540,21 @@ _showSaveDialog(){
 
   @override
   void initState() {
+    super.initState();
+    timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
+      valueData.add(20+Random().nextInt(5).toDouble());
+      setState(() {});
+    });
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    timer?.cancel();
+  }
+
 }

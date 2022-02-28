@@ -1,11 +1,11 @@
+import 'dart:async';
 import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:music_slider/music_slider.dart';
-
+import 'package:audio_slider/audio_slider.dart';
+//import 'package:music_slider/music_slider.dart';
 import '../../style.dart';
 
 class DriveMode extends StatefulWidget{
@@ -22,8 +22,23 @@ class DriveModeState extends State<DriveMode>
 {
   String svgPath="assets/icons/";
 
- 
-  
+
+  Timer? timer;
+  List<double> valueData = <double>[];
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
+      valueData.add(20+Random().nextInt(5).toDouble());
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    timer?.cancel();
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -66,18 +81,24 @@ class DriveModeState extends State<DriveMode>
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 68),
-                  child: SizedBox(width: w,height: 80,child: MusicSlider(
-                    emptyColors: const [Colors.white],
-                    fillColors: const [
-                      Style.accentGold,
-                    ],
-                    controller: MusicSliderController(initialValue: 0.5),
-                    animateWaveByTime: false,
-                    height: 50,
-                    division: 53,
-          
-                    wave: (x, t, a) => a * cos(x * 0.32) * sin(x * 0.23),
-                  )),
+                  child: SizedBox(width: w,height: 80,
+                      child: CopyXiaoMiSliderWidget(
+                        datas: valueData,
+                        isPlayer: true,
+                        duration: const Duration(milliseconds: 333),
+                      ),
+                  //     MusicSlider(
+                  //   emptyColors: const [Colors.white],
+                  //   fillColors: const [
+                  //     Style.accentGold,
+                  //   ],
+                  //   controller: MusicSliderController(initialValue: 0.5),
+                  //   animateWaveByTime: false,
+                  //   height: 50,
+                  //   division: 53,
+                  //   wave: (x, t, a) => a * cos(x * 0.32) * sin(x * 0.23),
+                  // ),
+                  ),
                 ),
                 Align(child: RichText(text:  TextSpan(children:<TextSpan>[
                   TextSpan(text: '12 : 31',style: Theme.of(context).textTheme.headline1!.copyWith(color: Style.accentGold)),

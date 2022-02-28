@@ -1,37 +1,26 @@
-
-
 import 'dart:async';
-
 import 'package:castalk/controllers/auth_controller.dart';
+import 'package:castalk/routes/routes.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/scheduler/ticker.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 
 class EnterCodeState extends GetView<AuthController>
 {
+  var phoneNumberValue = Get.arguments[0];
 
   StreamController<ErrorAnimationType>? errorController;
+
   TextEditingController textEditingController = TextEditingController();
-  var nextState="ResendOff";
-  var subtitleTextStyle="ResendOff";
-
-  final interval = const Duration(seconds: 30);
-  final int timerMaxSeconds = 3;
-  int currentSeconds = 0;
-  String get timerText =>
-      '${((timerMaxSeconds - currentSeconds) ~/ 60).toString().padLeft(2, '0')} : ${((timerMaxSeconds - currentSeconds) % 60).toString().padLeft(2, '0')}';
-
 
   @override
   Widget build(BuildContext context) {
-
     // double w = MediaQuery.of(context).size.width;
     // double h = MediaQuery.of(context).size.height;
-    pincodeStyle=Get.textTheme.subtitle1!.copyWith(color: Colors.white54);
-
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -48,14 +37,13 @@ class EnterCodeState extends GetView<AuthController>
                 Text("The code has been sent to",style: Get.textTheme.bodyText1),
                 Padding(
                   padding: const EdgeInsets.only(top: 10,bottom: 0),
-                  child: Text(widget.phoneNumber ?? "None",style: Get.textTheme.subtitle2),
+                  child: Text(phoneNumberValue ?? 'None',style: Get.textTheme.subtitle2),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 29,bottom: 9,right: 70,left: 70),
                   child: PinCodeTextField(
-
                     appContext: context,
-                    length: 6,
+                    length: 4,
                     obscureText: false,
                     animationType: AnimationType.fade,
                     pinTheme: PinTheme(
@@ -71,8 +59,8 @@ class EnterCodeState extends GetView<AuthController>
                       errorBorderColor:const Color(0xffFF5959),
 
                     ),
-                    textStyle: pincodeStyle,
-                    hintStyle: pincodeStyle,
+                    textStyle: controller.pincodeStyle,
+                    hintStyle: controller.pincodeStyle,
                     cursorColor: Get.theme.focusColor,
                     autoDisposeControllers: true,
                     autoDismissKeyboard: true,
@@ -85,12 +73,10 @@ class EnterCodeState extends GetView<AuthController>
                     controller: textEditingController,
                     onCompleted: (v) {
                       debugPrint("Completed");
-                      checkCodeForStyle(v);
-
+                      controller.checkCodeForStyle(v);
                     },
                     onChanged: (value) {
                       print(value);
-                    
                     },
                     beforeTextPaste: (text) {
                       print("Allowing to paste $text");
@@ -100,48 +86,41 @@ class EnterCodeState extends GetView<AuthController>
                     },
                   ),
                 ),
-                subtitleTextType(subtitleTextStyle)
-
+                controller.subtitleTextType(controller.subtitleTextStyle),
               ],
             ),
-
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20,left: 25),
+              child: nextButtonHintTextType(controller.nextState),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children:
+              [
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 20,left: 25),
-                  child:nextButtonHintTextType(nextState),
+                  padding: const EdgeInsets.only(bottom: 57,left: 27),
+                  child: nextButtonType(controller.nextState),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children:
-                  [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 57,left: 27),
-                      child: nextButtonType(nextState),
-                    ),
-                    nextState=="ResendOff" ? Padding(
-                      padding: const EdgeInsets.only(right: 48,bottom: 57),
-                      child:  Text(timerText,style: Get.textTheme.subtitle2,),
-                    ) : const Text(" ")
-                  ],
-                )
-              ],)
+                controller.nextState == 'ResendOff' ? Padding(
+                  padding: const EdgeInsets.only(right: 48,bottom: 57),
+                  child: Obx(() => Text(controller.startTimer(), style: Get.textTheme.subtitle2,)),
+                ) : const Text('')
+              ],
+            )
+          ],),
           ],
         ),
       ),
 
     );
   }
-
-  @override
   void initState() {
-    startTimeout();
     errorController = StreamController<ErrorAnimationType>();
-
   }
 
-  @override
   void dispose() {
     errorController!.close();
   }
@@ -151,7 +130,7 @@ class EnterCodeState extends GetView<AuthController>
     switch(type)
     {
       case "ResendOn":
-      return  ElevatedButton(onPressed:() => print(""), child:const Text("Resend Code",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+      return  ElevatedButton(onPressed:() => Get.back(), child:const Text("Resend Code",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
             padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
@@ -160,6 +139,7 @@ class EnterCodeState extends GetView<AuthController>
                 )
             ),
             backgroundColor:MaterialStateProperty.all(const Color(0xffFFB800)),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff283034),fontSize: 18,fontWeight: FontWeight.w500)) ),);
+
       case "ResendOff":
         return ElevatedButton(onPressed:() => print(""), child:const Text("Resend Code",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
             padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
@@ -172,7 +152,7 @@ class EnterCodeState extends GetView<AuthController>
             backgroundColor:MaterialStateProperty.all(const Color(0xff484848)),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff5C5C5C),fontSize: 18,fontWeight: FontWeight.w500)) ),);
 
       case "Next":
-        return  ElevatedButton(onPressed:() => print(""), child:const Text("Next",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+        return  ElevatedButton(onPressed:() => Get.toNamed(Routes.AddAccountInfo), child:const Text("Next",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
             padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
@@ -214,74 +194,81 @@ class EnterCodeState extends GetView<AuthController>
 
   }
 
-  Text subtitleTextType(var type)
-  {
-    switch(type)
-    {
-      case "Verified":
-
-        return Text("Your number has been verified successfully",style:Get.textTheme.subtitle1!.copyWith(color: const Color(0xff7CFF4E)));
-
-
-      case "Wrong":
-        return Text("Code is not Correct. recheck your code or get new code",style: Get.textTheme.subtitle1!.copyWith(color: const Color(0xffFF5959)));
-
-      default :
-        return Text("");
-    }
-
-  }
-  late TextStyle pincodeStyle;
-  void checkCodeForStyle(var submitted)
-  {
-
-
-    if(submitted!=widget.code)
-      {
-        debugPrint("submitted!=widget.code");
-
-        setState(() {
-          subtitleTextStyle="Wrong";
-          pincodeStyle= Get.textTheme.subtitle1!.copyWith(color: const Color(0xffFF5959));
-        });
-      }else if(submitted==widget.code){
-      debugPrint("submitted==widget.code");
-
-      setState(() {
-        subtitleTextStyle="Verified";
-        nextState="Next";
-        pincodeStyle= Get.textTheme.subtitle1!.copyWith(color: const Color(0xff7CFF4E));
-      });
-     }
-  }
-
    header()
   {
-    return   Padding(
+    return Padding(
       padding: const EdgeInsets.only(top: 36,left: 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(width: 44,height: 44,child: const Icon(Icons.arrow_back_outlined) ,decoration: BoxDecoration(color: Colors.grey.shade500,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
+          InkWell(
+            child: Container(
+              width: 44,
+              height: 44,
+              child: const Icon(Icons.arrow_back_outlined),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade500,
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+            onTap: (){
+              Get.back();
+            },
+          ),
           Text("Enter Code",style: Get.textTheme.headline1),
            const SizedBox(width: 44,),
-
         ],
       ),
     );
   }
 
-  startTimeout() {
-    var duration = interval;
-    Timer.periodic(duration, (timer) {
-      setState(() {
-        currentSeconds = timer.tick;
-        if (timer.tick >= timerMaxSeconds){
-          nextState="ResendOn";
-          timer.cancel();
-        }
-      });
-    });
+  @override
+  void activate() {
+    // TODO: implement activate
   }
+
+  @override
+  // TODO: implement context
+  BuildContext get context => throw UnimplementedError();
+
+  @override
+  Ticker createTicker(TickerCallback onTick) {
+    // TODO: implement createTicker
+    throw UnimplementedError();
+  }
+
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+  }
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+  }
+
+  @override
+  void didUpdateWidget(covariant StatefulWidget oldWidget) {
+    // TODO: implement didUpdateWidget
+  }
+
+  @override
+  // TODO: implement mounted
+  bool get mounted => throw UnimplementedError();
+
+  @override
+  void reassemble() {
+    // TODO: implement reassemble
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    // TODO: implement setState
+  }
+
+  @override
+  // TODO: implement widget
+  StatefulWidget get widget => throw UnimplementedError();
 }

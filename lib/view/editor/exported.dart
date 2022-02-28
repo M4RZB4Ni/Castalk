@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:castalk/style.dart';
@@ -5,7 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:music_slider/music_slider.dart';
+import 'package:audio_slider/audio_slider.dart';
+//import 'package:music_slider/music_slider.dart';
 
 
 class Exported extends StatefulWidget {
@@ -19,9 +21,20 @@ class Exported extends StatefulWidget {
 
 class ExportedState extends State<Exported> {
 
+  Timer? timer;
+  List<double> valueData = <double>[];
   String svgPath = "assets/icons/";
   late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
+      valueData.add(20+Random().nextInt(5).toDouble());
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +113,7 @@ class ExportedState extends State<Exported> {
         ),
         child: Container(
       height: 74,
-      margin: EdgeInsets.only(top: 8,left: 14,right: 14),
+      margin: const EdgeInsets.only(top: 8,left: 14,right: 14),
       decoration: BoxDecoration(color:Style.gray2F,borderRadius: BorderRadius.circular(12)),
               child: Row(children: [
                 Container (
@@ -133,16 +146,21 @@ class ExportedState extends State<Exported> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 16,),
-                      child: MusicSlider(
-                        emptyColors:  [Style.gray90],
-                        fillColors: [Style.accentGold],
-                        controller: MusicSliderController(initialValue: 0.5),
-                        animateWaveByTime: false,
-                        height: 18  ,
-                        width: 220,
-                        division: 65,
-                        wave: (x, t, a) => a * cos(x * 0.80) * sin(x * 0.30),
+                      child: CopyXiaoMiSliderWidget(
+                        datas: valueData,
+                        isPlayer: true,
+                        duration: const Duration(milliseconds: 333),
                       ),
+                      // MusicSlider(
+                      //   emptyColors:  [Style.gray90],
+                      //   fillColors: [Style.accentGold],
+                      //   controller: MusicSliderController(initialValue: 0.5),
+                      //   animateWaveByTime: false,
+                      //   height: 18  ,
+                      //   width: 220,
+                      //   division: 65,
+                      //   wave: (x, t, a) => a * cos(x * 0.80) * sin(x * 0.30),
+                      // ),
                     )
                   ],
                 )),

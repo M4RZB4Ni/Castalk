@@ -31,10 +31,12 @@ dependencies:
   pin_code_fields: ^7.3.0
   country_code_picker: ^2.0.2
   url_launcher: ^6.0.15
-  multi_select_item: ^1.0.3
+  flutter_multi_select_items: ^0.2.1
+  #multi_select_item: ^1.0.3
   blur: ^3.0.0
   flutter_svg: ^1.0.0
-  music_slider: ^0.0.1
+  audio_slider: ^0.0.1
+  #music_slider: ^0.0.1
   modal_bottom_sheet: ^2.0.0
   expandable: ^5.0.1
   flutter_tags: ^1.0.0-nullsafety.1

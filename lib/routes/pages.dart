@@ -70,7 +70,7 @@ class Pages{
     GetPage(name: Routes.Splash, page: () =>  const Splash()),
     GetPage(name: Routes.Intro, page: () =>  Intro()),
     GetPage(name: Routes.SignIn, page: () =>  SignIn()),
-    GetPage(name: Routes.EnterCode, page: () =>  EnterCode(phoneNumber: '+989185584088')),
+    GetPage(name: Routes.EnterCode, page: () => EnterCodeState()),
     GetPage(name: Routes.AddAccountInfo, page: () =>  const AddAccountInfo()),
     GetPage(name: Routes.Congratulations, page: () =>  const Congratulations()),
     GetPage(name: Routes.Player, page: () =>  const Player()),

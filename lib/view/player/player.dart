@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
 import 'package:castalk/cicon.dart';
@@ -8,7 +9,8 @@ import 'package:blur/blur.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:music_slider/music_slider.dart';
+import 'package:audio_slider/audio_slider.dart';
+//import 'package:music_slider/music_slider.dart';
 
 class Player extends StatefulWidget{
   const Player({Key? key}) : super(key: key);
@@ -24,6 +26,24 @@ class PlayerState extends State<Player>
 {
 //  MusicSliderController _sliderController = MusicSliderController();
   String svgPath="assets/icons/";
+
+  Timer? timer;
+  List<double> valueData = <double>[];
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
+      valueData.add(20+Random().nextInt(5).toDouble());
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    timer?.cancel();
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -64,18 +84,25 @@ class PlayerState extends State<Player>
           ),
           Padding(
             padding: const EdgeInsets.only(top: 32),
-            child: SizedBox(width: w,height: 80,child: MusicSlider(
-              emptyColors: const [Colors.white],
-              fillColors: const [
-                Color(0xff484848),
-              ],
-              controller: MusicSliderController(initialValue: 0.5),
-              animateWaveByTime: false,
-              height: 50,
-              division: 53,
-
-              wave: (x, t, a) => a * cos(x * 0.32) * sin(x * 0.23),
-            )),
+            child: SizedBox(width: w,height: 80,
+                child: CopyXiaoMiSliderWidget(
+                  datas: valueData,
+                  isPlayer: true,
+                  duration: const Duration(milliseconds: 333),
+                ),
+            //     MusicSlider(
+            //   emptyColors: const [Colors.white],
+            //   fillColors: const [
+            //     Color(0xff484848),
+            //   ],
+            //   controller: MusicSliderController(initialValue: 0.5),
+            //   animateWaveByTime: false,
+            //   height: 50,
+            //   division: 53,
+            //
+            //   wave: (x, t, a) => a * cos(x * 0.32) * sin(x * 0.23),
+            // ),
+            ),
           ),
           Align(child: RichText(text: const TextSpan(children:<TextSpan>[
             TextSpan(text: '12 : 31',style: TextStyle(color: Style.gray48,fontWeight: FontWeight.w500,fontSize: 14)),
@@ -209,18 +236,23 @@ class PlayerState extends State<Player>
 
             Padding(
               padding: const EdgeInsets.all(10),
-              child: MusicSlider(
-                emptyColors: const [Colors.white],
-                fillColors: const [
-                  Color(0xff484848),
-                ],
-                controller: MusicSliderController(initialValue: 0.5),
-                animateWaveByTime: false,
-                height: 50,
-                division: 53,
-
-                wave: (x, t, a) => a * cos(x * 0.32) * sin(x * 0.23),
+              child: CopyXiaoMiSliderWidget(
+                datas: valueData,
+                isPlayer: true,
+                duration: const Duration(milliseconds: 333),
               ),
+              // MusicSlider(
+              //   emptyColors: const [Colors.white],
+              //   fillColors: const [
+              //     Color(0xff484848),
+              //   ],
+              //   controller: MusicSliderController(initialValue: 0.5),
+              //   animateWaveByTime: false,
+              //   height: 50,
+              //   division: 53,
+              //
+              //   wave: (x, t, a) => a * cos(x * 0.32) * sin(x * 0.23),
+              // ),
             ),
 
           ]),alignment: Alignment.bottomCenter,));

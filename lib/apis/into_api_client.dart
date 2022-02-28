@@ -38,15 +38,14 @@ class IntroApiClient{
     if (response.statusCode == 200) {
 
     var data=await response.stream.bytesToString();
-    debugPrint('introGetAllResponseDate $data');
+    //debugPrint('introGetAllResponseDate $data');
 
     Map<String,dynamic>  resp =await jsonDecode(data);
+
       return resp['data']['data'];
     }
     else {
-
-
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
   }
 

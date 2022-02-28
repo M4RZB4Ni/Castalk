@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:castalk/cicon.dart';
@@ -6,7 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:music_slider/music_slider.dart';
+import 'package:audio_slider/audio_slider.dart';
+//import 'package:music_slider/music_slider.dart';
 
 
 class RecordedList extends StatefulWidget {
@@ -19,6 +21,23 @@ class RecordedList extends StatefulWidget {
 }
 
 class RecordedListState extends State<RecordedList> {
+
+  Timer? timer;
+  List<double> valueData = <double>[];
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
+      valueData.add(20+Random().nextInt(5).toDouble());
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    timer?.cancel();
+  }
 
   TextEditingController numberController = TextEditingController();
 
@@ -131,16 +150,21 @@ class RecordedListState extends State<RecordedList> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 16,),
-                  child: MusicSlider(
-                    emptyColors:  const [Style.gray90],
-                    fillColors: const [Style.accentGold],
-                    controller: MusicSliderController(initialValue: 0.5),
-                    animateWaveByTime: false,
-                    height: 18  ,
-                    width: 220,
-                    division: 65,
-                    wave: (x, t, a) => a * cos(x * 0.80) * sin(x * 0.30),
+                  child: CopyXiaoMiSliderWidget(
+                    datas: valueData,
+                    isPlayer: true,
+                    duration: const Duration(milliseconds: 333),
                   ),
+                  // MusicSlider(
+                  //   emptyColors:  const [Style.gray90],
+                  //   fillColors: const [Style.accentGold],
+                  //   controller: MusicSliderController(initialValue: 0.5),
+                  //   animateWaveByTime: false,
+                  //   height: 18  ,
+                  //   width: 220,
+                  //   division: 65,
+                  //   wave: (x, t, a) => a * cos(x * 0.80) * sin(x * 0.30),
+                  // ),
                 )
               ],
             )),

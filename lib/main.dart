@@ -1,18 +1,10 @@
-import 'package:castalk/controllers/intro_controller.dart';
-import 'package:castalk/controllers/auth_controller.dart';
 import 'package:castalk/routes/pages.dart';
 import 'package:castalk/style.dart';
-
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'buildings/bindings.dart';
 
 void main() {
-  Get.put(AuthController());
-
-  Get.put(IntroController());
-
   runApp(const MyApp());
 }
 
@@ -62,8 +54,9 @@ class MyApp extends StatelessWidget {
         )
       ),
       title: 'Castalk',
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       initialRoute: Pages.INITIAL_ROUTE,
+      initialBinding: CastalkBindings(),
       getPages: Pages.pages,
     );
   }

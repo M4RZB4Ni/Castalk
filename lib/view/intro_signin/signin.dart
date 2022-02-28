@@ -1,8 +1,10 @@
 import 'package:castalk/controllers/auth_controller.dart';
 import 'package:castalk/customs/utils.dart';
+import 'package:castalk/routes/routes.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'enter_code.dart';
 
 
 
@@ -10,7 +12,7 @@ class SignIn extends StatelessWidget {
   //List<String> cCodes=["Male","Female"];
   static const TextStyle dropStyle =
       TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400);
-  TextEditingController numberController = TextEditingController();
+  final numberController = TextEditingController();
   BoxDecoration boxDecorations = BoxDecoration(
       borderRadius: const BorderRadius.all(Radius.circular(12)),
       border: Border.all(width: 1, color: const Color(0xff484848)));
@@ -114,7 +116,8 @@ class SignIn extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     debugPrint("sentOTP");
-                    authService.register(mobile: numberController.text);
+                    Get.toNamed(Routes.EnterCode, arguments: [numberController.text]);
+                    //authService.register(mobile: numberController.text);
                   },
                   child: const Text(
                     "Send OTP",

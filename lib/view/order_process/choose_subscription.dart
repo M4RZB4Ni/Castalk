@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:castalk/cicon.dart';
@@ -6,7 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:music_slider/music_slider.dart';
+import 'package:audio_slider/audio_slider.dart';
+//import 'package:music_slider/music_slider.dart';
 import 'package:readmore/readmore.dart';
 
 class ChooseSubscription extends StatefulWidget{
@@ -26,6 +28,22 @@ class ChooseSubscriptionState extends State<ChooseSubscription>{
   String svgPath="assets/icons/";
   TextEditingController numberController = TextEditingController();
 
+  Timer? timer;
+  List<double> valueData = <double>[];
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
+      valueData.add(20+Random().nextInt(5).toDouble());
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    timer?.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {

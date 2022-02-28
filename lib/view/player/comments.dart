@@ -1,12 +1,13 @@
+import 'dart:async';
 import 'dart:math';
-
 import 'package:blur/blur.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:music_slider/music_slider.dart';
+import 'package:audio_slider/audio_slider.dart';
+//import 'package:music_slider/music_slider.dart';
 import 'package:timelines/timelines.dart';
 
 class Comments extends StatefulWidget {
@@ -21,6 +22,23 @@ class Comments extends StatefulWidget {
 class CommentsState extends State<Comments> {
   String svgPath = "assets/icons/";
   TextEditingController numberController = TextEditingController();
+
+  Timer? timer;
+  List<double> valueData = <double>[];
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
+      valueData.add(20+Random().nextInt(5).toDouble());
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    timer?.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,18 +134,24 @@ class CommentsState extends State<Comments> {
                 padding: const EdgeInsets.only(top: 30, right: 14, left: 14),
                 child: Align(
                     alignment: Alignment.centerRight,
-                    child: MusicSlider(
-                      width: w - 100,
-                      emptyColors: const [Colors.white],
-                      fillColors: const [
-                        Style.accentGold,
-                      ],
-                      controller: MusicSliderController(initialValue: 0.5),
-                      animateWaveByTime: false,
-                      height: 50,
-                      division: 53,
-                      wave: (x, t, a) => a * cos(x * 0.40) * sin(x * 0.50),
-                    )),
+                    child: CopyXiaoMiSliderWidget(
+                      datas: valueData,
+                      isPlayer: true,
+                      duration: const Duration(milliseconds: 333),
+                    ),
+                    // MusicSlider(
+                    //   width: w - 100,
+                    //   emptyColors: const [Colors.white],
+                    //   fillColors: const [
+                    //     Style.accentGold,
+                    //   ],
+                    //   controller: MusicSliderController(initialValue: 0.5),
+                    //   animateWaveByTime: false,
+                    //   height: 50,
+                    //   division: 53,
+                    //   wave: (x, t, a) => a * cos(x * 0.40) * sin(x * 0.50),
+                    // ),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 100, right: 14, left: 100),
