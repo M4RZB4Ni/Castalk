@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:castalk/apis/auth.dart';
-import 'package:castalk/customs/utils.dart';
 import 'package:castalk/models/auth_model.dart';
 import 'package:castalk/routes/routes.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +10,18 @@ class AuthController extends GetxController{
 
   final storage = const FlutterSecureStorage();
   late Timer _timer;
-  RxInt _start = 30.obs;
-  var subtitleTextStyle = 'ResendOff';
-  var nextState = 'ResendOff';
-  late TextStyle pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: Colors.white54);
+  int _start = 30;
+  String subtitleTextStyle = 'ResendOff';
+  String nextState = 'ResendOff';
+  TextStyle pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: Colors.white54);
   //
+  void authUpdate({@required var type, @required var submitted}){
+    startTimer();
+    subtitleTextType(type);
+    checkCodeForStyle(submitted);
+    update(['startTimer', 'subtitleTextType', 'checkCodeForStyle']);
+  }
+
   startTimer() {
     const oneSec = Duration(seconds: 1);
     _timer = Timer.periodic(
@@ -28,7 +34,7 @@ class AuthController extends GetxController{
         }
       },
     );
-    return _start.toString();
+    return _start;
   }
 
   Text subtitleTextType(var type)
@@ -37,7 +43,7 @@ class AuthController extends GetxController{
     {
       case "Verified":
 
-        return Text("Your number has been verified successfully",style:Get.textTheme.subtitle1!.copyWith(color: const Color(0xff7CFF4E)));
+        return Text("Your number has been verified successfully", style: Get.textTheme.subtitle1!.copyWith(color: const Color(0xff7CFF4E)));
 
       case "Wrong":
         return Text("Code is not Correct. recheck your code or get new code",style: Get.textTheme.subtitle1!.copyWith(color: const Color(0xffFF5959)));
@@ -48,16 +54,16 @@ class AuthController extends GetxController{
 
   }
 
-  void checkCodeForStyle(var submitted)
+  checkCodeForStyle(var submitted)
   {
     if(submitted == '1234'){
       subtitleTextStyle = "Verified";
       nextState = "Next";
-      pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: const Color(0xff7CFF4E));
+      return pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: const Color(0xff7CFF4E));
     }
     else{
       subtitleTextStyle = "Wrong";
-      pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: const Color(0xffFF5959));
+      return pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: const Color(0xffFF5959));
     }
   }
 
@@ -99,7 +105,7 @@ class AuthController extends GetxController{
 
   @override
   void onReady() {
-    debugPrint("${Get.currentRoute+ "Controller Ready"}");
+    debugPrint('Controller Ready = ${Get.currentRoute}');
   }
 
 }

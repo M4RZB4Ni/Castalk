@@ -15,18 +15,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  GetMaterialApp(
+      title: 'Castalk',
+      initialRoute: Pages.INITIAL_ROUTE,
+      initialBinding: CastalkBindings(),
+      getPages: Pages.pages,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        unselectedWidgetColor: Style.accentGold,
-        disabledColor: Style.accentGold,
-        primaryColor: const Color(0xff242424),
-        backgroundColor: const Color(0xff242424),
-        hintColor:const Color(0xff797979),
-        bottomSheetTheme: const BottomSheetThemeData(backgroundColor:Colors.transparent,elevation: 0),
-        focusColor: const Color(0xffFFB800),
-        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: const Color(0xffFFB800)),
-        textTheme: const TextTheme(
-          headline1: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 24),
-          bodyText1: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 18),
+          unselectedWidgetColor: Style.accentGold,
+          disabledColor: Style.accentGold,
+          primaryColor: const Color(0xff242424),
+          backgroundColor: const Color(0xff242424),
+          hintColor:const Color(0xff797979),
+          bottomSheetTheme: const BottomSheetThemeData(backgroundColor:Colors.transparent,elevation: 0),
+          focusColor: const Color(0xffFFB800),
+          colorScheme: ColorScheme.fromSwatch().copyWith(secondary: const Color(0xffFFB800)),
+          textTheme: const TextTheme(
+            headline1: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 24),
+            bodyText1: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 18),
             overline: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w500,fontSize: 12),
             headline4: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w700,fontSize: 24),
             bodyText2: TextStyle(color: Color(0xffA6A6A6),fontWeight: FontWeight.w400,fontSize: 14),
@@ -36,28 +41,23 @@ class MyApp extends StatelessWidget {
             headline5: TextStyle(color: Color(0xff283034),fontWeight: FontWeight.w500,fontSize: 18),
             headline6: TextStyle(color: Style.grayA1,fontWeight: FontWeight.w400,fontSize: 12),
             button: TextStyle(color: Color(0xffFFB800),fontWeight: FontWeight.w400,fontSize: 18),
-          headline3:TextStyle(color: Color(0xff3A3A3A),fontWeight: FontWeight.w700,fontSize: 18),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-            style:ButtonStyle(
-              padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.0),
-                        side: BorderSide(color: ThemeData().colorScheme.secondary)
-                    )
-                ),
-                backgroundColor:MaterialStateProperty.all(ThemeData().colorScheme.secondary),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff283034),fontSize: 18,fontWeight: FontWeight.w500)) )
-        ),
-        textButtonTheme: TextButtonThemeData(
-            style:ButtonStyle(backgroundColor:MaterialStateProperty.all(ThemeData().backgroundColor),textStyle: MaterialStateProperty.all(TextStyle(color: ThemeData().colorScheme.secondary,fontSize: 18,fontWeight: FontWeight.w400)) )
-        )
+            headline3:TextStyle(color: Color(0xff3A3A3A),fontWeight: FontWeight.w700,fontSize: 18),
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style:ButtonStyle(
+                  padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.0),
+                          side: BorderSide(color: ThemeData().colorScheme.secondary)
+                      )
+                  ),
+                  backgroundColor:MaterialStateProperty.all(ThemeData().colorScheme.secondary),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff283034),fontSize: 18,fontWeight: FontWeight.w500)) )
+          ),
+          textButtonTheme: TextButtonThemeData(
+              style:ButtonStyle(backgroundColor:MaterialStateProperty.all(ThemeData().backgroundColor),textStyle: MaterialStateProperty.all(TextStyle(color: ThemeData().colorScheme.secondary,fontSize: 18,fontWeight: FontWeight.w400)) )
+          )
       ),
-      title: 'Castalk',
-      debugShowCheckedModeBanner: false,
-      initialRoute: Pages.INITIAL_ROUTE,
-      initialBinding: CastalkBindings(),
-      getPages: Pages.pages,
     );
   }
 }

@@ -17,6 +17,8 @@ class EnterCodeState extends GetView<AuthController>
 
   TextEditingController textEditingController = TextEditingController();
 
+  String submitted = '';
+
   @override
   Widget build(BuildContext context) {
     // double w = MediaQuery.of(context).size.width;
@@ -57,7 +59,6 @@ class EnterCodeState extends GetView<AuthController>
                       inactiveColor: const Color(0xffD2D2D2),
                       selectedColor: Get.theme.focusColor,
                       errorBorderColor:const Color(0xffFF5959),
-
                     ),
                     textStyle: controller.pincodeStyle,
                     hintStyle: controller.pincodeStyle,
@@ -73,28 +74,38 @@ class EnterCodeState extends GetView<AuthController>
                     controller: textEditingController,
                     onCompleted: (v) {
                       debugPrint("Completed");
-                      controller.checkCodeForStyle(v);
+                      controller.authUpdate(submitted: v);
+                      GetBuilder<AuthController>(
+                          id: 'checkCodeForStyle',
+                          builder: (value){
+                            submitted = v;
+                            return controller.checkCodeForStyle(v);
+                          }
+                      );
                     },
                     onChanged: (value) {
-                      print(value);
+                      debugPrint(value);
                     },
                     beforeTextPaste: (text) {
-                      print("Allowing to paste $text");
+                      debugPrint("Allowing to paste $text");
                       //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
                       //but you can show anything you want here, like your pop up saying wrong paste format or etc
                       return true;
                     },
                   ),
                 ),
-                controller.subtitleTextType(controller.subtitleTextStyle),
-              ],
-            ),
+                // GetBuilder<AuthController>(
+                //     id: 'subtitleTextType',
+                //     builder: (value){
+                //       return controller.subtitleTextType(controller.subtitleTextStyle);
+                //     }),
+              ]),
             Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 20,left: 25),
-              child: nextButtonHintTextType(controller.nextState),
+              child: nextButtonHintTextType(controller.nextState)
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,11 +113,16 @@ class EnterCodeState extends GetView<AuthController>
               [
                 Padding(
                   padding: const EdgeInsets.only(bottom: 57,left: 27),
-                  child: nextButtonType(controller.nextState),
+                  child: nextButtonType(controller.nextState)
                 ),
                 controller.nextState == 'ResendOff' ? Padding(
                   padding: const EdgeInsets.only(right: 48,bottom: 57),
-                  child: Obx(() => Text(controller.startTimer(), style: Get.textTheme.subtitle2,)),
+                  child: GetBuilder<AuthController>(
+                      id: 'startTimer',
+                      builder: (value){
+                        return Text(controller.startTimer().toString(), style: Get.textTheme.subtitle2);
+                      }
+                      ),
                 ) : const Text('')
               ],
             )
