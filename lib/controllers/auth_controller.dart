@@ -9,30 +9,24 @@ import 'package:get/get.dart';
 class AuthController extends GetxController{
 
   final storage = const FlutterSecureStorage();
+  //
   late Timer _timer;
-  int _start = 30;
+  RxInt _start = 30.obs;
+  static const oneSec = Duration(seconds: 1);
+  //
   String subtitleTextStyle = 'ResendOff';
   String nextState = 'ResendOff';
   TextStyle pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: Colors.white54);
-  //
+
   void authUpdate({@required var type, @required var submitted}){
-    startTimer();
     subtitleTextType(type);
     checkCodeForStyle(submitted);
-    update(['startTimer', 'subtitleTextType', 'checkCodeForStyle']);
+    update(['subtitleTextType', 'checkCodeForStyle']);
   }
 
-  startTimer() {
-    const oneSec = Duration(seconds: 1);
-    _timer = Timer.periodic(
-      oneSec,
-          (Timer timer) {
-        if (_start == 0) {
-          timer.cancel();
-        } else {
-          _start--;
-        }
-      },
+   startTimer(){
+    _timer = Timer.periodic(oneSec,
+          (Timer timer){_start == 0.obs ? timer.cancel() : _start--;},
     );
     return _start;
   }
@@ -63,6 +57,7 @@ class AuthController extends GetxController{
     }
     else{
       subtitleTextStyle = "Wrong";
+      nextState = 'ResendOff';
       return pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: const Color(0xffFF5959));
     }
   }

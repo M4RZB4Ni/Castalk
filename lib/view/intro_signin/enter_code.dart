@@ -74,7 +74,7 @@ class EnterCodeState extends GetView<AuthController>
                     controller: textEditingController,
                     onCompleted: (v) {
                       debugPrint("Completed");
-                      controller.authUpdate(submitted: v);
+                      controller.authUpdate(submitted: v, type: v);
                       GetBuilder<AuthController>(
                           id: 'checkCodeForStyle',
                           builder: (value){
@@ -94,18 +94,23 @@ class EnterCodeState extends GetView<AuthController>
                     },
                   ),
                 ),
-                // GetBuilder<AuthController>(
-                //     id: 'subtitleTextType',
-                //     builder: (value){
-                //       return controller.subtitleTextType(controller.subtitleTextStyle);
-                //     }),
+                GetBuilder<AuthController>(
+                    id: 'subtitleTextType',
+                    builder: (value){
+                      return controller.subtitleTextType(controller.subtitleTextStyle);
+                    }),
               ]),
             Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 20,left: 25),
-              child: nextButtonHintTextType(controller.nextState)
+              child: GetBuilder<AuthController>(
+                  id: 'checkCodeForStyle',
+                  builder: (value){
+                    return nextButtonHintTextType(controller.nextState);
+                  }
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,16 +118,16 @@ class EnterCodeState extends GetView<AuthController>
               [
                 Padding(
                   padding: const EdgeInsets.only(bottom: 57,left: 27),
-                  child: nextButtonType(controller.nextState)
+                  child: GetBuilder<AuthController>(
+                      id: 'checkCodeForStyle',
+                      builder: (value){
+                        return nextButtonType(controller.nextState);
+                      }
+                  ),
                 ),
                 controller.nextState == 'ResendOff' ? Padding(
                   padding: const EdgeInsets.only(right: 48,bottom: 57),
-                  child: GetBuilder<AuthController>(
-                      id: 'startTimer',
-                      builder: (value){
-                        return Text(controller.startTimer().toString(), style: Get.textTheme.subtitle2);
-                      }
-                      ),
+                  child: Obx(() => Text(controller.startTimer().toString(), style: Get.textTheme.subtitle2)),
                 ) : const Text('')
               ],
             )
@@ -157,7 +162,7 @@ class EnterCodeState extends GetView<AuthController>
             backgroundColor:MaterialStateProperty.all(const Color(0xffFFB800)),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff283034),fontSize: 18,fontWeight: FontWeight.w500)) ),);
 
       case "ResendOff":
-        return ElevatedButton(onPressed:() => print(""), child:const Text("Resend Code",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+        return ElevatedButton(onPressed:() => Get.back(), child:const Text("Resend Code",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
             padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
@@ -178,7 +183,7 @@ class EnterCodeState extends GetView<AuthController>
             ),
             backgroundColor:MaterialStateProperty.all(const Color(0xffFFB800)),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff283034),fontSize: 18,fontWeight: FontWeight.w500)) ),);
       default :
-        return  ElevatedButton(onPressed:() => print(""), child:const Text("Resend Code",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+        return  ElevatedButton(onPressed:() => Get.back(), child:const Text("Resend Code",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
           padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
@@ -230,7 +235,7 @@ class EnterCodeState extends GetView<AuthController>
               ),
             ),
             onTap: (){
-              Get.back();
+              Get.offAllNamed(Routes.SignIn);
             },
           ),
           Text("Enter Code",style: Get.textTheme.headline1),
