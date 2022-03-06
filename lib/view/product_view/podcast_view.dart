@@ -322,7 +322,7 @@ class PodcastViewState extends State<PodcastView> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ElevatedButton(
-            onPressed: () => print(""),
+            onPressed: () => debugPrint(""),
             child: const Text(
               "Buy for 17\$",
               style: TextStyle(color: Color(0xff283034)),
@@ -346,7 +346,7 @@ class PodcastViewState extends State<PodcastView> {
           Padding(
             padding: const EdgeInsets.only(left: 13),
             child: ElevatedButton(
-              onPressed: () => print(""),
+              onPressed: () => debugPrint(""),
               child: SvgPicture.asset(Cicon.addlist),
               style: ButtonStyle(
                   padding: MaterialStateProperty.all(
@@ -363,7 +363,7 @@ class PodcastViewState extends State<PodcastView> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: ElevatedButton(
-              onPressed: () => print(""),
+              onPressed: () => debugPrint(""),
               child: SvgPicture.asset(Cicon.download),
               style: ButtonStyle(
                   padding: MaterialStateProperty.all(
@@ -378,7 +378,7 @@ class PodcastViewState extends State<PodcastView> {
             ),
           ),
           ElevatedButton(
-            onPressed: () => print(""),
+            onPressed: () => debugPrint(""),
             child: SvgPicture.asset(Cicon.heart_empty,color: Colors.white,width: 21,height: 18,),
             style: ButtonStyle(
                 padding: MaterialStateProperty.all(

@@ -131,7 +131,7 @@ class SetPlanState extends State<SetPlan>{
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
-                    onPressed: () => print(""),
+                    onPressed: () => debugPrint(""),
                     child: const Text(
                       "Save",
                       style: TextStyle(color: Color(0xff283034)),

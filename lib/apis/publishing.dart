@@ -1,6 +1,6 @@
 import 'dart:convert';
-
 import 'package:castalk/apis/base_api.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -23,13 +23,12 @@ class Publishing{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
   }
-
 
   episodePublishBySchedule(
       {required var token,required var id,required var date}) async
@@ -51,12 +50,13 @@ class Publishing{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
   }
+
   episodeUnpublish(
       {required var token,required var id}) async
   {
@@ -75,13 +75,12 @@ class Publishing{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
   }
-
 
 }
 

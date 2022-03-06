@@ -121,7 +121,7 @@ Column(children: [
 
   ElevatedButton  _bigButton({required text,required var textColor,required backColor}){
     return ElevatedButton(
-      onPressed: () => print(""),
+      onPressed: () => debugPrint(""),
       child: Text(text,style: textColor,),
       style: ButtonStyle(
           fixedSize: MaterialStateProperty.all(Size(263,54)),

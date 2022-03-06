@@ -1,3 +1,4 @@
+import 'package:castalk/controllers/congratulations_controller.dart';
 import 'package:get/get.dart';
 import '../controllers/auth_controller.dart';
 import '../controllers/intro_controller.dart';
@@ -8,5 +9,6 @@ class CastalkBindings implements Bindings{
   void dependencies(){
     Get.put(AuthController());
     Get.put(IntroController());
+    Get.put(CongratulationsController());
   }
 }

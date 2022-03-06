@@ -1,8 +1,8 @@
 import 'package:castalk/apis/base_api.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class Comments{
-
 
   createComment({required var token,required var toSeasonID,required var message,required var ownerId,required var onTime}) async
   {
@@ -22,10 +22,10 @@ class Comments{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
   }
@@ -42,14 +42,13 @@ class Comments{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
   }
-
 
   podcastComment({required var token,required var id}) async
   {
@@ -63,13 +62,14 @@ class Comments{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
   }
+
   episodeComment({required var token,required var id}) async
   {
     var headers = {
@@ -82,13 +82,12 @@ class Comments{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
   }
-
 
 }

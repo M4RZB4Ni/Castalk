@@ -291,7 +291,7 @@ class OwnedPodcastState extends State<OwnedPodcast> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ElevatedButton(
-            onPressed: () => print(""),
+            onPressed: () => debugPrint(""),
             child: const Text(
               "Analytics",
               style: TextStyle(color: Color(0xff283034)),
@@ -315,7 +315,7 @@ class OwnedPodcastState extends State<OwnedPodcast> {
           Padding(
             padding: const EdgeInsets.only(left: 13),
             child: ElevatedButton(
-              onPressed: () => print(""),
+              onPressed: () => debugPrint(""),
               child: SvgPicture.asset(svgPath + "sharebold.svg"),
               style: ButtonStyle(
                   padding: MaterialStateProperty.all(
@@ -332,7 +332,7 @@ class OwnedPodcastState extends State<OwnedPodcast> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 0),
             child: ElevatedButton(
-              onPressed: () => print(""),
+              onPressed: () => debugPrint(""),
               child: SvgPicture.asset(svgPath + "modify.svg",
                   color: Style.gray2F),
               style: ButtonStyle(
@@ -348,7 +348,7 @@ class OwnedPodcastState extends State<OwnedPodcast> {
             ),
           ),
           ElevatedButton(
-            onPressed: () => print(""),
+            onPressed: () => debugPrint(""),
             child: SvgPicture.asset(svgPath + "remove.svg"),
             style: ButtonStyle(
                 padding: MaterialStateProperty.all(

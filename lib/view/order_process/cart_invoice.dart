@@ -88,7 +88,7 @@ class CartInvoiceState extends State<CartInvoice>{
             padding: const EdgeInsets.only(top: 50,left: 27),
             child: ElevatedButton(
 
-              onPressed:() => print(""), child:
+              onPressed:() => debugPrint(""), child:
             Text("Proceed",style: Style.t_500_18a4,) ,style: ButtonStyle(
                 padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 41,vertical: 17)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(

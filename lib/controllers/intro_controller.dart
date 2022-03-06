@@ -4,17 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class IntroController extends GetxController with StateMixin<List<IntroModel>>{
-  final IntroApiClient _introApiClient=IntroApiClient();
-
-   late List<IntroModel> introList=[];
-
-
+  final IntroApiClient _introApiClient = IntroApiClient();
+  late List<IntroModel> introList=[];
+  //
   introGetAll() async{
     change(introList, status: RxStatus.loading());
+
     await _introApiClient.introGetAll().then((l) => {
+      //
           debugPrint('introGetAllResponseDatemap $l'),
-          introList= List<IntroModel>.from(l.map((model) => IntroModel.fromJson(model))),
+      //
+          introList = List<IntroModel>.from(l.map((model) => IntroModel.fromJson(model))),
           change(introList, status: RxStatus.success()),
+      //
           debugPrint('introList ${introList.first}')
       });
 }

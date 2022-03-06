@@ -156,7 +156,7 @@ class OtherUserProfileState extends State<OtherUserProfile>{
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: ElevatedButton(onPressed:() => print(""), child: Row(
+                  child: ElevatedButton(onPressed:() => debugPrint(""), child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -570,7 +570,7 @@ class OtherUserProfileState extends State<OtherUserProfile>{
     return Row(children: [
       Expanded(child:  Padding(
         padding: const EdgeInsets.only(right: 10,left: 31,top: 39),
-        child: ElevatedButton(onPressed:() => print(""), child:
+        child: ElevatedButton(onPressed:() => debugPrint(""), child:
         Text("Follow",style: Style.t_500_18g,) ,style: ButtonStyle(
             padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 41,vertical: 17)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -587,7 +587,7 @@ class OtherUserProfileState extends State<OtherUserProfile>{
         padding: const EdgeInsets.only(right: 31,top: 39),
         child: ElevatedButton(
           
-          onPressed:() => print(""), child:
+          onPressed:() => debugPrint(""), child:
         Text("Subscribe",style: Style.t_500_18a4,) ,style: ButtonStyle(
           padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 41,vertical: 17)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(

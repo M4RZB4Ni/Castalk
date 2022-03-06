@@ -1,10 +1,9 @@
 import 'dart:convert';
-
 import 'package:castalk/apis/base_api.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class FileApi{
-
 
   uploadFile(
       {required var token,required var path}) async
@@ -24,10 +23,10 @@ class FileApi{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
   }
 
@@ -49,10 +48,10 @@ class FileApi{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
   }
@@ -72,17 +71,13 @@ class FileApi{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
 
   }
-
-
-
-
 
 }

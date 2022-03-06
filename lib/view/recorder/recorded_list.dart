@@ -301,7 +301,7 @@ class RecordedListState extends State<RecordedList> {
                   padding: const EdgeInsets.only(left: 12),
                   child: ElevatedButton(
 
-                    onPressed:() => print(""), child:
+                    onPressed:() => debugPrint(""), child:
                   Text("Keep",style: Style.t_500_18a4,) ,style: ButtonStyle(
                       padding: MaterialStateProperty.all(const EdgeInsets.symmetric(horizontal: 41,vertical: 17)),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -314,7 +314,7 @@ class RecordedListState extends State<RecordedList> {
                 )),
                 Expanded(child:  Padding(
                   padding: const EdgeInsets.only(left: 12),
-                  child: ElevatedButton(onPressed:() => print(""), child:
+                  child: ElevatedButton(onPressed:() => debugPrint(""), child:
                   Text("Open in Editor",style: Style.t_500_18g,) ,style: ButtonStyle(
                       padding: MaterialStateProperty.all(const EdgeInsets.symmetric(horizontal: 2,vertical: 17)),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(

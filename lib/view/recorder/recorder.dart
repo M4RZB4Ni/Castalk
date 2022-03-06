@@ -55,7 +55,7 @@ class RecorderState extends State<Recorder> {
             child: Row(
               children: [
                 ElevatedButton(
-                  onPressed: () => print(""),
+                  onPressed: () => debugPrint(""),
                   child: Row(children: [
                     Container(
                       padding: const EdgeInsets.all(12),

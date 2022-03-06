@@ -1,7 +1,10 @@
 import 'package:castalk/style.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../routes/routes.dart';
 
 class AddAccountInfo extends StatefulWidget{
   const AddAccountInfo({Key? key}) : super(key: key);
@@ -18,7 +21,9 @@ class AddAccountInfoState extends State<AddAccountInfo>{
 
   List<String> cCodes=["Not rather to say","Male","Female"];
   static const TextStyle dropStyle=TextStyle(color: Colors.white,fontSize: 12,fontWeight: FontWeight.w400);
-  TextEditingController numberController=TextEditingController();
+  TextEditingController fullNameController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController birthdayController = TextEditingController();
   BoxDecoration boxDecorations=BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(12)),border: Border.all(width: 1,color: const Color(0xff484848)));
   late String _genderValue;
 
@@ -30,7 +35,6 @@ class AddAccountInfoState extends State<AddAccountInfo>{
 
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -53,9 +57,9 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                     Text("Enter your Full name*",style: Theme.of(context).textTheme.bodyText1),
                     Padding(
                       padding: const EdgeInsets.only(top: 10,bottom: 9),
-                      child:Container(height: 55,decoration:  boxDecorations,width: w,
+                      child:Container(height: 55,decoration:  boxDecorations,width: Get.width,
                         child: TextField(
-                            controller: numberController,
+                            controller: fullNameController,
                             textAlign: TextAlign.left,maxLines: 1,decoration: InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
                             hintText: "eg: nahil natan",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
 
@@ -70,11 +74,11 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                       Text("Enter your Account name*",style: Theme.of(context).textTheme.bodyText1),
                       Padding(
                         padding: const EdgeInsets.only(top: 10,bottom: 9),
-                        child:Container(height: 55,decoration:  boxDecorations,width: w,
+                        child:Container(height: 55,decoration:  boxDecorations,width: Get.width,
                           child: TextField(
-                              controller: numberController,
+                              controller: nameController,
                               textAlign: TextAlign.left,maxLines: 1,decoration: InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
-                              hintText: "eg: nahil natan",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
+                              hintText: "eg: Best_podcast_ever",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
 
                       )),
                     ],
@@ -88,11 +92,11 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                       Text("Add your Birthday",style: Theme.of(context).textTheme.bodyText1),
                       Padding(
                         padding: const EdgeInsets.only(top: 10,bottom: 9),
-                        child:Container(height: 55,decoration:  boxDecorations,width: w,
+                        child:Container(height: 55,decoration:  boxDecorations,width: Get.width,
                           child: TextField(
-                              controller: numberController,
+                              controller: birthdayController,
                               textAlign: TextAlign.left,maxLines: 1,decoration: InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
-                              hintText: "eg: nahil natan",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
+                              hintText: "eg: 1991-02-15",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
 
                       )),
                     ],
@@ -103,7 +107,7 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                   children: [
                     Text("Gender",style: Theme.of(context).textTheme.bodyText1),// Padding(
                       Padding(padding: const EdgeInsets.only(top: 15,bottom: 9),
-                      child: Container(height: 55,decoration:  boxDecorations,width: w,child: DropdownButtonHideUnderline(
+                      child: Container(height: 55,decoration:  boxDecorations,width: Get.width,child: DropdownButtonHideUnderline(
                         child:  Padding(
                           padding: const EdgeInsets.only(top: 10,bottom: 12,left: 19),
                           child: Theme(data: Theme.of(context).copyWith(
@@ -122,8 +126,6 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                                   // selectedActivity = value;
                                   _genderValue=value!;
                                   debugPrint('album choose-> $value');
-
-
                                 });
                               })),
                         )
@@ -150,7 +152,25 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                       ]))
                 ),
 
-                ElevatedButton(onPressed:() => print(""), child:const Text("Accept and Save",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+                ElevatedButton(
+                  onPressed:(){
+                    if(fullNameController.text.isEmpty || nameController.text.isEmpty){
+                      Get.snackbar(
+                          'Warning',
+                          'Please enter your Fields',
+                          duration: 3.seconds,
+                          snackPosition: SnackPosition.BOTTOM,
+                          showProgressIndicator: true,
+                          isDismissible: true,
+                          backgroundColor: Colors.lightGreen,
+                          colorText: Colors.white,
+                      );
+                    }
+                    else{
+                      Get.toNamed(Routes.Congratulations);
+                    }
+                  },
+                  child:const Text("Accept and Save",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
                     padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 14,horizontal: 58)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
@@ -173,13 +193,29 @@ class AddAccountInfoState extends State<AddAccountInfo>{
     return   Padding(
       padding: const EdgeInsets.only(top: 24),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Visibility(visible: !onlyTitle,child: Container(width: 44,height: 44,child: const Icon(Icons.arrow_back_outlined) ,decoration: BoxDecoration(color: Colors.grey.shade500,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),)),
+          // Visibility(visible: !onlyTitle,
+          //     child:
+          // ),
+          // InkWell(
+          //   child: Container(
+          //     width: 44,
+          //     height: 44,
+          //     child: const Icon(Icons.arrow_back_outlined),
+          //     decoration: BoxDecoration(
+          //       color: Colors.grey.shade500,
+          //       shape: BoxShape.rectangle,
+          //       borderRadius: BorderRadius.circular(12),
+          //     ),
+          //   ),
+          //   onTap: (){
+          //     Get.back();
+          //   },
+          // ),
           Text("Add account info",style: Theme.of(context).textTheme.headline1),
-           Visibility(visible: !onlyTitle,child:const SizedBox(width: 44,)),
-
+          const SizedBox(width: 44),
         ],
       ),
     );

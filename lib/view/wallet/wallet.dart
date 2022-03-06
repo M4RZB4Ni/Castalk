@@ -89,7 +89,7 @@ class WalletState extends State<Wallet>{
 
     ElevatedButton  _bigButton({required iconName,required text,required var textColor,required backColor}){
       return ElevatedButton(
-        onPressed: () => print(""),
+        onPressed: () => debugPrint(""),
         child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,

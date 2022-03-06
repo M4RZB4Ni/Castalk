@@ -120,7 +120,7 @@ class CartProceedState extends State<CartProceed>{
                     padding: const EdgeInsets.only(top: 50,left: 0),
                     child: ElevatedButton(
 
-                      onPressed:() => print(""), child:
+                      onPressed:() => debugPrint(""), child:
                     Text("Proceed",style: Style.t_500_18a4,) ,style: ButtonStyle(
                         padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 41,vertical: 17)),
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(

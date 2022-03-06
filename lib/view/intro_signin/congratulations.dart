@@ -1,6 +1,6 @@
 import 'package:castalk/style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
+import 'package:multi_select_item/multi_select_item.dart';
 
 class Congratulations extends StatefulWidget{
   const Congratulations({Key? key}) : super(key: key);
@@ -19,33 +19,33 @@ class CongratulationsState extends State<Congratulations>{
 
   @override
   void initState() {
-    //controller.set(20);
+    controller.set(20);
   }
 
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
-    //double h = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size(w,200),
-      child:   Padding(
-        padding: const EdgeInsets.only(top: 36),
-        child: Column(children: [
-          header(onlyTitle: true),
-          Padding(
-            padding: const EdgeInsets.only(top: 15,right: 26,left: 26,bottom: 38),
-            child: Text("It’s great to see you here. now you can select your intrests to let castalk suggest personalized contents to you",
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.white),),
-          ),
-          Align(alignment: Alignment.centerLeft,child: Padding(
-            padding: const EdgeInsets.only(left: 42,bottom: 8),
-            child: Text("${controller.getSelectedItems} Item selected",
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline2),
-          )),
-        ],),
-      ),),
+        child:   Padding(
+          padding: const EdgeInsets.only(top: 36),
+          child: Column(children: [
+            header(onlyTitle: true),
+            Padding(
+              padding: const EdgeInsets.only(top: 15,right: 26,left: 26,bottom: 38),
+              child: Text("It’s great to see you here. now you can select your intrests to let castalk suggest personalized contents to you",
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.white),),
+            ),
+            Align(alignment: Alignment.centerLeft,child: Padding(
+              padding: const EdgeInsets.only(left: 42,bottom: 8),
+              child: Text("${controller.selectedIndexes.length} Item selected",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline2),
+            )),
+          ],),
+        ),),
       resizeToAvoidBottomInset: false,
       backgroundColor: Style.background,
 
@@ -59,29 +59,14 @@ class CongratulationsState extends State<Congratulations>{
             mainAxisSpacing: 8,
             crossAxisSpacing: 7,
           ), itemBuilder: (BuildContext context, int index) {
-          // return MultiSelectItem(
-          //     isSelecting: controller.isSelecting,
-          //     onSelected: () {
-          //       setState(() {
-          //         controller.toggle(index);
-          //       });
-          //     },
-          //     child:itemType(!controller.isSelected(index))
-          //
-          // );
-          return MultiSelectContainer(items: [
-            MultiSelectCard(value: 'Dart', label: 'Dart'),
-            MultiSelectCard(value: 'Python', label: 'Python'),
-            MultiSelectCard(value: 'JavaScript', label: 'JavaScript'),
-            MultiSelectCard(value: 'Java', label: 'Java'),
-            MultiSelectCard(value: 'C#', label: 'C#'),
-            MultiSelectCard(value: 'C++', label: 'C++'),
-            MultiSelectCard(value: 'Go Lang', label: 'Go Lang'),
-            MultiSelectCard(value: 'Swift', label: 'Swift'),
-            MultiSelectCard(value: 'PHP', label: 'PHP'),
-            MultiSelectCard(value: 'Kotlin', label: 'Kotlin')
-          ],
-           onChange: (allSelectedItems, selectedItem) {}
+          return MultiSelectItem(
+              isSelecting: controller.isSelecting,
+              onSelected: () {
+                setState(() {
+                  controller.toggle(index);
+                });
+              },
+              child:itemType(!controller.isSelected(index)),
           );
         },
         ),
@@ -146,6 +131,5 @@ class CongratulationsState extends State<Congratulations>{
           )
         ],),);
   }
-
 
 }

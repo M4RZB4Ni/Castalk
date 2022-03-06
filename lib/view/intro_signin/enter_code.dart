@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 
-class EnterCodeState extends GetView<AuthController>
+class EnterCode extends GetView<AuthController>
 {
   var phoneNumberValue = Get.arguments[0];
 
@@ -173,7 +173,7 @@ class EnterCodeState extends GetView<AuthController>
             backgroundColor:MaterialStateProperty.all(const Color(0xff484848)),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff5C5C5C),fontSize: 18,fontWeight: FontWeight.w500)) ),);
 
       case "Next":
-        return  ElevatedButton(onPressed:() => Get.toNamed(Routes.AddAccountInfo), child:const Text("Next",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+        return  ElevatedButton(onPressed:() => Get.offAllNamed(Routes.AddAccountInfo), child:const Text("Next",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
             padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
@@ -239,7 +239,7 @@ class EnterCodeState extends GetView<AuthController>
             },
           ),
           Text("Enter Code",style: Get.textTheme.headline1),
-           const SizedBox(width: 44,),
+           const SizedBox(width: 44),
         ],
       ),
     );

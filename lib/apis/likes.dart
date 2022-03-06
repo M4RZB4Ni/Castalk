@@ -1,4 +1,5 @@
 import 'package:castalk/apis/base_api.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -21,14 +22,13 @@ class Like{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
   }
-
 
   likeEpisode({required var token,required var id}) async
   {
@@ -46,10 +46,10 @@ class Like{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
   }
@@ -70,13 +70,12 @@ class Like{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
   }
-
 
   likePodcast({required var token,required var id}) async
   {
@@ -94,13 +93,11 @@ class Like{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
   }
-
-
 
 }

@@ -1,10 +1,8 @@
 import 'package:castalk/apis/base_api.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
-
-
 class PlayTime {
-
 
   playTimeGet(
       {required var token, required var id}) async
@@ -20,13 +18,12 @@ class PlayTime {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
   }
-
 
   playTimeSet(
       {required var token, required var seconds,required var id}) async
@@ -46,10 +43,10 @@ class PlayTime {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
   }

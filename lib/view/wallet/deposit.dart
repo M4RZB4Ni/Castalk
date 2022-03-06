@@ -62,7 +62,7 @@ class DepositState extends State<Deposit>{
               // [0-9] + .
                 type: VirtualKeyboardType.Numeric,
                 // Callback for key press event
-                onKeyPress: (key) => print(key.text)),
+                onKeyPress: (key) => debugPrint(key.text)),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,7 +99,7 @@ class DepositState extends State<Deposit>{
 
   ElevatedButton  _bigButton({required text,required var textColor,required backColor}){
     return ElevatedButton(
-      onPressed: () => print(""),
+      onPressed: () => debugPrint(""),
       child: Text(text,style: textColor,),
       style: ButtonStyle(
           fixedSize: MaterialStateProperty.all(Size(148,54)),

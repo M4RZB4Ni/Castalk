@@ -468,7 +468,7 @@ _showSaveDialog(){
                    padding: const EdgeInsets.only(left: 12),
                    child: ElevatedButton(
 
-                     onPressed:() => print(""), child:
+                     onPressed:() => debugPrint(""), child:
                    Text("Save",style: Style.t_500_18a4,) ,style: ButtonStyle(
                        padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 41,vertical: 17)),
                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -481,7 +481,7 @@ _showSaveDialog(){
                  )),
             Expanded(child:  Padding(
               padding: const EdgeInsets.only(left: 12),
-              child: ElevatedButton(onPressed:() => print(""), child:
+              child: ElevatedButton(onPressed:() => debugPrint(""), child:
               Text("Cancel",style: Style.t_500_18w,) ,style: ButtonStyle(
                   padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 41,vertical: 17)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(

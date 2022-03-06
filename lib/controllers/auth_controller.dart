@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:castalk/apis/auth.dart';
 import 'package:castalk/models/auth_model.dart';
+import 'package:castalk/models/token_model.dart';
 import 'package:castalk/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -28,6 +29,7 @@ class AuthController extends GetxController{
     _timer = Timer.periodic(oneSec,
           (Timer timer){_start == 0.obs ? timer.cancel() : _start--;},
     );
+    debugPrint('_start = $_start');
     return _start;
   }
 
@@ -90,6 +92,11 @@ class AuthController extends GetxController{
   void register({required var mobile}) async
   {
     dynamic token = await AuthApi().register(mobile: mobile);
+  }
+
+  tokenValue(){
+    String token = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguc2VydmljZXMuY2FzdGFsay5keW5lZW1hZGV2LmNvbS9sb2dpbiIsImlhdCI6MTY0NjQ3OTExNCwiZXhwIjoxNjQ2NTE1MTE0LCJuYmYiOjE2NDY0NzkxMTQsImp0aSI6InJqNUc3NEN3SENTUE1LMXMiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.-s_QcJx1A81g5GC_b9hLgbxd_Jp-TtSsPBPz77sa7hE';
+    return token;
   }
 
   @override

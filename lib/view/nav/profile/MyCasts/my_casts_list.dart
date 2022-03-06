@@ -194,7 +194,7 @@ class MyCastsListState extends State<MyCastsList> {
           Padding(
             padding: const EdgeInsets.only(bottom: 12),
             child: ElevatedButton(
-              onPressed: () => print(""),
+              onPressed: () => debugPrint(""),
               child: const Text(
                 "Add New Post",
                 style: TextStyle(color: Color(0xff283034)),
@@ -221,7 +221,7 @@ class MyCastsListState extends State<MyCastsList> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
                ElevatedButton(
-                  onPressed: () => print(""),
+                  onPressed: () => debugPrint(""),
                   child: const Text(
                     "Drafts",
                     style: TextStyle(color: Color(0xff283034),fontSize: 18,fontWeight: FontWeight.w500),
@@ -241,7 +241,7 @@ class MyCastsListState extends State<MyCastsList> {
                Padding(
                  padding: const EdgeInsets.symmetric(horizontal: 11),
                  child: ElevatedButton(
-                  onPressed: () => print(""),
+                  onPressed: () => debugPrint(""),
                   child: const Text(
                     "Recorder",
                     style: TextStyle(color: Style.accentGold),
@@ -260,7 +260,7 @@ class MyCastsListState extends State<MyCastsList> {
               ),
                )  ,
              ElevatedButton(
-                  onPressed: () => print(""),
+                  onPressed: () => debugPrint(""),
                   child: const Text(
                     "Editor",
                     style: TextStyle(color: Style.accentGold),

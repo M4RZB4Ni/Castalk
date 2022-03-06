@@ -155,7 +155,7 @@ class ChooseSubscriptionState extends State<ChooseSubscription>{
           padding: const EdgeInsets.only(left: 27,bottom: 50),
           child: ElevatedButton(
 
-            onPressed:() => print(""), child:
+            onPressed:() => debugPrint(""), child:
           Text("Go to Cart",style: Style.t_500_18a4,) ,style: ButtonStyle(
               padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 41,vertical: 17)),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(

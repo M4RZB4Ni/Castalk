@@ -1,9 +1,8 @@
 import 'package:castalk/apis/base_api.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class MediaCreation{
-
-
 
   createPodcast({required var token,required var title,required var description,required var category,required var imageID}) async
   {
@@ -23,10 +22,10 @@ class MediaCreation{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
   }
   else {
-  print(response.reasonPhrase);
+  debugPrint(response.reasonPhrase);
   }
 
   }
@@ -50,10 +49,10 @@ class MediaCreation{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
   }
@@ -82,10 +81,10 @@ class MediaCreation{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
   }

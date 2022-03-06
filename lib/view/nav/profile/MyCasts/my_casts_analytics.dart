@@ -569,7 +569,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
         Padding(
           padding: const EdgeInsets.only(bottom: 24,left: 16,top: 26),
           child: ElevatedButton(
-            onPressed: () => print(""),
+            onPressed: () => debugPrint(""),
             child: const Text(
               "Go to Wallet",
               style: TextStyle(color: Style.accentGold),

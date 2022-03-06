@@ -294,7 +294,7 @@ class PromotionState extends State<Promotion>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ElevatedButton(onPressed:() => print(""), child:const Text("Save",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+                    ElevatedButton(onPressed:() => debugPrint(""), child:const Text("Save",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
                         padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(

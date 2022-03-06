@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:castalk/apis/base_api.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -22,12 +21,13 @@ class IntroApiClient{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
   }
+
  Future introGetAll() async
   {
 
@@ -48,7 +48,5 @@ class IntroApiClient{
       debugPrint(response.reasonPhrase);
     }
   }
-
-
-
+  
 }

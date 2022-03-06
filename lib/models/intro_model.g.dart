@@ -11,10 +11,10 @@ _$_IntroModel _$$_IntroModelFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int,
       title: json['title'] as String,
       description: json['description'] as String,
-      path1: json['path1'] ?? '',
-      path2: json['path2'] ?? '',
-      path3: json['path3'] ?? '',
-      path4: json['path4'] ?? '',
+      path1: json['path1'] as String,
+      path2: json['path2'] as String,
+      path3: json['path3'] as String,
+      path4: json['path4'] as String,
       is_active: json['is_active'] as int,
     );
 

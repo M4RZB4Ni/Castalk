@@ -58,7 +58,7 @@ class WithdrawState extends State<Withdraw>{
                 // [0-9] + .
                 type: VirtualKeyboardType.Numeric,
                 // Callback for key press event
-                onKeyPress: (key) => print(key.text)),
+                onKeyPress: (key) => debugPrint(key.text)),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 24,bottom: 16),
@@ -87,7 +87,7 @@ class WithdrawState extends State<Withdraw>{
 
   ElevatedButton  _bigButton({required text,required var textColor,required backColor}){
     return ElevatedButton(
-      onPressed: () => print(""),
+      onPressed: () => debugPrint(""),
       child: Text(text,style: textColor,),
       style: ButtonStyle(
           fixedSize: MaterialStateProperty.all(Size(263,54)),

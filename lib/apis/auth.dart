@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'package:castalk/apis/base_api.dart';
 import 'package:castalk/models/auth_model.dart';
-import 'package:castalk/models/token_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class AuthApi{
-
 
   login({required var mobile,required var password}) async
   {
@@ -28,7 +26,7 @@ class AuthApi{
       return AuthModel.fromJson(decoded);
   }
   else {
-  print(response.reasonPhrase);
+  debugPrint(response.reasonPhrase);
   }
 
   }
@@ -54,7 +52,7 @@ class AuthApi{
       return AuthModel.fromJson(decoded);
     }
     else {
-      print(respo);
+      debugPrint(respo);
     }
 
   }
@@ -74,10 +72,10 @@ class AuthApi{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
   }
@@ -97,10 +95,10 @@ class AuthApi{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
 
@@ -119,17 +117,15 @@ class AuthApi{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
 
 
   }
-
-
 
   updateProfile({required Map<String,dynamic> data,required var token}) async
   {
@@ -148,10 +144,10 @@ class AuthApi{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
 
@@ -170,15 +166,14 @@ class AuthApi{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     }
     else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
 
 
 
   }
-
 
 }
