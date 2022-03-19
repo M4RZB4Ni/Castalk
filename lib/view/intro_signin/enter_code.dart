@@ -2,11 +2,11 @@ import 'dart:async';
 import 'package:castalk/controllers/auth_controller.dart';
 import 'package:castalk/routes/routes.dart';
 import 'package:castalk/style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/scheduler/ticker.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import '../../timer_class.dart';
 
 
 class EnterCode extends GetView<AuthController>
@@ -19,10 +19,12 @@ class EnterCode extends GetView<AuthController>
 
   String submitted = '';
 
+  var endTimer;
+
+  EnterCode({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    // double w = MediaQuery.of(context).size.width;
-    // double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -78,7 +80,6 @@ class EnterCode extends GetView<AuthController>
                       GetBuilder<AuthController>(
                           id: 'checkCodeForStyle',
                           builder: (value){
-                            submitted = v;
                             return controller.checkCodeForStyle(v);
                           }
                       );
@@ -127,8 +128,8 @@ class EnterCode extends GetView<AuthController>
                 ),
                 controller.nextState == 'ResendOff' ? Padding(
                   padding: const EdgeInsets.only(right: 48,bottom: 57),
-                  child: Obx(() => Text(controller.startTimer().toString(), style: Get.textTheme.subtitle2)),
-                ) : const Text('')
+                  child: Obx(() => Text(controller.startTimer(), style: Get.textTheme.subtitle2)),
+                ) : const Text(''),
               ],
             )
           ],),
@@ -138,6 +139,7 @@ class EnterCode extends GetView<AuthController>
 
     );
   }
+
   void initState() {
     errorController = StreamController<ErrorAnimationType>();
   }

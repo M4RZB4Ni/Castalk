@@ -1,37 +1,27 @@
+import 'package:castalk/controllers/add_account_info_controller.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../../routes/routes.dart';
 
-class AddAccountInfo extends StatefulWidget{
-  const AddAccountInfo({Key? key}) : super(key: key);
+class AddAccountInfo extends GetView<AddAcountInfoController>{
 
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return AddAccountInfoState();
-  }
-
-}
-
-class AddAccountInfoState extends State<AddAccountInfo>{
-
-  List<String> cCodes=["Not rather to say","Male","Female"];
   static const TextStyle dropStyle=TextStyle(color: Colors.white,fontSize: 12,fontWeight: FontWeight.w400);
   TextEditingController fullNameController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController birthdayController = TextEditingController();
-  BoxDecoration boxDecorations=BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(12)),border: Border.all(width: 1,color: const Color(0xff484848)));
-  late String _genderValue;
-
-
-  @override
-  void initState() {
-    _genderValue=cCodes.first;
-  }
+  late List<Map<String, String>> accountInfo = [
+    {"key"   : "full_name", "value" : fullNameController.text},
+    {"key"   : "name", "value" : nameController.text},
+    {"key"   : "birthday", "value" : birthdayController.text.isEmpty ? '' : birthdayController.text},
+    {"key"   : "gender", "value" : controller.genderValue.toString() == 'Not rather to say' ? '' : controller.genderValue.toString()},
+  ];
+  BoxDecoration boxDecorations = BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(12)),border: Border.all(width: 1,color: const Color(0xff484848)));
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +40,6 @@ class AddAccountInfoState extends State<AddAccountInfo>{
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -105,39 +94,33 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Gender",style: Theme.of(context).textTheme.bodyText1),// Padding(
+                    Text("Gender", style: Get.textTheme.bodyText1),// Padding(
                       Padding(padding: const EdgeInsets.only(top: 15,bottom: 9),
                       child: Container(height: 55,decoration:  boxDecorations,width: Get.width,child: DropdownButtonHideUnderline(
-                        child:  Padding(
+                        child: Padding(
                           padding: const EdgeInsets.only(top: 10,bottom: 12,left: 19),
                           child: Theme(data: Theme.of(context).copyWith(
                             canvasColor: Style.background),
-                              child: DropdownButton<String>(
-                                icon: const Padding(
-                                  padding: EdgeInsets.only(right: 25),
-                                  child: Icon(Icons.keyboard_arrow_down_rounded,color: Color(0xffD1D1D1),size: 32,),
-                                ),
-                                isDense: false,
-                                value: _genderValue,
-                              style: Theme.of(context).textTheme.bodyText2,
-                              items: cCodes.map((e) => DropdownMenuItem(child: Text(e,style: Theme.of(context).textTheme.bodyText2),value: e,)).toList(),
-                              onChanged: (value) {
-                                setState(() {
-                                  // selectedActivity = value;
-                                  _genderValue=value!;
-                                  debugPrint('album choose-> $value');
-                                });
-                              })),
-                        )
+                              child: GetBuilder<AddAcountInfoController>(builder: (controller){
+                                return DropdownButton(
+                                  icon: const Padding(padding: EdgeInsets.only(right: 25),
+                                    child: Icon(Icons.keyboard_arrow_down_rounded, color: Color(0xffD1D1D1), size: 32),
+                                  ),
+                                  isDense: false,
+                                  value: controller.genderValue.toString(),
+                                  style: Theme.of(context).textTheme.bodyText2,
+                                  items: controller.cCodes.map((selectedValue) => DropdownMenuItem(child: Text(selectedValue.toString(),style: Theme.of(context).textTheme.bodyText2),value: selectedValue)).toList(),
+                                  onChanged: (newValue){
+                                    controller.setSelected(newValue.toString());
+                                  },
+                                );
+                              },),
+                          ),
+                        ),
                       )),
                     ),
-                  ],
-                ),
-
-
-
-              ],
-            ),
+                  ]),
+              ]),
 
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,7 +128,6 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: RichText(text: TextSpan(
-
                       children: [
                     TextSpan(text:"By saveing these infos you will admit to accept the",style: Theme.of(context).textTheme.subtitle1),
                         TextSpan(recognizer: TapGestureRecognizer()..onTap=(){launch('');},text:" Castalk Agreement and Policy",style: Theme.of(context).textTheme.headline2)
@@ -167,6 +149,7 @@ class AddAccountInfoState extends State<AddAccountInfo>{
                       );
                     }
                     else{
+                      controller.updateProfile(data: accountInfo, token: GetStorage().read('token'));
                       Get.toNamed(Routes.Congratulations);
                     }
                   },
@@ -190,7 +173,7 @@ class AddAccountInfoState extends State<AddAccountInfo>{
   }
   header({required bool onlyTitle})
   {
-    return   Padding(
+    return Padding(
       padding: const EdgeInsets.only(top: 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -214,7 +197,7 @@ class AddAccountInfoState extends State<AddAccountInfo>{
           //     Get.back();
           //   },
           // ),
-          Text("Add account info",style: Theme.of(context).textTheme.headline1),
+          Text("Add account info",style: Get.textTheme.headline1),
           const SizedBox(width: 44),
         ],
       ),

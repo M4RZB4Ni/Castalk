@@ -1,20 +1,24 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
+class TokenModel {
+  String? accessToken;
+  String? tokenType;
+  String? expiresIn;
 
-part 'token_model.freezed.dart';
-part 'token_model.g.dart';
+  TokenModel({
+    required this.accessToken,
+    required this.tokenType,
+    required this.expiresIn,
+  });
 
-@freezed
-class TokenModel with _$TokenModel{
+  Map<String, dynamic> toJson() {
+    return {
+      'accessToken': accessToken,
+      'tokenType': tokenType,
+      'expiresIn': expiresIn,
+    };
+  }
 
-  const TokenModel._();
-
-  factory TokenModel({
-    required String accessToken,
-    required String tokenType,
-    required int expiresIn,
-}) = _TokenModel;
-
-  factory TokenModel.fromJson(Map<String, dynamic> map) => _$TokenModelFromJson(map);
-
+  TokenModel.fromJson(Map<String, dynamic> json)
+      : accessToken = json['accessToken'],
+        tokenType = json['tokenType'],
+        expiresIn = json['expiresIn'];
 }

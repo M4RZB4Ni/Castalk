@@ -37,5 +37,4 @@ class IntroWidget extends StatelessWidget{
       ],);
   }
 
-
 }

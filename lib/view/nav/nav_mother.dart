@@ -21,11 +21,11 @@ class NavMother extends StatefulWidget{
 class NavMotherState extends State<NavMother>{
 
   int _currentIndex = 0;
-  final List _children = const [
-    HomeFeed(),
-    Explore(),
-    Notifications(),
-    Profile()
+  final List _children = [
+    const HomeFeed(),
+    const Explore(),
+    const Notifications(),
+    Profile(),
 
   ];
   String svgPath = "assets/icons/";

@@ -1,3 +1,4 @@
+import 'package:castalk/models/auth_model.dart';
 import 'package:castalk/routes/routes.dart';
 import 'package:castalk/view/editor/editor.dart';
 import 'package:castalk/view/editor/exported.dart';
@@ -71,13 +72,13 @@ class Pages{
     GetPage(name: Routes.Intro, page: () =>  Intro()),
     GetPage(name: Routes.SignIn, page: () =>  SignIn()),
     GetPage(name: Routes.EnterCode, page: () => EnterCode()),
-    GetPage(name: Routes.AddAccountInfo, page: () =>  const AddAccountInfo()),
+    GetPage(name: Routes.AddAccountInfo, page: () => AddAccountInfo()),
     GetPage(name: Routes.Congratulations, page: () => Congratulations()),
     GetPage(name: Routes.Player, page: () =>  const Player()),
-    GetPage(name: Routes.Profile, page: () =>  const Profile()),
+    GetPage(name: Routes.Profile, page: () => Profile()),
     GetPage(name: Routes.DriveMode, page: () =>  const DriveMode()),
     GetPage(name: Routes.SavePlayList, page: () =>  const SavePlayList()),
-    GetPage(name: Routes.Playlist, page: () =>  const Playlist()),
+    GetPage(name: Routes.Playlist, page: () => Playlist()),
     GetPage(name: Routes.Downloads, page: () =>  const Downloads()),
     GetPage(name: Routes.LikedEpisodes, page: () =>  const LikedEpisodes()),
     GetPage(name: Routes.PlayListEpisodes, page: () =>  const PlayListEpisodes()),

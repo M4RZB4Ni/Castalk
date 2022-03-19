@@ -2,18 +2,12 @@ import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import '../../../controllers/play_list_controller.dart';
 
-
-class Playlist extends StatefulWidget {
-  const Playlist({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return PlaylistState();
-  }
-}
-
-class PlaylistState extends State<Playlist> {
+class Playlist extends GetView<PlayListController> {
 
   String svgPath = "assets/icons/";
   late TextTheme _textTheme;
@@ -21,17 +15,16 @@ class PlaylistState extends State<Playlist> {
 
   @override
   Widget build(BuildContext context) {
-    _textTheme = Theme.of(context).textTheme;
-    double w = MediaQuery.of(context).size.width;
-    //  double h = MediaQuery.of(context).size.height;
+    _textTheme = Get.textTheme;
 
     return Scaffold(
       backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(w, 180), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(Get.width, 180), child: header(Get.width)),
       body: GridView.builder(
+        itemCount: controller.playList[0].data!.data!.length,
         padding: const EdgeInsets.symmetric(horizontal: 34),
         itemBuilder: (context, index) {
-          return SizedBox(width: 130, height: 180, child: playlistItem());
+          return SizedBox(width: 130, height: 180, child: playlistItem(index));
         },
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 2 / 2.1,mainAxisSpacing: 31,crossAxisSpacing: 33),
         ),
@@ -47,17 +40,22 @@ class PlaylistState extends State<Playlist> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                width: 44,
-                height: 44,
-                child: const Icon(
-                  Icons.arrow_back_outlined,
-                  color: Colors.white,
+              InkWell(
+                onTap: (){
+                  Get.back();
+                },
+                child: Container(
+                  width: 44,
+                  height: 44,
+                  child: const Icon(
+                    Icons.arrow_back_outlined,
+                    color: Colors.white,
+                  ),
+                  decoration: BoxDecoration(
+                      color: Style.headerBackBtn,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(12)),
                 ),
-                decoration: BoxDecoration(
-                    color: Style.headerBackBtn,
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(12)),
               ),
               Row(
                 children: [
@@ -96,14 +94,14 @@ class PlaylistState extends State<Playlist> {
                         controller: numberController,
                         textAlign: TextAlign.left,
                         maxLines: 1,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             border: InputBorder.none,
                             isDense: false,
-                            contentPadding: const EdgeInsets.only(
+                            contentPadding: EdgeInsets.only(
                                 top: 12, bottom: 12, left: 19),
                             hintText: "Type to Search...",
                             hintStyle:
-                                TextStyle(color: Theme.of(context).hintColor),
+                                TextStyle(color: Color(0xff797979)),
                             fillColor: Colors.white))),
                 Container(
                   padding: const EdgeInsets.all(12),
@@ -144,7 +142,8 @@ class PlaylistState extends State<Playlist> {
     );
   }
 
-  playlistItem() {
+  playlistItem(int index) {
+
     return SizedBox(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -210,15 +209,11 @@ class PlaylistState extends State<Playlist> {
                           height: 123,
                           width: 123,
                         ))),
-              )
+              ),
             ],
           ),
-          Text(
-            "Playlist Name",
-            style: _textTheme.headline2!
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.white),
-          ),
-          Text("124 Episods", style: _textTheme.headline6),
+          Text(controller.playList[0].data!.data!.first.title!.toString(), style: _textTheme.headline2!.copyWith(fontWeight: FontWeight.w500, color: Colors.white),),
+          Text(controller.playList[0].data!.data!.first.description!.toString(), style: _textTheme.headline6),
         ],
       ),
     );

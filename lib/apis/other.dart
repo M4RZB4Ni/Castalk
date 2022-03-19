@@ -1,13 +1,12 @@
+import 'dart:convert';
 import 'package:castalk/apis/base_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class Other{
 
-  categoryIndex(
-      {required var token}) async
+  categoryIndex({required var token}) async
   {
-
     var headers = {
       'Authorization': 'Bearer $token',
     };
@@ -19,7 +18,12 @@ class Other{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      debugPrint(await response.stream.bytesToString());
+
+      var data = await response.stream.bytesToString();
+
+      Map<String,dynamic> resp = await jsonDecode(data);
+
+      return resp['data']['data'];
     }
     else {
       debugPrint(response.reasonPhrase);

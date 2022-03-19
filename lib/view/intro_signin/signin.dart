@@ -115,9 +115,9 @@ class SignIn extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     debugPrint("sentOTP");
-                    numberController.text.length == 11 ? Get.toNamed(Routes.EnterCode, arguments: [numberController.text])
-                        : numberController.text == '' ? Get.defaultDialog(title: 'Warning', middleTextStyle: Theme.of(context).textTheme.displayMedium, middleText: 'Please enter your mobile number', titleStyle: Theme.of(context).textTheme.bodyMedium)
-                        : numberController.text.length >= 11 || numberController.text.length <= 11 ? Get.defaultDialog(title: 'Warning', middleText: 'Mobile number is incorrect!', middleTextStyle: Theme.of(context).textTheme.displayMedium, radius: 50, titleStyle: Theme.of(context).textTheme.displayMedium) : const Text('');
+                    numberController.text.length == 11 ? authService.login(mobile: numberController.text, password: '1234')
+                        : numberController.text == '' ? Get.defaultDialog(title: 'Warning', middleTextStyle: Get.textTheme.displayMedium, middleText: 'Please enter your mobile number', titleStyle: Get.textTheme.bodyMedium)
+                        : numberController.text.length >= 11 || numberController.text.length <= 11 ? Get.defaultDialog(title: 'Warning', middleText: 'Mobile number is incorrect!', middleTextStyle: Get.textTheme.displayMedium, radius: 50, titleStyle: Get.textTheme.displayMedium) : const Text('');
                     //authService.register(mobile: numberController.text);
                   },
                   child: const Text(

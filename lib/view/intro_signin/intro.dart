@@ -10,11 +10,9 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Intro extends GetView<IntroController>  {
 
-  late PageController pageController=PageController(initialPage: 0,keepPage: true);
+  late PageController pageController = PageController(initialPage: 0,keepPage: true);
 
   Intro({Key? key}) : super(key: key);
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -49,13 +47,13 @@ class Intro extends GetView<IntroController>  {
                  children: [
                    Expanded(child:  SmoothPageIndicator(
                      controller: pageController,
-                     count:  3,
+                     count: 3,
                      axisDirection: Axis.horizontal,
                      effect:  const ScaleEffect(
-                         spacing:  13.0,
-                         dotWidth:  12.0,
-                         dotHeight:  12.0,
-                         paintStyle:  PaintingStyle.fill,
+                         spacing: 13.0,
+                         dotWidth: 12.0,
+                         dotHeight: 12.0,
+                         paintStyle: PaintingStyle.fill,
                          strokeWidth:  1.5,
                          dotColor:  Colors.white,
                          activePaintStyle: PaintingStyle.stroke,offset:10 ,

@@ -1,10 +1,12 @@
+import 'dart:convert';
+
 import 'package:castalk/apis/base_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 
 
-class Playlist {
+class PlaylistApi {
 
   playListCreate(
       {required var token, required var title, required var description, required List tags}) async
@@ -130,7 +132,12 @@ class Playlist {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      debugPrint(await response.stream.bytesToString());
+
+      var data = await response.stream.bytesToString();
+
+      Map<String, dynamic> resp = await jsonDecode(data);
+
+      return [resp];
     }
     else {
       debugPrint(response.reasonPhrase);

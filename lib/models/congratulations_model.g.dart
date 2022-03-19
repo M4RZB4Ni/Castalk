@@ -9,13 +9,13 @@ part of 'congratulations_model.dart';
 _$_CongratulationsModel _$$_CongratulationsModelFromJson(
         Map<String, dynamic> json) =>
     _$_CongratulationsModel(
-      id: json['id'] as String,
-      name: json['name'] as String,
+      id: json['id'] as int,
+      title: json['title'] as String,
     );
 
 Map<String, dynamic> _$$_CongratulationsModelToJson(
         _$_CongratulationsModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'name': instance.name,
+      'title': instance.title,
     };
