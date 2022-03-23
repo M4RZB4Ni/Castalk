@@ -343,10 +343,10 @@ FollowersItems _$FollowersItemsFromJson(Map<String, dynamic> json) {
 class _$FollowersItemsTearOff {
   const _$FollowersItemsTearOff();
 
-  _FollowersItems call({int? id, FollowersValues? followersData}) {
+  _FollowersItems call({int? follower_id, FollowersValues? follower}) {
     return _FollowersItems(
-      id: id,
-      followersData: followersData,
+      follower_id: follower_id,
+      follower: follower,
     );
   }
 
@@ -360,8 +360,8 @@ const $FollowersItems = _$FollowersItemsTearOff();
 
 /// @nodoc
 mixin _$FollowersItems {
-  int? get id => throw _privateConstructorUsedError;
-  FollowersValues? get followersData => throw _privateConstructorUsedError;
+  int? get follower_id => throw _privateConstructorUsedError;
+  FollowersValues? get follower => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -374,9 +374,9 @@ abstract class $FollowersItemsCopyWith<$Res> {
   factory $FollowersItemsCopyWith(
           FollowersItems value, $Res Function(FollowersItems) then) =
       _$FollowersItemsCopyWithImpl<$Res>;
-  $Res call({int? id, FollowersValues? followersData});
+  $Res call({int? follower_id, FollowersValues? follower});
 
-  $FollowersValuesCopyWith<$Res>? get followersData;
+  $FollowersValuesCopyWith<$Res>? get follower;
 }
 
 /// @nodoc
@@ -390,29 +390,29 @@ class _$FollowersItemsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? id = freezed,
-    Object? followersData = freezed,
+    Object? follower_id = freezed,
+    Object? follower = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      follower_id: follower_id == freezed
+          ? _value.follower_id
+          : follower_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      followersData: followersData == freezed
-          ? _value.followersData
-          : followersData // ignore: cast_nullable_to_non_nullable
+      follower: follower == freezed
+          ? _value.follower
+          : follower // ignore: cast_nullable_to_non_nullable
               as FollowersValues?,
     ));
   }
 
   @override
-  $FollowersValuesCopyWith<$Res>? get followersData {
-    if (_value.followersData == null) {
+  $FollowersValuesCopyWith<$Res>? get follower {
+    if (_value.follower == null) {
       return null;
     }
 
-    return $FollowersValuesCopyWith<$Res>(_value.followersData!, (value) {
-      return _then(_value.copyWith(followersData: value));
+    return $FollowersValuesCopyWith<$Res>(_value.follower!, (value) {
+      return _then(_value.copyWith(follower: value));
     });
   }
 }
@@ -424,10 +424,10 @@ abstract class _$FollowersItemsCopyWith<$Res>
           _FollowersItems value, $Res Function(_FollowersItems) then) =
       __$FollowersItemsCopyWithImpl<$Res>;
   @override
-  $Res call({int? id, FollowersValues? followersData});
+  $Res call({int? follower_id, FollowersValues? follower});
 
   @override
-  $FollowersValuesCopyWith<$Res>? get followersData;
+  $FollowersValuesCopyWith<$Res>? get follower;
 }
 
 /// @nodoc
@@ -443,17 +443,17 @@ class __$FollowersItemsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? id = freezed,
-    Object? followersData = freezed,
+    Object? follower_id = freezed,
+    Object? follower = freezed,
   }) {
     return _then(_FollowersItems(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      follower_id: follower_id == freezed
+          ? _value.follower_id
+          : follower_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      followersData: followersData == freezed
-          ? _value.followersData
-          : followersData // ignore: cast_nullable_to_non_nullable
+      follower: follower == freezed
+          ? _value.follower
+          : follower // ignore: cast_nullable_to_non_nullable
               as FollowersValues?,
     ));
   }
@@ -464,19 +464,19 @@ class __$FollowersItemsCopyWithImpl<$Res>
 class _$_FollowersItems
     with DiagnosticableTreeMixin
     implements _FollowersItems {
-  const _$_FollowersItems({this.id, this.followersData});
+  const _$_FollowersItems({this.follower_id, this.follower});
 
   factory _$_FollowersItems.fromJson(Map<String, dynamic> json) =>
       _$$_FollowersItemsFromJson(json);
 
   @override
-  final int? id;
+  final int? follower_id;
   @override
-  final FollowersValues? followersData;
+  final FollowersValues? follower;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FollowersItems(id: $id, followersData: $followersData)';
+    return 'FollowersItems(follower_id: $follower_id, follower: $follower)';
   }
 
   @override
@@ -484,8 +484,8 @@ class _$_FollowersItems
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'FollowersItems'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('followersData', followersData));
+      ..add(DiagnosticsProperty('follower_id', follower_id))
+      ..add(DiagnosticsProperty('follower', follower));
   }
 
   @override
@@ -493,16 +493,16 @@ class _$_FollowersItems
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _FollowersItems &&
-            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
-                .equals(other.followersData, followersData));
+                .equals(other.follower_id, follower_id) &&
+            const DeepCollectionEquality().equals(other.follower, follower));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(followersData));
+      const DeepCollectionEquality().hash(follower_id),
+      const DeepCollectionEquality().hash(follower));
 
   @JsonKey(ignore: true)
   @override
@@ -516,16 +516,16 @@ class _$_FollowersItems
 }
 
 abstract class _FollowersItems implements FollowersItems {
-  const factory _FollowersItems({int? id, FollowersValues? followersData}) =
+  const factory _FollowersItems({int? follower_id, FollowersValues? follower}) =
       _$_FollowersItems;
 
   factory _FollowersItems.fromJson(Map<String, dynamic> json) =
       _$_FollowersItems.fromJson;
 
   @override
-  int? get id;
+  int? get follower_id;
   @override
-  FollowersValues? get followersData;
+  FollowersValues? get follower;
   @override
   @JsonKey(ignore: true)
   _$FollowersItemsCopyWith<_FollowersItems> get copyWith =>

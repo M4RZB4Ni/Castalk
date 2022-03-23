@@ -57,20 +57,16 @@ class Following{
     var headers = {
       'Authorization': 'Bearer $token',
     };
-
-    var request = http.Request('GET', Uri.parse(BaseApi.baseAddressSlash+'api/rest/Castalk/FollowUserGetFollowers'));
-
+    var request = http.Request('POST', Uri.parse(BaseApi.baseAddressSlash+'api/rest/Castalk/FollowUserGetFollowers'));
     request.headers.addAll(headers);
-
+    request.body = jsonEncode({
+      'user_id': id,
+    });
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-
       var data = await response.stream.bytesToString();
-
-      Map<String, dynamic> resp = await jsonDecode(data);
-
-      debugPrint('FFFFFFFF---> $data');
+      Map<String,dynamic> resp = await jsonDecode(data);
       return [resp];
     }
     else {

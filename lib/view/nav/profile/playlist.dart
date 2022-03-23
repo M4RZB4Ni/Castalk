@@ -1,3 +1,4 @@
+import 'package:castalk/routes/routes.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -144,77 +145,82 @@ class Playlist extends GetView<PlayListController> {
 
   playlistItem(int index) {
 
-    return SizedBox(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Stack(
-            children: [
-              SizedBox(
-                width: 125,
-                height: 125,
-                child: Transform.rotate(
-                    angle: -0.2,
-                    child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 5,
-                        shadowColor: Colors.black.withOpacity(0.5),
-                        child: Image.network(
-                          //model!.imageUrl,
-                          'https://picsum.photos/125/125',
-                          fit: BoxFit.cover,
-                          height: 125,
-                          width: 125,
-                        ))),
-              ),
-              SizedBox(
-                width: 125,
-                height: 125,
-                child: Transform.rotate(
-                    angle: 0.2,
-                    child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 5,
-                        shadowColor: Colors.black.withOpacity(0.5),
-                        child: Image.network(
-                          //model!.imageUrl,
-                          'https://picsum.photos/120/120',
-                          fit: BoxFit.cover,
-                          height: 120,
-                          width: 120,
-                        ))),
-              ),
-              SizedBox(
-                width: 125,
-                height: 125,
-                child: Transform.rotate(
-                    angle: -0.2,
-                    child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 5,
-                        shadowColor: Colors.black.withOpacity(0.5),
-                        child: Image.network(
-                          'https://picsum.photos/123/123',
-                          fit: BoxFit.cover,
-                          height: 123,
-                          width: 123,
-                        ))),
-              ),
-            ],
-          ),
-          Text(controller.playList[0].data!.data!.first.title!.toString(), style: _textTheme.headline2!.copyWith(fontWeight: FontWeight.w500, color: Colors.white),),
-          Text(controller.playList[0].data!.data!.first.description!.toString(), style: _textTheme.headline6),
-        ],
+    return InkWell(
+      onTap: (){
+        Get.toNamed(Routes.PlayListEpisodes);
+      },
+      child: SizedBox(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Stack(
+              children: [
+                SizedBox(
+                  width: 125,
+                  height: 125,
+                  child: Transform.rotate(
+                      angle: -0.2,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          clipBehavior: Clip.antiAlias,
+                          elevation: 5,
+                          shadowColor: Colors.black.withOpacity(0.5),
+                          child: Image.network(
+                            //model!.imageUrl,
+                            'https://picsum.photos/125/125',
+                            fit: BoxFit.cover,
+                            height: 125,
+                            width: 125,
+                          ))),
+                ),
+                SizedBox(
+                  width: 125,
+                  height: 125,
+                  child: Transform.rotate(
+                      angle: 0.2,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          clipBehavior: Clip.antiAlias,
+                          elevation: 5,
+                          shadowColor: Colors.black.withOpacity(0.5),
+                          child: Image.network(
+                            //model!.imageUrl,
+                            'https://picsum.photos/120/120',
+                            fit: BoxFit.cover,
+                            height: 120,
+                            width: 120,
+                          ))),
+                ),
+                SizedBox(
+                  width: 125,
+                  height: 125,
+                  child: Transform.rotate(
+                      angle: -0.2,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          clipBehavior: Clip.antiAlias,
+                          elevation: 5,
+                          shadowColor: Colors.black.withOpacity(0.5),
+                          child: Image.network(
+                            'https://picsum.photos/123/123',
+                            fit: BoxFit.cover,
+                            height: 123,
+                            width: 123,
+                          ))),
+                ),
+              ],
+            ),
+            Text(controller.playList[index].data!.data!.first.title!.toString(), style: _textTheme.headline2!.copyWith(fontWeight: FontWeight.w500, color: Colors.white),),
+            Text(controller.playList[index].data!.data!.first.description!.toString(), style: _textTheme.headline6),
+          ],
+        ),
       ),
     );
   }

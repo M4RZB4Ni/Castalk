@@ -27,8 +27,8 @@ class Data with _$Data {
 @freezed
 class FollowersItems with _$FollowersItems {
   const factory FollowersItems({
-    final int? id,
-    final FollowersValues? followersData,
+    final int? follower_id,
+    final FollowersValues? follower,
   }) = _FollowersItems;
 
   factory FollowersItems.fromJson(final Map<String, dynamic> json) => _$FollowersItemsFromJson(json);

@@ -20,7 +20,7 @@ class AddAcountInfoController extends GetxController{
   updateProfile({required List<Map<String, String>> data, required var token}) async
   {
     if(data.isNotEmpty) {
-      await AuthApi().updateProfile(data: data, token: token);
+      //await AuthApi().updateProfile(data: data, token: token);
     }
     else{
       Get.snackbar("Error...", "Check User!");

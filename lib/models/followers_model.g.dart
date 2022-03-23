@@ -30,17 +30,16 @@ Map<String, dynamic> _$$_DataToJson(_$_Data instance) => <String, dynamic>{
 
 _$_FollowersItems _$$_FollowersItemsFromJson(Map<String, dynamic> json) =>
     _$_FollowersItems(
-      id: json['id'] as int?,
-      followersData: json['followersData'] == null
+      follower_id: json['follower_id'] as int?,
+      follower: json['follower'] == null
           ? null
-          : FollowersValues.fromJson(
-              json['followersData'] as Map<String, dynamic>),
+          : FollowersValues.fromJson(json['follower'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_FollowersItemsToJson(_$_FollowersItems instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'followersData': instance.followersData,
+      'follower_id': instance.follower_id,
+      'follower': instance.follower,
     };
 
 _$_FollowersValues _$$_FollowersValuesFromJson(Map<String, dynamic> json) =>

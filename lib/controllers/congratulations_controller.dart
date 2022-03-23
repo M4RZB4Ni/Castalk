@@ -10,7 +10,7 @@ class CongratulationsController extends GetxController with StateMixin<List<Cong
   final MultiSelectController Controller = MultiSelectController();
   final Other _other = Other();
   late List<CongratulationsModel> categoryList = [];
-  RxInt finalSelectedIndex = 0.obs;
+  var finalSelectedIndex = 0.obs;
   //
   @override
   void onInit() {

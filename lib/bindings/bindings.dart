@@ -6,6 +6,7 @@ import 'package:castalk/controllers/profile_single_controller.dart';
 import 'package:get/get.dart';
 import '../controllers/add_account_info_controller.dart';
 import '../controllers/auth_controller.dart';
+import '../controllers/episode_controller.dart';
 import '../controllers/intro_controller.dart';
 
 class CastalkBindings implements Bindings{
@@ -14,11 +15,11 @@ class CastalkBindings implements Bindings{
     Get.put(AuthController());
     Get.put(IntroController());
     Get.put(CongratulationsController());
-    //Get.lazyPut(() => CongratulationsController());
     Get.put(AddAcountInfoController());
     Get.put(ProfileController());
+    Get.put(FollowersController());
+    Get.put(EpisodeController());
     Get.put(MotionController());
     Get.put(PlayListController());
-    Get.put(FollowersController());
   }
 }

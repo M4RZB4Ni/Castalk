@@ -66,7 +66,7 @@ class AuthApi{
   updateUsername({required var username,required var mobile,required var token}) async
   {
     var headers = {
-      'Authorization': 'bearer $token',
+      'Authorization': 'Bearer $token',
       'Content-Type': 'application/json'
     };
     var request = http.Request('POST', Uri.parse(BaseApi.authBaseAddressSlash+'update-username'));
@@ -143,7 +143,6 @@ class AuthApi{
       "query": searchValue,
     });
     request.headers.addAll(headers);
-
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 201) {

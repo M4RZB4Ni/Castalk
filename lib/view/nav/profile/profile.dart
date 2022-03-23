@@ -1,16 +1,19 @@
+import 'package:castalk/controllers/followers_controller.dart';
 import 'package:castalk/controllers/motion_controller.dart';
 import 'package:castalk/controllers/play_list_controller.dart';
 import 'package:castalk/controllers/profile_single_controller.dart';
 import 'package:castalk/routes/routes.dart';
 import 'package:castalk/style.dart';
+import 'package:castalk/view/nav/profile/liked_episodes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+
+import '../../../controllers/episode_controller.dart';
 
 class Profile extends GetView<ProfileController>{
 
@@ -75,8 +78,8 @@ class Profile extends GetView<ProfileController>{
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Text("Listens",style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
-                                Text("12K",style: Theme.of(context).textTheme.headline1),
+                                Text("Listens",style: Get.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
+                                Text("12K",style: Get.textTheme.headline1),
                               ],)),
                       ),
                       //
@@ -88,7 +91,7 @@ class Profile extends GetView<ProfileController>{
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text("Followers",style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
-                                Text('12K',style: Theme.of(context).textTheme.headline1),
+                                Text(Get.find<FollowersController>().followersList.length < 1000 ? Get.find<FollowersController>().followersList.length.toString() : Get.find<FollowersController>().followersList.length.toString()+'K',style: Theme.of(context).textTheme.headline1),
                               ],)),
                       ),
                       //
@@ -169,28 +172,35 @@ class Profile extends GetView<ProfileController>{
 
                           ],),),
                     ),
-                    Container(
-                      decoration: const BoxDecoration(color: Color(0xff323232),borderRadius: BorderRadius.all(Radius.circular(16))),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                child: Container(width: 43,height: 43,child: Icon(LineIcons.heart,color: Theme.of(context).focusColor, size: 25) , decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
-                                child: Text("Liked Episodes",style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 14),),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 17,right: 32,bottom: 17),
-                            child: Text('112',style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 18),),
-                          ),
+                    InkWell(
+                      onTap: (){
+                        Get.toNamed(Routes.LikedEpisodes);
+                      },
+                      child: Container(
+                        decoration: const BoxDecoration(color: Color(0xff323232),borderRadius: BorderRadius.all(Radius.circular(16))),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
+                                  child: Container(width: 43,height: 43,child: Icon(LineIcons.heart,color: Get.theme.focusColor, size: 25) , decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
+                                  child: Text("Liked Episodes",style: Get.textTheme.headline1!.copyWith(fontSize: 14),),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 17,right: 32,bottom: 17),
+                              child: Text(
+                                  Get.find<EpisodeController>().viewEpisodeList[0].data!.likes_count!.toString() != 0
+                                      ? Get.find<EpisodeController>().viewEpisodeList.length.toString() : '0',
+                                  style: Get.textTheme.headline1!.copyWith(fontSize: 18))
+                            ),
 /*
             Container(width: 44,height: 44,child: IconButton(
               color: Colors.yellow,
@@ -200,7 +210,8 @@ class Profile extends GetView<ProfileController>{
             },) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)))
 */
 
-                        ],),),
+                          ],),),
+                    ),
                     Container(
                       decoration: const BoxDecoration(color: Color(0xff323232),borderRadius: BorderRadius.all(Radius.circular(16))),
                       child: Row(

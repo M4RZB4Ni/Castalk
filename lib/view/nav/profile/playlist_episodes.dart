@@ -3,44 +3,29 @@ import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import '../../../controllers/episode_controller.dart';
 
-class PlayListEpisodes extends StatefulWidget{
-  const PlayListEpisodes({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return PlayListEpisodesState();
-  }
-
-
-}
-
-class PlayListEpisodesState extends State<PlayListEpisodes>
-{
-
+class PlayListEpisodes extends GetView<EpisodeController> {
   String svgPath = "assets/icons/";
-  late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
 
-    _textTheme = Theme.of(context).textTheme;
-
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(w, 180), child: header(w)),
-      body: ListView.builder(itemBuilder: (context, index) {
-        return _likedItem(w,h);
+      appBar: PreferredSize(preferredSize: Size(Get.width, 180), child: header(Get.width)),
+      body: ListView.builder(
+        itemCount: controller.viewEpisodeList.length,
+        itemBuilder: (context, index) {
+        return _likedItem(index, Get.width, Get.height);
       },),
 
     );
   }
 
-  _likedItem(w,h)
+  _likedItem(int index, w, h)
   {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -90,10 +75,10 @@ class PlayListEpisodesState extends State<PlayListEpisodes>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Episode name which is long...".length > 30
-                          ? "Episode name which is long...".substring(0, 30) + "..."
-                          : "Episode name which is long...",
-                      style: _textTheme.headline1!.copyWith(fontSize: 14),
+                      controller.viewEpisodeList[index].data!.podcast!.title!.toString().length > 30
+                          ? controller.viewEpisodeList[index].data!.podcast!.title!.toString().substring(0, 30) + "..."
+                          : controller.viewEpisodeList[index].data!.podcast!.title!.toString(),
+                      style: Get.textTheme.headline1!.copyWith(fontSize: 14),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,7 +93,7 @@ class PlayListEpisodesState extends State<PlayListEpisodes>
                               Padding(
                                 padding: const EdgeInsets.only(left: 5),
                                 child: Text("1 : 26 : 45",
-                                    style: _textTheme.headline6),
+                                    style: Get.textTheme.headline6),
                               ),
                             ],
                           ),
@@ -123,8 +108,7 @@ class PlayListEpisodesState extends State<PlayListEpisodes>
                                   SvgPicture.asset(Cicon.heart_empty),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 5),
-                                    child: Text("250",
-                                        style: _textTheme.headline6),
+                                    child: Text(controller.viewEpisodeList[index].data!.podcast!.likes_count!.toString(), style: Get.textTheme.headline6),
                                   ),
                                 ],
                               ),
@@ -134,8 +118,8 @@ class PlayListEpisodesState extends State<PlayListEpisodes>
                               )
                             ],
                           ),
-                        )                      ],
-                    ),
+                        ),
+                      ]),
                   ],
                 ),
               )),
@@ -180,24 +164,29 @@ class PlayListEpisodesState extends State<PlayListEpisodes>
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                width: 44,
-                height: 44,
-                child: const Icon(
-                  Icons.arrow_back_outlined,
-                  color: Colors.white,
+              InkWell(
+                onTap: (){
+                  Get.back();
+                },
+                child: Container(
+                  width: 44,
+                  height: 44,
+                  child: const Icon(
+                    Icons.arrow_back_outlined,
+                    color: Colors.white,
+                  ),
+                  decoration: BoxDecoration(
+                      color: Style.headerBackBtn,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(12)),
                 ),
-                decoration: BoxDecoration(
-                    color: Style.headerBackBtn,
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(12)),
               ),
               Row(
                 children: [
 
                   Padding(
                     padding: const EdgeInsets.only(left: 9),
-                    child: Text("Playlist", style: _textTheme.headline1),
+                    child: Text("Playlist", style: Get.textTheme.headline1),
                   ),
                 ],
               ),
@@ -231,7 +220,7 @@ class PlayListEpisodesState extends State<PlayListEpisodes>
                               top: 12, bottom: 12, left: 19),
                           hintText: "Type to Search...",
                           hintStyle:
-                          TextStyle(color: Theme.of(context).hintColor),
+                          TextStyle(color: Get.theme.hintColor),
                           fillColor: Colors.white))),
               Container(
                 padding: const EdgeInsets.all(12),

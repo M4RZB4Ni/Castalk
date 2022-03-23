@@ -10,22 +10,16 @@ class FollowersController extends GetxController with StateMixin<List<FollowersM
   late List<FollowersModel> followersList = [];
   //
   @override
-  onInit(){
-    //getFollowersData();
+  onInit() async{
+    getFollowersData();
     super.onInit();
   }
   //
   getFollowersData() async{
-    debugPrint('userId = ${GetStorage().read('userId')}');
-    await _following.getFollowers(token: GetStorage().read('token'), id: GetStorage().read('userId').then((l) => {
-      debugPrint('getFollowersData---> $l'),
-      //
+    await _following.getFollowers(token: GetStorage().read('token'), id: GetStorage().read('userId')).then((l) => {
       followersList = List<FollowersModel>.from(l.map((model) => FollowersModel.fromJson(model))),
-      GetStorage().write('followersCount', followersList.length.toString()),
-      //
-      debugPrint('followersCount---> ${GetStorage().read('followersCount')}'),
-      debugPrint('followingList---> $followersList'),
-    }));
+      debugPrint('followersList---> $followersList'),
+    });
   }
 
 }
