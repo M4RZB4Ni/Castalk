@@ -3,7 +3,7 @@ class Routes{
     static const String  Intro='/Intro';
     static const String  Splash='/Splash';
     static const String  SignIn='/SignIn';
-    static const String  EnterCode='/EnterCodeState';
+    static const String  EnterCode='/EnterCode';
     static const String  AddAccountInfo='/AddAccountInfo';
     static const String  Congratulations='/Congratulations';
     static const String  Player='/Player';

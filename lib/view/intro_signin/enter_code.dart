@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:castalk/controllers/auth_controller.dart';
 import 'package:castalk/routes/routes.dart';
 import 'package:castalk/style.dart';
+import 'package:castalk/view/component/Timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
@@ -11,7 +12,8 @@ import '../../timer_class.dart';
 
 class EnterCode extends GetView<AuthController>
 {
-  var phoneNumberValue = Get.arguments[0];
+  //var phoneNumberValue = Get.arguments[0];
+  var phoneNumberValue = '09185584088';
 
   StreamController<ErrorAnimationType>? errorController;
 
@@ -128,7 +130,7 @@ class EnterCode extends GetView<AuthController>
                 ),
                 controller.nextState == 'ResendOff' ? Padding(
                   padding: const EdgeInsets.only(right: 48,bottom: 57),
-                  child: Obx(() => Text(controller.startTimer(), style: Get.textTheme.subtitle2)),
+                  child: Obx(() => Timer(second: controller.timerCount.value, endTimer: controller.endTimers,)),
                 ) : const Text(''),
               ],
             )
@@ -247,51 +249,7 @@ class EnterCode extends GetView<AuthController>
     );
   }
 
-  @override
-  void activate() {
-    // TODO: implement activate
-  }
 
-  @override
-  // TODO: implement context
-  BuildContext get context => throw UnimplementedError();
 
-  @override
-  Ticker createTicker(TickerCallback onTick) {
-    // TODO: implement createTicker
-    throw UnimplementedError();
-  }
 
-  @override
-  void deactivate() {
-    // TODO: implement deactivate
-  }
-
-  @override
-  void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
-  }
-
-  @override
-  void didUpdateWidget(covariant StatefulWidget oldWidget) {
-    // TODO: implement didUpdateWidget
-  }
-
-  @override
-  // TODO: implement mounted
-  bool get mounted => throw UnimplementedError();
-
-  @override
-  void reassemble() {
-    // TODO: implement reassemble
-  }
-
-  @override
-  void setState(VoidCallback fn) {
-    // TODO: implement setState
-  }
-
-  @override
-  // TODO: implement widget
-  StatefulWidget get widget => throw UnimplementedError();
 }

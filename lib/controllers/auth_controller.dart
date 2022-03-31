@@ -15,8 +15,13 @@ class AuthController extends GetxController{
   String nextState = 'ResendOff';
   TextStyle pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: Colors.white54);
   late Timer _timer;
-  var start = 30.obs;
-  //
+  RxInt timerCount = (DateTime.now().millisecondsSinceEpoch + const Duration(seconds: 120).inMilliseconds).obs;
+  RxBool endTime = false.obs;
+
+  void endTimers() {
+    endTime.value = true;
+  }
+
   @override
   void onInit() {
     WidgetsFlutterBinding.ensureInitialized();
@@ -24,21 +29,7 @@ class AuthController extends GetxController{
     super.onInit();
   }
 
-  startTimer() {
-    const oneSec = Duration(seconds: 1);
-    _timer = Timer.periodic(
-      oneSec,
-          (Timer timer) {
-        if (start == 0) {
-          nextState = 'ResendOn';
-          timer.cancel();
-        } else {
-          start--;
-        }
-      },
-    );
-    return start.toString();
-  }
+
 
   writeTokenValue(String value){
     GetStorage().write('token', value);
@@ -105,13 +96,13 @@ class AuthController extends GetxController{
 
   void checkToken() async
   {
-    var token= await storage.read(key: "TokenKey");
-    debugPrint("token--> $token");
-    if(token!=null){
-      Get.toNamed(Routes.Explore);
-    }else{
-      Get.toNamed(Routes.Intro);
-    }
+    // var token= await storage.read(key: "TokenKey");
+    // debugPrint("token--> $token");
+    // if(token!=null){
+    //   Get.toNamed(Routes.Explore);
+    // }else{
+    //   Get.toNamed(Routes.Intro);
+    // }
   }
 
   void register({required var mobile}) async

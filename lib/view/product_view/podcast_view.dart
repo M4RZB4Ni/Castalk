@@ -1,6 +1,4 @@
-import 'dart:ui';
 import 'package:castalk/cicon.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -13,6 +11,8 @@ class PodcastView extends GetView<PodcastView> {
   TextEditingController numberController = TextEditingController();
   late TextTheme _textTheme;
   bool isFollow=false;
+
+  PodcastView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

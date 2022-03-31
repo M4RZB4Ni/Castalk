@@ -1,7 +1,5 @@
-import 'dart:ui';
 
 import 'package:castalk/cicon.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:readmore/readmore.dart';
@@ -177,7 +175,7 @@ class EpisodeViewState extends State<EpisodeView>{
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
-                          side:  BorderSide(color: Style.gray29))),
+                          side:  const BorderSide(color: Style.gray29))),
                   minimumSize: MaterialStateProperty.all(const Size(54, 54)),
                   backgroundColor: MaterialStateProperty.all(Style.gray29)),
             ),

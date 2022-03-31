@@ -8,9 +8,11 @@ import 'package:readmore/readmore.dart';
 import '../../style.dart';
 
 class SeasonView extends GetView<SeasonView>{
+  SeasonView({Key? key}) : super(key: key);
 
   String svgPath = "assets/icons/";
   TextEditingController numberController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
