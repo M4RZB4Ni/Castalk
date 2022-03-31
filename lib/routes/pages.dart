@@ -66,7 +66,7 @@ import '../view/nav/profile/MyCasts/my_casts_analytics.dart';
 import '../view/nav/profile/MyCasts/my_casts_list.dart';
 
 class Pages{
-  static const INITIAL_ROUTE = Routes.EnterCode;
+  static const INITIAL_ROUTE = Routes.Congratulations;
 
   static final List<GetPage> pages=[
 

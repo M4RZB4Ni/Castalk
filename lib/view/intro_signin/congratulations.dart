@@ -1,11 +1,13 @@
 import 'package:castalk/controllers/congratulations_controller.dart';
+import 'package:castalk/routes/routes.dart';
 import 'package:castalk/style.dart';
+import 'package:castalk/view/component/APPMultiSelectGrid.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:multi_select_item/multi_select_item.dart';
-import '../../routes/routes.dart';
 
 class Congratulations extends GetView<CongratulationsController>{
+  const Congratulations({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +36,12 @@ class Congratulations extends GetView<CongratulationsController>{
       resizeToAvoidBottomInset: false,
       backgroundColor: Style.background,
 
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 42),
-        child: GridView.builder(
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 42),
+        child:APPMultiSelectGrid(),
+
+
+        /*GridView.builder(
           itemCount: controller.categoryList.length,
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 150,
@@ -54,7 +59,7 @@ class Congratulations extends GetView<CongratulationsController>{
             );
           });
         },
-        ),
+        )*/
       ),
       bottomSheet: Padding(
         padding: const EdgeInsets.only(bottom: 59,left: 26),
