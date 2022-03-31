@@ -57,6 +57,7 @@ dependencies:
   flutter_countdown_timer: ^4.1.0
   line_icons: ^2.0.1
   animated_bottom_navigation_bar: ^0.3.2
+  image_picker: ^0.8.4+11
 
 
 dev_dependencies:
@@ -188,6 +189,14 @@ flutter:
   - assets/icons/wallet_on.svg
   - assets/icons/wallet_chart.svg
   - assets/icons/logo.svg
+  - assets/icons/playLists_golden.svg
+  - assets/icons/likedEpisodes_golden.svg
+  - assets/icons/listeningStatus_golden.svg
+  - assets/icons/achivments_golden.svg
+  - assets/icons/myCasts_golden.svg
+  - assets/icons/market_golden.svg
+  - assets/icons/promotion_golden.svg
+  - assets/icons/downloads_golden.svg
 
   uses-material-design: true
 

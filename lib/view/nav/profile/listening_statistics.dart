@@ -3,46 +3,34 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import '../../../controllers/listening_statistics_controller.dart';
 
-class ListeningStatistics extends StatefulWidget{
-  const ListeningStatistics({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return ListeningStatisticsState();
-  }
-}
-
-class ListeningStatisticsState extends State<ListeningStatistics>{
+class ListeningStatistics extends GetView<ListeningStatisticsController>{
 
   String svgPath = "assets/icons/";
-  late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
   int touchedIndex = -1;
 
-
-
   @override
   Widget build(BuildContext context) {
-    _textTheme = Theme.of(context).textTheme;
-    double w = MediaQuery.of(context).size.width;
-    //double h = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(Get.width, 100), child: header(Get.width)),
       backgroundColor: Style.background,
       body: Column(children: [
         Padding(
           padding: const EdgeInsets.only(top: 35,bottom: 30,right: 25,left: 25),
           child: Container(
               padding: const EdgeInsets.all(38),
-              height: 130,width: w,decoration:  Style.inputBoxDecoration.copyWith(borderRadius: const BorderRadius.all(Radius.circular(24))),
+              height: 130,width: Get.width,decoration:  Style.inputBoxDecoration.copyWith(borderRadius: const BorderRadius.all(Radius.circular(24))),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text("1254 min",style: Style.t_500_18w),
+                    Text('${controller.listeningAnalyticsList[0].data!.total_listening_time!}min', style: Style.t_500_18w),
                     Padding(
                       padding: const EdgeInsets.only(top: 5),
                       child: Text("Total listening time",style: Style.t_500_14_G9D),
@@ -52,7 +40,7 @@ class ListeningStatisticsState extends State<ListeningStatistics>{
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text("352",style: Style.t_500_24w),
+                    Text('${controller.listeningAnalyticsList[0].data!.episodes!}',style: Style.t_500_24w),
                     Text("Episodes",style: Style.t_500_14_G9D),
                   ],
                 )
@@ -69,7 +57,7 @@ class ListeningStatisticsState extends State<ListeningStatistics>{
                   Text("Your listening routin :",style: Style.t_500_16w,),
                   RichText(text: TextSpan(
                       children: [
-                        TextSpan(text:"+5",style: Style.t_400_12_green),
+                        TextSpan(text: '${controller.listeningAnalyticsList[0].data!.your_listening_routine!}', style: Style.t_400_12_green),
                         TextSpan(text:" from last week",style: Style.t_400_12_9D),
                       ]))
                 ],
@@ -86,7 +74,7 @@ class ListeningStatisticsState extends State<ListeningStatistics>{
                     padding: const EdgeInsets.only(
                         right: 18.0, left: 12.0, top: 24, bottom: 12),
                     child: LineChart(
-                        mainData()
+                        mainData(),
                     ),
                   ),
                 ),
@@ -118,22 +106,22 @@ class ListeningStatisticsState extends State<ListeningStatistics>{
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8),
-                    child: Text("48% Comedy",style: Style.t_500_14g,),
+                    child: Text('${controller.listeningAnalyticsList[0].data!.field_of_interest!.comedy!}% Comedy', style: Style.t_500_14g,),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8),
-                    child: Text("30%  Pychology",style: Style.t_500_14w,),
+                    child: Text('${controller.listeningAnalyticsList[0].data!.field_of_interest!.psychology!}% Pychology',style: Style.t_500_14w,),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8),
-                    child: Text("22% Economic",style: Style.t_500_14r,),
+                    child: Text('${controller.listeningAnalyticsList[0].data!.field_of_interest!.sport!}% Sport',style: Style.t_500_14r,),
                   ),
 
                 ],
               ),
 
               Container(
-                width: w/2,
+                width: Get.width/2,
                 height: 144,
                 color: Style.background,
                 child: Stack(children: [
@@ -199,19 +187,22 @@ class ListeningStatisticsState extends State<ListeningStatistics>{
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            width: 44,
-            height: 44,
-            child: const Icon(
-              Icons.arrow_back_outlined,
-              color: Colors.white,
+          InkWell(
+            onTap: () => Get.back(),
+            child: Container(
+              width: 44,
+              height: 44,
+              child: const Icon(
+                Icons.arrow_back_outlined,
+                color: Colors.white,
+              ),
+              decoration: BoxDecoration(
+                  color: Style.headerBackBtn,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(12)),
             ),
-            decoration: BoxDecoration(
-                color: Style.headerBackBtn,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(12)),
           ),
-          Text("Listening Statistics", style: _textTheme.headline1),
+          Text("Listening Statistics", style: Get.textTheme.headline1),
           const SizedBox(
             width: 44,
           ),

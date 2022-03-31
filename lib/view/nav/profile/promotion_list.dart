@@ -2,18 +2,10 @@ import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
+class PromotionList extends GetView<PromotionList> {
 
-class PromotionList extends StatefulWidget {
-  const PromotionList({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return PromotionState();
-  }
-}
-
-class PromotionState extends State<PromotionList> {
   String svgPath = "assets/icons/";
   late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
@@ -21,12 +13,11 @@ class PromotionState extends State<PromotionList> {
 
   @override
   Widget build(BuildContext context) {
-    _textTheme = Theme.of(context).textTheme;
+    _textTheme = Get.textTheme;
 
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    itemHeaderStyle =
-        _textTheme.headline2!.copyWith(fontWeight: FontWeight.w500);
+    itemHeaderStyle = Get.textTheme.headline2!.copyWith(fontWeight: FontWeight.w500);
 
     return Scaffold(
         bottomSheet: Padding(
@@ -141,8 +132,7 @@ class PromotionState extends State<PromotionList> {
                           contentPadding: const EdgeInsets.only(
                               top: 12, bottom: 12, left: 19),
                           hintText: "Type to Search...",
-                          hintStyle:
-                          TextStyle(color: Theme.of(context).hintColor),
+                          hintStyle: TextStyle(color: Get.theme.hintColor),
                           fillColor: Colors.white))),
               Container(
                 padding: const EdgeInsets.all(12),

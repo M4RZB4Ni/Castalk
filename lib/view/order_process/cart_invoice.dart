@@ -3,33 +3,18 @@ import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
-class CartInvoice extends StatefulWidget{
-  const CartInvoice({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-
-    return CartInvoiceState();
-  }
-
-
-}
-
-class CartInvoiceState extends State<CartInvoice>{
+class CartInvoice extends GetView<CartInvoice>{
 
   TextEditingController numberController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
 
-    double w = MediaQuery.of(context).size.width;
-    //double h = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(w, 110), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(Get.width, 110), child: header(Get.width)),
       body: SingleChildScrollView(child:
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +30,7 @@ class CartInvoiceState extends State<CartInvoice>{
               transItem(),
             ],
             )),
-          _searchBar(w),
+          _searchBar(Get.width),
           Padding(
             padding: const EdgeInsets.only(top: 133,left: 27,right: 27),
             child: Column(
@@ -141,8 +126,8 @@ class CartInvoiceState extends State<CartInvoice>{
                       Text("Host Name",style: Style.t_400_14w),
                       Visibility(child: Padding(
                         padding: const EdgeInsets.only(left: 8),
-                        child: Container(decoration: BoxDecoration(color: Theme.of(context).focusColor,shape: BoxShape.circle),
-                            width: 13,height: 13,child: Icon(Icons.check,color: Style.background,size: 13,)),
+                        child: Container(decoration: BoxDecoration(color: Get.theme.focusColor,shape: BoxShape.circle),
+                            width: 13,height: 13,child: const Icon(Icons.check,color: Style.background,size: 13,)),
                       ),visible: false,)
                     ],
                   ),
@@ -200,7 +185,7 @@ class CartInvoiceState extends State<CartInvoice>{
                                   top: 12, bottom: 12, left: 19),
                               hintText: "xxx - xxxx -xxx",
                               hintStyle:
-                              TextStyle(color: Theme.of(context).hintColor),
+                              TextStyle(color: Get.theme.hintColor),
                               fillColor: Colors.white))),
                   Container(
                     padding: const EdgeInsets.all(12),

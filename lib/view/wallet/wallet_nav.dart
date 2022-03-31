@@ -6,28 +6,15 @@ import 'package:castalk/view/wallet/wallet_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
-class WalletNav extends StatefulWidget{
-  const WalletNav({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return WalletNavState();
-  }
-
-
-}
-
-class WalletNavState extends State<WalletNav>{
+class WalletNav extends GetView<WalletNav>{
 
   int _currentIndex = 0;
   final List _children = const [
-
     Wallet(),
     TransactionHistory(),
-    WalletAnalytics(),
-
-
+    //WalletAnalytics(),
   ];
   String svgPath = "assets/icons/";
 
@@ -81,16 +68,13 @@ class WalletNavState extends State<WalletNav>{
               ],
             ),
           ),
-
-
         ));
   }
 
   void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
+    // setState(() {
+    //   _currentIndex = index;
+    // });
   }
-
 
 }

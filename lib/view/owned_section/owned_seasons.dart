@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,7 +26,7 @@ class OwnedSeasonsState extends State<OwnedSeasons>{
 
   @override
   Widget build(BuildContext context) {
-    _textTheme = Theme.of(context).textTheme;
+    _textTheme = ThemeData().textTheme;
 
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;

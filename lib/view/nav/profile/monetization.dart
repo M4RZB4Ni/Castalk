@@ -3,37 +3,20 @@ import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
+class Monetization extends GetView<Monetization>{
 
-class Monetization extends StatefulWidget{
-  const Monetization({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return MonetizationState();
-  }
-
-}
-
-class MonetizationState extends State<Monetization>{
-
-  late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
 
-    _textTheme = Theme.of(context).textTheme;
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-
-
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(Get.width, 100), child: header(Get.width)),
       backgroundColor: Style.background,
       body: SingleChildScrollView(
         child: SizedBox(
-
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +64,7 @@ class MonetizationState extends State<Monetization>{
                         Text("Add your Email:",style: Style.t_400_16w),
                         Padding(
                             padding: const EdgeInsets.only(top: 8,bottom: 9),
-                            child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
+                            child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
                                 child: TextField(
                                     controller: numberController,
                                     textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "your email address"))
@@ -99,7 +82,7 @@ class MonetizationState extends State<Monetization>{
                           Text("Other options:",style: Style.t_400_16w),
                           Padding(
                               padding: const EdgeInsets.only(top: 8,bottom: 9),
-                              child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
+                              child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
                                   child: TextField(
                                       controller: numberController,
                                       textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "options and stuffs..."))
@@ -150,7 +133,7 @@ class MonetizationState extends State<Monetization>{
           ),
           Padding(
             padding: const EdgeInsets.only(left: 9),
-            child: Text("Monetization", style: _textTheme.headline1),
+            child: Text("Monetization", style: Get.textTheme.headline1),
           ),
           const SizedBox(
             width: 44,

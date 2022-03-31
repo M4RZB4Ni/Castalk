@@ -142,6 +142,15 @@ class Style  {
   static InputDecoration inputTextDecoration=InputDecoration(border: InputBorder.none,isDense: true,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
       hintText: "Copon name",hintStyle: TextStyle(color: hintColor),fillColor: Colors.white);
 
+  static InputDecoration inputTextDecorationNameProfile = InputDecoration(border: InputBorder.none,isDense: true,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
+      hintText: "Add Your name...",hintStyle: TextStyle(color: hintColor),fillColor: Colors.white);
+
+  static InputDecoration inputTextDecorationEpisodeNameProfile = InputDecoration(border: InputBorder.none,isDense: true,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
+      hintText: "Add Your Episode name...",hintStyle: TextStyle(color: hintColor),fillColor: Colors.white);
+
+  static InputDecoration inputTextDecorationAboutProfile = InputDecoration(border: InputBorder.none,isDense: true,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
+      hintText: "Add your description...",hintStyle: TextStyle(color: hintColor),fillColor: Colors.white);
+
   static InputDecoration inputSearchTextDecoration=InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
       hintText: "Copon name",hintStyle: TextStyle(color: hintColor),fillColor: Colors.white,icon: SvgPicture.asset(
         _svgPath + "search.svg",

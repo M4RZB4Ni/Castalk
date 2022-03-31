@@ -1,11 +1,9 @@
-
 import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 
 class SavedProjects extends StatefulWidget {
   const SavedProjects({Key? key}) : super(key: key);
@@ -24,9 +22,7 @@ class SavedProjectsState extends State<SavedProjects> {
 
   @override
   Widget build(BuildContext context) {
-    _textTheme = Theme.of(context).textTheme;
     double w = MediaQuery.of(context).size.width;
-    //  double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: Style.background,

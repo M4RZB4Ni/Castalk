@@ -1,55 +1,39 @@
 import 'package:castalk/cicon.dart';
+import 'package:castalk/controllers/achivments_controller.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 
+class Achivments extends GetView<AchivmentsController>{
 
-class Achivments extends StatefulWidget{
-  const Achivments({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return AchivmentsState();
-  }
-
-
-}
-
-class AchivmentsState extends State<Achivments>{
-
-  late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
 
-    _textTheme = Theme.of(context).textTheme;
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-
-
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size(w, 100), child: header(w)),
+          preferredSize: Size(Get.width, 100), child: header(Get.width)),
       backgroundColor: Style.background,
       body: SingleChildScrollView(child: Padding(
         padding: const EdgeInsets.only(top: 24),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-
               Flexible(
               child:ListView(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                    children: [
-                 _firstPlaceItem(w,h),
-                 _firstPlaceItem(w,h),
-                 _firstPlaceItem(w,h),
-                 _firstPlaceItem(w,h),
+                 _firstPlaceItem(Get.width,Get.height),
+                 _firstPlaceItem(Get.width,Get.height),
+                 _firstPlaceItem(Get.width,Get.height),
+                 _firstPlaceItem(Get.width,Get.height),
                   ])),
-
             Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize:MainAxisSize.min,
@@ -66,12 +50,12 @@ class AchivmentsState extends State<Achivments>{
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
-                    _achivedItem(w,h),
-                    _achivedItem(w,h),
-                    _achivedItem(w,h),
-                    _achivedItem(w,h),
-                    _achivedItem(w,h),
-                    _achivedItem(w,h),
+                    _achivedItem(Get.width,Get.height),
+                    _achivedItem(Get.width,Get.height),
+                    _achivedItem(Get.width,Get.height),
+                    _achivedItem(Get.width,Get.height),
+                    _achivedItem(Get.width,Get.height),
+                    _achivedItem(Get.width,Get.height),
                   ],
                 ),
               )
@@ -81,7 +65,6 @@ class AchivmentsState extends State<Achivments>{
       )),
     );
   }
-
 
   _firstPlace(w, h) {
     return SizedBox(
@@ -97,8 +80,8 @@ class AchivmentsState extends State<Achivments>{
       ),
     );
   }
-  _firstPlaceItem(w,h)
-  {
+
+  _firstPlaceItem(w,h) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 15),
       child: Container(
@@ -150,7 +133,6 @@ class AchivmentsState extends State<Achivments>{
 
   }
 
-
   _achived(w, h) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -178,10 +160,7 @@ class AchivmentsState extends State<Achivments>{
     );
   }
 
-
-
-  _achivedItem(w,h)
-  {
+  _achivedItem(w,h) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 14),
       child: Container(
@@ -245,9 +224,6 @@ class AchivmentsState extends State<Achivments>{
 
   }
 
-
-
-
   header(w) {
     return Padding(
       padding: const EdgeInsets.only(top: 36, left: 24),
@@ -255,21 +231,24 @@ class AchivmentsState extends State<Achivments>{
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            width: 44,
-            height: 44,
-            child: const Icon(
-              Icons.arrow_back_outlined,
-              color: Colors.white,
+          InkWell(
+            onTap: () => Get.back(),
+            child: Container(
+              width: 44,
+              height: 44,
+              child: const Icon(
+                Icons.arrow_back_outlined,
+                color: Colors.white,
+              ),
+              decoration: BoxDecoration(
+                  color: Style.headerBackBtn,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(12)),
             ),
-            decoration: BoxDecoration(
-                color: Style.headerBackBtn,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(12)),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 9),
-            child: Text("Achivments", style: _textTheme.headline1),
+            child: Text("Achivments", style: Get.textTheme.headline1),
           ),
           const SizedBox(
             width: 44,
@@ -278,7 +257,5 @@ class AchivmentsState extends State<Achivments>{
       ),
     );
   }
-
-
 
 }

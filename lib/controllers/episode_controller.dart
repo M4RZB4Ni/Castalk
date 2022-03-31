@@ -8,9 +8,8 @@ class EpisodeController extends GetxController with StateMixin<List<ViewEpisodeM
 
   final Singles _singles = Singles();
   late List<ViewEpisodeModel> viewEpisodeList = [];
-  //
   @override
-  onInit() async{
+  void onInit() {
     getViewEpisodeData();
     super.onInit();
   }

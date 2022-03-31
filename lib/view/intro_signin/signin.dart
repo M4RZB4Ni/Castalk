@@ -1,28 +1,17 @@
 import 'package:castalk/controllers/auth_controller.dart';
 import 'package:castalk/customs/utils.dart';
-import 'package:castalk/routes/routes.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
-
 class SignIn extends StatelessWidget {
-  //List<String> cCodes=["Male","Female"];
-  static const TextStyle dropStyle =
-      TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400);
+
+  static const TextStyle dropStyle = TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400);
   final numberController = TextEditingController();
   BoxDecoration boxDecorations = BoxDecoration(
       borderRadius: const BorderRadius.all(Radius.circular(12)),
       border: Border.all(width: 1, color: const Color(0xff484848)));
-  late String _genderValue;
-
   final authService = Get.find<AuthController>();
-
-  @override
-  void initState() {
-    //_genderValue="Male";
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +23,7 @@ class SignIn extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.transparent,
           centerTitle: true,
-          title: Text("Log in", style: Theme.of(context).textTheme.headline1)),
+          title: Text("Log in", style: Get.textTheme.headline1)),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
         child: Column(
@@ -50,7 +39,7 @@ class SignIn extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 15, bottom: 9),
                   child: Text("Use your mobile number to signin",
-                      style: Theme.of(context).textTheme.bodyText1),
+                      style: Get.textTheme.bodyText1),
                 ),
                /* Padding(
                   padding: const EdgeInsets.only(top: 15, bottom: 9),
@@ -61,7 +50,7 @@ class SignIn extends StatelessWidget {
                       child: DropdownButtonHideUnderline(
                           child:  Padding(
                             padding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
-                            child: Theme(data: Theme.of(context).copyWith(
+                            child: Theme(data: Get.copyWith(
                                 canvasColor: Style.background),
                                 child: DropdownButton<String>(
                                     icon: const Padding(
@@ -70,8 +59,8 @@ class SignIn extends StatelessWidget {
                                     ),
                                     isDense: false,
                                     value: _genderValue,
-                                    style: Theme.of(context).textTheme.bodyText2,
-                                    items: cCodes.map((e) => DropdownMenuItem(child: Text(e,style: Theme.of(context).textTheme.bodyText2),value: e,)).toList(),
+                                    style: Get.textTheme.bodyText2,
+                                    items: cCodes.map((e) => DropdownMenuItem(child: Text(e,style: Get.textTheme.bodyText2),value: e,)).toList(),
                                     onChanged: (value) {
                                       setState(() {
                                         // selectedActivity = value;
@@ -100,7 +89,7 @@ class SignIn extends StatelessWidget {
                                 top: 12, bottom: 12, left: 19),
                             hintText: "Add your Number eg: 123 - 4567 - 890",
                             hintStyle:
-                                TextStyle(color: Theme.of(context).hintColor),
+                                TextStyle(color: Get.theme.hintColor),
                             fillColor: Colors.white))),
               ],
             ),
@@ -110,14 +99,24 @@ class SignIn extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: Text("A verification code will send to the number",
-                      style: Theme.of(context).textTheme.subtitle1),
+                      style: Get.textTheme.subtitle1),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     debugPrint("sentOTP");
                     numberController.text.length == 11 ? authService.login(mobile: numberController.text, password: '1234')
                         : numberController.text == '' ? Get.defaultDialog(title: 'Warning', middleTextStyle: Get.textTheme.displayMedium, middleText: 'Please enter your mobile number', titleStyle: Get.textTheme.bodyMedium)
-                        : numberController.text.length >= 11 || numberController.text.length <= 11 ? Get.defaultDialog(title: 'Warning', middleText: 'Mobile number is incorrect!', middleTextStyle: Get.textTheme.displayMedium, radius: 50, titleStyle: Get.textTheme.displayMedium) : const Text('');
+                        : numberController.text.length >= 11 || numberController.text.length <= 11 ? Get.snackbar(
+                      'Warning',
+                      'Mobile number is incorrect!',
+                      duration: 3.seconds,
+                      snackPosition: SnackPosition.BOTTOM,
+                      margin: const EdgeInsets.all(20),
+                      showProgressIndicator: true,
+                      isDismissible: true,
+                      backgroundColor: Colors.amber,
+                      colorText: Colors.white,
+                    ) : const Text('');
                     //authService.register(mobile: numberController.text);
                   },
                   child: const Text(

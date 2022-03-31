@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../routes/routes.dart';
 
 class AddAccountInfo extends GetView<AddAcountInfoController>{
@@ -43,14 +42,14 @@ class AddAccountInfo extends GetView<AddAcountInfoController>{
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Enter your Full name*",style: Theme.of(context).textTheme.bodyText1),
+                    Text("Enter your Full name*",style: Get.textTheme.bodyText1),
                     Padding(
                       padding: const EdgeInsets.only(top: 10,bottom: 9),
                       child:Container(height: 55,decoration:  boxDecorations,width: Get.width,
                         child: TextField(
                             controller: fullNameController,
                             textAlign: TextAlign.left,maxLines: 1,decoration: InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
-                            hintText: "eg: nahil natan",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
+                            hintText: "eg: nahil natan",hintStyle: TextStyle(color: Get.theme.hintColor),fillColor: Colors.white))
 
                     )),
                   ],
@@ -60,14 +59,14 @@ class AddAccountInfo extends GetView<AddAcountInfoController>{
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Enter your Account name*",style: Theme.of(context).textTheme.bodyText1),
+                      Text("Enter your Account name*",style: Get.textTheme.bodyText1),
                       Padding(
                         padding: const EdgeInsets.only(top: 10,bottom: 9),
                         child:Container(height: 55,decoration:  boxDecorations,width: Get.width,
                           child: TextField(
                               controller: nameController,
                               textAlign: TextAlign.left,maxLines: 1,decoration: InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
-                              hintText: "eg: Best_podcast_ever",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
+                              hintText: "eg: Best_podcast_ever",hintStyle: TextStyle(color: Get.theme.hintColor),fillColor: Colors.white))
 
                       )),
                     ],
@@ -78,14 +77,14 @@ class AddAccountInfo extends GetView<AddAcountInfoController>{
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Add your Birthday",style: Theme.of(context).textTheme.bodyText1),
+                      Text("Add your Birthday",style: Get.textTheme.bodyText1),
                       Padding(
                         padding: const EdgeInsets.only(top: 10,bottom: 9),
                         child:Container(height: 55,decoration:  boxDecorations,width: Get.width,
                           child: TextField(
                               controller: birthdayController,
                               textAlign: TextAlign.left,maxLines: 1,decoration: InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
-                              hintText: "eg: 1991-02-15",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
+                              hintText: "eg: 1991-02-15",hintStyle: TextStyle(color: Get.theme.hintColor),fillColor: Colors.white))
 
                       )),
                     ],
@@ -99,7 +98,7 @@ class AddAccountInfo extends GetView<AddAcountInfoController>{
                       child: Container(height: 55,decoration:  boxDecorations,width: Get.width,child: DropdownButtonHideUnderline(
                         child: Padding(
                           padding: const EdgeInsets.only(top: 10,bottom: 12,left: 19),
-                          child: Theme(data: Theme.of(context).copyWith(
+                          child: Theme(data: Get.theme.copyWith(
                             canvasColor: Style.background),
                               child: GetBuilder<AddAcountInfoController>(builder: (controller){
                                 return DropdownButton(
@@ -108,8 +107,8 @@ class AddAccountInfo extends GetView<AddAcountInfoController>{
                                   ),
                                   isDense: false,
                                   value: controller.genderValue.toString(),
-                                  style: Theme.of(context).textTheme.bodyText2,
-                                  items: controller.cCodes.map((selectedValue) => DropdownMenuItem(child: Text(selectedValue.toString(),style: Theme.of(context).textTheme.bodyText2),value: selectedValue)).toList(),
+                                  style: Get.textTheme.bodyText2,
+                                  items: controller.cCodes.map((selectedValue) => DropdownMenuItem(child: Text(selectedValue.toString(),style: Get.textTheme.bodyText2),value: selectedValue)).toList(),
                                   onChanged: (newValue){
                                     controller.setSelected(newValue.toString());
                                   },
@@ -129,8 +128,8 @@ class AddAccountInfo extends GetView<AddAcountInfoController>{
                   padding: const EdgeInsets.only(bottom: 20),
                   child: RichText(text: TextSpan(
                       children: [
-                    TextSpan(text:"By saveing these infos you will admit to accept the",style: Theme.of(context).textTheme.subtitle1),
-                        TextSpan(recognizer: TapGestureRecognizer()..onTap=(){launch('');},text:" Castalk Agreement and Policy",style: Theme.of(context).textTheme.headline2)
+                    TextSpan(text:"By saveing these infos you will admit to accept the",style: Get.textTheme.subtitle1),
+                        TextSpan(recognizer: TapGestureRecognizer()..onTap=(){launch('');},text:" Castalk Agreement and Policy",style: Get.textTheme.headline2)
                       ]))
                 ),
 

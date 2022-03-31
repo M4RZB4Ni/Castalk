@@ -10,7 +10,7 @@ class FollowersController extends GetxController with StateMixin<List<FollowersM
   late List<FollowersModel> followersList = [];
   //
   @override
-  onInit() async{
+  onInit() {
     getFollowersData();
     super.onInit();
   }

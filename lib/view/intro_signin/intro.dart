@@ -23,7 +23,7 @@ class Intro extends GetView<IntroController>  {
          appBar: AppBar(
              automaticallyImplyLeading: false,
              backgroundColor: Colors.transparent,
-             centerTitle: true,title: Text("Welcome",style: Theme.of(context).textTheme.headline1)),
+             centerTitle: true,title: Text("Welcome",style: Get.textTheme.headline1)),
          backgroundColor: Style.background,
          body:controller.obx(
                  (state) => Column(
@@ -60,7 +60,7 @@ class Intro extends GetView<IntroController>  {
                          activeDotColor:  Colors.grey,activeStrokeWidth: 6
                      ),
                    )),
-                   InkWell(child: Text("Skip",style: Theme.of(context).textTheme.button,),onTap: (){
+                   InkWell(child: Text("Skip",style: Get.textTheme.button,),onTap: (){
                      Get.offAllNamed(Routes.SignIn);
                    }),
 

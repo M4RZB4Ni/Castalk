@@ -59,9 +59,9 @@ class SeasonValues with _$SeasonValues {
     final int? podcast_id,
     final String? cover,
     final PodcastValues? podcast,
+    final int? likes_count,
     final List<CommentsValues>? comments,
     final List<EpicodesValues>? episodes,
-    final int? likes_count,
   }) = _SeasonValues;
 
   factory SeasonValues.fromJson(final Map<String, dynamic> json) => _$SeasonValuesFromJson(json);
@@ -91,7 +91,7 @@ class EpicodesValues with _$EpicodesValues {
     final int? season_id,
     final int? allow_comments,
     final int? allow_share,
-    final int? cover,
+    final String? cover,
     final int? comments_count,
     final int? likes_count,
     final List<CommentsValues>? comments,

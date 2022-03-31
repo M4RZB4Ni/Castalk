@@ -3,46 +3,30 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
-class PromotionAnalytics extends StatefulWidget {
-  const PromotionAnalytics({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return PromotionAnalyticsState();
-  }
-}
-
-class PromotionAnalyticsState extends State<PromotionAnalytics> {
+class PromotionAnalytics extends GetView<PromotionAnalytics> {
 
   List<String> cCodes=["This Week","Last Week","Next Week"];
-
   String svgPath = "assets/icons/";
-  late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
   late String _charDropValue;
-
   List<Color> gradientColors = [
     const Color(0xffffb800).withOpacity(0.1),
     const Color(0xffffb800).withOpacity(0.4),
   ];
 
-
   @override
   void initState() {
     _charDropValue= cCodes.first;
   }
-
   bool showAvg = false;
+
   @override
   Widget build(BuildContext context) {
 
-    _textTheme = Theme.of(context).textTheme;
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-
     return Scaffold(
-        appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
+        appBar: PreferredSize(preferredSize: Size(Get.width, 100), child: header(Get.width)),
         backgroundColor: Style.background,
       body: Column(
         children: [
@@ -50,11 +34,11 @@ class PromotionAnalyticsState extends State<PromotionAnalytics> {
             padding: const EdgeInsets.only(right: 13,left: 27,top: 45),
             child: Row(children: [
               Expanded(flex: 2,child:Text("Using Static :", style: Style.t_500_16w)),
-              Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: w,child:
+              Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: Get.width,child:
               DropdownButtonHideUnderline(
                   child:  Padding(
                     padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
-                    child: Theme(data: Theme.of(context).copyWith(
+                    child: Theme(data: Get.theme.copyWith(
                         canvasColor: Style.background),
                         child: DropdownButton<String>(
                             icon: const Padding(
@@ -63,16 +47,14 @@ class PromotionAnalyticsState extends State<PromotionAnalytics> {
                             ),
                             isDense: false,
                             value: _charDropValue,
-                            style: Theme.of(context).textTheme.bodyText2,
+                            style: Get.textTheme.bodyText2,
                             items: cCodes.map((e) => DropdownMenuItem(child: Text(e,style: Style.t_400_12w),value: e,)).toList(),
                             onChanged: (value) {
-                              setState(() {
-                                // selectedActivity = value;
-                                _charDropValue=value!;
-                                debugPrint('album choose-> $value');
-
-
-                              });
+                              // setState(() {
+                              //   // selectedActivity = value;
+                              //   _charDropValue=value!;
+                              //   debugPrint('album choose-> $value');
+                              // });
                             })),
                   )
               ))
@@ -104,8 +86,8 @@ class PromotionAnalyticsState extends State<PromotionAnalytics> {
                 child: RichText(text: TextSpan(
 
                     children: [
-                      TextSpan(text:"This code used over",style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.white)),
-                      TextSpan(text:" 127k times",style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Style.accentGold))
+                      TextSpan(text:"This code used over",style: Get.textTheme.subtitle1!.copyWith(color: Colors.white)),
+                      TextSpan(text:" 127k times",style: Get.textTheme.subtitle1!.copyWith(color: Style.accentGold))
                     ])),
               )
 
@@ -119,26 +101,19 @@ class PromotionAnalyticsState extends State<PromotionAnalytics> {
                 padding: const EdgeInsets.only(top: 46,bottom: 20,left: 27),
                 child: Text("Used Cases :", style: Style.t_500_16w),
               ),
-              _searchBar(w)
+              _searchBar(Get.width)
             ],),
 
           Expanded(child: Padding(
             padding: const EdgeInsets.only(top: 20),
             child: ListView(children: [
-               _searchItems(w,h)
+               _searchItems(Get.width,Get.height),
             ],),
-          ))
-
-
-
-
-
+          )),
         ],
       )
     );
   }
-
-
 
   _searchItems(w,h)
   {
@@ -212,7 +187,7 @@ class PromotionAnalyticsState extends State<PromotionAnalytics> {
                           top: 12, bottom: 12, left: 19),
                       hintText: "Type to Search...",
                       hintStyle:
-                      TextStyle(color: Theme.of(context).hintColor),
+                      TextStyle(color: Get.theme.hintColor),
                       fillColor: Colors.white))),
           Container(
             padding: const EdgeInsets.all(12),
@@ -285,7 +260,7 @@ class PromotionAnalyticsState extends State<PromotionAnalytics> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 9),
-                child: Text("Promotion Analytics", style: _textTheme.headline1),
+                child: Text("Promotion Analytics", style: Get.textTheme.headline1),
               ),
           const SizedBox(
             width: 44,

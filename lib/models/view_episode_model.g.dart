@@ -86,13 +86,13 @@ _$_SeasonValues _$$_SeasonValuesFromJson(Map<String, dynamic> json) =>
       podcast: json['podcast'] == null
           ? null
           : PodcastValues.fromJson(json['podcast'] as Map<String, dynamic>),
+      likes_count: json['likes_count'] as int?,
       comments: (json['comments'] as List<dynamic>?)
           ?.map((e) => CommentsValues.fromJson(e as Map<String, dynamic>))
           .toList(),
       episodes: (json['episodes'] as List<dynamic>?)
           ?.map((e) => EpicodesValues.fromJson(e as Map<String, dynamic>))
           .toList(),
-      likes_count: json['likes_count'] as int?,
     );
 
 Map<String, dynamic> _$$_SeasonValuesToJson(_$_SeasonValues instance) =>
@@ -103,9 +103,9 @@ Map<String, dynamic> _$$_SeasonValuesToJson(_$_SeasonValues instance) =>
       'podcast_id': instance.podcast_id,
       'cover': instance.cover,
       'podcast': instance.podcast,
+      'likes_count': instance.likes_count,
       'comments': instance.comments,
       'episodes': instance.episodes,
-      'likes_count': instance.likes_count,
     };
 
 _$_CommentsValues _$$_CommentsValuesFromJson(Map<String, dynamic> json) =>
@@ -138,7 +138,7 @@ _$_EpicodesValues _$$_EpicodesValuesFromJson(Map<String, dynamic> json) =>
       season_id: json['season_id'] as int?,
       allow_comments: json['allow_comments'] as int?,
       allow_share: json['allow_share'] as int?,
-      cover: json['cover'] as int?,
+      cover: json['cover'] as String?,
       comments_count: json['comments_count'] as int?,
       likes_count: json['likes_count'] as int?,
       comments: (json['comments'] as List<dynamic>?)

@@ -12,17 +12,12 @@ class Other{
     };
 
     var request = http.Request('GET', Uri.parse(BaseApi.baseAddressSlash+'api/rest/Castalk/CategoryIndex'));
-
     request.headers.addAll(headers);
-
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-
       var data = await response.stream.bytesToString();
-
       Map<String,dynamic> resp = await jsonDecode(data);
-
       return resp['data']['data'];
     }
     else {

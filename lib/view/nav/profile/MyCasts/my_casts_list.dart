@@ -2,37 +2,25 @@ import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import '../../../../controllers/user_list_controller.dart';
 
+class MyCastsList extends GetView<UserListController> {
 
-class MyCastsList extends StatefulWidget {
-  const MyCastsList({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return MyCastsListState();
-  }
-}
-
-class MyCastsListState extends State<MyCastsList> {
   String svgPath = "assets/icons/";
-  late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    _textTheme = Theme.of(context).textTheme;
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
         backgroundColor: Style.background,
         body: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
-
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _topTripleButtons(w),
+              _topTripleButtons(Get.width),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -40,36 +28,29 @@ class MyCastsListState extends State<MyCastsList> {
                   padding: const EdgeInsets.only(bottom: 13,top: 35,left: 26),
                   child: Text("Latest Podcasts:",style: Style.t_500_14g,),
                 ),
-                _LatestPodcastSection(w),
-                  
+                _LatestPodcastSection(Get.width),
               ],),
-
               Padding(
                 padding: const EdgeInsets.only(top: 0,left: 27),
                 child: Text("All Episodes:",style: Style.t_500_14w),
               ),
-              _searchBar(w),
-              Flexible(child: ListView(
+              _searchBar(Get.width),
+              Flexible(child:
+              ListView.builder(
+                itemCount: controller.userList[0].data![0].seasons!.length,
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                children: [
-                  _likedItem(w,h),
-                  _likedItem(w,h),
-                  _likedItem(w,h),
-                ],
-              ))
-
+                itemBuilder: (context, index) {
+                  return controller.userList[0].data![index].seasons!.isEmpty ? 'There is no episode.' : _likedItem(Get.width,Get.height, index);
+                }
+              ),
+              ),
             ],
           ),
         ));
   }
 
-
-
-
-
-  _likedItem(w,h)
-  {
+  _likedItem(w,h, int index) {
     return Padding(
       padding: const EdgeInsets.only(top: 30,left: 20,right: 20),
       child: Column(
@@ -84,7 +65,6 @@ class MyCastsListState extends State<MyCastsList> {
                   children: [
                     Container(
                       padding: const EdgeInsets.all(25),
-
                       height: 96,
                       width: 96,
                       decoration: BoxDecoration(
@@ -118,14 +98,13 @@ class MyCastsListState extends State<MyCastsList> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Episode name which is long...".length > 30
-                          ? "Episode name which is long...".substring(0, 30) + "..."
-                          : "Episode name which is long...",
-                      style: _textTheme.headline1!.copyWith(fontSize: 14),
+                      controller.userList[index].data![index].seasons![index].episodes![index].name!.toString().length > 30
+                          ? controller.userList[index].data![index].seasons![index].episodes![index].name!.toString().substring(0, 30) + "..."
+                          : controller.userList[index].data![index].seasons![index].episodes![index].name!.toString(),
+                      style: Get.textTheme.headline1!.copyWith(fontSize: 14),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
@@ -136,7 +115,7 @@ class MyCastsListState extends State<MyCastsList> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 5),
                                 child: Text("1 : 26 : 45",
-                                    style: _textTheme.headline6),
+                                    style: Get.textTheme.headline6),
                               ),
                             ],
                           ),
@@ -148,8 +127,7 @@ class MyCastsListState extends State<MyCastsList> {
                               SvgPicture.asset(svgPath+"heart_empty.svg"),
                               Padding(
                                 padding: const EdgeInsets.only(left: 5),
-                                child: Text("250",
-                                    style: _textTheme.headline6),
+                                child: Text(controller.userList[index].data![index].seasons![index].episodes![index].likes_count!.toString(), style: Get.textTheme.headline6),
                               ),
                             ],
                           ),
@@ -162,20 +140,19 @@ class MyCastsListState extends State<MyCastsList> {
               Container(
                 height: 96,
                 width: 44,
-
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(color: Style.gray48op50,borderRadius: BorderRadius.circular(12)),
                 child: SvgPicture.asset(
                     svgPath + "arrow_left.svg",
                     width: 12,
                     height: 6),
-              )
+              ),
             ],
           ),
           const Padding(
             padding: EdgeInsets.only(bottom: 12,right: 12,left: 12),
             child: Divider(height: 1,color: Style.divider,thickness: 1,),
-          )
+          ),
         ],
       ),
     );
@@ -188,7 +165,7 @@ class MyCastsListState extends State<MyCastsList> {
   _topTripleButtons(w)
   {
     return  Padding(
-      padding: const EdgeInsets.only(right: 24,left: 23,top: 48),
+      padding: const EdgeInsets.only(right: 24,left: 23, top: 48),
       child: Column(
         children: [
           Padding(
@@ -327,7 +304,7 @@ class MyCastsListState extends State<MyCastsList> {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 9),
-            child: Text("Profile", style: _textTheme.headline1),
+            child: Text("Profile", style: Get.textTheme.headline1),
           ),
           const SizedBox(
             width: 44,
@@ -362,8 +339,7 @@ _searchBar(w)
                     contentPadding: const EdgeInsets.only(
                         top: 12, bottom: 12, left: 19),
                     hintText: "Type to Search...",
-                    hintStyle:
-                    TextStyle(color: Theme.of(context).hintColor),
+                    hintStyle: TextStyle(color: Get.theme.hintColor),
                     fillColor: Colors.white))),
         Container(
           padding: const EdgeInsets.all(12),

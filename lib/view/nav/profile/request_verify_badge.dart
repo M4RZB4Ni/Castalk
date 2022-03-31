@@ -3,21 +3,9 @@ import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
-
-
-class RequestVerifyBadge extends StatefulWidget{
-  const RequestVerifyBadge({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return RequestVerifyBadgeState();
-  }
-
-
-}
-
-class RequestVerifyBadgeState extends State<RequestVerifyBadge>{
+class RequestVerifyBadge extends GetView<RequestVerifyBadge>{
 
   String svgPath = "assets/icons/";
   late TextTheme _textTheme;
@@ -26,12 +14,8 @@ class RequestVerifyBadgeState extends State<RequestVerifyBadge>{
   @override
   Widget build(BuildContext context) {
 
-    _textTheme = Theme.of(context).textTheme;
-    double w = MediaQuery.of(context).size.width;
-   // double h = MediaQuery.of(context).size.height;
-
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(Get.width, 100), child: header(Get.width)),
       backgroundColor: Style.background,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,7 +53,7 @@ class RequestVerifyBadgeState extends State<RequestVerifyBadge>{
                     ),
                     Expanded(flex:12,child:  Padding(
                         padding: const EdgeInsets.only(left: 10),
-                        child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
+                        child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
                             child: TextField(
                                 controller: numberController,
                                 textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)

@@ -3,35 +3,23 @@ import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import '../../../controllers/downloads_controller.dart';
 
+class Downloads extends GetView<DownloadsController> {
 
-class Downloads extends StatefulWidget {
-  const Downloads({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return DownloadsState();
-  }
-}
-
-class DownloadsState extends State<Downloads> {
   String svgPath = "assets/icons/";
-  late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    _textTheme = Theme.of(context).textTheme;
-
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(w, 150), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(Get.width, 150), child: header(Get.width)),
       body: SingleChildScrollView(child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: [inProgress(w, h),downloaded(w, h)],
+        children: [inProgress(Get.width, Get.height),downloaded(Get.width, Get.height)],
       )),
     );
   }
@@ -40,22 +28,25 @@ class DownloadsState extends State<Downloads> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 24,right: 24,left: 24,bottom: 25),
+          padding: const EdgeInsets.only(top: 33,right: 24,left: 24,bottom: 25),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                width: 44,
-                height: 44,
-                child: const Icon(
-                  Icons.arrow_back_outlined,
-                  color: Colors.white,
+              InkWell(
+                onTap: () => Get.back(),
+                child: Container(
+                  width: 44,
+                  height: 44,
+                  child: const Icon(
+                    Icons.arrow_back_outlined,
+                    color: Colors.white,
+                  ),
+                  decoration: BoxDecoration(
+                      color: Style.headerBackBtn,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(12)),
                 ),
-                decoration: BoxDecoration(
-                    color: Style.headerBackBtn,
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(12)),
               ),
               Row(
                 children: [
@@ -67,7 +58,7 @@ class DownloadsState extends State<Downloads> {
                   // ),
                   Padding(
                     padding: const EdgeInsets.only(left: 9),
-                    child: Text("Downloads", style: _textTheme.headline1),
+                    child: Text("Downloads", style: Get.textTheme.headline1),
                   ),
                 ],
               ),
@@ -101,7 +92,7 @@ class DownloadsState extends State<Downloads> {
                               top: 12, bottom: 12, left: 19),
                           hintText: "Type to Search...",
                           hintStyle:
-                          TextStyle(color: Theme.of(context).hintColor),
+                          TextStyle(color: Get.theme.hintColor),
                           fillColor: Colors.white))),
               Container(
                 padding: const EdgeInsets.all(12),
@@ -161,7 +152,7 @@ class DownloadsState extends State<Downloads> {
           padding: const EdgeInsets.only(bottom: 21, left: 15),
           child: Text(
             "In Progress",
-            style: _textTheme.headline2!.copyWith(fontWeight: FontWeight.w500),
+            style: Get.textTheme.headline2!.copyWith(fontWeight: FontWeight.w500),
           ),
         ),
         Flexible(
@@ -238,7 +229,7 @@ class DownloadsState extends State<Downloads> {
                         "Episode name which is long...".length > 30
                             ? "Episode name which is long...".substring(0, 30) + "..."
                             : "Episode name which is long...",
-                        style: _textTheme.headline1!.copyWith(fontSize: 14),
+                        style: Get.textTheme.headline1!.copyWith(fontSize: 14),
                       ),
                     ),
                     Row(
@@ -250,30 +241,24 @@ class DownloadsState extends State<Downloads> {
 
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            downloading
-                                ? Padding(
+                            downloading ? Padding(
                                   padding: const EdgeInsets.only(top: 15),
                                   child: Text("Downloading...",
-                                      style: _textTheme.headline2!
+                                      style: Get.textTheme.headline2!
                                           .copyWith(fontWeight: FontWeight.w500)),
-                                )
-                                : Padding(
+                                ) : Padding(
                                    padding: const EdgeInsets.only(top: 15),
                                   child: Text(
                                       "Paused",
-                                      style: _textTheme.headline2!
+                                      style: Get.textTheme.headline2!
                                           .copyWith(color: Style.grayA1),
                                     ),
                                 ),
                             Padding(
                               padding: const EdgeInsets.only(top: 12),
                               child: Text("67%",
-                                  style: downloading
-                                      ? _textTheme.headline2!
-                                          .copyWith(fontWeight: FontWeight.w500)
-                                      : _textTheme.headline2!
-                                          .copyWith(color: Style.grayA1)),
-                            )
+                                  style: downloading ? Get.textTheme.headline2!.copyWith(fontWeight: FontWeight.w500) : Get.textTheme.headline2!.copyWith(color: Style.grayA1)),
+                            ),
                           ],
                         ),
                         Container(
@@ -288,7 +273,7 @@ class DownloadsState extends State<Downloads> {
                                             svgPath + "download_prog.svg",
                                             width: 38,
                                             height: 38),
-                                        Positioned.fill(child: Align(child: Text("65", style: _textTheme.overline))),
+                                        Positioned.fill(child: Align(child: Text("65", style: Get.textTheme.overline))),
                                       ],
                                     )
                                   : SvgPicture.asset(
@@ -299,10 +284,10 @@ class DownloadsState extends State<Downloads> {
                                     ),
                               !downloading
                                   ? Text("Resume",
-                                      style: _textTheme.headline2!
+                                      style: Get.textTheme.headline2!
                                           .copyWith(fontWeight: FontWeight.w500))
                                   : Text("Pause",
-                                      style: _textTheme.headline2!
+                                      style: Get.textTheme.headline2!
                                           .copyWith(fontWeight: FontWeight.w500))
                             ],
                           ),
@@ -335,7 +320,7 @@ class DownloadsState extends State<Downloads> {
           padding: const EdgeInsets.only(bottom: 21, left: 15,top: 18),
           child: Text(
             "Downloaded",
-            style: _textTheme.headline2!.copyWith(fontWeight: FontWeight.w500),
+            style: Get.textTheme.headline2!.copyWith(fontWeight: FontWeight.w500),
           ),
         ),
         Flexible(
@@ -413,7 +398,7 @@ class DownloadsState extends State<Downloads> {
                   "Episode name which is long...".length > 30
                       ? "Episode name which is long...".substring(0, 30) + "..."
                       : "Episode name which is long...",
-                  style: _textTheme.headline1!.copyWith(fontSize: 14),
+                  style: Get.textTheme.headline1!.copyWith(fontSize: 14),
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -428,14 +413,14 @@ class DownloadsState extends State<Downloads> {
                             ? Padding(
                           padding: const EdgeInsets.only(top: 15),
                           child: Text("Downloading...",
-                              style: _textTheme.headline2!
+                              style: Get.textTheme.headline2!
                                   .copyWith(fontWeight: FontWeight.w500)),
                         )
                             : Padding(
                           padding: const EdgeInsets.only(top: 15),
                           child: Text(
                             "Paused",
-                            style: _textTheme.headline2!
+                            style: Get.textTheme.headline2!
                                 .copyWith(color: Style.grayA1),
                           ),
                         ),
@@ -443,9 +428,9 @@ class DownloadsState extends State<Downloads> {
                           padding: const EdgeInsets.only(top: 12),
                           child: Text("67%",
                               style: downloading
-                                  ? _textTheme.headline2!
+                                  ? Get.textTheme.headline2!
                                   .copyWith(fontWeight: FontWeight.w500)
-                                  : _textTheme.headline2!
+                                  : Get.textTheme.headline2!
                                   .copyWith(color: Style.grayA1)),
                         )
                       ],
@@ -462,7 +447,7 @@ class DownloadsState extends State<Downloads> {
                                   svgPath + "download_prog.svg",
                                   width: 38,
                                   height: 38),
-                              Positioned.fill(child: Align(child: Text("65", style: _textTheme.overline))),
+                              Positioned.fill(child: Align(child: Text("65", style: Get.textTheme.overline))),
                             ],
                           )
                               : SvgPicture.asset(
@@ -473,10 +458,10 @@ class DownloadsState extends State<Downloads> {
                           ),
                           !downloading
                               ? Text("Resume",
-                              style: _textTheme.headline2!
+                              style: Get.textTheme.headline2!
                                   .copyWith(fontWeight: FontWeight.w500))
                               : Text("Pause",
-                              style: _textTheme.headline2!
+                              style: Get.textTheme.headline2!
                                   .copyWith(fontWeight: FontWeight.w500))
                         ],
                       ),

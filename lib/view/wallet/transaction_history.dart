@@ -115,7 +115,7 @@ class TransactionHistoryState extends State<TransactionHistory>{
                           top: 12, bottom: 12, left: 15),
                       hintText: "Sort : By date",
                       hintStyle:
-                      TextStyle(color: Theme.of(context).hintColor),
+                      TextStyle(color: ThemeData().hintColor),
                       fillColor: Colors.white))),
 
 

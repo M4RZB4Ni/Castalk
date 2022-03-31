@@ -6,33 +6,22 @@ import 'package:castalk/view/nav/profile/profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
-class NavMother extends StatefulWidget{
-  const NavMother({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return NavMotherState();
-  }
-
-
-}
-
-class NavMotherState extends State<NavMother>{
+class NavMother extends GetView<NavMother>{
 
   int _currentIndex = 0;
   final List _children = [
     const HomeFeed(),
     const Explore(),
-    const Notifications(),
+    Notifications(),
     Profile(),
-
   ];
   String svgPath = "assets/icons/";
 
-
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       extendBody: true,
       backgroundColor: Colors.transparent,
@@ -103,9 +92,9 @@ class NavMotherState extends State<NavMother>{
   }
 
   void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
+    // setState(() {
+    //   _currentIndex = index;
+    // });
   }
 
 

@@ -22,7 +22,7 @@ CongratulationsModel _$CongratulationsModelFromJson(Map<String, dynamic> json) {
 class _$CongratulationsModelTearOff {
   const _$CongratulationsModelTearOff();
 
-  _CongratulationsModel call({required int id, required String title}) {
+  _CongratulationsModel call({required int? id, required String? title}) {
     return _CongratulationsModel(
       id: id,
       title: title,
@@ -39,8 +39,8 @@ const $CongratulationsModel = _$CongratulationsModelTearOff();
 
 /// @nodoc
 mixin _$CongratulationsModel {
-  int get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +53,7 @@ abstract class $CongratulationsModelCopyWith<$Res> {
   factory $CongratulationsModelCopyWith(CongratulationsModel value,
           $Res Function(CongratulationsModel) then) =
       _$CongratulationsModelCopyWithImpl<$Res>;
-  $Res call({int id, String title});
+  $Res call({int? id, String? title});
 }
 
 /// @nodoc
@@ -74,11 +74,11 @@ class _$CongratulationsModelCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -90,7 +90,7 @@ abstract class _$CongratulationsModelCopyWith<$Res>
           $Res Function(_CongratulationsModel) then) =
       __$CongratulationsModelCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String title});
+  $Res call({int? id, String? title});
 }
 
 /// @nodoc
@@ -113,11 +113,11 @@ class __$CongratulationsModelCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -132,9 +132,9 @@ class _$_CongratulationsModel extends _CongratulationsModel
       _$$_CongratulationsModelFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
-  final String title;
+  final String? title;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -178,7 +178,7 @@ class _$_CongratulationsModel extends _CongratulationsModel
 }
 
 abstract class _CongratulationsModel extends CongratulationsModel {
-  factory _CongratulationsModel({required int id, required String title}) =
+  factory _CongratulationsModel({required int? id, required String? title}) =
       _$_CongratulationsModel;
   _CongratulationsModel._() : super._();
 
@@ -186,9 +186,9 @@ abstract class _CongratulationsModel extends CongratulationsModel {
       _$_CongratulationsModel.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
-  String get title;
+  String? get title;
   @override
   @JsonKey(ignore: true)
   _$CongratulationsModelCopyWith<_CongratulationsModel> get copyWith =>

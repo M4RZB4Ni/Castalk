@@ -21,13 +21,13 @@ class Congratulations extends GetView<CongratulationsController>{
               padding: const EdgeInsets.only(top: 15,right: 26,left: 26,bottom: 38),
               child: Text("It’s great to see you here. now you can select your intrests to let castalk suggest personalized contents to you",
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.white),),
+                style: Get.textTheme.subtitle1!.copyWith(color: Colors.white),),
             ),
             Align(alignment: Alignment.centerLeft,child: Padding(
               padding: const EdgeInsets.only(left: 42,bottom: 8),
               child: Obx( () => Text("${controller.finalSelectedIndex.value} Item selected",
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline2)),
+                  style: Get.textTheme.headline2)),
             )),
           ],),
         ),),
@@ -109,7 +109,7 @@ class Congratulations extends GetView<CongratulationsController>{
           //Icon(Icons.four_g_mobiledata_outlined,color: isSelected ? const Color(0xff9D9D9D) : Colors.white,size: 50),
           Padding(
             padding: const EdgeInsets.only(bottom: 15),
-            child: Text(controller.categoryList[index].title, style: Get.textTheme.headline2!.copyWith(fontWeight: FontWeight.w500,fontSize: !isSelected ? 18: 14,color:!isSelected ? Colors.white : Get.theme.focusColor ),),
+            child: Text(controller.categoryList[index].title!, style: Get.textTheme.headline2!.copyWith(fontWeight: FontWeight.w500,fontSize: !isSelected ? 18: 14,color:!isSelected ? Colors.white : Get.theme.focusColor ),),
           )
         ],),);
   }

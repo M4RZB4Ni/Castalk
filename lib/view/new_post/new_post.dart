@@ -4,40 +4,23 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
-class NewPost extends StatefulWidget{
-  const NewPost({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return NewPostState();
-  }
-
-
-
-}
-
-class NewPostState extends State<NewPost>{
-
+class NewPost extends GetView<NewPost>{
 
   bool toYourPlaylist = true;
   TextEditingController numberController = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
 
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-
     return Scaffold(
-
       backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(w, 50), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(Get.width, 50), child: header(Get.width)),
       body: SingleChildScrollView(
         child:
         ConstrainedBox(
-          constraints: BoxConstraints(minHeight: h),
+          constraints: BoxConstraints(minHeight: Get.height),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +40,7 @@ class NewPostState extends State<NewPost>{
                     ),
                     ExpandablePanel(
                         theme: const ExpandableThemeData(hasIcon: false),
-                        header: expandedHeaderToYourPlaylist(w,icon: Cicon.folder, title: "Create New Podcast"),
+                        header: expandedHeaderToYourPlaylist(Get.width,icon: Cicon.folder, title: "Create New Podcast"),
                         collapsed: Container(),
                         expanded: Container()),
 
@@ -65,18 +48,18 @@ class NewPostState extends State<NewPost>{
                       padding: const EdgeInsets.symmetric(vertical: 0),
                       child: ExpandablePanel(
                           theme: const ExpandableThemeData(hasIcon: false),
-                          header: expandedHeaderToYourPlaylist(w,icon: Cicon.playlist, title: "Add as New Season",color: Colors.black),
+                          header: expandedHeaderToYourPlaylist(Get.width,icon: Cicon.playlist, title: "Add as New Season",color: Colors.black),
                           collapsed: Container(),
-                          expanded: Container(
-                              width: w, height: 320, child: _ItemSection(w))),
+                          expanded: SizedBox(
+                              width: Get.width, height: 320, child: _ItemSection(Get.width))),
                     ),
 
                     ExpandablePanel(
                         theme: const ExpandableThemeData(hasIcon: false),
-                        header: expandedHeaderToYourPlaylist(w,icon: Cicon.mic, title: "Add as New Episode"),
+                        header: expandedHeaderToYourPlaylist(Get.width,icon: Cicon.mic, title: "Add as New Episode"),
                         collapsed: Container(),
-                        expanded: Container(
-                            width: w, height: 320, child: _ItemSection(w))),
+                        expanded: SizedBox(
+                            width: Get.width, height: 320, child: _ItemSection(Get.width))),
                   ],
                 ),
               ),
@@ -153,7 +136,7 @@ class NewPostState extends State<NewPost>{
                       contentPadding:
                       const EdgeInsets.only(top: 12, bottom: 12, left: 19),
                       hintText: "Type to Search...",
-                      hintStyle: TextStyle(color: Theme.of(context).hintColor),
+                      hintStyle: TextStyle(color: Get.theme.hintColor),
                       fillColor: Colors.white))),
           Container(
             padding: const EdgeInsets.all(12),

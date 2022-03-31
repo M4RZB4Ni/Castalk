@@ -4,34 +4,18 @@ import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
-class Notifications extends StatefulWidget{
-  const Notifications({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-
-    return NotificationsState();
-  }
-
-
-}
-
-class NotificationsState extends State<Notifications>{
+class Notifications extends GetView<Notifications>{
 
   String svgPath = "assets/icons/";
-
   TextEditingController numberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
 
-
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size(w, 120), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(Get.width, 120), child: header(Get.width)),
       backgroundColor: Style.background,
       body: SingleChildScrollView(
         child: Column(
@@ -45,9 +29,7 @@ class NotificationsState extends State<Notifications>{
                   Padding(
                     padding: const EdgeInsets.only(top: 18,left: 25),
                     child: Text("NEW:",style: Style.t_500_14g)),
-
-                    _followingItem(w, h),
-
+                    _followingItem(Get.width, Get.width),
                 ],
               ),
             ),
@@ -60,10 +42,10 @@ class NotificationsState extends State<Notifications>{
                     padding: const EdgeInsets.only(top: 18,left: 25),
                     child: Text("Today",style: Style.t_500_14w),
                   ),
-                  _newReleaseItem(w, h),
-                  _subsribersItem(w, h),
-                  _congrasItem(w, h),
-                  _groupFollower(w, h),
+                  _newReleaseItem(Get.width, Get.height),
+                  _subsribersItem(Get.width, Get.height),
+                  _congrasItem(Get.width, Get.height),
+                  _groupFollower(Get.width, Get.height),
 
                 ],
               ),
@@ -518,7 +500,7 @@ class NotificationsState extends State<Notifications>{
                               top: 12, bottom: 12, left: 19),
                           hintText: "Type to Search...",
                           hintStyle:
-                          TextStyle(color: Theme.of(context).hintColor),
+                          TextStyle(color: Get.theme.hintColor),
                           fillColor: Colors.white))),
               Container(
                 padding: const EdgeInsets.all(12),

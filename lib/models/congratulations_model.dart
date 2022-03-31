@@ -10,8 +10,8 @@ class CongratulationsModel with _$CongratulationsModel{
   const CongratulationsModel._();
 
   factory CongratulationsModel({
-    required int id,
-    required String title,
+    required int? id,
+    required String? title,
   }) = _CongratulationsModel;
 
   factory CongratulationsModel.fromJson(Map<String, dynamic> map) => _$CongratulationsModelFromJson(map);

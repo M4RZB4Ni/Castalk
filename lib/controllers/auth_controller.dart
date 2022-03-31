@@ -52,7 +52,17 @@ class AuthController extends GetxController{
       Get.toNamed(Routes.EnterCode, arguments: [mobile]);
     }
     else{
-      Get.snackbar("Error...", "Check Number!");
+      Get.snackbar(
+        'Warning',
+        'Check number!',
+        duration: 3.seconds,
+        snackPosition: SnackPosition.BOTTOM,
+        margin: const EdgeInsets.all(20),
+        showProgressIndicator: true,
+        isDismissible: true,
+        backgroundColor: Colors.amber,
+        colorText: Colors.white,
+      );
     }
   }
 

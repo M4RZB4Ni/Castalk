@@ -7,38 +7,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:audio_slider/audio_slider.dart';
+import 'package:get/get.dart';
 //import 'package:music_slider/music_slider.dart';
 import 'package:timelines/timelines.dart';
 
-class Comments extends StatefulWidget {
-  const Comments({Key? key}) : super(key: key);
+class Comments extends GetView<Comments> {
 
-  @override
-  State<StatefulWidget> createState() {
-    return CommentsState();
-  }
-}
-
-class CommentsState extends State<Comments> {
   String svgPath = "assets/icons/";
   TextEditingController numberController = TextEditingController();
 
   Timer? timer;
   List<double> valueData = <double>[];
-  @override
-  void initState() {
-    super.initState();
-    timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
-      valueData.add(20+Random().nextInt(5).toDouble());
-      setState(() {});
-    });
-  }
 
-  @override
-  void dispose() {
-    super.dispose();
-    timer?.cancel();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
+  //     valueData.add(20+Random().nextInt(5).toDouble());
+  //     setState(() {});
+  //   });
+  // }
+  //
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   timer?.cancel();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -401,7 +395,7 @@ class CommentsState extends State<Comments> {
               child: TextField(
                   controller: numberController,
                   textAlign: TextAlign.left,maxLines: 1,decoration: InputDecoration(border: InputBorder.none,isDense: true,contentPadding: const EdgeInsets.only(top: 10,bottom: 10,left: 15),
-                  hintText: "type your comment...",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
+                  hintText: "type your comment...",hintStyle: TextStyle(color: Get.theme.hintColor),fillColor: Colors.white))
 
           )),
         Expanded(flex: 1,child:SvgPicture.asset(svgPath+"send.svg")),
@@ -438,7 +432,7 @@ class CommentsState extends State<Comments> {
                             top: 12, bottom: 12, left: 19),
                         hintText: "Type to Search...",
                         hintStyle:
-                            TextStyle(color: Theme.of(context).hintColor),
+                            TextStyle(color: Get.theme.hintColor),
                         fillColor: Colors.white))),
             Container(
               padding: const EdgeInsets.all(12),

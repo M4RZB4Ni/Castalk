@@ -3,56 +3,44 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:audio_slider/audio_slider.dart';
 //import 'package:music_slider/music_slider.dart';
 import '../../style.dart';
 
-class DriveMode extends StatefulWidget{
-  const DriveMode({Key? key}) : super(key: key);
+class DriveMode extends GetView<DriveMode> {
 
-  @override
-  State<StatefulWidget> createState() {
-    return DriveModeState();
-  }
-
-}
-
-class DriveModeState extends State<DriveMode>
-{
   String svgPath="assets/icons/";
-
-
   Timer? timer;
   List<double> valueData = <double>[];
-  @override
-  void initState() {
-    super.initState();
-    timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
-      valueData.add(20+Random().nextInt(5).toDouble());
-      setState(() {});
-    });
-  }
 
-  @override
-  void dispose() {
-    super.dispose();
-    timer?.cancel();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
+  //     valueData.add(20+Random().nextInt(5).toDouble());
+  //     setState(() {});
+  //   });
+  // }
+  //
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   timer?.cancel();
+  // }
   
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
     
     return Scaffold(
           body:
             Stack(children: [
 
-              Container(color: Style.accentGold,width: w,height: h),
-              Container(color: Style.driveBack,width: w,height: h),
+              Container(color: Style.accentGold,width: Get.width,height: Get.height),
+              Container(color: Style.driveBack,width: Get.width,height: Get.height),
 
-            tripleImageCorner(w, h),
+            tripleImageCorner(Get.width, Get.height),
             Padding(
               padding: const EdgeInsets.only(top: 24,left: 24),
               child: Container(width: 44,height: 44,child: const Icon(Icons.arrow_back_outlined) ,decoration: BoxDecoration(color: Colors.white.withOpacity(0.4),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
@@ -62,10 +50,10 @@ class DriveModeState extends State<DriveMode>
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Podcast Name",style: Theme.of(context).textTheme.headline4,),
+                Text("Podcast Name",style: Get.textTheme.headline4,),
                 Padding(
                   padding: const EdgeInsets.only(top: 15,bottom: 5),
-                  child: Text("Episode name which is long...".length > 16 ? "Episode name which is long...".substring(0,16)+"..." : "Episode name which is long...",style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 32),),
+                  child: Text("Episode name which is long...".length > 16 ? "Episode name which is long...".substring(0,16)+"..." : "Episode name which is long...",style: Get.textTheme.headline1!.copyWith(fontSize: 32),),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top:12),
@@ -74,14 +62,14 @@ class DriveModeState extends State<DriveMode>
                       SvgPicture.asset(svgPath+"mic.svg",color: Style.accentGold,),
                       Padding(
                         padding: const EdgeInsets.only(left:5),
-                        child: Text("Host Name",style: Theme.of(context).textTheme.subtitle2),
+                        child: Text("Host Name",style: Get.textTheme.subtitle2),
                       ),
                     ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 68),
-                  child: SizedBox(width: w,height: 80,
+                  child: SizedBox(width: Get.width,height: 80,
                       child: CopyXiaoMiSliderWidget(
                         datas: valueData,
                         isPlayer: true,
@@ -101,9 +89,9 @@ class DriveModeState extends State<DriveMode>
                   ),
                 ),
                 Align(child: RichText(text:  TextSpan(children:<TextSpan>[
-                  TextSpan(text: '12 : 31',style: Theme.of(context).textTheme.headline1!.copyWith(color: Style.accentGold)),
-                  TextSpan(text: ' / ', style:  Theme.of(context).textTheme.headline1),
-                  TextSpan(text: '26 : 45',style:  Theme.of(context).textTheme.headline1),
+                  TextSpan(text: '12 : 31',style: Get.textTheme.headline1!.copyWith(color: Style.accentGold)),
+                  TextSpan(text: ' / ', style:  Get.textTheme.headline1),
+                  TextSpan(text: '26 : 45',style:  Get.textTheme.headline1),
           
                 ]),),alignment: Alignment.center,),
                 Padding(
@@ -134,13 +122,13 @@ class DriveModeState extends State<DriveMode>
           
               ],
             ),top: 230,left: 42,right: 42,),
-              Positioned(bottom: 80,child: Align(child: SizedBox( width: w,child: Divider(color: Colors.white.withOpacity(0.5),height: 1,)),alignment: Alignment.bottomCenter,)),
+              Positioned(bottom: 80,child: Align(child: SizedBox( width: Get.width,child: Divider(color: Colors.white.withOpacity(0.5),height: 1,)),alignment: Alignment.bottomCenter,)),
               Positioned(bottom: 30,left: 38,child: Align(child: Row(
                 children: [
                 SvgPicture.asset(svgPath+"carmode.svg",width: 20,height: 18,),
                 Padding(
                   padding: const EdgeInsets.only(left: 18),
-                  child: Text("Swipe to exit Drive mode",style: Theme.of(context).textTheme.bodyText1,),
+                  child: Text("Swipe to exit Drive mode",style: Get.textTheme.bodyText1,),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 17),
@@ -205,12 +193,11 @@ class DriveModeState extends State<DriveMode>
 
 
 
-  settings(w,h)
+  settings(context, w, h)
   {
     showMaterialModalBottomSheet(
       expand: false,
       context: context,
-
       backgroundColor: Style.gray38,
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(24),topLeft: Radius.circular(24))),
       builder: (context) => SizedBox(width: w,height: h/3.5,child:
@@ -231,7 +218,7 @@ class DriveModeState extends State<DriveMode>
                       padding: const EdgeInsets.only(right: 16),
                       child: SvgPicture.asset(svgPath+"setting.svg",color:Colors.white38,width: 16,height: 16),
                     ),
-                    Text("Player Options",style: Theme.of(context).textTheme.bodyText1),
+                    Text("Player Options",style: Get.textTheme.bodyText1),
 
                   ],
                 ),
@@ -260,7 +247,7 @@ class DriveModeState extends State<DriveMode>
                   SvgPicture.asset(svgPath+"carmode.svg"),
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
-                    child: Text("Drive Mode",style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 16)),
+                    child: Text("Drive Mode",style: Get.textTheme.bodyText1!.copyWith(fontSize: 16)),
                   ),
 
                 ],),

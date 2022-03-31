@@ -1,25 +1,15 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:audio_slider/audio_slider.dart';
+import 'package:get/get.dart';
 //import 'package:music_slider/music_slider.dart';
 
-
-class Exported extends StatefulWidget {
-  const Exported({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return ExportedState();
-  }
-}
-
-class ExportedState extends State<Exported> {
+class Exported extends GetView<Exported> {
 
   Timer? timer;
   List<double> valueData = <double>[];
@@ -27,18 +17,18 @@ class ExportedState extends State<Exported> {
   late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
 
-  @override
-  void initState() {
-    super.initState();
-    timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
-      valueData.add(20+Random().nextInt(5).toDouble());
-      setState(() {});
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
+  //     valueData.add(20+Random().nextInt(5).toDouble());
+  //     setState(() {});
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
-    _textTheme = Theme.of(context).textTheme;
+    _textTheme = Get.textTheme;
     double w = MediaQuery.of(context).size.width;
     //  double h = MediaQuery.of(context).size.height;
 

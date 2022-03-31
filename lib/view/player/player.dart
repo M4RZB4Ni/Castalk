@@ -8,58 +8,42 @@ import 'package:flutter/material.dart';
 import 'package:blur/blur.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:audio_slider/audio_slider.dart';
 //import 'package:music_slider/music_slider.dart';
 
-class Player extends StatefulWidget{
-  const Player({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return PlayerState();
-  }
-
-}
-
-class PlayerState extends State<Player>
+class Player extends GetView<Player>
 {
-//  MusicSliderController _sliderController = MusicSliderController();
+  //MusicSliderController _sliderController = MusicSliderController();
   String svgPath="assets/icons/";
-
   Timer? timer;
   List<double> valueData = <double>[];
-  @override
-  void initState() {
-    super.initState();
-    timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
-      valueData.add(20+Random().nextInt(5).toDouble());
-      setState(() {});
-    });
-  }
 
-  @override
-  void dispose() {
-    super.dispose();
-    timer?.cancel();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
+  //     valueData.add(20+Random().nextInt(5).toDouble());
+  //     setState(() {});
+  //   });
+  // }
+  //
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   timer?.cancel();
+  // }
 
   @override
   Widget build(BuildContext context) {
 
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
     return Scaffold(
         body:
-    Stack(children: [
-
-
-
-      Blur(blur: 6.5,blurColor: Colors.lightBlueAccent.shade100,child: Image.network("https://picsum.photos/id/1032/1080/1920",width: w,height: h,fit: BoxFit.fill, colorBlendMode: BlendMode.overlay,)),
-
-
-
-      tripleImageCorner(w, h),
+    Stack(
+      children: [
+      Blur(blur: 6.5,blurColor: Colors.lightBlueAccent.shade100,child: Image.network("https://picsum.photos/id/1032/1080/1920",width: Get.width,height: Get.height,fit: BoxFit.fill, colorBlendMode: BlendMode.overlay,)),
+      tripleImageCorner(Get.width, Get.height),
       rightBottons(),
       Padding(
         padding: const EdgeInsets.only(top: 11,left: 24),
@@ -68,23 +52,23 @@ class PlayerState extends State<Player>
       Positioned(child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Podcast Name",style: Theme.of(context).textTheme.headline3,),
+          Text("Podcast Name",style: Get.textTheme.headline3,),
           Padding(
             padding: const EdgeInsets.only(top: 15,bottom: 5),
-            child: Text("Episode name which is long...",style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 22,fontWeight: FontWeight.w400),),
+            child: Text("Episode name which is long...",style: Get.textTheme.headline1!.copyWith(fontSize: 22,fontWeight: FontWeight.w400),),
           ),
           Row(
             children: [
               SvgPicture.asset(svgPath+"mic.svg",),
               Padding(
                 padding: const EdgeInsets.only(left:5),
-                child: Text("Host Name",style: Theme.of(context).textTheme.bodyText2!.copyWith(color: const Color(0xff0E0E0E)),),
+                child: Text("Host Name",style: Get.textTheme.bodyText2!.copyWith(color: const Color(0xff0E0E0E)),),
               ),
             ],
           ),
           Padding(
             padding: const EdgeInsets.only(top: 32),
-            child: SizedBox(width: w,height: 80,
+            child: SizedBox(width: Get.width,height: 80,
                 child: CopyXiaoMiSliderWidget(
                   datas: valueData,
                   isPlayer: true,
@@ -130,7 +114,7 @@ class PlayerState extends State<Player>
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(onTap: () {
-                  settings(w, h);
+                  settings(context, Get.width, Get.height);
                 },child: Container(padding: const EdgeInsets.all(14),width: 47,height: 47,child: SvgPicture.asset(svgPath+"setting.svg") ,decoration: BoxDecoration(color: Style.iconBack,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),)),
                 Container(padding: const EdgeInsets.all(0),width: 102,height: 47,child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -147,7 +131,7 @@ class PlayerState extends State<Player>
 
 
         ],
-      ),top: h/2,left: 42,right: 42,),
+      ),top: Get.height/2,left: 42,right: 42,),
 
 
 
@@ -222,14 +206,14 @@ class PlayerState extends State<Player>
   {
       return  Positioned.fill(child: Align(child: Column(
           children: [
-            Text("Podcast Name",style: Theme.of(context).textTheme.headline3,),
-            Text("Episode name which is long...",style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 22,fontWeight: FontWeight.w400),),
+            Text("Podcast Name",style: Get.textTheme.headline3,),
+            Text("Episode name which is long...",style: Get.textTheme.headline1!.copyWith(fontSize: 22,fontWeight: FontWeight.w400),),
             Row(
               children: [
                 SvgPicture.asset(Cicon.mic),
                 Padding(
                   padding: const EdgeInsets.only(left:5),
-                  child: Text("Host Name",style: Theme.of(context).textTheme.bodyText2!.copyWith(color: const Color(0xff0E0E0E)),),
+                  child: Text("Host Name",style: Get.textTheme.bodyText2!.copyWith(color: const Color(0xff0E0E0E)),),
                 ),
               ],
             ),
@@ -259,7 +243,7 @@ class PlayerState extends State<Player>
 
   }
 
-  settings(w,h)
+  settings(context, w,h)
   {
     showMaterialModalBottomSheet(
       expand: false,
@@ -285,7 +269,7 @@ class PlayerState extends State<Player>
                             padding: const EdgeInsets.only(right: 16),
                             child: SvgPicture.asset(Cicon.setting,color:Colors.white38,width: 16,height: 16),
                           ),
-                          Text("Player Options",style: Theme.of(context).textTheme.bodyText1),
+                          Text("Player Options",style: Get.textTheme.bodyText1),
 
                         ],
                       ),
@@ -314,7 +298,7 @@ class PlayerState extends State<Player>
                         SvgPicture.asset(svgPath+"carmode.svg"),
                         Padding(
                           padding: const EdgeInsets.only(left: 10),
-                          child: Text("Drive Mode",style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 16)),
+                          child: Text("Drive Mode",style: Get.textTheme.bodyText1!.copyWith(fontSize: 16)),
                         ),
 
                       ],),

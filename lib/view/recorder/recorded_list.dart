@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:math';
-
 import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,36 +6,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:audio_slider/audio_slider.dart';
+import 'package:get/get.dart';
 //import 'package:music_slider/music_slider.dart';
 
-
-class RecordedList extends StatefulWidget {
-  const RecordedList({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return RecordedListState();
-  }
-}
-
-class RecordedListState extends State<RecordedList> {
+class RecordedList extends GetView<RecordedList> {
 
   Timer? timer;
   List<double> valueData = <double>[];
-  @override
-  void initState() {
-    super.initState();
-    timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
-      valueData.add(20+Random().nextInt(5).toDouble());
-      setState(() {});
-    });
-  }
 
-  @override
-  void dispose() {
-    super.dispose();
-    timer?.cancel();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
+  //     valueData.add(20+Random().nextInt(5).toDouble());
+  //     setState(() {});
+  //   });
+  // }
+  //
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   timer?.cancel();
+  // }
 
   TextEditingController numberController = TextEditingController();
 
@@ -53,7 +43,7 @@ class RecordedListState extends State<RecordedList> {
         padding: const EdgeInsets.only(top: 28),
         child: ListView.builder(
           itemBuilder: (context, index) {
-            return playlistItem();
+            return playlistItem(context);
           },
         ),
       ),
@@ -98,20 +88,20 @@ class RecordedListState extends State<RecordedList> {
     );
   }
 
-  playlistItem() {
+  playlistItem(context) {
     return Slidable(
         endActionPane: ActionPane(
 
           // A motion is a widget used to control how the pane animates.
           motion:  const ScrollMotion(),
-
-
           // All actions are defined in the children parameter.
           children:  [
             Row(children: [
               _47Buttons(buttonName: Cicon.delete),
               _47Buttons(buttonName: Cicon.share),
-              InkWell(child: _47Buttons(buttonName:Cicon.modify),onTap: () => _showSaveDialog(),),
+              InkWell(child: _47Buttons(buttonName:Cicon.modify),
+                onTap: () => _showSaveDialog(context),
+              ),
             ],)
           ],
         ),
@@ -206,15 +196,12 @@ class RecordedListState extends State<RecordedList> {
   }
 
 
-  _showSaveDialog(){
-    return   showDialog(
+  _showSaveDialog(context){
+    return showDialog(
       useSafeArea: true,
-
         context: context,
         builder: (_) => AlertDialog(
-
           insetPadding: const EdgeInsets.symmetric(vertical: 210),
-
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           titlePadding: const EdgeInsets.only(top: 7,left: 7),
           backgroundColor: Style.background,
@@ -229,7 +216,6 @@ class RecordedListState extends State<RecordedList> {
                   height: 44,
                   margin:  const EdgeInsets.only(right: 0),
                   child: const Icon(
-
                     Icons.arrow_back_outlined,
                     color: Colors.white,
                   ),
@@ -237,7 +223,9 @@ class RecordedListState extends State<RecordedList> {
                       color: Style.headerBackBtn,
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(12)),
-                ),onTap:() => Navigator.pop(context),),
+                ),
+                    onTap:(){}
+                ),
                 Row(
                   children: [
                     SvgPicture.asset(Cicon.modify),
@@ -270,7 +258,7 @@ class RecordedListState extends State<RecordedList> {
                             child: TextField(
                                 controller: numberController,
                                 textAlign: TextAlign.left,maxLines: 1,decoration: InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
-                                hintText: "10-16-2021-12-36-24.acc",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
+                                hintText: "10-16-2021-12-36-24.acc",hintStyle: TextStyle(color: Get.theme.hintColor),fillColor: Colors.white))
 
                         )),
                     Padding(

@@ -1,41 +1,26 @@
 import 'dart:async';
-import 'dart:math';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
 import 'package:audio_slider/audio_slider.dart';
 //import 'package:music_slider/music_slider.dart';
 import 'package:rulers/rulers.dart';
 
-class Editor extends StatefulWidget{
-  const Editor({Key? key}) : super(key: key);
+class Editor extends GetView<Editor>{
 
-  @override
-  State<StatefulWidget> createState() {
-    return EditorState();
-  }
-
-
-}
-
-class EditorState extends State<Editor>{
   Timer? timer;
   List<double> valueData = <double>[];
   String svgPath = "assets/icons/";
   TextEditingController numberController = TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
-
   @override
   Widget build(BuildContext context) {
-
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-
 
     return Scaffold(
       key: _scaffoldKey,
@@ -63,7 +48,7 @@ class EditorState extends State<Editor>{
               Container(
                 margin: const EdgeInsets.only(top: 19,left: 33,right: 33),
                   height: 44,
-                  width: w,
+                  width: Get.width,
                   decoration: BoxDecoration(
                       borderRadius:
                       const BorderRadius.all(Radius.circular(12)),
@@ -85,7 +70,7 @@ class EditorState extends State<Editor>{
                                       top: 12, bottom: 12, left: 19),
                                   hintText: "Type to Search...",
                                   hintStyle:
-                                  TextStyle(color: Theme.of(context).hintColor),
+                                  TextStyle(color: Get.theme.hintColor),
                                   fillColor: Colors.white))),
                       Container(
                         padding: const EdgeInsets.all(12),
@@ -100,13 +85,13 @@ class EditorState extends State<Editor>{
                     ],
                   )),
               SizedBox(
-                width: w,
-                height: h/2,
+                width: Get.width,
+                height: Get.height/2,
                 child: ListView(
                   shrinkWrap: true,
                   children: [
 
-                    _drawerItem(w)
+                    _drawerItem(Get.width)
                   ],
 
                 ),
@@ -115,12 +100,12 @@ class EditorState extends State<Editor>{
           ),
         )),
       backgroundColor: Style.background,
-      appBar: PreferredSize(child: _header(w, h,_scaffoldKey), preferredSize: Size(w,100)),
+      appBar: PreferredSize(child: _header(context, Get.width, Get.height,_scaffoldKey), preferredSize: Size(Get.width,100)),
       body: Stack(
         children: [
 
           SizedBox(
-            height: h/2,
+            height: Get.height/2,
             child: Padding(
               padding: const EdgeInsets.only(left: 78),
               child: RulerWidget(
@@ -234,7 +219,7 @@ class EditorState extends State<Editor>{
 
 
 
-  _header(w,h,_scaffoldKey){
+  _header(context,w,h,_scaffoldKey){
     return Row(
       mainAxisSize: MainAxisSize.max,
 
@@ -270,7 +255,7 @@ class EditorState extends State<Editor>{
                 _44Buttons(buttonName:"add"),
                 _44Buttons(buttonName:"dotlist"),
                InkWell(child:  _44Buttons(buttonName:"save"),
-               onTap: () => _showSaveDialog(),
+               onTap: () => _showSaveDialog(context),
                ),
                 _44Buttons(buttonName:"upload",color: Style.grayA),
 
@@ -398,8 +383,8 @@ class EditorState extends State<Editor>{
             borderRadius: BorderRadius.circular(12)));
   }
 
-_showSaveDialog(){
-    return   showDialog(
+_showSaveDialog(context){
+    return  showDialog(
         context: context,
         builder: (_) => ClipRRect(child:   AlertDialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -457,7 +442,7 @@ _showSaveDialog(){
                             child: TextField(
                                 controller: numberController,
                                 textAlign: TextAlign.left,maxLines: 1,decoration: InputDecoration(border: InputBorder.none,isDense: false,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
-                                hintText: "Project X",hintStyle: TextStyle(color: Theme.of(context).hintColor),fillColor: Colors.white))
+                                hintText: "Project X",hintStyle: TextStyle(color: Get.theme.hintColor),fillColor: Colors.white))
 
                         )),
                   ],
@@ -538,23 +523,23 @@ _showSaveDialog(){
     );
   }
 
-  @override
-  void initState() {
-    super.initState();
-    timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
-      valueData.add(20+Random().nextInt(5).toDouble());
-      setState(() {});
-    });
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.landscapeRight,
-    ]);
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    timer?.cancel();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
+  //     valueData.add(20+Random().nextInt(5).toDouble());
+  //     setState(() {});
+  //   });
+  //   SystemChrome.setPreferredOrientations([
+  //     DeviceOrientation.landscapeLeft,
+  //     DeviceOrientation.landscapeRight,
+  //   ]);
+  // }
+  //
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   timer?.cancel();
+  // }
 
 }

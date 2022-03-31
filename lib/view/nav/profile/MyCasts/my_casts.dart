@@ -1,84 +1,62 @@
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import '../../../../controllers/mycasts_controller.dart';
 import 'my_casts_analytics.dart';
 import 'my_casts_list.dart';
 
-class MyCasts extends StatefulWidget{
-  const MyCasts({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return MyCastsState();
-  }
-
-
-}
-
-class MyCastsState extends State<MyCasts> with SingleTickerProviderStateMixin
-{
-
-  late final TabController _tabController=TabController(length: 2, vsync: this);
-
+class MyCasts extends GetView<MyCastsController> {
 
   String svgPath = "assets/icons/";
-  late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
 
-    _textTheme = Theme.of(context).textTheme;
-
-    double w = MediaQuery.of(context).size.width;
-   // double h = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(w, 130), child: header(w)),
-
+      appBar: PreferredSize(preferredSize: Size(Get.width, 130), child: header(Get.width)),
       body: TabBarView(
-        controller: _tabController,
-
-        children: const [
+        controller: controller.tabController,
+        children: [
           MyCastsList(),
           MyCastsAnalytics(),
-
         ],),
-
-
     );
   }
 
-
   header(w) {
     return Padding(
-      padding: const EdgeInsets.only(top: 36, left: 24),
+      padding: const EdgeInsets.only(top: 33, left: 24),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                width: 44,
-                height: 44,
-                child: const Icon(
-                  Icons.arrow_back_outlined,
-                  color: Colors.white,
+              InkWell(
+                onTap: () => Get.back(),
+                child: Container(
+                  width: 44,
+                  height: 44,
+                  child: const Icon(
+                    Icons.arrow_back_outlined,
+                    color: Colors.white,
+                  ),
+                  decoration: BoxDecoration(
+                      color: Style.headerBackBtn,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(12)),
                 ),
-                decoration: BoxDecoration(
-                    color: Style.headerBackBtn,
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(12)),
               ),
               Row(
                 children: [
 
                   Padding(
                     padding: const EdgeInsets.only(left: 0),
-                    child: Text("My Casts", style: _textTheme.headline1),
+                    child: Text("My Casts", style: Get.textTheme.headline1),
                   ),
                 ],
               ),
@@ -90,8 +68,8 @@ class MyCastsState extends State<MyCasts> with SingleTickerProviderStateMixin
           Padding(
             padding: const EdgeInsets.only(top: 33),
             child:TabBar(
-                labelStyle: _textTheme.headline1,
-                controller: _tabController,
+                labelStyle: Get.textTheme.headline1,
+                controller: controller.tabController,
                 indicatorColor: Style.accentGold,
                 tabs: const [
                   Tab(text: "List"),
@@ -104,6 +82,5 @@ class MyCastsState extends State<MyCasts> with SingleTickerProviderStateMixin
       ),
     );
   }
-
 
 }

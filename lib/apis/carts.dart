@@ -1,12 +1,30 @@
+import 'dart:convert';
 import 'package:castalk/apis/base_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class Carts {
 
-  removeFromCart(
-      {required var token, required var id,required var podcast}) async
-  {
+  getWallet({required var token}) async {
+    var headers = {
+      'Authorization': 'Bearer $token',
+    };
+
+    var request = http.MultipartRequest('GET', Uri.parse(BaseApi.baseAddressSlash+'api/rest/Castalk/WalletIndex'));
+    request.headers.addAll(headers);
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      var data = await response.stream.bytesToString();
+      Map<String,dynamic> resp = await jsonDecode(data);
+      return [resp];
+    }
+    else {
+      debugPrint(response.reasonPhrase);
+    }
+  }
+
+  removeFromCart({required var token, required var id,required var podcast}) async {
     var headers = {
       'Authorization': 'Bearer $token',
     };
@@ -29,9 +47,7 @@ class Carts {
     }
   }
 
-  addToCart(
-      {required var token, required var id,required var podcast}) async
-  {
+  addToCart({required var token, required var id,required var podcast}) async {
     var headers = {
       'Authorization': 'Bearer $token',
     };
@@ -54,9 +70,7 @@ class Carts {
     }
   }
 
-  getUserCartHistory(
-      {required var token, required var id}) async
-  {
+  getUserCartHistory({required var token, required var id}) async {
     var headers = {
       'Authorization': 'Bearer $token',
     };
@@ -75,9 +89,7 @@ class Carts {
     }
   }
 
-  getUserCart(
-      {required var token, required var id}) async
-  {
+  getUserCart({required var token, required var id}) async {
     var headers = {
       'Authorization': 'Bearer $token',
     };
@@ -96,9 +108,7 @@ class Carts {
     }
   }
 
-  withdrawRequest(
-      {required var token, required var price}) async
-  {
+  withdrawRequest({required var token, required var price}) async {
     var headers = {
       'Authorization': 'Bearer $token',
     };
@@ -120,9 +130,7 @@ class Carts {
     }
   }
 
-  withdrawHistoryRequest(
-      {required var token}) async
-  {
+  withdrawHistoryRequest({required var token}) async {
     var headers = {
       'Authorization': 'Bearer $token',
     };

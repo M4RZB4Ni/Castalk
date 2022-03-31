@@ -966,9 +966,9 @@ class _$SeasonValuesTearOff {
       int? podcast_id,
       String? cover,
       PodcastValues? podcast,
+      int? likes_count,
       List<CommentsValues>? comments,
-      List<EpicodesValues>? episodes,
-      int? likes_count}) {
+      List<EpicodesValues>? episodes}) {
     return _SeasonValues(
       id: id,
       name: name,
@@ -976,9 +976,9 @@ class _$SeasonValuesTearOff {
       podcast_id: podcast_id,
       cover: cover,
       podcast: podcast,
+      likes_count: likes_count,
       comments: comments,
       episodes: episodes,
-      likes_count: likes_count,
     );
   }
 
@@ -998,9 +998,9 @@ mixin _$SeasonValues {
   int? get podcast_id => throw _privateConstructorUsedError;
   String? get cover => throw _privateConstructorUsedError;
   PodcastValues? get podcast => throw _privateConstructorUsedError;
+  int? get likes_count => throw _privateConstructorUsedError;
   List<CommentsValues>? get comments => throw _privateConstructorUsedError;
   List<EpicodesValues>? get episodes => throw _privateConstructorUsedError;
-  int? get likes_count => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1020,9 +1020,9 @@ abstract class $SeasonValuesCopyWith<$Res> {
       int? podcast_id,
       String? cover,
       PodcastValues? podcast,
+      int? likes_count,
       List<CommentsValues>? comments,
-      List<EpicodesValues>? episodes,
-      int? likes_count});
+      List<EpicodesValues>? episodes});
 
   $PodcastValuesCopyWith<$Res>? get podcast;
 }
@@ -1043,9 +1043,9 @@ class _$SeasonValuesCopyWithImpl<$Res> implements $SeasonValuesCopyWith<$Res> {
     Object? podcast_id = freezed,
     Object? cover = freezed,
     Object? podcast = freezed,
+    Object? likes_count = freezed,
     Object? comments = freezed,
     Object? episodes = freezed,
-    Object? likes_count = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -1072,6 +1072,10 @@ class _$SeasonValuesCopyWithImpl<$Res> implements $SeasonValuesCopyWith<$Res> {
           ? _value.podcast
           : podcast // ignore: cast_nullable_to_non_nullable
               as PodcastValues?,
+      likes_count: likes_count == freezed
+          ? _value.likes_count
+          : likes_count // ignore: cast_nullable_to_non_nullable
+              as int?,
       comments: comments == freezed
           ? _value.comments
           : comments // ignore: cast_nullable_to_non_nullable
@@ -1080,10 +1084,6 @@ class _$SeasonValuesCopyWithImpl<$Res> implements $SeasonValuesCopyWith<$Res> {
           ? _value.episodes
           : episodes // ignore: cast_nullable_to_non_nullable
               as List<EpicodesValues>?,
-      likes_count: likes_count == freezed
-          ? _value.likes_count
-          : likes_count // ignore: cast_nullable_to_non_nullable
-              as int?,
     ));
   }
 
@@ -1113,9 +1113,9 @@ abstract class _$SeasonValuesCopyWith<$Res>
       int? podcast_id,
       String? cover,
       PodcastValues? podcast,
+      int? likes_count,
       List<CommentsValues>? comments,
-      List<EpicodesValues>? episodes,
-      int? likes_count});
+      List<EpicodesValues>? episodes});
 
   @override
   $PodcastValuesCopyWith<$Res>? get podcast;
@@ -1139,9 +1139,9 @@ class __$SeasonValuesCopyWithImpl<$Res> extends _$SeasonValuesCopyWithImpl<$Res>
     Object? podcast_id = freezed,
     Object? cover = freezed,
     Object? podcast = freezed,
+    Object? likes_count = freezed,
     Object? comments = freezed,
     Object? episodes = freezed,
-    Object? likes_count = freezed,
   }) {
     return _then(_SeasonValues(
       id: id == freezed
@@ -1168,6 +1168,10 @@ class __$SeasonValuesCopyWithImpl<$Res> extends _$SeasonValuesCopyWithImpl<$Res>
           ? _value.podcast
           : podcast // ignore: cast_nullable_to_non_nullable
               as PodcastValues?,
+      likes_count: likes_count == freezed
+          ? _value.likes_count
+          : likes_count // ignore: cast_nullable_to_non_nullable
+              as int?,
       comments: comments == freezed
           ? _value.comments
           : comments // ignore: cast_nullable_to_non_nullable
@@ -1176,10 +1180,6 @@ class __$SeasonValuesCopyWithImpl<$Res> extends _$SeasonValuesCopyWithImpl<$Res>
           ? _value.episodes
           : episodes // ignore: cast_nullable_to_non_nullable
               as List<EpicodesValues>?,
-      likes_count: likes_count == freezed
-          ? _value.likes_count
-          : likes_count // ignore: cast_nullable_to_non_nullable
-              as int?,
     ));
   }
 }
@@ -1194,9 +1194,9 @@ class _$_SeasonValues with DiagnosticableTreeMixin implements _SeasonValues {
       this.podcast_id,
       this.cover,
       this.podcast,
+      this.likes_count,
       this.comments,
-      this.episodes,
-      this.likes_count});
+      this.episodes});
 
   factory _$_SeasonValues.fromJson(Map<String, dynamic> json) =>
       _$$_SeasonValuesFromJson(json);
@@ -1214,15 +1214,15 @@ class _$_SeasonValues with DiagnosticableTreeMixin implements _SeasonValues {
   @override
   final PodcastValues? podcast;
   @override
+  final int? likes_count;
+  @override
   final List<CommentsValues>? comments;
   @override
   final List<EpicodesValues>? episodes;
-  @override
-  final int? likes_count;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SeasonValues(id: $id, name: $name, description: $description, podcast_id: $podcast_id, cover: $cover, podcast: $podcast, comments: $comments, episodes: $episodes, likes_count: $likes_count)';
+    return 'SeasonValues(id: $id, name: $name, description: $description, podcast_id: $podcast_id, cover: $cover, podcast: $podcast, likes_count: $likes_count, comments: $comments, episodes: $episodes)';
   }
 
   @override
@@ -1236,9 +1236,9 @@ class _$_SeasonValues with DiagnosticableTreeMixin implements _SeasonValues {
       ..add(DiagnosticsProperty('podcast_id', podcast_id))
       ..add(DiagnosticsProperty('cover', cover))
       ..add(DiagnosticsProperty('podcast', podcast))
+      ..add(DiagnosticsProperty('likes_count', likes_count))
       ..add(DiagnosticsProperty('comments', comments))
-      ..add(DiagnosticsProperty('episodes', episodes))
-      ..add(DiagnosticsProperty('likes_count', likes_count));
+      ..add(DiagnosticsProperty('episodes', episodes));
   }
 
   @override
@@ -1254,10 +1254,10 @@ class _$_SeasonValues with DiagnosticableTreeMixin implements _SeasonValues {
                 .equals(other.podcast_id, podcast_id) &&
             const DeepCollectionEquality().equals(other.cover, cover) &&
             const DeepCollectionEquality().equals(other.podcast, podcast) &&
-            const DeepCollectionEquality().equals(other.comments, comments) &&
-            const DeepCollectionEquality().equals(other.episodes, episodes) &&
             const DeepCollectionEquality()
-                .equals(other.likes_count, likes_count));
+                .equals(other.likes_count, likes_count) &&
+            const DeepCollectionEquality().equals(other.comments, comments) &&
+            const DeepCollectionEquality().equals(other.episodes, episodes));
   }
 
   @override
@@ -1269,9 +1269,9 @@ class _$_SeasonValues with DiagnosticableTreeMixin implements _SeasonValues {
       const DeepCollectionEquality().hash(podcast_id),
       const DeepCollectionEquality().hash(cover),
       const DeepCollectionEquality().hash(podcast),
+      const DeepCollectionEquality().hash(likes_count),
       const DeepCollectionEquality().hash(comments),
-      const DeepCollectionEquality().hash(episodes),
-      const DeepCollectionEquality().hash(likes_count));
+      const DeepCollectionEquality().hash(episodes));
 
   @JsonKey(ignore: true)
   @override
@@ -1292,9 +1292,9 @@ abstract class _SeasonValues implements SeasonValues {
       int? podcast_id,
       String? cover,
       PodcastValues? podcast,
+      int? likes_count,
       List<CommentsValues>? comments,
-      List<EpicodesValues>? episodes,
-      int? likes_count}) = _$_SeasonValues;
+      List<EpicodesValues>? episodes}) = _$_SeasonValues;
 
   factory _SeasonValues.fromJson(Map<String, dynamic> json) =
       _$_SeasonValues.fromJson;
@@ -1312,11 +1312,11 @@ abstract class _SeasonValues implements SeasonValues {
   @override
   PodcastValues? get podcast;
   @override
+  int? get likes_count;
+  @override
   List<CommentsValues>? get comments;
   @override
   List<EpicodesValues>? get episodes;
-  @override
-  int? get likes_count;
   @override
   @JsonKey(ignore: true)
   _$SeasonValuesCopyWith<_SeasonValues> get copyWith =>
@@ -1649,7 +1649,7 @@ class _$EpicodesValuesTearOff {
       int? season_id,
       int? allow_comments,
       int? allow_share,
-      int? cover,
+      String? cover,
       int? comments_count,
       int? likes_count,
       List<CommentsValues>? comments}) {
@@ -1683,7 +1683,7 @@ mixin _$EpicodesValues {
   int? get season_id => throw _privateConstructorUsedError;
   int? get allow_comments => throw _privateConstructorUsedError;
   int? get allow_share => throw _privateConstructorUsedError;
-  int? get cover => throw _privateConstructorUsedError;
+  String? get cover => throw _privateConstructorUsedError;
   int? get comments_count => throw _privateConstructorUsedError;
   int? get likes_count => throw _privateConstructorUsedError;
   List<CommentsValues>? get comments => throw _privateConstructorUsedError;
@@ -1706,7 +1706,7 @@ abstract class $EpicodesValuesCopyWith<$Res> {
       int? season_id,
       int? allow_comments,
       int? allow_share,
-      int? cover,
+      String? cover,
       int? comments_count,
       int? likes_count,
       List<CommentsValues>? comments});
@@ -1762,7 +1762,7 @@ class _$EpicodesValuesCopyWithImpl<$Res>
       cover: cover == freezed
           ? _value.cover
           : cover // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       comments_count: comments_count == freezed
           ? _value.comments_count
           : comments_count // ignore: cast_nullable_to_non_nullable
@@ -1793,7 +1793,7 @@ abstract class _$EpicodesValuesCopyWith<$Res>
       int? season_id,
       int? allow_comments,
       int? allow_share,
-      int? cover,
+      String? cover,
       int? comments_count,
       int? likes_count,
       List<CommentsValues>? comments});
@@ -1851,7 +1851,7 @@ class __$EpicodesValuesCopyWithImpl<$Res>
       cover: cover == freezed
           ? _value.cover
           : cover // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       comments_count: comments_count == freezed
           ? _value.comments_count
           : comments_count // ignore: cast_nullable_to_non_nullable
@@ -1901,7 +1901,7 @@ class _$_EpicodesValues
   @override
   final int? allow_share;
   @override
-  final int? cover;
+  final String? cover;
   @override
   final int? comments_count;
   @override
@@ -1986,7 +1986,7 @@ abstract class _EpicodesValues implements EpicodesValues {
       int? season_id,
       int? allow_comments,
       int? allow_share,
-      int? cover,
+      String? cover,
       int? comments_count,
       int? likes_count,
       List<CommentsValues>? comments}) = _$_EpicodesValues;
@@ -2007,7 +2007,7 @@ abstract class _EpicodesValues implements EpicodesValues {
   @override
   int? get allow_share;
   @override
-  int? get cover;
+  String? get cover;
   @override
   int? get comments_count;
   @override

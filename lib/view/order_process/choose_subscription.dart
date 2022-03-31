@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,61 +7,45 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:audio_slider/audio_slider.dart';
+import 'package:get/get.dart';
 //import 'package:music_slider/music_slider.dart';
 import 'package:readmore/readmore.dart';
 
-class ChooseSubscription extends StatefulWidget{
-  const ChooseSubscription({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return ChooseSubscriptionState();
-
-  }
-
-
-
-}
-class ChooseSubscriptionState extends State<ChooseSubscription>{
+class ChooseSubscription extends GetView<ChooseSubscription>{
 
   String svgPath="assets/icons/";
   TextEditingController numberController = TextEditingController();
 
   Timer? timer;
   List<double> valueData = <double>[];
-  @override
-  void initState() {
-    super.initState();
-    timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
-      valueData.add(20+Random().nextInt(5).toDouble());
-      setState(() {});
-    });
-  }
 
-  @override
-  void dispose() {
-    super.dispose();
-    timer?.cancel();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   timer = Timer.periodic(const Duration(milliseconds: 400), (timer) {
+  //     valueData.add(20+Random().nextInt(5).toDouble());
+  //     setState(() {});
+  //   });
+  // }
+  //
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   timer?.cancel();
+  // }
 
   @override
   Widget build(BuildContext context) {
 
-
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(w,200),
+      appBar: PreferredSize(preferredSize: Size(Get.width,200),
           child:Stack(children: [
-
             Container(
-                width: w,
+                width: Get.width,
                 height: 180,
                 decoration:
                 BoxDecoration(color:const Color(0xff414141),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(40))),
-
             Padding(
               padding: const EdgeInsets.only(top: 24,left: 24),
               child: Container(padding: const EdgeInsets.all(10),width: 44,height: 44,child: SvgPicture.asset(svgPath+"arrow_fish_left.svg",width: 17,height: 17,) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
@@ -92,11 +75,11 @@ class ChooseSubscriptionState extends State<ChooseSubscription>{
                         padding: const EdgeInsets.only(left: 10,top: 40),
                         child: Row(
                           children: [
-                            Text("Host Name",style: Theme.of(context).textTheme.headline1),
+                            Text("Host Name",style: Get.textTheme.headline1),
                             Padding(
                               padding: const EdgeInsets.only(left: 8),
-                              child: Container(decoration: BoxDecoration(color: Theme.of(context).focusColor,shape: BoxShape.circle),
-                                  width: 13,height: 13,child: Icon(Icons.check,color: Style.background,size: 13,)),
+                              child: Container(decoration: BoxDecoration(color: Get.theme.focusColor,shape: BoxShape.circle),
+                                  width: 13,height: 13,child: const Icon(Icons.check,color: Style.background,size: 13,)),
                             )
                           ],
                         ),
@@ -141,9 +124,9 @@ class ChooseSubscriptionState extends State<ChooseSubscription>{
                  Flexible(child: ListView(
                    physics: const NeverScrollableScrollPhysics(),
                    children: [
-                   _itemType(w, title: "1 Month", type: "choose",price: "9"),
-                   _itemType(w, title: "3 Month", type: "withHeader",price: "24",header: "Popular"),
-                   _itemType(w, title: "1 Month", type: "nonChoose",price: "9"),
+                   _itemType(Get.width, title: "1 Month", type: "choose",price: "9"),
+                   _itemType(Get.width, title: "3 Month", type: "withHeader",price: "24",header: "Popular"),
+                   _itemType(Get.width, title: "1 Month", type: "nonChoose",price: "9"),
 
                  ],))
                ],),

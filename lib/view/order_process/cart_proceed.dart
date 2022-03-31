@@ -4,42 +4,24 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
-class CartProceed extends StatefulWidget{
-  const CartProceed({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return CartProceedState();
-  }
-
-
-
-}
-
-class CartProceedState extends State<CartProceed>{
-
+class CartProceed extends GetView<CartProceed>{
 
   bool toYourPlaylist = true;
   TextEditingController numberController = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
 
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-
     return Scaffold(
-
       backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(w, 50), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(Get.width, 50), child: header(Get.width)),
       body: SingleChildScrollView(child:
-
       Padding(
         padding: const EdgeInsets.only(left: 24, top: 48,bottom: 18, right: 23),
         child: SizedBox(
-          height: h,
+          height: Get.height,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,20 +35,20 @@ class CartProceedState extends State<CartProceed>{
                   ),
                   ExpandablePanel(
                       theme: const ExpandableThemeData(hasIcon: false),
-                      header: expandedHeaderToYourPlaylist(w,icon: Cicon.wallet, title: "Wallet - 250 \$"),
+                      header: expandedHeaderToYourPlaylist(Get.width,icon: Cicon.wallet, title: "Wallet - 250 \$"),
                       collapsed: Container(),
                       expanded: Container()),
 
                   ExpandablePanel(
                       theme: const ExpandableThemeData(hasIcon: false),
-                      header: expandedHeaderToYourPlaylist(w,icon: Cicon.bank_cart, title: "Credit Card",color: Colors.black),
+                      header: expandedHeaderToYourPlaylist(Get.width,icon: Cicon.bank_cart, title: "Credit Card",color: Colors.black),
                       collapsed: Container(),
-                      expanded: Container(
-                          width: w, height: 150, child: _criditCartItem(w))),
+                      expanded: SizedBox(
+                          width: Get.width, height: 150, child: _criditCartItem(Get.width))),
 
                   ExpandablePanel(
                       theme: const ExpandableThemeData(hasIcon: false),
-                      header: expandedHeaderToYourPlaylist(w,icon: Cicon.gateway, title: "Bank Account"),
+                      header: expandedHeaderToYourPlaylist(Get.width,icon: Cicon.gateway, title: "Bank Account"),
                       collapsed: Container(),
                       expanded: Container()),
 
@@ -87,8 +69,6 @@ class CartProceedState extends State<CartProceed>{
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("Tax :",style: Style.t_500_18w,),
-
-
                             Row(
                               children: [
                                 Padding(
@@ -108,12 +88,9 @@ class CartProceedState extends State<CartProceed>{
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("You will pay :",style: Style.t_500_24w,),
-
-
                             Text("3 \$",style: Style.t_500_24g,),
                           ],
                         ),
-
                       ],),
                   ),
                   Padding(
@@ -166,7 +143,7 @@ class CartProceedState extends State<CartProceed>{
                       contentPadding:
                       const EdgeInsets.only(top: 12, bottom: 12, left: 19),
                       hintText: "Type to Search...",
-                      hintStyle: TextStyle(color: Theme.of(context).hintColor),
+                      hintStyle: TextStyle(color: Get.theme.hintColor),
                       fillColor: Colors.white))),
           Container(
             padding: const EdgeInsets.all(12),

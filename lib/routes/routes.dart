@@ -26,6 +26,8 @@ class Routes{
     static const String  ProfileEdit='/ProfileEdit';
     static const String  ListeningStatistics='/ListeningStatistics';
     static const String  MyCasts='/MyCasts';
+    static const String  MyCastsList='/MyCastsList';
+    static const String  MyCastsAnalytics='/MyCastsAnalytics';
     static const String  OwnedPodcast='/OwnedPodcast';
     static const String  OwnedSeasons='/OwnedSeasons';
     static const String  OwnedEpisodes='/OwnedEpisodes';

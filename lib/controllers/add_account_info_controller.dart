@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../apis/auth.dart';
 
@@ -23,7 +24,16 @@ class AddAcountInfoController extends GetxController{
       //await AuthApi().updateProfile(data: data, token: token);
     }
     else{
-      Get.snackbar("Error...", "Check User!");
+      Get.snackbar(
+        'Error',
+        'Check user!',
+        duration: 3.seconds,
+        snackPosition: SnackPosition.BOTTOM,
+        showProgressIndicator: true,
+        isDismissible: true,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
     }
   }
 

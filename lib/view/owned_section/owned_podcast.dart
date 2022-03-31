@@ -3,29 +3,17 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:readmore/readmore.dart';
 import '../../style.dart';
 
-class OwnedPodcast extends StatefulWidget {
-  const OwnedPodcast({Key? key}) : super(key: key);
+class OwnedPodcast extends GetView<OwnedPodcast> {
 
-  @override
-  State<StatefulWidget> createState() {
-    return OwnedPodcastState();
-  }
-}
-
-class OwnedPodcastState extends State<OwnedPodcast> {
   String svgPath = "assets/icons/";
   TextEditingController numberController = TextEditingController();
-  late TextTheme _textTheme;
 
   @override
   Widget build(BuildContext context) {
-    _textTheme = Theme.of(context).textTheme;
-
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: Style.background,
@@ -34,21 +22,21 @@ class OwnedPodcastState extends State<OwnedPodcast> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-            header(w, h),
+            header(Get.width, Get.height),
             _podcastNameData(),
-            _topTripleButtons(w),
+            _topTripleButtons(Get.width),
             _aboutSection(),
-            _searchBar(w),
+            _searchBar(Get.width),
             Flexible(
                 child: ListView(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   children: [
-                    _likedItem(w, h),
-                    _likedItem(w, h),
-                    _likedItem(w, h),
-                    _likedItem(w, h),
-                    _likedItem(w, h),
+                    _likedItem(Get.width, Get.height),
+                    _likedItem(Get.width, Get.height),
+                    _likedItem(Get.width, Get.height),
+                    _likedItem(Get.width, Get.height),
+                    _likedItem(Get.width, Get.height),
                   ],
                 ))
           ],),
@@ -108,7 +96,7 @@ class OwnedPodcastState extends State<OwnedPodcast> {
                           ? "Episode name which is long...".substring(0, 30) +
                               "..."
                           : "Episode name which is long...",
-                      style: _textTheme.headline1!.copyWith(fontSize: 14),
+                      style: Get.textTheme.headline1!.copyWith(fontSize: 14),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,7 +110,7 @@ class OwnedPodcastState extends State<OwnedPodcast> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 5),
                                 child: Text("1 : 26 : 45",
-                                    style: _textTheme.headline6),
+                                    style: Get.textTheme.headline6),
                               ),
                             ],
                           ),
@@ -138,14 +126,14 @@ class OwnedPodcastState extends State<OwnedPodcast> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 5),
                                     child: Text("250",
-                                        style: _textTheme.headline6),
+                                        style: Get.textTheme.headline6),
                                   ),
                                 ],
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(right: 0),
                                 child: Text("2 days ago",
-                                    style: _textTheme.headline6),
+                                    style: Get.textTheme.headline6),
                               )
                             ],
                           ),
@@ -389,7 +377,7 @@ class OwnedPodcastState extends State<OwnedPodcast> {
                       contentPadding:
                           const EdgeInsets.only(top: 12, bottom: 12, left: 19),
                       hintText: "Type to Search...",
-                      hintStyle: TextStyle(color: Theme.of(context).hintColor),
+                      hintStyle: TextStyle(color: Get.theme.hintColor),
                       fillColor: Colors.white))),
           Container(
             padding: const EdgeInsets.all(12),

@@ -4,49 +4,31 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
-
-class WalletAnalytics extends StatefulWidget{
-  const WalletAnalytics({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return WalletAnalyticsState();
-  }
-
-
-}
-
-class WalletAnalyticsState extends State<WalletAnalytics>{
+class WalletAnalytics extends GetView<WalletAnalytics>{
 
   List<String> cCodes=["This Week","Last Week","Next Week"];
-
-
   //late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
   late String _charDropValue;
   late String _reachesDropValue;
   late String _earningsDropValue;
 
+  WalletAnalytics({Key? key}) : super(key: key);
 
-  @override
   void initState() {
     _charDropValue= cCodes.first;
     _reachesDropValue= cCodes.first;
     _earningsDropValue= cCodes.first;
-
   }
 
   @override
   Widget build(BuildContext context) {
 
-
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(Get.width, 100), child: header(Get.width)),
 
       body: SingleChildScrollView(child:
       Column(children: [
@@ -55,11 +37,12 @@ class WalletAnalyticsState extends State<WalletAnalytics>{
           padding: const EdgeInsets.only(right: 28,left: 28,top: 34),
           child: Row(children: [
             Expanded(flex: 2,child:Text("Earnings :", style: Style.t_500_16w)),
-            Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: w,child:
+            Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: Get.width,
+                child:
             DropdownButtonHideUnderline(
                 child:  Padding(
                   padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
-                  child: Theme(data: Theme.of(context).copyWith(
+                  child: Theme(data: Get.theme.copyWith(
                       canvasColor: Style.background),
                       child: DropdownButton<String>(
                           icon: const Padding(
@@ -68,16 +51,14 @@ class WalletAnalyticsState extends State<WalletAnalytics>{
                           ),
                           isDense: false,
                           value: _earningsDropValue,
-                          style: Theme.of(context).textTheme.bodyText2,
+                          style: Get.textTheme.bodyText2,
                           items: cCodes.map((e) => DropdownMenuItem(child: Text(e,style: Style.t_400_12w),value: e,)).toList(),
                           onChanged: (value) {
-                            setState(() {
-                              // selectedActivity = value;
-                              _earningsDropValue=value!;
-                              debugPrint('album choose-> $value');
-
-
-                            });
+                            // setState(() {
+                            //   // selectedActivity = value;
+                            //   _earningsDropValue=value!;
+                            //   debugPrint('album choose-> $value');
+                            // });
                           })),
                 )
             ))
@@ -89,7 +70,7 @@ class WalletAnalyticsState extends State<WalletAnalytics>{
           padding: EdgeInsets.only(top: 24,right: 12,left: 12,bottom: 24),
           child: Divider(height: 1,color: Style.divider,thickness: 1,),
         ),
-        _bestSellingSection(w, h),
+        _bestSellingSection(Get.width, Get.height),
         const Padding(
           padding: EdgeInsets.only(top: 34,right: 12,left: 12,bottom: 32),
           child: Divider(height: 1,color: Style.divider,thickness: 1,),
@@ -98,11 +79,11 @@ class WalletAnalyticsState extends State<WalletAnalytics>{
           padding: const EdgeInsets.symmetric(horizontal: 28),
           child: Row(children: [
             Expanded(flex: 2,child:Text("Your buys :", style: Style.t_500_16w)),
-            Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: w,child:
+            Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: Get.width, child:
             DropdownButtonHideUnderline(
                 child:  Padding(
                   padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
-                  child: Theme(data: Theme.of(context).copyWith(
+                  child: Theme(data: Get.theme.copyWith(
                       canvasColor: Style.background),
                       child: DropdownButton<String>(
                           icon: const Padding(
@@ -111,16 +92,14 @@ class WalletAnalyticsState extends State<WalletAnalytics>{
                           ),
                           isDense: false,
                           value: _earningsDropValue,
-                          style: Theme.of(context).textTheme.bodyText2,
+                          style: Get.textTheme.bodyText2,
                           items: cCodes.map((e) => DropdownMenuItem(child: Text(e,style: Style.t_400_12w),value: e,)).toList(),
                           onChanged: (value) {
-                            setState(() {
-                              // selectedActivity = value;
-                              _earningsDropValue=value!;
-                              debugPrint('album choose-> $value');
-
-
-                            });
+                            // setState(() {
+                            //   // selectedActivity = value;
+                            //   _earningsDropValue=value!;
+                            //   debugPrint('album choose-> $value');
+                            // });
                           })),
                 )
             ))

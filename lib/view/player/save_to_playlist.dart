@@ -2,19 +2,10 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:get/get.dart';
 import '../../style.dart';
 
-class SavePlayList extends StatefulWidget {
-  const SavePlayList({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return SavePlayListState();
-  }
-}
-
-class SavePlayListState extends State<SavePlayList> {
+class SavePlayList extends GetView<SavePlayList> {
 
   String svgPath = "assets/icons/";
   bool newPlayList = false;
@@ -24,9 +15,7 @@ class SavePlayListState extends State<SavePlayList> {
 
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-    _textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       backgroundColor: Style.background,
       body: Column(
@@ -45,18 +34,18 @@ class SavePlayListState extends State<SavePlayList> {
                 ),
                 ExpandablePanel(
                     theme: const ExpandableThemeData(hasIcon: false),
-                    header: expandedHeaderToYourPlaylist(w),
+                    header: expandedHeaderToYourPlaylist(Get.width),
                     collapsed: Container(),
                     expanded: SizedBox(
-                        width: 120, height: 150, child: playlistItem(w, h))),
+                        width: 120, height: 150, child: playlistItem(Get.width, Get.height))),
                 ExpandablePanel(
                     theme: const ExpandableThemeData(hasIcon: false),
-                    header: expandedHeaderNewPlayList(w),
+                    header: expandedHeaderNewPlayList(Get.width),
                     collapsed: Container(),
                     expanded: SizedBox(
-                      width: w,
+                      width: Get.width,
                       height: 150,
-                      child: newPlaylist(w, h),
+                      child: newPlaylist(Get.width, Get.height),
                     ))
               ],
             ),
@@ -339,7 +328,7 @@ class SavePlayListState extends State<SavePlayList> {
                     contentPadding:
                         const EdgeInsets.only(top: 12, bottom: 12, left: 19),
                     hintText: "Add playlist name",
-                    hintStyle: TextStyle(color: Theme.of(context).hintColor),
+                    hintStyle: TextStyle(color: Get.theme.hintColor),
                     fillColor: Colors.white)))
       ],
     );

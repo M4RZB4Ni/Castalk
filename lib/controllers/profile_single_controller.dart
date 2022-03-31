@@ -10,7 +10,7 @@ class ProfileController extends GetxController with StateMixin<List<ProfileSingl
   final AuthApi _authApi = AuthApi();
   //
   @override
-  onInit(){
+  void onInit() {
     getProfileData();
     super.onInit();
   }

@@ -1,37 +1,20 @@
 import 'dart:ui';
-
 import 'package:castalk/cicon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:readmore/readmore.dart';
-
 import '../../style.dart';
 
-class SeasonView extends StatefulWidget{
-  const SeasonView({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return SeasonViewState();
-  }
-
-
-}
-
-class SeasonViewState extends State<SeasonView>{
+class SeasonView extends GetView<SeasonView>{
 
   String svgPath = "assets/icons/";
   TextEditingController numberController = TextEditingController();
-  late TextTheme _textTheme;
-
 
   @override
   Widget build(BuildContext context) {
-    _textTheme = Theme.of(context).textTheme;
 
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Style.background,
       //appBar: PreferredSize(preferredSize: Size(w, h/2), child: header(w,h)),
@@ -40,21 +23,21 @@ class SeasonViewState extends State<SeasonView>{
           mainAxisSize: MainAxisSize.min,
 
           children: [
-            header(w, h),
+            header(Get.width, Get.height),
             _seasonNameData(),
-            _topTripleButtons(w),
+            _topTripleButtons(Get.width),
             _aboutSection(),
-            _itemTitle(w),
+            _itemTitle(Get.width),
             Flexible(
                 child: ListView(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   children: [
-                    _likedItem(w,h),
-                    _likedItem(w,h),
-                    _likedItem(w,h),
-                    _likedItem(w,h),
-                    _likedItem(w,h),
+                    _likedItem(Get.width,Get.height),
+                    _likedItem(Get.width,Get.height),
+                    _likedItem(Get.width,Get.height),
+                    _likedItem(Get.width,Get.height),
+                    _likedItem(Get.width,Get.height),
                   ],
                 ))
           ],),
@@ -113,7 +96,7 @@ class SeasonViewState extends State<SeasonView>{
                         "Episode name which is long...".length > 30
                             ? "Episode name which is long...".substring(0, 30) + "..."
                             : "Episode name which is long...",
-                        style: _textTheme.headline1!.copyWith(fontSize: 14),
+                        style: Get.textTheme.headline1!.copyWith(fontSize: 14),
                       ),
                     ),
                     Column(
@@ -131,7 +114,7 @@ class SeasonViewState extends State<SeasonView>{
                                   Padding(
                                     padding: const EdgeInsets.only(left: 5),
                                     child: Text("1 : 26 : 45",
-                                        style: _textTheme.headline6),
+                                        style: Get.textTheme.headline6),
                                   ),
                                 ],
                               ),
@@ -151,14 +134,14 @@ class SeasonViewState extends State<SeasonView>{
                                   Padding(
                                     padding: const EdgeInsets.only(left: 5),
                                     child: Text("250",
-                                        style: _textTheme.headline6),
+                                        style: Get.textTheme.headline6),
                                   ),
                                 ],
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(right: 0),
                                 child: Text("2 days ago",
-                                    style: _textTheme.headline6),
+                                    style: Get.textTheme.headline6),
                               )
                             ],
                           ),
@@ -171,7 +154,6 @@ class SeasonViewState extends State<SeasonView>{
               Container(
                 height: 96,
                 width: 44,
-
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(color: Style.grayTrans03,borderRadius: BorderRadius.circular(12)),
                 child: SvgPicture.asset(

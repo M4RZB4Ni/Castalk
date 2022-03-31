@@ -1,22 +1,14 @@
 import 'dart:ui';
-
 import 'package:castalk/cicon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:readmore/readmore.dart';
 import '../../style.dart';
 
-class PodcastView extends StatefulWidget {
-  const PodcastView({Key? key}) : super(key: key);
+class PodcastView extends GetView<PodcastView> {
 
-  @override
-  State<StatefulWidget> createState() {
-    return PodcastViewState();
-  }
-}
-
-class PodcastViewState extends State<PodcastView> {
   String svgPath = "assets/icons/";
   TextEditingController numberController = TextEditingController();
   late TextTheme _textTheme;
@@ -24,10 +16,7 @@ class PodcastViewState extends State<PodcastView> {
 
   @override
   Widget build(BuildContext context) {
-    _textTheme = Theme.of(context).textTheme;
 
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Style.background,
       //appBar: PreferredSize(preferredSize: Size(w, h/2), child: header(w,h)),
@@ -35,22 +24,22 @@ class PodcastViewState extends State<PodcastView> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            header(w, h),
+            header(Get.width, Get.height),
             _podcastNameData(),
 
-            _topTripleButtons(w),
+            _topTripleButtons(Get.width),
             _aboutSection(),
-            _searchBar(w),
+            _searchBar(Get.width),
             Flexible(
                 child: ListView(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   children: [
-                    _likedItem(w, h),
-                    _likedItem(w, h),
-                    _likedItem(w, h),
-                    _likedItem(w, h),
-                    _likedItem(w, h),
+                    _likedItem(Get.width, Get.height),
+                    _likedItem(Get.width, Get.height),
+                    _likedItem(Get.width, Get.height),
+                    _likedItem(Get.width, Get.height),
+                    _likedItem(Get.width, Get.height),
                   ],
                 ))
           ],),
@@ -419,7 +408,7 @@ class PodcastViewState extends State<PodcastView> {
                       contentPadding:
                       const EdgeInsets.only(top: 12, bottom: 12, left: 19),
                       hintText: "Type to Search...",
-                      hintStyle: TextStyle(color: Theme.of(context).hintColor),
+                      hintStyle: TextStyle(color: Get.theme.hintColor),
                       fillColor: Colors.white))),
           Container(
             padding: const EdgeInsets.all(12),

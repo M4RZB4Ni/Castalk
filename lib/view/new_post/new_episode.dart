@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_tags/flutter_tags.dart';
 
-
 class NewEpisode extends StatefulWidget {
   const NewEpisode({Key? key}) : super(key: key);
 
@@ -33,14 +32,11 @@ class NewEpisodeState extends State<NewEpisode> {
   @override
   void initState() {
     _charDropValue= cCodes.first;
-
   }
 
   @override
   Widget build(BuildContext context) {
-    _textTheme = Theme.of(context).textTheme;
     double w = MediaQuery.of(context).size.width;
-    //double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
@@ -56,12 +52,12 @@ class NewEpisodeState extends State<NewEpisode> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                 Container(
-                    margin: EdgeInsets.only(top: 29),
+                    margin: const EdgeInsets.only(top: 29),
                     height: 44,decoration:  Style.dropDownDecoration,width: w,child:
                 DropdownButtonHideUnderline(
                     child:  Padding(
                       padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
-                      child: Theme(data: Theme.of(context).copyWith(
+                      child: Theme(data: ThemeData().copyWith(
                           canvasColor: Style.background),
                           child: DropdownButton<String>(
                               icon: const Padding(
@@ -70,15 +66,13 @@ class NewEpisodeState extends State<NewEpisode> {
                               ),
                               isDense: false,
                               value: _charDropValue,
-                              style: Theme.of(context).textTheme.bodyText2,
+                              style: ThemeData().textTheme.bodyText2,
                               items: cCodes.map((e) => DropdownMenuItem(child: Text(e,style: Style.t_400_12w),value: e,)).toList(),
                               onChanged: (value) {
                                 setState(() {
                                   // selectedActivity = value;
                                   _charDropValue=value!;
                                   debugPrint('album choose-> $value');
-
-
                                 });
                               })),
                     )
@@ -88,12 +82,12 @@ class NewEpisodeState extends State<NewEpisode> {
                   child: SizedBox(height: 12,child: VerticalDivider(color: Style.gray48,width: 2,thickness: 2,)),
                 ),
                 Container(
-                    margin: EdgeInsets.only(top: 0),
+                    margin: const EdgeInsets.only(top: 0),
                     height: 44,decoration:  Style.dropDownDecoration,width: w,child:
                 DropdownButtonHideUnderline(
                     child:  Padding(
                       padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
-                      child: Theme(data: Theme.of(context).copyWith(
+                      child: Theme(data: ThemeData().copyWith(
                           canvasColor: Style.background),
                           child: DropdownButton<String>(
                               icon: const Padding(
@@ -102,15 +96,13 @@ class NewEpisodeState extends State<NewEpisode> {
                               ),
                               isDense: false,
                               value: _charDropValue,
-                              style: Theme.of(context).textTheme.bodyText2,
+                              style: ThemeData().textTheme.bodyText2,
                               items: cCodes.map((e) => DropdownMenuItem(child: Text(e,style: Style.t_400_12w),value: e,)).toList(),
                               onChanged: (value) {
                                 setState(() {
                                   // selectedActivity = value;
                                   _charDropValue=value!;
                                   debugPrint('album choose-> $value');
-
-
                                 });
                               })),
                     )

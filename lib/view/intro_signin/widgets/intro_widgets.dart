@@ -2,6 +2,8 @@ import 'package:castalk/customs/utils.dart';
 import 'package:castalk/models/intro_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class IntroWidget extends StatelessWidget{
   final IntroModel _introModel;
@@ -28,11 +30,11 @@ class IntroWidget extends StatelessWidget{
         ),
         Padding(
           padding: const EdgeInsets.only(top: 10,bottom: 10,left: 31),
-          child: Align(alignment: Alignment.centerLeft,child: Text(_introModel.title,style:TextStyle(color: Theme.of(context).colorScheme.secondary,fontSize: 24,fontWeight: FontWeight.w500))),
+          child: Align(alignment: Alignment.centerLeft,child: Text(_introModel.title,style:TextStyle(color: Get.theme.colorScheme.secondary,fontSize: 24,fontWeight: FontWeight.w500))),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 30,right: 30),
-          child: Text(_introModel.description,style:Theme.of(context).textTheme.bodyText2,textAlign: TextAlign.start,textDirection: TextDirection.ltr,),
+          child: Text(_introModel.description,style: Get.textTheme.bodyText2,textAlign: TextAlign.start,textDirection: TextDirection.ltr,),
         ),
       ],);
   }

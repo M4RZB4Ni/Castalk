@@ -4,39 +4,22 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
-class SetPlan extends StatefulWidget{
-  const SetPlan({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return SetPlanState();
-  }
-
-
-}
-
-
-class SetPlanState extends State<SetPlan>{
-
-
+class SetPlan extends GetView<SetPlan>{
 
   bool toYourPlaylist = false;
   bool newPlayList = false;
   TextEditingController numberController = TextEditingController();
   String svgPath = "assets/icons/";
 
-
   @override
   Widget build(BuildContext context) {
 
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-
-
     return Scaffold(
       backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(Get.width, 100), child: header(Get.width)),
       body: Padding(
         padding: const EdgeInsets.only(left: 24, top: 35, right: 23),
         child: SingleChildScrollView(child: Column(
@@ -63,7 +46,7 @@ class SetPlanState extends State<SetPlan>{
                     decoration: BoxDecoration(
                         borderRadius: const BorderRadius.all(Radius.circular(12)),
                         border: Border.all(width: 1, color: const Color(0xff484848))),
-                    width: w,
+                    width: Get.width,
                     child: TextField(
                         controller: numberController,
                         textAlign: TextAlign.left,
@@ -74,7 +57,7 @@ class SetPlanState extends State<SetPlan>{
                             contentPadding:
                             const EdgeInsets.only(top: 12, bottom: 12, left: 19),
                             hintText: "Name of plan",
-                            hintStyle: TextStyle(color: Theme.of(context).hintColor),
+                            hintStyle: TextStyle(color: Get.theme.hintColor),
                             fillColor: Colors.white))),
               ],
             ),
@@ -99,24 +82,24 @@ class SetPlanState extends State<SetPlan>{
                     children: [
                       ExpandablePanel(
                           theme: const ExpandableThemeData(hasIcon: false),
-                          header: expandedHeaderToYourPlaylist(w,title: "1 Month",price: "9"),
+                          header: expandedHeaderToYourPlaylist(Get.width, title: "1 Month",price: "9"),
                           collapsed: Container(),
-                          expanded: playlistItem(w, h)),
+                          expanded: playlistItem(Get.width, Get.height)),
                       ExpandablePanel(
                           theme: const ExpandableThemeData(hasIcon: false),
-                          header: expandedHeaderToYourPlaylist(w,title: "3 Month",price: "9"),
+                          header: expandedHeaderToYourPlaylist(Get.width, title: "3 Month",price: "9"),
                           collapsed: Container(),
-                          expanded: playlistItem(w, h)),
+                          expanded: playlistItem(Get.width, Get.height)),
                       ExpandablePanel(
                           theme: const ExpandableThemeData(hasIcon: false),
-                          header: expandedHeaderToYourPlaylist(w,title: "6 Month",price: "9"),
+                          header: expandedHeaderToYourPlaylist(Get.width, title: "6 Month",price: "9"),
                           collapsed: Container(),
-                          expanded: playlistItem(w, h)),
+                          expanded: playlistItem(Get.width, Get.height)),
                       ExpandablePanel(
                           theme: const ExpandableThemeData(hasIcon: false),
-                          header: expandedHeaderToYourPlaylist(w,title: "A Year",price: "9"),
+                          header: expandedHeaderToYourPlaylist(Get.width, title: "A Year",price: "9"),
                           collapsed: Container(),
-                          expanded: playlistItem(w, h)),
+                          expanded: playlistItem(Get.width, Get.height)),
                     ],
                   ),
                 ],

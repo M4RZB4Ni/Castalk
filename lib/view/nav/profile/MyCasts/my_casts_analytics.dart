@@ -1,91 +1,57 @@
 import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import '../../../../controllers/mycasts_controller.dart';
 
+class MyCastsAnalytics extends GetView<MyCastsController>{
 
-class MyCastsAnalytics extends StatefulWidget{
-  const MyCastsAnalytics({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return MyCastsAnalyticsState();
-  }
-
-
-}
-
-class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
-
-  List<String> cCodes=["This Week","Last Week","Next Week"];
-
-
-  //late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
-  late String _charDropValue;
-  late String _reachesDropValue;
-  late String _earningsDropValue;
-
-
-  @override
-  void initState() {
-    _charDropValue= cCodes.first;
-    _reachesDropValue= cCodes.first;
-    _earningsDropValue= cCodes.first;
-
-  }
 
   @override
   Widget build(BuildContext context) {
 
-   // _textTheme = Theme.of(context).textTheme;
-
-    double w = MediaQuery.of(context).size.width;
-     double h = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Style.background,
-
       body: SingleChildScrollView(child:
-          Column(children: [
-            _tripleHeader(w),
-            Padding(
+          Column(
+            children: [
+              _tripleHeader(Get.width),
+              Padding(
               padding: const EdgeInsets.symmetric(horizontal: 28),
               child: Row(children: [
                 Expanded(flex: 2,child:Text("Plays :", style: Style.t_500_16w)),
-                Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: w,child:
+                Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: Get.width,child:
                 DropdownButtonHideUnderline(
                     child:  Padding(
                       padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
-                      child: Theme(data: Theme.of(context).copyWith(
+                      child: Theme(data: Get.theme.copyWith(
                           canvasColor: Style.background),
-                          child: DropdownButton<String>(
-                              icon: const Padding(
-                                padding: EdgeInsets.only(right: 15,bottom: 0),
-                                child: Icon(Icons.keyboard_arrow_down_rounded,color: Color(0xffD1D1D1),size: 28,),
-                              ),
-                              isDense: false,
-                              value: _charDropValue,
-                              style: Theme.of(context).textTheme.bodyText2,
-                              items: cCodes.map((e) => DropdownMenuItem(child: Text(e,style: Style.t_400_12w),value: e,)).toList(),
-                              onChanged: (value) {
-                                setState(() {
-                                  // selectedActivity = value;
-                                  _charDropValue=value!;
-                                  debugPrint('album choose-> $value');
-
-
-                                });
-                              })),
+                          child: GetBuilder<MyCastsController>(builder: (controller){
+                            return DropdownButton(
+                                icon: const Padding(
+                                  padding: EdgeInsets.only(right: 15,bottom: 0),
+                                  child: Icon(Icons.keyboard_arrow_down_rounded,color: Color(0xffD1D1D1),size: 28,),
+                                ),
+                                isDense: false,
+                                value: controller.charDropValue.toString(),
+                                style: Get.textTheme.bodyText2,
+                                items: controller.cCodes.map((selectedValue) => DropdownMenuItem(child: Text(selectedValue.toString(),style: Style.t_400_12w),value: selectedValue)).toList(),
+                                onChanged: (newValue) {
+                                  controller.charDropSetSelected(newValue.toString());
+                                },
+                            );
+                          },),
+                      ),
                     )
                 ))
                 )
               ],),
             ),
-            _firstChartSection(),
-            const Padding(
+              _firstChartSection(),
+              const Padding(
               padding: EdgeInsets.only(top: 24,right: 12,left: 12,bottom: 30),
               child: Divider(height: 1,color: Style.divider,thickness: 1,),
             ),
@@ -93,42 +59,40 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
               padding: const EdgeInsets.symmetric(horizontal: 28),
               child: Row(children: [
                 Expanded(flex: 2,child:Text("Reaches :", style: Style.t_500_16w)),
-                Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: w,child:
+                Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: Get.width,child:
                 DropdownButtonHideUnderline(
                     child:  Padding(
                       padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
-                      child: Theme(data: Theme.of(context).copyWith(
+                      child: Theme(data: Get.theme.copyWith(
                           canvasColor: Style.background),
-                          child: DropdownButton<String>(
-                              icon: const Padding(
-                                padding: EdgeInsets.only(right: 15,bottom: 0),
-                                child: Icon(Icons.keyboard_arrow_down_rounded,color: Color(0xffD1D1D1),size: 28,),
-                              ),
-                              isDense: false,
-                              value: _reachesDropValue,
-                              style: Theme.of(context).textTheme.bodyText2,
-                              items: cCodes.map((e) => DropdownMenuItem(child: Text(e,style: Style.t_400_12w),value: e,)).toList(),
-                              onChanged: (value) {
-                                setState(() {
-                                  // selectedActivity = value;
-                                  _reachesDropValue=value!;
-                                  debugPrint('album choose-> $value');
-
-
-                                });
-                              })),
+                          child: GetBuilder<MyCastsController>(builder: (controller){
+                            return DropdownButton(
+                                icon: const Padding(
+                                  padding: EdgeInsets.only(right: 15,bottom: 0),
+                                  child: Icon(Icons.keyboard_arrow_down_rounded,color: Color(0xffD1D1D1),size: 28,),
+                                ),
+                                isDense: false,
+                                value: controller.reachesDropValue.toString(),
+                                style: Get.textTheme.bodyText2,
+                                items: controller.cCodes.map((selectedValue) => DropdownMenuItem(child: Text(selectedValue.toString(),style: Style.t_400_12w),value: selectedValue)).toList(),
+                                onChanged: (newValue) {
+                                  controller.reachesDropSetSelected(newValue.toString());
+                                },
+                            );
+                          },),
+                      ),
                     )
                 ))
                 )
               ],),
             ),
-            _reachesHeader(w),
+            _reachesHeader(Get.width),
             _secondChartSection(),
             const Padding(
               padding: EdgeInsets.only(top: 24,right: 12,left: 12),
               child: Divider(height: 1,color: Style.divider,thickness: 1,),
             ),
-            _mostPlayedSection(w, h),
+            _mostPlayedSection(Get.width, Get.height),
             const Padding(
               padding: EdgeInsets.only(top: 24,right: 12,left: 12),
               child: Divider(height: 1,color: Style.divider,thickness: 1,),
@@ -146,13 +110,12 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      SizedBox(),
-
+                      const SizedBox(),
                       Column(
                         children: [
                           Text("32% Female",style: Style.t_500_12w,),
                           Container(
-                              width: w/2,
+                              width: Get.width/2,
                               height: 144,
                               color: Style.background,
                               child: Stack(children: [
@@ -185,30 +148,28 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
               padding: const EdgeInsets.symmetric(horizontal: 28),
               child: Row(children: [
                 Expanded(flex: 2,child:Text("Earnings :", style: Style.t_500_16w)),
-                Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: w,child:
+                Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: Get.width,child:
                 DropdownButtonHideUnderline(
                     child:  Padding(
                       padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
-                      child: Theme(data: Theme.of(context).copyWith(
+                      child: Theme(data: Get.theme.copyWith(
                           canvasColor: Style.background),
-                          child: DropdownButton<String>(
+                          child: GetBuilder<MyCastsController>(builder: (controller){
+                            return DropdownButton(
                               icon: const Padding(
                                 padding: EdgeInsets.only(right: 15,bottom: 0),
                                 child: Icon(Icons.keyboard_arrow_down_rounded,color: Color(0xffD1D1D1),size: 28,),
                               ),
                               isDense: false,
-                              value: _earningsDropValue,
-                              style: Theme.of(context).textTheme.bodyText2,
-                              items: cCodes.map((e) => DropdownMenuItem(child: Text(e,style: Style.t_400_12w),value: e,)).toList(),
-                              onChanged: (value) {
-                                setState(() {
-                                  // selectedActivity = value;
-                                  _earningsDropValue=value!;
-                                  debugPrint('album choose-> $value');
-
-
-                                });
-                              })),
+                              value: controller.earningsDropValue.toString(),
+                              style: Get.textTheme.bodyText2,
+                              items: controller.cCodes.map((selectedValue) => DropdownMenuItem(child: Text(selectedValue.toString(),style: Style.t_400_12w),value: selectedValue)).toList(),
+                              onChanged: (newValue) {
+                                controller.earningsDropSetSelected(newValue.toString());
+                              },
+                            );
+                          },),
+                      ),
                     )
                 ))
                 )
@@ -219,7 +180,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
               padding: EdgeInsets.only(top: 0,right: 12,left: 12,bottom: 0),
               child: Divider(height: 1,color: Style.divider,thickness: 1,),
             ),
-            _bestSellingSection(w, h)
+            _bestSellingSection(Get.width, Get.height)
 
           ],)
         ,),
@@ -312,7 +273,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
   {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 15),
-      child: Container(
+      child: SizedBox(
         width: w,
         height: 60,
         child: Row(children: [
@@ -582,7 +543,7 @@ class MyCastsAnalyticsState extends State<MyCastsAnalytics>{
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16.0),
                         side: const BorderSide(color: Style.accentGold))),
-                fixedSize: MaterialStateProperty.all(Size(214, 54)),
+                fixedSize: MaterialStateProperty.all(const Size(214, 54)),
                 backgroundColor:
                 MaterialStateProperty.all(Style.background),
                 textStyle: MaterialStateProperty.all(const TextStyle(

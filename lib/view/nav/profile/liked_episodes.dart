@@ -13,7 +13,7 @@ class LikedEpisodes extends GetView<EpisodeController>
 
   @override
   Widget build(BuildContext context) {
-    _textTheme = Theme.of(context).textTheme;
+    _textTheme = Get.textTheme;
 
     return Scaffold(
       backgroundColor: Style.background,

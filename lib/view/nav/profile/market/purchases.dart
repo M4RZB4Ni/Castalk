@@ -2,35 +2,18 @@ import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
-
-class Purchases extends StatefulWidget{
-  const Purchases({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return PurchasesState();
-  }
-
-}
-class PurchasesState extends State<Purchases>
-{
-
+class Purchases extends GetView<Purchases> {
   String svgPath = "assets/icons/";
-  late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
 
-    _textTheme = Theme.of(context).textTheme;
-
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(w, 80), child: _searchBar(w)),
+      appBar: PreferredSize(preferredSize: Size(Get.width, 80), child: _searchBar(Get.width)),
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -44,7 +27,7 @@ class PurchasesState extends State<Purchases>
                     padding: const EdgeInsets.only(top: 18,left: 25),
                     child: Text("Active Subscriptions:",style: Style.t_500_14g),
                   ),
-                  _activeSubscriptionsItem(w, h),
+                  _activeSubscriptionsItem(Get.width, Get.height),
 
                 ],
               ),
@@ -58,7 +41,7 @@ class PurchasesState extends State<Purchases>
                     padding: const EdgeInsets.only(top: 33,left: 25),
                     child: Text("Other Purchases:",style: Style.t_500_14g),
                   ),
-                  _otherPurchasesItem(w, h)
+                  _otherPurchasesItem(Get.width, Get.height)
 
                 ],
               ),
@@ -97,7 +80,7 @@ class PurchasesState extends State<Purchases>
                           top: 12, bottom: 12, left: 19),
                       hintText: "Type to Search...",
                       hintStyle:
-                      TextStyle(color: Theme.of(context).hintColor),
+                      TextStyle(color: Get.theme.hintColor),
                       fillColor: Colors.white))),
           Container(
             padding: const EdgeInsets.all(12),
@@ -178,12 +161,12 @@ class PurchasesState extends State<Purchases>
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                 Text("Item’s name which may be as long as my...".length > 30 ? "Item’s name which may be as long as my...".substring(0,30)+"..." : "Item’s name which may be as long as my...",style: _textTheme.bodyText1!.copyWith(fontSize: 14),),
+                 Text("Item’s name which may be as long as my...".length > 30 ? "Item’s name which may be as long as my...".substring(0,30)+"..." : "Item’s name which may be as long as my...",style: Get.textTheme.bodyText1!.copyWith(fontSize: 14),),
                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                    Text("Subscription",style: _textTheme.bodyText1!.copyWith(fontSize: 12),),
-                    Text("Due : 63 days",style: _textTheme.bodyText1!.copyWith(color: Style.redAccent,fontSize: 12)),
+                    Text("Subscription",style: Get.textTheme.bodyText1!.copyWith(fontSize: 12),),
+                    Text("Due : 63 days",style: Get.textTheme.bodyText1!.copyWith(color: Style.redAccent,fontSize: 12)),
                   ],),
 
               ],
@@ -241,12 +224,12 @@ class PurchasesState extends State<Purchases>
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text("Item’s name which may be as long as my...".length > 30 ? "Item’s name which may be as long as my...".substring(0,30)+"..." : "Item’s name which may be as long as my...",style: _textTheme.bodyText1!.copyWith(fontSize: 14),),
+                Text("Item’s name which may be as long as my...".length > 30 ? "Item’s name which may be as long as my...".substring(0,30)+"..." : "Item’s name which may be as long as my...",style: Get.textTheme.bodyText1!.copyWith(fontSize: 14),),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Episode",style: _textTheme.bodyText1!.copyWith(fontSize: 12),),
-                    Text("12/08/2021",style: _textTheme.bodyText1!.copyWith(fontSize: 12,color: Style.gray9D)),
+                    Text("Episode",style: Get.textTheme.bodyText1!.copyWith(fontSize: 12),),
+                    Text("12/08/2021",style: Get.textTheme.bodyText1!.copyWith(fontSize: 12,color: Style.gray9D)),
                   ],),
 
               ],

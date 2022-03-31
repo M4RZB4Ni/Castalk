@@ -1,22 +1,17 @@
 import 'package:castalk/routes/routes.dart';
 import 'package:castalk/style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import '../../../controllers/play_list_controller.dart';
 
 class Playlist extends GetView<PlayListController> {
 
   String svgPath = "assets/icons/";
-  late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    _textTheme = Get.textTheme;
 
     return Scaffold(
       backgroundColor: Style.background,
@@ -69,7 +64,7 @@ class Playlist extends GetView<PlayListController> {
                   Padding(
                     padding: const EdgeInsets.only(left: 9),
                     child:
-                        Text("Save to Playlist", style: _textTheme.headline1),
+                        Text("Save to Playlist", style: Get.textTheme.headline1),
                   ),
                 ],
               ),
@@ -217,8 +212,8 @@ class Playlist extends GetView<PlayListController> {
                 ),
               ],
             ),
-            Text(controller.playList[index].data!.data!.first.title!.toString(), style: _textTheme.headline2!.copyWith(fontWeight: FontWeight.w500, color: Colors.white),),
-            Text(controller.playList[index].data!.data!.first.description!.toString(), style: _textTheme.headline6),
+            Text(controller.playList[index].data!.data!.first.title!.toString(), style: Get.textTheme.headline2!.copyWith(fontWeight: FontWeight.w500, color: Colors.white),),
+            Text(controller.playList[index].data!.data!.first.description!.toString(), style: Get.textTheme.headline6),
           ],
         ),
       ),

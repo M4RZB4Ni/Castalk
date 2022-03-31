@@ -5,45 +5,27 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_tags/flutter_tags.dart';
+import 'package:get/get.dart';
 
-
-class NewPodcast extends StatefulWidget {
-  const NewPodcast({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return NewPodcastState();
-  }
-}
-
-class NewPodcastState extends State<NewPodcast> {
+class NewPodcast extends GetView<NewPodcast> {
 
   List<String> cCodes=["This Week","Last Week","Next Week"];
   List _tagsList=["This Week","Last Week"];
   late dynamic radioProductValue="Free";
   final GlobalKey<TagsState> _tagStateKey = GlobalKey<TagsState>();
-
   late String _charDropValue;
-
   String svgPath = "assets/icons/";
-  late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
 
-
-  @override
   void initState() {
     _charDropValue= cCodes.first;
-
   }
 
   @override
   Widget build(BuildContext context) {
-    _textTheme = Theme.of(context).textTheme;
-    double w = MediaQuery.of(context).size.width;
-    //double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(Get.width, 100), child: header(Get.width)),
       backgroundColor: Style.background,
       body: SingleChildScrollView(
         child: Padding(
@@ -58,7 +40,7 @@ class NewPodcastState extends State<NewPodcast> {
                   radius: const Radius.circular(16),
                   child: Center(
                     child: SizedBox(
-                      width: w,
+                      width: Get.width,
                       height: 134,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -86,7 +68,7 @@ class NewPodcastState extends State<NewPodcast> {
                   ),
                   Padding(
                       padding: const EdgeInsets.only(top: 0,bottom: 9,left: 0),
-                      child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
+                      child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
                           child: TextField(
                               controller: numberController,
                               textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "Add Episode name..."))
@@ -97,11 +79,11 @@ class NewPodcastState extends State<NewPodcast> {
               Column(children: [
                 Container(
                     margin: const EdgeInsets.only(top: 29),
-                    height: 44,decoration:  Style.dropDownDecoration,width: w,child:
+                    height: 44,decoration:  Style.dropDownDecoration,width: Get.width,child:
                 DropdownButtonHideUnderline(
                     child:  Padding(
                       padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
-                      child: Theme(data: Theme.of(context).copyWith(
+                      child: Theme(data: Get.theme.copyWith(
                           canvasColor: Style.background),
                           child: DropdownButton<String>(
                               icon: const Padding(
@@ -110,16 +92,14 @@ class NewPodcastState extends State<NewPodcast> {
                               ),
                               isDense: false,
                               value: _charDropValue,
-                              style: Theme.of(context).textTheme.bodyText2,
+                              style: Get.textTheme.bodyText2,
                               items: cCodes.map((e) => DropdownMenuItem(child: Text(e,style: Style.t_400_12w),value: e,)).toList(),
                               onChanged: (value) {
-                                setState(() {
-                                  // selectedActivity = value;
-                                  _charDropValue=value!;
-                                  debugPrint('album choose-> $value');
-
-
-                                });
+                                // setState(() {
+                                //   // selectedActivity = value;
+                                //   _charDropValue=value!;
+                                //   debugPrint('album choose-> $value');
+                                // });
                               })),
                     )
                 ))
@@ -131,7 +111,7 @@ class NewPodcastState extends State<NewPodcast> {
                     padding: const EdgeInsets.only(top: 20,bottom: 8),
                     child: Text("About:",style: Style.t_400_16w.copyWith(height: 1.5),),
                   ),
-                  Container(height: 196,decoration:  Style.inputBoxDecoration,width: w,
+                  Container(height: 196,decoration:  Style.inputBoxDecoration,width: Get.width,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -173,7 +153,7 @@ class NewPodcastState extends State<NewPodcast> {
                   children: [
                     Expanded(flex:12,child:  Padding(
                         padding: const EdgeInsets.only(right: 11,top: 8,bottom: 11),
-                        child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
+                        child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
                             child: TextField(
 
                                 controller: numberController,
@@ -203,10 +183,11 @@ class NewPodcastState extends State<NewPodcast> {
                           margin: const EdgeInsets.only(right: 2),
                           color: Style.background,backgroundColor: Colors.transparent,size: 16,
                           onRemoved: (){
-                        setState(() {
-                          _tagsList.removeAt(index);
-                        });
-                        return true;}),
+                        // setState(() {
+                        //   _tagsList.removeAt(index);
+                        // });
+                        return true;
+                          }),
                       elevation: 0,
                       textOverflow: TextOverflow.ellipsis,
                       padding: EdgeInsets.symmetric(vertical: 12,horizontal: 16),
@@ -238,9 +219,9 @@ class NewPodcastState extends State<NewPodcast> {
             Row(
               children: [
                 Radio(fillColor: MaterialStateProperty.all(Style.accentGold),value: "Both", groupValue: radioProductValue, onChanged: (value) {
-                  setState(() {
-                    radioProductValue=value;
-                  });
+                  // setState(() {
+                  //   radioProductValue=value;
+                  // });
                 },),
                 Text("Free",style: Style.t_400_12w,),
               ],
@@ -248,9 +229,9 @@ class NewPodcastState extends State<NewPodcast> {
             Row(
               children: [
                 Radio(fillColor: MaterialStateProperty.all(Style.accentGold),value: "Premium Access", groupValue: radioProductValue, onChanged: (value) {
-                  setState(() {
-                    radioProductValue=value;
-                  });
+                  // setState(() {
+                  //   radioProductValue=value;
+                  // });
                 },),
                 Text("Premium Access",style: Style.t_400_12w,),
               ],
@@ -258,9 +239,9 @@ class NewPodcastState extends State<NewPodcast> {
             Row(
               children: [
                 Radio(fillColor: MaterialStateProperty.all(Style.accentGold),value: "Single Product", groupValue: radioProductValue, onChanged: (value) {
-                  setState(() {
-                    radioProductValue=value;
-                  });
+                  // setState(() {
+                  //   radioProductValue=value;
+                  // });
                 },),
                 Text("Single Product",style: Style.t_400_12w,),
               ],
@@ -328,7 +309,7 @@ class NewPodcastState extends State<NewPodcast> {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 0),
-            child: Text("New Podcast", style: _textTheme.headline1),
+            child: Text("New Podcast", style: Get.textTheme.headline1),
           ),
           const SizedBox(
             width: 44,

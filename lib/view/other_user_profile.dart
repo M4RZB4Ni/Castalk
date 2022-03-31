@@ -92,11 +92,11 @@ class OtherUserProfileState extends State<OtherUserProfile>{
                         padding: const EdgeInsets.only(left: 10,top: 40),
                         child: Row(
                           children: [
-                            Text("Host Name",style: Theme.of(context).textTheme.headline1),
+                            Text("Host Name",style: ThemeData().textTheme.headline1),
                             Padding(
                               padding: const EdgeInsets.only(left: 8),
-                              child: Container(decoration: BoxDecoration(color: Theme.of(context).focusColor,shape: BoxShape.circle),
-                                  width: 13,height: 13,child: Icon(Icons.check,color: Style.background,size: 13,)),
+                              child: Container(decoration: BoxDecoration(color: ThemeData().focusColor,shape: BoxShape.circle),
+                                  width: 13,height: 13,child: const Icon(Icons.check,color: Style.background,size: 13,)),
                             )
                           ],
                         ),
@@ -119,20 +119,20 @@ class OtherUserProfileState extends State<OtherUserProfile>{
                     Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text("Listens",style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
-                        Text("12K",style: Theme.of(context).textTheme.headline1),
+                        Text("Listens",style: ThemeData().textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
+                        Text("12K",style: ThemeData().textTheme.headline1),
                       ],),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text("Followers",style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
-                        Text("12K",style: Theme.of(context).textTheme.headline1),
+                        Text("Followers",style: ThemeData().textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
+                        Text("12K",style: ThemeData().textTheme.headline1),
                       ],),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text("Posts",style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
-                        Text("12K",style: Theme.of(context).textTheme.headline1),
+                        Text("Posts",style: ThemeData().textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
+                        Text("12K",style: ThemeData().textTheme.headline1),
                       ],)
 
                   ],),
@@ -349,7 +349,7 @@ class OtherUserProfileState extends State<OtherUserProfile>{
                           top: 12, bottom: 12, left: 19),
                       hintText: "Type to Search...",
                       hintStyle:
-                      TextStyle(color: Theme.of(context).hintColor),
+                      TextStyle(color: ThemeData().hintColor),
                       fillColor: Colors.white))),
           Container(
             padding: const EdgeInsets.all(12),

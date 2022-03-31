@@ -4,24 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_tags/flutter_tags.dart';
+import 'package:get/get.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-
-class Promotion extends StatefulWidget{
-  const Promotion({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return PromotionState();
-  }
-
-}
-
-class PromotionState extends State<Promotion>
-{
+class Promotion extends GetView<Promotion> {
 
   String svgPath = "assets/icons/";
-  late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
   late dynamic radioTypeValue="fixed";
   late dynamic radioProductValue="Both";
@@ -30,27 +18,24 @@ class PromotionState extends State<Promotion>
   @override
   Widget build(BuildContext context) {
 
-    _textTheme = Theme.of(context).textTheme;
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(w, 120), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(Get.width, 120), child: header(Get.width)),
       body:   Padding(
         padding: const EdgeInsets.only(right: 24,left: 24,bottom: 40,top: 29),
         child: SingleChildScrollView(child:
           SizedBox(
-            height:h,
+            height:Get.height,
             child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Name:",style: Theme.of(context).textTheme.bodyText1),
+                        Text("Name:",style: Get.textTheme.bodyText1),
                         Padding(
                             padding: const EdgeInsets.only(top: 8,bottom: 9),
-                            child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
+                            child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
                                 child: TextField(
                                     controller: numberController,
                                     textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)
@@ -63,10 +48,10 @@ class PromotionState extends State<Promotion>
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Amount:",style: Theme.of(context).textTheme.bodyText1),
+                  Text("Amount:",style: Get.textTheme.bodyText1),
                   Padding(
                       padding: const EdgeInsets.only(top: 8,bottom: 9),
-                      child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
+                      child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
                           child: TextField(
                               controller: numberController,
                               textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)
@@ -85,9 +70,9 @@ class PromotionState extends State<Promotion>
                     Row(
                       children: [
                         Radio(fillColor: MaterialStateProperty.all(Style.accentGold),value: "fixed", groupValue: radioTypeValue, onChanged: (value) {
-                          setState(() {
-                            radioTypeValue=value;
-                          });
+                          // setState(() {
+                          //   radioTypeValue=value;
+                          // });
                         },),
                         Text("Fixed",style: Style.t_400_12w,),
                       ],
@@ -95,9 +80,9 @@ class PromotionState extends State<Promotion>
                     Row(
                       children: [
                         Radio(fillColor: MaterialStateProperty.all(Style.accentGold),value: "percentage", groupValue: radioTypeValue, onChanged: (value) {
-                          setState(() {
-                            radioTypeValue=value;
-                          });
+                          // setState(() {
+                          //   radioTypeValue=value;
+                          // });
                         },),
                         Text("Percentage",style: Style.t_400_12w,),
                       ],
@@ -119,9 +104,9 @@ class PromotionState extends State<Promotion>
                     Row(
                       children: [
                         Radio(fillColor: MaterialStateProperty.all(Style.accentGold),value: "Both", groupValue: radioProductValue, onChanged: (value) {
-                          setState(() {
-                            radioProductValue=value;
-                          });
+                          // setState(() {
+                          //   radioProductValue=value;
+                          // });
                         },),
                         Text("Both",style: Style.t_400_12w,),
                       ],
@@ -129,9 +114,9 @@ class PromotionState extends State<Promotion>
                     Row(
                       children: [
                         Radio(fillColor: MaterialStateProperty.all(Style.accentGold),value: "Premium Access", groupValue: radioProductValue, onChanged: (value) {
-                          setState(() {
-                            radioProductValue=value;
-                          });
+                          // setState(() {
+                          //   radioProductValue=value;
+                          // });
                         },),
                         Text("Premium Access",style: Style.t_400_12w,),
                       ],
@@ -139,16 +124,13 @@ class PromotionState extends State<Promotion>
                     Row(
                       children: [
                         Radio(fillColor: MaterialStateProperty.all(Style.accentGold),value: "Single Product", groupValue: radioProductValue, onChanged: (value) {
-                          setState(() {
-                            radioProductValue=value;
-                          });
+                          // setState(() {
+                          //   radioProductValue=value;
+                          // });
                         },),
                         Text("Single Product",style: Style.t_400_12w,),
                       ],
                     ),
-
-
-
                   ],),
 
                   Visibility(
@@ -156,7 +138,7 @@ class PromotionState extends State<Promotion>
                       child: Padding(
                           padding: const EdgeInsets.only(top: 15,bottom: 9),
                           child:  Container(
-                            width: w,
+                            width: Get.width,
                             height: 44,
                             decoration:Style.inputBoxDecoration.copyWith(border: Border.all(color: Style.gray9D,width: 1)),
                             child: Row(
@@ -164,7 +146,7 @@ class PromotionState extends State<Promotion>
                                 Expanded(flex: 6,child:Tags(
                                   key:_tagStateKey,
                                   textField: TagsTextField(
-                                    width: w,
+                                    width: Get.width,
                                     inputDecoration: Style.inputTextDecoration,
                                     constraintSuggestion: true, suggestions: [],
                                   ),
@@ -176,15 +158,12 @@ class PromotionState extends State<Promotion>
                                   height: 20,
                                   color: Style.gray86,
                                 ),onTap: () {
-                                  settings(w, h);
+                                  settings(context, Get.width, Get.height);
                                 },))
                               ],
                             ),
                           )
                       )),
-
-
-
                 ],
               ),
               Column(
@@ -193,7 +172,7 @@ class PromotionState extends State<Promotion>
                   Padding(
                       padding: const EdgeInsets.only(top: 15,bottom: 9),
                       child:Container(
-                        width: w,
+                        width: Get.width,
                         height: 44,
                         decoration:Style.inputBoxDecoration,
                         child: Row(
@@ -216,9 +195,6 @@ class PromotionState extends State<Promotion>
                           ],
                         ),
                       )),
-
-
-
                 ],
               ),
               Column(
@@ -227,7 +203,7 @@ class PromotionState extends State<Promotion>
                   Padding(
                       padding: const EdgeInsets.only(top: 15,bottom: 9),
                       child:Container(
-                        width: w,
+                        width: Get.width,
                         height: 44,
                         decoration:Style.inputBoxDecoration,
                         child: Row(
@@ -276,7 +252,7 @@ class PromotionState extends State<Promotion>
                       ),
                       Expanded(flex:12,child:  Padding(
                           padding: const EdgeInsets.only(top: 0,bottom: 9,left: 10),
-                          child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: w,
+                          child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
                               child: TextField(
                                   controller: numberController,
                                   textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)
@@ -330,17 +306,20 @@ class PromotionState extends State<Promotion>
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            width: 44,
-            height: 44,
-            child: const Icon(
-              Icons.arrow_back_outlined,
-              color: Colors.white,
+          InkWell(
+            onTap: () => Get.back(),
+            child: Container(
+              width: 44,
+              height: 44,
+              child: const Icon(
+                Icons.arrow_back_outlined,
+                color: Colors.white,
+              ),
+              decoration: BoxDecoration(
+                  color: Style.headerBackBtn,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(12)),
             ),
-            decoration: BoxDecoration(
-                color: Style.headerBackBtn,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(12)),
           ),
           Row(
             children: [
@@ -352,7 +331,7 @@ class PromotionState extends State<Promotion>
               // ),
               Padding(
                 padding: const EdgeInsets.only(left: 9),
-                child: Text("Promotion", style: _textTheme.headline1),
+                child: Text("Promotion", style: Get.textTheme.headline1),
               ),
             ],
           ),
@@ -370,7 +349,7 @@ class PromotionState extends State<Promotion>
 
 
 
-  settings(w,h)
+  settings(context, w, h)
   {
     showMaterialModalBottomSheet(
       expand: false,
@@ -387,7 +366,7 @@ class PromotionState extends State<Promotion>
              children: [
                Container(width: 44,height: 44,child: const Icon(Icons.arrow_back_outlined,color: Colors.white,size: 18,) ,decoration:
                BoxDecoration(color: Style.gray48.withOpacity(0.4),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),),
-               Text("Select an Item",style: Theme.of(context).textTheme.bodyText1),
+               Text("Select an Item",style: Get.textTheme.bodyText1),
 
                Container(width: 44,),
              ],
@@ -429,7 +408,7 @@ class PromotionState extends State<Promotion>
                           top: 12, bottom: 12, left: 19),
                       hintText: "Type to Search...",
                       hintStyle:
-                      TextStyle(color: Theme.of(context).hintColor),
+                      TextStyle(color: Get.theme.hintColor),
                       fillColor: Colors.white))),
           Container(
             padding: const EdgeInsets.all(12),
@@ -522,18 +501,13 @@ class PromotionState extends State<Promotion>
                   children: [
                     Text("Product Name",style: Style.t_400_12w),
                     Text("25\$",style: Style.t_400_12g,),
-
                   ],
                 ),
-
               ],
             ),
           )),
         ],),),
     );
   }
-
-
-
 
 }
