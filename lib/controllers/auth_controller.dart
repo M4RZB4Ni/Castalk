@@ -11,33 +11,23 @@ import '../models/auth_model.dart';
 class AuthController extends GetxController{
 
   final storage = const FlutterSecureStorage();
-  String subtitleTextStyle = 'ResendOff';
-  String nextState = 'ResendOff';
+  RxString subtitleTextStyle = 'ResendOff'.obs;
+  RxString nextState = 'ResendOff'.obs;
   TextStyle pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: Colors.white54);
-  late Timer _timer;
-  var start = 30.obs;
+  RxInt timerCount = (DateTime.now().millisecondsSinceEpoch + const Duration(seconds: 30).inMilliseconds).obs;
+  RxBool endTime = false.obs;
   //
+  void endTimers() {
+    nextState.value = 'ResendOn';
+    endTime.value = true;
+    update();
+  }
+
   @override
   void onInit() {
     WidgetsFlutterBinding.ensureInitialized();
     checkToken();
     super.onInit();
-  }
-
-  startTimer() {
-    const oneSec = Duration(seconds: 1);
-    _timer = Timer.periodic(
-      oneSec,
-          (Timer timer) {
-        if (start == 0) {
-          nextState = 'ResendOn';
-          timer.cancel();
-        } else {
-          start--;
-        }
-      },
-    );
-    return start.toString();
   }
 
   writeTokenValue(String value){
@@ -60,7 +50,7 @@ class AuthController extends GetxController{
         margin: const EdgeInsets.all(20),
         showProgressIndicator: true,
         isDismissible: true,
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.orange,
         colorText: Colors.white,
       );
     }
@@ -92,13 +82,13 @@ class AuthController extends GetxController{
   checkCodeForStyle(var submitted)
   {
     if(submitted == '1234'){
-      subtitleTextStyle = "Verified";
-      nextState = "Next";
+      subtitleTextStyle.value = "Verified";
+      nextState.value = "Next";
       return pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: const Color(0xff7CFF4E));
     }
     else{
-      subtitleTextStyle = "Wrong";
-      nextState = 'ResendOff';
+      subtitleTextStyle.value = "Wrong";
+      nextState.value = 'ResendOff';
       return pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: const Color(0xffFF5959));
     }
   }

@@ -19,6 +19,7 @@ class ListeningAnalyticsModel with _$ListeningAnalyticsModel{
 class Data with _$Data {
   const factory Data({
     final int? total_listening_time,
+    final List<int>? total_listening_time_by_week,
     final int? episodes,
     final int? your_listening_routine,
     final FieldOfInterest? field_of_interest,

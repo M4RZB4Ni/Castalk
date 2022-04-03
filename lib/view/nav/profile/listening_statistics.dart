@@ -30,7 +30,7 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text('${controller.listeningAnalyticsList[0].data!.total_listening_time!}min', style: Style.t_500_18w),
+                    Text('${controller.listeningAnalyticsList[0].data!.total_listening_time!} min', style: Style.t_500_18w),
                     Padding(
                       padding: const EdgeInsets.only(top: 5),
                       child: Text("Total listening time",style: Style.t_500_14_G9D),
@@ -82,7 +82,7 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
 
               RichText(text: TextSpan(
                   children: [
-                    TextSpan(text:"511420 minutes",style: Style.t_400_14g),
+                    TextSpan(text: '${controller.listeningAnalyticsList[0].data!.total_listening_time!} minutes',style: Style.t_400_14g),
                     TextSpan(text:" Podcast Played in total this Week",style: Style.t_400_14w),
                   ]))
             ],
@@ -133,24 +133,16 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
                         sections: showingSections()),
                   ),
                 ],)
-              )
-
-
-
+              ),
             ],
           ),
         ),
-
       ],),
     );
   }
 
-
-
-
   List<PieChartSectionData> showingSections() {
     return List.generate(3, (i) {
-
       switch (i) {
         case 0:
           return PieChartSectionData(
@@ -178,7 +170,6 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
       }
     });
   }
-
 
   header(w) {
     return Padding(
@@ -211,7 +202,6 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
     );
   }
 
-
   LineChartData mainData() {
     return LineChartData(
       lineTouchData: LineTouchData(
@@ -221,20 +211,21 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
       gridData: FlGridData(drawHorizontalLine: false, drawVerticalLine: false),
       backgroundColor: Style.background,
       minX: 0,
-      maxX: 10,
+      maxX: 14,
       minY: 0,
-      maxY: 6,
+      maxY: 7,
       lineBarsData: [
         LineChartBarData(
           lineChartStepData: LineChartStepData(stepDirection: 1),
           spots: const [
-            FlSpot(0, 3),
-            FlSpot(2.6, 2),
-            FlSpot(4.9, 5),
-            FlSpot(6.8, 3.1),
+            FlSpot(0, 0),
+            FlSpot(2, 2),
+            FlSpot(4, 5),
+            FlSpot(6, 3),
             FlSpot(8, 4),
-            FlSpot(9.5, 3),
-            FlSpot(11, 4),
+            FlSpot(10, 3),
+            FlSpot(12, 4),
+            FlSpot(14, 6),
           ],
           isCurved: true,
           colors: Style.chartGradiant,
@@ -267,19 +258,19 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
               fontSize: 13),
           getTitles: (value) {
             switch (value.toInt()) {
-              case 1:
+              case 2:
                 return 'Fri';
-              case 3:
+              case 4:
                 return 'Sat';
-              case 5:
+              case 6:
                 return 'Sun';
-              case 7:
+              case 8:
                 return 'Mon';
-              case 9:
+              case 10:
                 return 'Tue';
-              case 11:
-                return 'Wed';
               case 12:
+                return 'Wed';
+              case 14:
                 return 'Thu';
             }
             return '';
@@ -289,7 +280,5 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
       ),
     );
   }
-
-
 
 }

@@ -5,7 +5,16 @@ import 'package:get/get.dart';
 import 'package:multi_select_item/multi_select_item.dart';
 import '../../routes/routes.dart';
 
-class Congratulations extends GetView<CongratulationsController>{
+class Congratulations extends StatefulWidget{
+  const Congratulations({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() {
+    return CongratulationsState();
+  }
+}
+
+class CongratulationsState extends State<Congratulations>{
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +34,12 @@ class Congratulations extends GetView<CongratulationsController>{
             ),
             Align(alignment: Alignment.centerLeft,child: Padding(
               padding: const EdgeInsets.only(left: 42,bottom: 8),
-              child: Obx( () => Text("${controller.finalSelectedIndex.value} Item selected",
+              child: Text("${Get.find<CongratulationsController>().Controller.selectedIndexes.length} Item selected",
                   textAlign: TextAlign.center,
-                  style: Get.textTheme.headline2)),
-            )),
-          ],),
+                  style: Get.textTheme.headline2),
+            ),
+            ),
+          ]),
         ),),
       resizeToAvoidBottomInset: false,
       backgroundColor: Style.background,
@@ -37,22 +47,22 @@ class Congratulations extends GetView<CongratulationsController>{
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 42),
         child: GridView.builder(
-          itemCount: controller.categoryList.length,
+          itemCount: Get.find<CongratulationsController>().categoryList.length,
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 150,
             childAspectRatio: 2/3,
             mainAxisSpacing: 8,
             crossAxisSpacing: 7,
           ), itemBuilder: (BuildContext context, int index) {
-          return GetBuilder<CongratulationsController>(init: CongratulationsController(), builder: (controller){
-            return MultiSelectItem(
-              child: itemType(!controller.Controller.isSelected(index), index),
-              isSelecting: controller.Controller.isSelecting,
-              onSelected: () {
-                controller.congratulationsUpdate(index: index);
-              },
-            );
-          });
+          return MultiSelectItem(
+            child: itemType(!Get.find<CongratulationsController>().Controller.isSelected(index), index),
+            isSelecting: Get.find<CongratulationsController>().Controller.isSelecting,
+            onSelected: () {
+              setState(() {
+                Get.find<CongratulationsController>().Controller.toggle(index);
+              });
+            },
+          );
         },
         ),
       ),
@@ -72,8 +82,7 @@ class Congratulations extends GetView<CongratulationsController>{
       ),
     );
   }
-  header({required bool onlyTitle})
-  {
+  header({required bool onlyTitle}) {
     return Padding(
       padding: const EdgeInsets.only(top: 24),
       child: Row(
@@ -89,8 +98,7 @@ class Congratulations extends GetView<CongratulationsController>{
     );
   }
 
-  Container itemType(bool isSelected, int index)
-  {
+  Container itemType(bool isSelected, int index) {
     return Container(decoration: BoxDecoration(border: Border.all(color: isSelected? const Color(0xff484848) : Get.theme.focusColor,width: 1),
         borderRadius:const BorderRadius.all(Radius.circular(12)),color: !isSelected ? Get.theme.focusColor.withOpacity(0.2) : Style.background),
       child: Column(
@@ -109,7 +117,7 @@ class Congratulations extends GetView<CongratulationsController>{
           //Icon(Icons.four_g_mobiledata_outlined,color: isSelected ? const Color(0xff9D9D9D) : Colors.white,size: 50),
           Padding(
             padding: const EdgeInsets.only(bottom: 15),
-            child: Text(controller.categoryList[index].title!, style: Get.textTheme.headline2!.copyWith(fontWeight: FontWeight.w500,fontSize: !isSelected ? 18: 14,color:!isSelected ? Colors.white : Get.theme.focusColor ),),
+            child: Text(Get.find<CongratulationsController>().categoryList[index].title!, style: Get.textTheme.headline2!.copyWith(fontWeight: FontWeight.w500,fontSize: !isSelected ? 18: 14,color:!isSelected ? Colors.white : Get.theme.focusColor ),),
           )
         ],),);
   }

@@ -1,5 +1,4 @@
 import 'package:castalk/controllers/analytics_controller.dart';
-import 'package:castalk/controllers/motion_controller.dart';
 import 'package:castalk/controllers/play_list_controller.dart';
 import 'package:castalk/controllers/profile_single_controller.dart';
 import 'package:castalk/routes/routes.dart';
@@ -7,8 +6,6 @@ import 'package:castalk/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:line_icons/line_icons.dart';
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import '../../../controllers/episode_controller.dart';
 
 class Profile extends GetView<ProfileController>{
@@ -117,40 +114,6 @@ class Profile extends GetView<ProfileController>{
                       ),
                     ]),
               ),
-              bottomNavigationBar: Obx( () =>
-              // BottomNavigationBar(
-              //   currentIndex: Get.find<MotionController>().index.value,
-              //   onTap: (index){
-              //     Get.find<MotionController>().index.value = index;
-              //   },
-              //   items: <BottomNavigationBarItem>[
-              //     BottomNavigationBarItem(icon: ImageIcon(AssetImage(svgPath+"profile.svg"), color: Colors.white), label: 'Profile'),
-              //     BottomNavigationBarItem(icon: ImageIcon(AssetImage(svgPath+"notif.svg"), color: Colors.white), label: 'Notif'),
-              //     BottomNavigationBarItem(icon: ImageIcon(AssetImage(svgPath+"search.svg"), color: Colors.white), label: 'Search'),
-              //     BottomNavigationBarItem(icon: ImageIcon(AssetImage(svgPath+"headphone.svg"), color: Colors.white), label: 'Headphone'),
-              //   ],
-              // ),
-                  AnimatedBottomNavigationBar(
-                      icons: const [
-                        LineIcons.headset,
-                        LineIcons.search,
-                        LineIcons.home,
-                        Icons.notifications,
-                        LineIcons.user,
-                      ],
-                      iconSize: 30,
-                      leftCornerRadius: 20,
-                      gapLocation: GapLocation.none,
-                      activeIndex: Get.find<MotionController>().index.value,
-                      activeColor: const Color(0xffFFB800),
-                      inactiveColor: Colors.white,
-                      backgroundColor: const Color(0xff323232),
-                      notchSmoothness: NotchSmoothness.verySmoothEdge,
-                      onTap: (index){
-                        Get.find<MotionController>().index.value = index;
-                      }
-                  ),
-              ),
               body: Padding(
                 padding: const EdgeInsets.only(right: 22, left: 22, bottom: 20),
                 child: Column(
@@ -170,7 +133,7 @@ class Profile extends GetView<ProfileController>{
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                  child: Container(width: 43,height: 43, child: SvgPicture.asset(svgPath+"playLists_golden.svg"), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
+                                  child: SvgPicture.asset(svgPath+"playLists_golden.svg", width: 22, height: 22),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
@@ -207,7 +170,7 @@ class Profile extends GetView<ProfileController>{
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                  child: Container(width: 43,height: 43,child: SvgPicture.asset(svgPath+"likedEpisodes_golden.svg"), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
+                                  child: SvgPicture.asset(svgPath+"likedEpisodes_golden.svg", width: 22, height: 22),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
@@ -218,9 +181,9 @@ class Profile extends GetView<ProfileController>{
                             Padding(
                               padding: const EdgeInsets.only(top: 17,right: 32,bottom: 17),
                               child: Text(
-                                  Get.find<EpisodeController>().viewEpisodeList.length > 0
+                                  Get.find<EpisodeController>().viewEpisodeList.isNotEmpty
                                       ? Get.find<EpisodeController>().viewEpisodeList.length.toString() : '0',
-                                  style: Get.textTheme.headline1!.copyWith(fontSize: 18))
+                                  style: Get.textTheme.headline1!.copyWith(fontSize: 18)),
                             ),
 /*
             Container(width: 44,height: 44,child: IconButton(
@@ -247,7 +210,7 @@ class Profile extends GetView<ProfileController>{
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                    child: Container(width: 43,height: 43,child: SvgPicture.asset(svgPath+"listeningStatus_golden.svg", width: 18, height: 18), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
+                                    child: SvgPicture.asset(svgPath+"listeningStatus_golden.svg", width: 27, height: 27),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
@@ -287,7 +250,7 @@ class Profile extends GetView<ProfileController>{
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                  child: Container(width: 43,height: 43,child: SvgPicture.asset(svgPath+"achivments_golden.svg"), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
+                                  child:  SvgPicture.asset(svgPath+"achivments_golden.svg", width: 22, height: 22),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
@@ -325,7 +288,7 @@ class Profile extends GetView<ProfileController>{
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                    child: Container(width: 43,height: 43,child: SvgPicture.asset(svgPath+"myCasts_golden.svg"), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
+                                    child: SvgPicture.asset(svgPath+"myCasts_golden.svg", width: 22, height: 22),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
@@ -373,7 +336,7 @@ class Profile extends GetView<ProfileController>{
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                    child: Container(width: 43,height: 43,child: SvgPicture.asset(svgPath+"market_golden.svg"), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
+                                    child: SvgPicture.asset(svgPath+"market_golden.svg", width: 22, height: 22),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
@@ -400,7 +363,17 @@ class Profile extends GetView<ProfileController>{
                             ],),),
                     ),
                     InkWell(
-                        onTap: () => Get.toNamed(Routes.Promotion),
+                        onTap: () => Get.snackbar(
+                          'Message',
+                          'Coming soon...',
+                          duration: 3.seconds,
+                          snackPosition: SnackPosition.BOTTOM,
+                          margin: const EdgeInsets.all(20),
+                          showProgressIndicator: true,
+                          isDismissible: true,
+                          backgroundColor: Colors.blue,
+                          colorText: Colors.white,
+                        ),
                         child: Container(
                           decoration: const BoxDecoration(color: Color(0xff323232),borderRadius: BorderRadius.all(Radius.circular(16))),
                           child: Row(
@@ -411,7 +384,7 @@ class Profile extends GetView<ProfileController>{
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                    child: Container(width: 43,height: 43,child: SvgPicture.asset(svgPath+"promotion_golden.svg"), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
+                                    child: SvgPicture.asset(svgPath+"promotion_golden.svg", width: 22, height: 22),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
@@ -449,7 +422,7 @@ class Profile extends GetView<ProfileController>{
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                    child: Container(width: 43,height: 43,child: SvgPicture.asset(svgPath+"downloads_golden.svg"), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
+                                    child: SvgPicture.asset(svgPath+"downloads_golden.svg", width: 22, height: 22),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),

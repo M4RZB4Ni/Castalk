@@ -1,24 +1,24 @@
-import 'package:castalk/models/followers_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import '../apis/following.dart';
+import '../apis/achivments_api.dart';
+import '../models/achivments_model.dart';
 
-class AchivmentsController extends GetxController with StateMixin<List<FollowersModel>>{
+class AchivmentsController extends GetxController with StateMixin<List<AchivmentsModel>>{
 
-  final Following _following = Following();
-  late List<FollowersModel> followersList = [];
+  final Achivment _achivment = Achivment();
+  late List<AchivmentsModel> achivmentList = [];
   //
   @override
   onInit() {
-    //getFollowersData();
+    getAchivmentData();
     super.onInit();
   }
   //
-  getFollowersData() async{
-    await _following.getFollowers(token: GetStorage().read('token'), id: GetStorage().read('userId')).then((l) => {
-      followersList = List<FollowersModel>.from(l.map((model) => FollowersModel.fromJson(model))),
-      debugPrint('followersList---> $followersList'),
+  getAchivmentData() async{
+    await _achivment.getAchivment(token: GetStorage().read('token')).then((l) => {
+      achivmentList = List<AchivmentsModel>.from(l.map((model) => AchivmentsModel.fromJson(model))),
+      debugPrint('achivmentList---> $achivmentList'),
     });
   }
 

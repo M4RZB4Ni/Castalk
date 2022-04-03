@@ -29,10 +29,7 @@ class Achivments extends GetView<AchivmentsController>{
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                    children: [
-                 _firstPlaceItem(Get.width,Get.height),
-                 _firstPlaceItem(Get.width,Get.height),
-                 _firstPlaceItem(Get.width,Get.height),
-                 _firstPlaceItem(Get.width,Get.height),
+                     _firstPlace(Get.width,Get.height),
                   ])),
             Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,11 +48,6 @@ class Achivments extends GetView<AchivmentsController>{
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
                     _achivedItem(Get.width,Get.height),
-                    _achivedItem(Get.width,Get.height),
-                    _achivedItem(Get.width,Get.height),
-                    _achivedItem(Get.width,Get.height),
-                    _achivedItem(Get.width,Get.height),
-                    _achivedItem(Get.width,Get.height),
                   ],
                 ),
               )
@@ -71,17 +63,19 @@ class Achivments extends GetView<AchivmentsController>{
       width: w,
       height: h / 2,
       child: ListView.builder(
+        itemCount: controller.achivmentList[0].data!.length,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: _firstPlaceItem(w,h));
+              child: _firstPlaceItem(w,h, index),
+          );
         },
       ),
     );
   }
 
-  _firstPlaceItem(w,h) {
+  _firstPlaceItem(w,h, int index) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 15),
       child: Container(
@@ -105,10 +99,9 @@ class Achivments extends GetView<AchivmentsController>{
                   children: [
                   Text("7 Days in a row",style: Style.t_400_12w,),
                     RichText(text: TextSpan(
-
                         children: [
-                          TextSpan(text:"5",style: Style.t_500_14w),
-                          TextSpan(text:" / 7 Days",style: Style.t_500_14g)
+                          TextSpan(text: controller.achivmentList[0].data![index].progress!.toString(), style: Style.t_500_14w),
+                          TextSpan(text: ' / ${(controller.achivmentList[0].data![index].target!.toString())} Days', style: Style.t_500_14g)
                         ]))
                 ],),
               ),

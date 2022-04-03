@@ -203,11 +203,13 @@ class _$DataTearOff {
 
   _Data call(
       {int? total_listening_time,
+      List<int>? total_listening_time_by_week,
       int? episodes,
       int? your_listening_routine,
       FieldOfInterest? field_of_interest}) {
     return _Data(
       total_listening_time: total_listening_time,
+      total_listening_time_by_week: total_listening_time_by_week,
       episodes: episodes,
       your_listening_routine: your_listening_routine,
       field_of_interest: field_of_interest,
@@ -225,6 +227,8 @@ const $Data = _$DataTearOff();
 /// @nodoc
 mixin _$Data {
   int? get total_listening_time => throw _privateConstructorUsedError;
+  List<int>? get total_listening_time_by_week =>
+      throw _privateConstructorUsedError;
   int? get episodes => throw _privateConstructorUsedError;
   int? get your_listening_routine => throw _privateConstructorUsedError;
   FieldOfInterest? get field_of_interest => throw _privateConstructorUsedError;
@@ -240,6 +244,7 @@ abstract class $DataCopyWith<$Res> {
       _$DataCopyWithImpl<$Res>;
   $Res call(
       {int? total_listening_time,
+      List<int>? total_listening_time_by_week,
       int? episodes,
       int? your_listening_routine,
       FieldOfInterest? field_of_interest});
@@ -258,6 +263,7 @@ class _$DataCopyWithImpl<$Res> implements $DataCopyWith<$Res> {
   @override
   $Res call({
     Object? total_listening_time = freezed,
+    Object? total_listening_time_by_week = freezed,
     Object? episodes = freezed,
     Object? your_listening_routine = freezed,
     Object? field_of_interest = freezed,
@@ -267,6 +273,10 @@ class _$DataCopyWithImpl<$Res> implements $DataCopyWith<$Res> {
           ? _value.total_listening_time
           : total_listening_time // ignore: cast_nullable_to_non_nullable
               as int?,
+      total_listening_time_by_week: total_listening_time_by_week == freezed
+          ? _value.total_listening_time_by_week
+          : total_listening_time_by_week // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       episodes: episodes == freezed
           ? _value.episodes
           : episodes // ignore: cast_nullable_to_non_nullable
@@ -301,6 +311,7 @@ abstract class _$DataCopyWith<$Res> implements $DataCopyWith<$Res> {
   @override
   $Res call(
       {int? total_listening_time,
+      List<int>? total_listening_time_by_week,
       int? episodes,
       int? your_listening_routine,
       FieldOfInterest? field_of_interest});
@@ -321,6 +332,7 @@ class __$DataCopyWithImpl<$Res> extends _$DataCopyWithImpl<$Res>
   @override
   $Res call({
     Object? total_listening_time = freezed,
+    Object? total_listening_time_by_week = freezed,
     Object? episodes = freezed,
     Object? your_listening_routine = freezed,
     Object? field_of_interest = freezed,
@@ -330,6 +342,10 @@ class __$DataCopyWithImpl<$Res> extends _$DataCopyWithImpl<$Res>
           ? _value.total_listening_time
           : total_listening_time // ignore: cast_nullable_to_non_nullable
               as int?,
+      total_listening_time_by_week: total_listening_time_by_week == freezed
+          ? _value.total_listening_time_by_week
+          : total_listening_time_by_week // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       episodes: episodes == freezed
           ? _value.episodes
           : episodes // ignore: cast_nullable_to_non_nullable
@@ -351,6 +367,7 @@ class __$DataCopyWithImpl<$Res> extends _$DataCopyWithImpl<$Res>
 class _$_Data with DiagnosticableTreeMixin implements _Data {
   const _$_Data(
       {this.total_listening_time,
+      this.total_listening_time_by_week,
       this.episodes,
       this.your_listening_routine,
       this.field_of_interest});
@@ -360,6 +377,8 @@ class _$_Data with DiagnosticableTreeMixin implements _Data {
   @override
   final int? total_listening_time;
   @override
+  final List<int>? total_listening_time_by_week;
+  @override
   final int? episodes;
   @override
   final int? your_listening_routine;
@@ -368,7 +387,7 @@ class _$_Data with DiagnosticableTreeMixin implements _Data {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Data(total_listening_time: $total_listening_time, episodes: $episodes, your_listening_routine: $your_listening_routine, field_of_interest: $field_of_interest)';
+    return 'Data(total_listening_time: $total_listening_time, total_listening_time_by_week: $total_listening_time_by_week, episodes: $episodes, your_listening_routine: $your_listening_routine, field_of_interest: $field_of_interest)';
   }
 
   @override
@@ -377,6 +396,8 @@ class _$_Data with DiagnosticableTreeMixin implements _Data {
     properties
       ..add(DiagnosticsProperty('type', 'Data'))
       ..add(DiagnosticsProperty('total_listening_time', total_listening_time))
+      ..add(DiagnosticsProperty(
+          'total_listening_time_by_week', total_listening_time_by_week))
       ..add(DiagnosticsProperty('episodes', episodes))
       ..add(
           DiagnosticsProperty('your_listening_routine', your_listening_routine))
@@ -390,6 +411,9 @@ class _$_Data with DiagnosticableTreeMixin implements _Data {
             other is _Data &&
             const DeepCollectionEquality()
                 .equals(other.total_listening_time, total_listening_time) &&
+            const DeepCollectionEquality().equals(
+                other.total_listening_time_by_week,
+                total_listening_time_by_week) &&
             const DeepCollectionEquality().equals(other.episodes, episodes) &&
             const DeepCollectionEquality()
                 .equals(other.your_listening_routine, your_listening_routine) &&
@@ -401,6 +425,7 @@ class _$_Data with DiagnosticableTreeMixin implements _Data {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(total_listening_time),
+      const DeepCollectionEquality().hash(total_listening_time_by_week),
       const DeepCollectionEquality().hash(episodes),
       const DeepCollectionEquality().hash(your_listening_routine),
       const DeepCollectionEquality().hash(field_of_interest));
@@ -419,6 +444,7 @@ class _$_Data with DiagnosticableTreeMixin implements _Data {
 abstract class _Data implements Data {
   const factory _Data(
       {int? total_listening_time,
+      List<int>? total_listening_time_by_week,
       int? episodes,
       int? your_listening_routine,
       FieldOfInterest? field_of_interest}) = _$_Data;
@@ -427,6 +453,8 @@ abstract class _Data implements Data {
 
   @override
   int? get total_listening_time;
+  @override
+  List<int>? get total_listening_time_by_week;
   @override
   int? get episodes;
   @override

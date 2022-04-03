@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import '../../../../controllers/episode_controller.dart';
 import '../../../../controllers/user_list_controller.dart';
 
 class MyCastsList extends GetView<UserListController> {
@@ -28,15 +29,15 @@ class MyCastsList extends GetView<UserListController> {
                   padding: const EdgeInsets.only(bottom: 13,top: 35,left: 26),
                   child: Text("Latest Podcasts:",style: Style.t_500_14g,),
                 ),
-                _LatestPodcastSection(Get.width),
+                  _latestPodcastSection(Get.width),
               ],),
               Padding(
                 padding: const EdgeInsets.only(top: 0,left: 27),
                 child: Text("All Episodes:",style: Style.t_500_14w),
               ),
               _searchBar(Get.width),
-              Flexible(child:
-              ListView.builder(
+              Flexible(
+                child: ListView.builder(
                 itemCount: controller.userList[0].data![0].seasons!.length,
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
@@ -51,6 +52,7 @@ class MyCastsList extends GetView<UserListController> {
   }
 
   _likedItem(w,h, int index) {
+
     return Padding(
       padding: const EdgeInsets.only(top: 30,left: 20,right: 20),
       child: Column(
@@ -159,9 +161,6 @@ class MyCastsList extends GetView<UserListController> {
 
   }
 
-
-
-
   _topTripleButtons(w)
   {
     return  Padding(
@@ -263,18 +262,15 @@ class MyCastsList extends GetView<UserListController> {
     );
   }
 
+  _latestPodcastSection(w) {
 
-  _LatestPodcastSection(w)
-  {
     return SizedBox(
       width: w,
       height: 220,
-      child:
-
-      ListView.builder(
+      child: ListView.builder(
+        itemCount: Get.find<EpisodeController>().viewEpisodeList[0].data!.season!.episodes!.length,
         itemBuilder: (context, index) {
-          return  _podcastItem();
-
+          return  Get.find<EpisodeController>().viewEpisodeList[0].data!.season!.episodes!.isNotEmpty ? _podcastItem(index) : Text('Episode does not exist!', style: Get.textTheme.headline1!.copyWith(fontSize: 14));
         },
         scrollDirection: Axis.horizontal,
       ),
@@ -379,13 +375,13 @@ _searchBar(w)
 }
   
   
-  _podcastItem(){
+  _podcastItem(int index){
+
     return  Padding(
       padding: const EdgeInsets.only(right: 16),
       child: Column(
         children: [
         Container(
-
         height: 122,
         width: 122,
         decoration: BoxDecoration(
@@ -401,10 +397,14 @@ _searchBar(w)
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Episode Name and...",style: Style.t_500_14w,),
+                Text(Get.find<EpisodeController>().viewEpisodeList[0].data!.podcast!.title!.toString().length > 30
+                    ? Get.find<EpisodeController>().viewEpisodeList[0].data!.podcast!.title!.toString().substring(0, 30) + "..."
+                    : Get.find<EpisodeController>().viewEpisodeList[0].data!.podcast!.title!.toString(), style: Style.t_500_14w,),
                 Padding(
                   padding: const EdgeInsets.only(top: 4),
-                  child: Text("Artist and the others",style: Style.t_400_12_gray,),
+                  child: Text(Get.find<EpisodeController>().viewEpisodeList[0].data!.podcast!.description!.toString().length > 30
+                      ? Get.find<EpisodeController>().viewEpisodeList[0].data!.podcast!.description!.toString().substring(0, 30) + "..."
+                      : Get.find<EpisodeController>().viewEpisodeList[0].data!.podcast!.description!.toString(), style: Style.t_400_12_gray,),
                 ),
               ],
             ),

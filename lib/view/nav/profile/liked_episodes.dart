@@ -72,7 +72,6 @@ class LikedEpisodes extends GetView<EpisodeController>
                 padding: const EdgeInsets.only(left: 14),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(

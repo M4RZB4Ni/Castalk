@@ -3,30 +3,19 @@ import 'package:castalk/cicon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import '../../controllers/wallet_controller.dart';
 
-class Wallet extends StatefulWidget {
+class Wallet extends GetView<WalletController>{
+
   const Wallet({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return WalletState();
-  }
-
-}
-
-class WalletState extends State<Wallet>{
-
-
 
   @override
   Widget build(BuildContext context) {
 
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(w, 100), child: header(w)),
+      appBar: PreferredSize(preferredSize: Size(Get.width, 100), child: header(Get.width)),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,7 +27,7 @@ class WalletState extends State<Wallet>{
               Text("Wallet Balance",style: Style.t_500_18g,),
               Padding(
                 padding: const EdgeInsets.only(top: 28),
-                child: Text("27 \$",style: Style.t_500_36g,),
+                child: Text('${controller.walletList[0].data![0].amount!} \$',style: Style.t_500_36g,),
               ),
             ],
           ),
@@ -68,7 +57,7 @@ class WalletState extends State<Wallet>{
               ],),
             ),
               SizedBox(
-                height: h/2.0,
+                height: Get.height/2.0,
                 child: ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: 4,
@@ -171,17 +160,20 @@ class WalletState extends State<Wallet>{
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            width: 44,
-            height: 44,
-            child: const Icon(
-              Icons.arrow_back_outlined,
-              color: Colors.white,
+          InkWell(
+            onTap: () => Get.back(),
+            child: Container(
+              width: 44,
+              height: 44,
+              child: const Icon(
+                Icons.arrow_back_outlined,
+                color: Colors.white,
+              ),
+              decoration: BoxDecoration(
+                  color: Style.headerBackBtn,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(12)),
             ),
-            decoration: BoxDecoration(
-                color: Style.headerBackBtn,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(12)),
           ),
           Text("Wallet", style: Style.t_500_24w),
           Container(

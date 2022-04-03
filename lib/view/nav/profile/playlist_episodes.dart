@@ -1,4 +1,5 @@
 import 'package:castalk/cicon.dart';
+import 'package:castalk/controllers/play_list_controller.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../controllers/episode_controller.dart';
 
-class PlayListEpisodes extends GetView<EpisodeController> {
+class PlayListEpisodes extends GetView<PlayListController> {
   String svgPath = "assets/icons/";
   TextEditingController numberController = TextEditingController();
 
@@ -17,9 +18,9 @@ class PlayListEpisodes extends GetView<EpisodeController> {
       backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(Get.width, 180), child: header(Get.width)),
       body: ListView.builder(
-        itemCount: controller.viewEpisodeList.length,
+        itemCount: controller.playList[0].data!.data![0].episodes!.length,
         itemBuilder: (context, index) {
-        return _likedItem(index, Get.width, Get.height);
+        return controller.playList[0].data!.data![index].episodes!.isNotEmpty ? _likedItem(index, Get.width, Get.height) : Text('PlayList does not exist!', style: Get.textTheme.headline1!.copyWith(fontSize: 14));
       },),
 
     );
@@ -41,7 +42,6 @@ class PlayListEpisodes extends GetView<EpisodeController> {
                   children: [
                     Container(
                       padding: const EdgeInsets.all(25),
-
                       height: 96,
                       width: 96,
                       decoration: BoxDecoration(
@@ -71,13 +71,10 @@ class PlayListEpisodes extends GetView<EpisodeController> {
                 padding: const EdgeInsets.only(left: 14),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      controller.viewEpisodeList[index].data!.podcast!.title!.toString().length > 30
-                          ? controller.viewEpisodeList[index].data!.podcast!.title!.toString().substring(0, 30) + "..."
-                          : controller.viewEpisodeList[index].data!.podcast!.title!.toString(),
+                      controller.playList[0].data!.data![index].episodes![index].name!,
                       style: Get.textTheme.headline1!.copyWith(fontSize: 14),
                     ),
                     Column(
@@ -108,7 +105,9 @@ class PlayListEpisodes extends GetView<EpisodeController> {
                                   SvgPicture.asset(Cicon.heart_empty),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 5),
-                                    child: Text(controller.viewEpisodeList[index].data!.podcast!.likes_count!.toString(), style: Get.textTheme.headline6),
+                                    child: Text(
+                                        controller.playList[0].data!.data![index].episodes![index].likes_count!.toString(),
+                                        style: Get.textTheme.headline6),
                                   ),
                                 ],
                               ),
