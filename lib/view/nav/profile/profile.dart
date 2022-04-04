@@ -3,9 +3,11 @@ import 'package:castalk/controllers/play_list_controller.dart';
 import 'package:castalk/controllers/profile_single_controller.dart';
 import 'package:castalk/routes/routes.dart';
 import 'package:castalk/style.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import '../../../cicon.dart';
 import '../../../controllers/episode_controller.dart';
 
 class Profile extends GetView<ProfileController>{
@@ -24,95 +26,95 @@ class Profile extends GetView<ProfileController>{
         builder: (BuildContext context, BoxConstraints constraints){
           return Scaffold(
               backgroundColor: Style.background,
-              appBar: PreferredSize(preferredSize: Size(Get.width,300),
-                child: Stack(
-                    children: [
-                      Container(
-                          width: Get.width,
-                          height: 180,
-                          decoration:
-                          const BoxDecoration(color:Color(0xff414141),shape: BoxShape.rectangle,borderRadius: BorderRadius.only(bottomRight: Radius.circular(40),bottomLeft: Radius.circular(40)))),
-                      //
-                      Padding(
-                        padding: const EdgeInsets.only(top: 24,left: 24),
-                        child: InkWell(
-                          onTap: (){
-                            Get.toNamed(Routes.ProfileEdit);
-                          },
-                          child: Container(padding: const EdgeInsets.all(10),width: 44,height: 44,child: SvgPicture.asset(svgPath+"modify.svg",width: 17,height: 17), decoration: BoxDecoration(color: const Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),
-                        ),
-                      ),
-                      ),
-                      //
-                      Align(alignment: Alignment.topRight,
-                          child: InkWell(
-                            onTap: (){},
-                            child: Container(
-                                padding: const EdgeInsets.all(19),width: 44,height: 85,
-                                child: SvgPicture.asset(svgPath+"moredots.svg"),
-                                decoration: BoxDecoration(color: const Color(0xff80808080).withOpacity(0.5),
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(34)))),
-                          ),
-                      ),
-                      //
-                      Padding(
-                        padding: const EdgeInsets.only(left: 24,top: 39),
-                        child: Align(alignment: Alignment.centerLeft,
-                            child: Row(children: [
-                              ClipRRect(child: Image.network("https://picsum.photos/96"),borderRadius: const BorderRadius.all(Radius.circular(20)),),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10,top: 60),
-                                child: Row(
-                                  children: [
-                                    Text(controller.profileSingleList[0].username.toString(), style: Get.textTheme.headline1),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 8),
-                                      child: Container(decoration: BoxDecoration(color: Get.theme.focusColor,shape: BoxShape.circle),
-                                          width: 13,height: 13,child: const Icon(Icons.check,color: Style.background,size: 13,)),
-                                    )
-                                  ],
+              drawer: _drawer(),
+              appBar: AppBar(
+                leading: Builder(builder: (context) =>
+                    PreferredSize(
+                      preferredSize: Size(Get.width,300),
+                      child: Stack(
+                          children: [
+                            Container(
+                                width: Get.width,
+                                height: 180,
+                                decoration:
+                                const BoxDecoration(color:Color(0xff414141),shape: BoxShape.rectangle,borderRadius: BorderRadius.only(bottomRight: Radius.circular(40),bottomLeft: Radius.circular(40)))),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 24,left: 24),
+                              child: InkWell(
+                                onTap: (){
+                                  Get.toNamed(Routes.ProfileEdit);
+                                },
+                                child: Container(padding: const EdgeInsets.all(10),width: 44,height: 44,child: SvgPicture.asset(svgPath+"modify.svg",width: 17,height: 17), decoration: BoxDecoration(color: const Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),
                                 ),
-                              )
-                            ],)),
-                      ),
-                      //
-                      Padding(
-                        padding: const EdgeInsets.only(left: 62,bottom: 22),
-                        child: Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text("Listens",style: Get.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
-                                Text(int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.listens!.toString()) < 1000 ? Get.find<AnalyticsController>().analyticsList[0].data!.listens!.toString() : int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.listens!.toString()) >= 1000 ? listensK : '', style: Get.textTheme.headline1),
-                              ],)),
-                      ),
-                      //
-                      Padding(
-                        padding: const EdgeInsets.only(left: 0,bottom: 22),
-                        child: Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text("Followers",style: Get.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500)),
-                                Text(int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.followers!.toString()) < 1000 ? Get.find<AnalyticsController>().analyticsList[0].data!.followers!.toString() : int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.followers!.toString()) >= 1000 ? followersK : '',style: Get.textTheme.headline1),
-                              ],)),
-                      ),
-                      //
-                      Padding(
-                        padding: const EdgeInsets.only(right: 62,bottom: 22),
-                        child: Align(
-                            alignment: Alignment.bottomRight,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text("Posts",style: Get.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
-                                Text(int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.posts!.toString()) < 1000 ? Get.find<AnalyticsController>().analyticsList[0].data!.posts!.toString() : int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.posts!.toString()) >= 1000 ? postsK : '',style: Get.textTheme.headline1),
-                              ],)),
-                      ),
-                    ]),
+                              ),
+                            ),
+                            Align(alignment: Alignment.topRight,
+                              child: InkWell(
+                                onTap: () => Scaffold.of(context).openDrawer(),
+                                child: Container(
+                                    padding: const EdgeInsets.all(19),width: 44,height: 85,
+                                    child: SvgPicture.asset(svgPath+"moredots.svg"),
+                                    decoration: BoxDecoration(color: const Color(0xff80808080).withOpacity(0.5),
+                                        shape: BoxShape.rectangle,
+                                        borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(34)))),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 24,top: 39),
+                              child: Align(alignment: Alignment.centerLeft,
+                                  child: Row(children: [
+                                    ClipRRect(child: Image.network("https://picsum.photos/96"),borderRadius: const BorderRadius.all(Radius.circular(20)),),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 10,top: 60),
+                                      child: Row(
+                                        children: [
+                                          Text(controller.profileSingleList[0].username.toString(), style: Get.textTheme.headline1),
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 8),
+                                            child: Container(decoration: BoxDecoration(color: Get.theme.focusColor,shape: BoxShape.circle),
+                                                width: 13,height: 13,child: const Icon(Icons.check,color: Style.background,size: 13,)),
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ],)),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 62,bottom: 22),
+                              child: Align(
+                                  alignment: Alignment.bottomLeft,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Text("Listens",style: Get.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
+                                      Text(int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.listens!.toString()) < 1000 ? Get.find<AnalyticsController>().analyticsList[0].data!.listens!.toString() : int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.listens!.toString()) >= 1000 ? listensK : '', style: Get.textTheme.headline1),
+                                    ],)),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 0,bottom: 22),
+                              child: Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Text("Followers",style: Get.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500)),
+                                      Text(int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.followers!.toString()) < 1000 ? Get.find<AnalyticsController>().analyticsList[0].data!.followers!.toString() : int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.followers!.toString()) >= 1000 ? followersK : '',style: Get.textTheme.headline1),
+                                    ],)),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 62,bottom: 22),
+                              child: Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Text("Posts",style: Get.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
+                                      Text(int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.posts!.toString()) < 1000 ? Get.find<AnalyticsController>().analyticsList[0].data!.posts!.toString() : int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.posts!.toString()) >= 1000 ? postsK : '',style: Get.textTheme.headline1),
+                                    ],)),
+                            ),
+                          ]),
+                    ),
+                ),
               ),
               body: Padding(
                 padding: const EdgeInsets.only(right: 22, left: 22, bottom: 20),
@@ -133,7 +135,7 @@ class Profile extends GetView<ProfileController>{
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                  child: SvgPicture.asset(svgPath+"playLists_golden.svg", width: 22, height: 22),
+                                  child: Container(width: 43,height: 43, child: SvgPicture.asset(svgPath+"playLists_golden.svg", fit: BoxFit.scaleDown), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
@@ -145,16 +147,8 @@ class Profile extends GetView<ProfileController>{
                               padding: const EdgeInsets.only(top: 17,right: 32,bottom: 17),
                               child: Text(Get.find<PlayListController>().playList.length.toString(),style: Get.textTheme.headline1!.copyWith(fontSize: 18),),
                             ),
-/*
-            Container(width: 44,height: 44,child: IconButton(
-              color: Colors.yellow,
-
-              icon: const Icon(Icons.edit,color: Colors.white,),onPressed:() {
-
-            },) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)))
-*/
-
-                          ],),),
+                          ]),
+                      ),
                     ),
                     InkWell(
                       onTap: (){
@@ -170,7 +164,7 @@ class Profile extends GetView<ProfileController>{
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                  child: SvgPicture.asset(svgPath+"likedEpisodes_golden.svg", width: 22, height: 22),
+                                  child: Container(width: 43,height: 43, child: SvgPicture.asset(svgPath+"likedEpisodes_golden.svg", fit: BoxFit.scaleDown), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
@@ -185,16 +179,8 @@ class Profile extends GetView<ProfileController>{
                                       ? Get.find<EpisodeController>().viewEpisodeList.length.toString() : '0',
                                   style: Get.textTheme.headline1!.copyWith(fontSize: 18)),
                             ),
-/*
-            Container(width: 44,height: 44,child: IconButton(
-              color: Colors.yellow,
-
-              icon: const Icon(Icons.edit,color: Colors.white,),onPressed:() {
-
-            },) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)))
-*/
-
-                          ],),),
+                          ]),
+                      ),
                     ),
                     InkWell(
                         onTap: (){
@@ -210,7 +196,7 @@ class Profile extends GetView<ProfileController>{
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                    child: SvgPicture.asset(svgPath+"listeningStatus_golden.svg", width: 27, height: 27),
+                                    child: Container(width: 43,height: 43, child: SvgPicture.asset(svgPath+"listeningStatus_golden.svg", fit: BoxFit.scaleDown), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
@@ -225,15 +211,6 @@ class Profile extends GetView<ProfileController>{
                                     child: Icon(Icons.arrow_back_ios, color: Colors.white, size: 12),
                                   )
                               ),
-/*
-            Container(width: 44,height: 44,child: IconButton(
-              color: Colors.yellow,
-
-              icon: const Icon(Icons.edit,color: Colors.white,),onPressed:() {
-
-            },) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)))
-*/
-
                             ],),),
                     ),
                     InkWell(
@@ -250,7 +227,7 @@ class Profile extends GetView<ProfileController>{
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                  child:  SvgPicture.asset(svgPath+"achivments_golden.svg", width: 22, height: 22),
+                                  child: Container(width: 43,height: 43, child: SvgPicture.asset(svgPath+"achivments_golden.svg", fit: BoxFit.scaleDown), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
@@ -265,16 +242,8 @@ class Profile extends GetView<ProfileController>{
                                   child: Icon(Icons.arrow_back_ios, color: Colors.white, size: 12),
                                 )
                             ),
-/*
-            Container(width: 44,height: 44,child: IconButton(
-              color: Colors.yellow,
-
-              icon: const Icon(Icons.edit,color: Colors.white,),onPressed:() {
-
-            },) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)))
-*/
-
-                          ],),),
+                          ]),
+                      ),
                     ),
                     InkWell(
                         onTap: () => Get.toNamed(Routes.MyCasts),
@@ -288,7 +257,7 @@ class Profile extends GetView<ProfileController>{
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                    child: SvgPicture.asset(svgPath+"myCasts_golden.svg", width: 22, height: 22),
+                                    child: Container(width: 43,height: 43, child: SvgPicture.asset(svgPath+"myCasts_golden.svg", fit: BoxFit.scaleDown), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
@@ -303,15 +272,6 @@ class Profile extends GetView<ProfileController>{
                                     child: Icon(Icons.arrow_back_ios, color: Colors.white, size: 12),
                                   )
                               ),
-/*
-            Container(width: 44,height: 44,child: IconButton(
-              color: Colors.yellow,
-
-              icon: const Icon(Icons.edit,color: Colors.white,),onPressed:() {
-
-            },) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)))
-*/
-
                             ],),),
                     ),
                     InkWell(
@@ -336,7 +296,7 @@ class Profile extends GetView<ProfileController>{
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                    child: SvgPicture.asset(svgPath+"market_golden.svg", width: 22, height: 22),
+                                    child: Container(width: 43,height: 43, child: SvgPicture.asset(svgPath+"market_golden.svg", fit: BoxFit.scaleDown), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
@@ -351,16 +311,8 @@ class Profile extends GetView<ProfileController>{
                                     child: Icon(Icons.arrow_back_ios, color: Colors.white, size: 12),
                                   )
                               ),
-/*
-            Container(width: 44,height: 44,child: IconButton(
-              color: Colors.yellow,
-
-              icon: const Icon(Icons.edit,color: Colors.white,),onPressed:() {
-
-            },) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)))
-*/
-
-                            ],),),
+                            ]),
+                        ),
                     ),
                     InkWell(
                         onTap: () => Get.snackbar(
@@ -384,7 +336,7 @@ class Profile extends GetView<ProfileController>{
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                    child: SvgPicture.asset(svgPath+"promotion_golden.svg", width: 22, height: 22),
+                                    child: Container(width: 43,height: 43, child: SvgPicture.asset(svgPath+"promotion_golden.svg", fit: BoxFit.scaleDown), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
@@ -399,15 +351,6 @@ class Profile extends GetView<ProfileController>{
                                     child: Icon(Icons.arrow_back_ios, color: Colors.white, size: 12),
                                   )
                               ),
-/*
-            Container(width: 44,height: 44,child: IconButton(
-              color: Colors.yellow,
-
-              icon: const Icon(Icons.edit,color: Colors.white,),onPressed:() {
-
-            },) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)))
-*/
-
                             ],),),
                     ),
                     InkWell(
@@ -422,7 +365,7 @@ class Profile extends GetView<ProfileController>{
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 6,bottom: 6),
-                                    child: SvgPicture.asset(svgPath+"downloads_golden.svg", width: 22, height: 22),
+                                    child: Container(width: 43,height: 43, child: SvgPicture.asset(svgPath+"downloads_golden.svg", fit: BoxFit.scaleDown), decoration: BoxDecoration(color: const Color(0xff060606).withOpacity(0.18),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12))),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 6,left: 11,bottom: 6),
@@ -437,22 +380,40 @@ class Profile extends GetView<ProfileController>{
                                     child: Icon(Icons.arrow_back_ios, color: Colors.white, size: 12),
                                   )
                               ),
-/*
-            Container(width: 44,height: 44,child: IconButton(
-              color: Colors.yellow,
-
-              icon: const Icon(Icons.edit,color: Colors.white,),onPressed:() {
-
-            },) ,decoration: BoxDecoration(color: Color(0xff80808080).withOpacity(0.5),shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)))
-*/
-
-                            ],),),
+                            ]),
+                        ),
                     ),
                   ],
                 ),
               ),
           );
         },
+      ),
+    );
+  }
+
+  _drawer(){
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: const <Widget>[
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
+            child: Text(
+              'Drawer Header',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.message),
+            title: Text('Messages'),
+          ),
+        ],
       ),
     );
   }

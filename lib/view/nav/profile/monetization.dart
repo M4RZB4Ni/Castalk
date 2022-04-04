@@ -7,7 +7,8 @@ import 'package:get/get.dart';
 
 class Monetization extends GetView<Monetization>{
 
-  TextEditingController numberController = TextEditingController();
+  String svgPath = "assets/icons/";
+  TextEditingController fileNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,6 @@ class Monetization extends GetView<Monetization>{
                 ),
               ),
 
-
               Padding(
                 padding: const EdgeInsets.only(top: 51,right: 24,left:24),
                 child: Column(
@@ -61,34 +61,33 @@ class Monetization extends GetView<Monetization>{
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Add your Email:",style: Style.t_400_16w),
                         Padding(
-                            padding: const EdgeInsets.only(top: 8,bottom: 9),
-                            child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
-                                child: TextField(
-                                    controller: numberController,
-                                    textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "your email address"))
-
-                            )),
-
-
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 12),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Other options:",style: Style.t_400_16w),
-                          Padding(
-                              padding: const EdgeInsets.only(top: 8,bottom: 9),
-                              child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
+                          padding: const EdgeInsets.only(top: 20,bottom: 10),
+                          child: Text("File:",style: Style.t_400_16w,),
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              width: 44,
+                              height: 44,
+                              padding: const EdgeInsets.all(15),
+                              child: SvgPicture.asset(svgPath+"upload.svg"),
+                              decoration: BoxDecoration(
+                                  color: Style.accentGold,
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.circular(12)),
+                            ),
+                            Expanded(flex:12,child:  Padding(
+                                padding: const EdgeInsets.all(15),
+                                child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
                                   child: TextField(
-                                      controller: numberController,
-                                      textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration.copyWith(hintText: "options and stuffs..."))
-                              )),
-                        ],
-                      ),
+                                      controller: fileNameController,
+                                      textAlign: TextAlign.left,maxLines: 1,
+                                      decoration: Style.inputTextDecorationFileName),
+                                )))
+                          ],
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -119,17 +118,20 @@ class Monetization extends GetView<Monetization>{
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            width: 44,
-            height: 44,
-            child: const Icon(
-              Icons.arrow_back_outlined,
-              color: Colors.white,
+          InkWell(
+            onTap: () => Get.back(),
+            child: Container(
+              width: 44,
+              height: 44,
+              child: const Icon(
+                Icons.arrow_back_outlined,
+                color: Colors.white,
+              ),
+              decoration: BoxDecoration(
+                  color: Style.headerBackBtn,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(12)),
             ),
-            decoration: BoxDecoration(
-                color: Style.headerBackBtn,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(12)),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 9),

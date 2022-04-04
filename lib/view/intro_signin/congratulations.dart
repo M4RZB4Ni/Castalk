@@ -69,7 +69,7 @@ class CongratulationsState extends State<Congratulations>{
       bottomSheet: Padding(
         padding: const EdgeInsets.only(bottom: 59,left: 26),
         child: ElevatedButton(
-          onPressed:() => Get.toNamed(Routes.Profile),
+          onPressed:() => Get.toNamed(Routes.NavMother),
           child:const Text("Let’s Listen",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
             padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(

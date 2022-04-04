@@ -97,7 +97,7 @@ class Achivments extends GetView<AchivmentsController>{
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                  Text("7 Days in a row",style: Style.t_400_12w,),
+                  Text('${(controller.achivmentList[0].data![index].target!.toString())} Days in a row',style: Style.t_400_12w,),
                     RichText(text: TextSpan(
                         children: [
                           TextSpan(text: controller.achivmentList[0].data![index].progress!.toString(), style: Style.t_500_14w),

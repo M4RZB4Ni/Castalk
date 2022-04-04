@@ -155,7 +155,7 @@ class ProfileEdit extends GetView<ProlfileEditController> {
                             borderRadius: BorderRadius.circular(12)),
                       ),
                       Expanded(flex:12,child:  Padding(
-                          padding: const EdgeInsets.only(top: 0,bottom: 9,left: 10),
+                          padding: const EdgeInsets.all(15),
                           child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
                               child: TextField(
                                   controller: controller.episodeNameController,
@@ -163,7 +163,7 @@ class ProfileEdit extends GetView<ProlfileEditController> {
                                   decoration: Style.inputTextDecorationEpisodeNameProfile),
                           )))
                     ],
-                  )
+                  ),
                 ],
               ),
               Column(

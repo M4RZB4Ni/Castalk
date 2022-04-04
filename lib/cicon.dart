@@ -6,6 +6,7 @@ class Cicon{
   static const String arrowWithdraw= _prefix+"arrow_withdraw"+_svg;
   static const String addlist= _prefix+"addlist"+_svg;
   static const String download= _prefix+"download"+_svg;
+  static const String downloads_golden= _prefix+"downloads_golden"+_svg;
   static const String like= _prefix+"like"+_svg;
   static const String share= _prefix+"share"+_svg;
   static const String mic= _prefix+"mic"+_svg;

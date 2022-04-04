@@ -92,17 +92,20 @@ class RequestVerifyBadge extends GetView<RequestVerifyBadge>{
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            width: 44,
-            height: 44,
-            child: const Icon(
-              Icons.arrow_back_outlined,
-              color: Colors.white,
+          InkWell(
+            onTap: () => Get.back(),
+            child: Container(
+              width: 44,
+              height: 44,
+              child: const Icon(
+                Icons.arrow_back_outlined,
+                color: Colors.white,
+              ),
+              decoration: BoxDecoration(
+                  color: Style.headerBackBtn,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(12)),
             ),
-            decoration: BoxDecoration(
-                color: Style.headerBackBtn,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(12)),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 9),

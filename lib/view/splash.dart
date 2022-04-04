@@ -8,19 +8,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class Splash extends GetView<AuthController>{
-
-
   const Splash({Key? key}) : super(key: key);
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Style.background,
-      body: Center(child: SvgPicture.asset(Cicon.logo,width:  Utils(context).getWidth()/3)),
+      body: Center(child: SvgPicture.asset(Cicon.logo, width: Get.width/3)),
     );
-
   }
 
 }

@@ -156,25 +156,23 @@ class Downloads extends GetView<DownloadsController> {
           ),
         ),
         Flexible(
-          child: ListView(
-            shrinkWrap: true,
-
+          child: ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
-            children: [
-              inProgressItem(),
-              inProgressItem(),
-              inProgressItem(),
-              inProgressItem(),
-              inProgressItem(),
-            ],
+            itemCount: controller.downloadsList[0].data![0].episode!.season!.episodes!.length,
+            shrinkWrap: true,
+            itemBuilder: (BuildContext context, int index) {
+              return controller.downloadsList[0].data![0].episode!.season!.episodes!.isEmpty ? 'There is no item!' : inProgressItem(index);
+            },
           ),
         )
       ],
     );
   }
 
-  inProgressItem() {
+  inProgressItem(int index) {
+
     bool downloading = true;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -190,7 +188,6 @@ class Downloads extends GetView<DownloadsController> {
                   children: [
                     Container(
                       padding: const EdgeInsets.all(25),
-
                       height: 96,
                       width: 96,
                       decoration: BoxDecoration(
@@ -220,15 +217,14 @@ class Downloads extends GetView<DownloadsController> {
                 flex: 2,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top:8.0),
                       child: Text(
-                        "Episode name which is long...".length > 30
-                            ? "Episode name which is long...".substring(0, 30) + "..."
-                            : "Episode name which is long...",
+                        controller.downloadsList[0].data![0].episode!.season!.episodes![index].name!.length > 30
+                            ? controller.downloadsList[0].data![0].episode!.season!.episodes![index].name!.substring(0, 30) + "..."
+                            : controller.downloadsList[0].data![0].episode!.season!.episodes![index].name!,
                         style: Get.textTheme.headline1!.copyWith(fontSize: 14),
                       ),
                     ),
@@ -266,7 +262,7 @@ class Downloads extends GetView<DownloadsController> {
                           decoration: BoxDecoration(color: Style.gray48op50,borderRadius: BorderRadius.circular(12)),
                           child: Row(
                             children: [
-                              downloading
+                              downloading == true
                                   ? Stack(
                                       children: [
                                         SvgPicture.asset(
@@ -282,7 +278,7 @@ class Downloads extends GetView<DownloadsController> {
                                       height: 16,
                                       color: Style.grayc4,
                                     ),
-                              !downloading
+                              downloading == false
                                   ? Text("Resume",
                                       style: Get.textTheme.headline2!
                                           .copyWith(fontWeight: FontWeight.w500))
@@ -291,7 +287,7 @@ class Downloads extends GetView<DownloadsController> {
                                           .copyWith(fontWeight: FontWeight.w500))
                             ],
                           ),
-                        )
+                        ),
                       ],
                     )
                   ],
@@ -308,10 +304,8 @@ class Downloads extends GetView<DownloadsController> {
     );
   }
 
-
-
-
   downloaded(w, h) {
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -324,28 +318,23 @@ class Downloads extends GetView<DownloadsController> {
           ),
         ),
         Flexible(
-          child: ListView(
-            shrinkWrap: true,
-
-            children: [
-              downloadedItem(),
-              downloadedItem(),
-              downloadedItem(),
-              downloadedItem(),
-              downloadedItem(),
-            ],
-
+          child: ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
-
-
+            itemCount: controller.downloadsList[0].data![0].episode!.season!.episodes!.length,
+            shrinkWrap: true,
+            itemBuilder: (BuildContext context, int index) {
+              return controller.downloadsList[0].data![0].episode!.season!.episodes!.isEmpty ? 'There is no item!' : downloadedItem(index);
+            },
           ),
         )
       ],
     );
   }
 
-  downloadedItem() {
+  downloadedItem(int index) {
+
     bool downloading = true;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
@@ -360,7 +349,6 @@ class Downloads extends GetView<DownloadsController> {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(25),
-
                     height: 96,
                     width: 96,
                     decoration: BoxDecoration(
@@ -395,9 +383,9 @@ class Downloads extends GetView<DownloadsController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Episode name which is long...".length > 30
-                      ? "Episode name which is long...".substring(0, 30) + "..."
-                      : "Episode name which is long...",
+                  controller.downloadsList[0].data![0].episode!.season!.episodes![index].name!.length > 30
+                      ? controller.downloadsList[0].data![0].episode!.season!.episodes![index].name!.substring(0, 30) + "..."
+                      : controller.downloadsList[0].data![0].episode!.season!.episodes![index].name!,
                   style: Get.textTheme.headline1!.copyWith(fontSize: 14),
                 ),
                 Row(
@@ -406,65 +394,41 @@ class Downloads extends GetView<DownloadsController> {
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        downloading
-                            ? Padding(
+                        Padding(
                           padding: const EdgeInsets.only(top: 15),
-                          child: Text("Downloading...",
-                              style: Get.textTheme.headline2!
-                                  .copyWith(fontWeight: FontWeight.w500)),
-                        )
-                            : Padding(
-                          padding: const EdgeInsets.only(top: 15),
-                          child: Text(
-                            "Paused",
-                            style: Get.textTheme.headline2!
-                                .copyWith(color: Style.grayA1),
+                          child: Text("Done!", style: Get.textTheme.headline1!.copyWith(fontSize: 14),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 12),
-                          child: Text("67%",
-                              style: downloading
-                                  ? Get.textTheme.headline2!
-                                  .copyWith(fontWeight: FontWeight.w500)
-                                  : Get.textTheme.headline2!
-                                  .copyWith(color: Style.grayA1)),
-                        )
-                      ],
-                    ),
+                      ]),
                     Container(
+                      width: 85,
+                      height: 50,
                       padding: const EdgeInsets.only(top: 5,bottom: 5,right: 6,left: 6),
                       decoration: BoxDecoration(color: Style.gray48op50,borderRadius: BorderRadius.circular(12)),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          downloading
-                              ? Stack(
-                            children: [
-                              SvgPicture.asset(
-                                  svgPath + "download_prog.svg",
-                                  width: 38,
-                                  height: 38),
-                              Positioned.fill(child: Align(child: Text("65", style: Get.textTheme.overline))),
-                            ],
-                          )
-                              : SvgPicture.asset(
-                            Cicon.download,
-                            width: 19,
-                            height: 16,
-                            color: Style.grayc4,
+                          Padding(padding: const EdgeInsets.only(left: 2),
+                            child: Positioned.fill(
+                              child: Align(
+                                child: SvgPicture.asset(
+                                  Cicon.downloads_golden,
+                                  width: 20,
+                                  height: 20,
+                                  color: Style.accentGold,
+                                ),
+                              ),
+                            ),
                           ),
-                          !downloading
-                              ? Text("Resume",
-                              style: Get.textTheme.headline2!
-                                  .copyWith(fontWeight: FontWeight.w500))
-                              : Text("Pause",
-                              style: Get.textTheme.headline2!
-                                  .copyWith(fontWeight: FontWeight.w500))
-                        ],
-                      ),
+                          Padding(padding: const EdgeInsets.only(right: 2),
+                            child: InkWell(
+                              onTap: () => debugPrint(''),
+                              child: const Text("Delete", style: TextStyle(color: Colors.red, fontSize: 14)),
+                            ),
+                          ),
+                        ]),
                     )
                   ],
                 )

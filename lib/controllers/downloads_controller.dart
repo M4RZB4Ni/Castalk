@@ -11,6 +11,7 @@ class DownloadsController extends GetxController with StateMixin<List<DownloadsM
   //
   @override
   onInit() {
+    getDownloadData(episodeId: 1);
     super.onInit();
   }
   //

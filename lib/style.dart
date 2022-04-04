@@ -148,6 +148,9 @@ class Style  {
   static InputDecoration inputTextDecorationEpisodeNameProfile = InputDecoration(border: InputBorder.none,isDense: true,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
       hintText: "Add Your Episode name...",hintStyle: TextStyle(color: hintColor),fillColor: Colors.white);
 
+  static InputDecoration inputTextDecorationFileName = InputDecoration(border: InputBorder.none,isDense: true,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
+      hintText: "File name...",hintStyle: TextStyle(color: hintColor),fillColor: Colors.white);
+
   static InputDecoration inputTextDecorationAboutProfile = InputDecoration(border: InputBorder.none,isDense: true,contentPadding: const EdgeInsets.only(top: 12,bottom: 12,left: 19),
       hintText: "Add your description...",hintStyle: TextStyle(color: hintColor),fillColor: Colors.white);
 
