@@ -1,13 +1,13 @@
 import 'package:castalk/cicon.dart';
 import 'package:castalk/routes/routes.dart';
 import 'package:castalk/style.dart';
+import 'package:d_chart/d_chart.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../../controllers/analytics_controller.dart';
 import '../../../../controllers/mycasts_controller.dart';
-
 
 class MyCastsAnalytics extends GetView<AnalyticsController>{
 
@@ -108,16 +108,14 @@ class MyCastsAnalytics extends GetView<AnalyticsController>{
               padding: const EdgeInsets.only(right: 25,left: 25,top: 33),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 0,left: 0,bottom: 6),
                     child: Text("Audience :",style: Style.t_500_16w,),
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const SizedBox(),
                       Column(
                         children: [
                           Text('${Get.find<AnalyticsController>().analyticsList[0].data!.audience!.gender!.female!}% Female',style: Style.t_500_12w,),
@@ -137,7 +135,78 @@ class MyCastsAnalytics extends GetView<AnalyticsController>{
                           ),
                           Text('${Get.find<AnalyticsController>().analyticsList[0].data!.audience!.gender!.male!}% Male',style: Style.t_500_12g,),
                         ],
-                      )
+                      ),
+                      Container(
+                          padding: const EdgeInsets.only(top: 14,bottom: 14),
+                          height: 144,
+                          width: Get.width/3,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("50 > ------>",style: Style.t_400_14w),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 28),
+                                        child: Text('${(controller.analyticsList[0].data!.audience!.age!.age_50!)}%',style: Style.t_400_14g),
+                                      ),
+
+                                    ]),
+                              ),
+                              Expanded(
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("40 - 50 ------>",style: Style.t_400_14w),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 28),
+                                        child: Text('${(controller.analyticsList[0].data!.audience!.age!.age_40_50!)}%',style: Style.t_400_14g),
+                                      ),
+
+                                    ]),
+                              ),
+                              Expanded(
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("30 - 40 ------>",style: Style.t_400_14w),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 28),
+                                        child: Text('${(controller.analyticsList[0].data!.audience!.age!.age_30_40!)}%',style: Style.t_400_14g),
+                                      ),
+
+                                    ]),
+                              ),
+                              Expanded(
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("20 - 30 ------>",style: Style.t_400_14w),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 28),
+                                        child: Text('${(controller.analyticsList[0].data!.audience!.age!.age_20_30!)}%',style: Style.t_400_14g),
+                                      ),
+
+                                    ]),
+                              ),
+                              Expanded(
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("12 - 20 ------>",style: Style.t_400_14w),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 28),
+                                        child: Text('${(controller.analyticsList[0].data!.audience!.age!.age_12_20!)}%',style: Style.t_400_14g),
+                                      ),
+
+                                    ]),
+                              ),
+                              Text("Age",style: Style.t_500_16w),
+                            ],
+                          )
+                      ),
                     ],
                   ),
                 ],
@@ -831,6 +900,34 @@ class MyCastsAnalytics extends GetView<AnalyticsController>{
           margin: 8,
         ),
       ),
+    );
+  }
+
+  _ageChart() {
+
+    return Padding(
+      padding: const EdgeInsets.all(30),
+      child: DChartBar(
+        data: const [
+          {
+            'id': 'Bar',
+            'data': [
+              {'domain': '2020', 'measure': 3},
+              {'domain': '2021', 'measure': 4},
+              {'domain': '2022', 'measure': 6},
+              {'domain': '2023', 'measure': 0.3},
+            ],
+          },
+        ],
+        domainLabelPaddingToAxisLine: 16,
+        axisLineTick: 2,
+        axisLinePointTick: 2,
+        axisLinePointWidth: 10,
+        axisLineColor: Colors.yellowAccent,
+        measureLabelPaddingToAxisLine: 16,
+        barColor: (barData, index, id) => Colors.yellowAccent,
+        showBarValue: true,
+      )
     );
   }
 

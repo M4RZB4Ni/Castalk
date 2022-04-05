@@ -1,27 +1,16 @@
-import 'dart:convert';
 import 'package:castalk/cicon.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:filesize/filesize.dart';
 import '../../../controllers/monetization_controller.dart';
-
-
 
 class Monetization extends  GetView<MonetizationController>{
 
   Monetization({Key? key}) : super(key: key);
-
   String svgPath = "assets/icons/";
   TextEditingController fileNameController = TextEditingController();
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +99,7 @@ class Monetization extends  GetView<MonetizationController>{
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 45,left: 28,bottom: 28),
-                child: ElevatedButton(onPressed:() => Get.find<MonetizationController>().monetizationUpload(file: controller.pickedFile, castalkMonetizaion: fileNameController.text), child:const Text("Send Request",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+                child: ElevatedButton(onPressed:() => controller.monetizationUpload(file: controller.pickedFile), child:const Text("Send Request",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
                     padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
