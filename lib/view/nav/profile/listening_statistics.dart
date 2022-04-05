@@ -213,27 +213,25 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
       minX: 0,
       maxX: 14,
       minY: 0,
-      maxY: 7,
+      maxY: 500,
       lineBarsData: [
         LineChartBarData(
           lineChartStepData: LineChartStepData(stepDirection: 1),
-          spots: const [
-            FlSpot(0, 0),
-            FlSpot(2, 2),
-            FlSpot(4, 5),
-            FlSpot(6, 3),
-            FlSpot(8, 4),
-            FlSpot(10, 3),
-            FlSpot(12, 4),
-            FlSpot(14, 6),
+          spots: [
+            const FlSpot(0, 2),
+            FlSpot(2, controller.listeningAnalyticsList[0].data!.total_listening_time_by_week![6].toDouble()),
+            FlSpot(4, controller.listeningAnalyticsList[0].data!.total_listening_time_by_week![0].toDouble()),
+            FlSpot(6, controller.listeningAnalyticsList[0].data!.total_listening_time_by_week![1].toDouble()),
+            FlSpot(8, controller.listeningAnalyticsList[0].data!.total_listening_time_by_week![2].toDouble()),
+            FlSpot(10, controller.listeningAnalyticsList[0].data!.total_listening_time_by_week![3].toDouble()),
+            FlSpot(12, controller.listeningAnalyticsList[0].data!.total_listening_time_by_week![4].toDouble()),
+            FlSpot(14, controller.listeningAnalyticsList[0].data!.total_listening_time_by_week![5].toDouble()),
           ],
           isCurved: true,
           colors: Style.chartGradiant,
           barWidth: 2,
           isStrokeCapRound: true,
-          dotData: FlDotData(
-            show: true,
-          ),
+          dotData: FlDotData(show: true),
           belowBarData: BarAreaData(
             spotsLine: BarAreaSpotsLine(
                 show: true,

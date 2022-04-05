@@ -22,24 +22,24 @@ import '../controllers/profile_edit_controller.dart';
 class CastalkBindings implements Bindings{
   @override
   void dependencies(){
-    Get.put(AuthController());
-    Get.put(IntroController());
-    Get.put(CongratulationsController());
-    Get.put(AddAcountInfoController());
-    Get.put(ProfileController());
-    Get.put(FollowersController());
-    Get.put(EpisodeController());
-    Get.put(MotionController());
-    Get.put(PlayListController());
-    Get.put(ListeningStatisticsController());
-    Get.put(ProlfileEditController());
-    Get.put(MyCastsController());
-    Get.put(AchivmentsController());
-    Get.put(MarketController());
-    Get.put(AnalyticsController());
-    Get.put(UserListController());
-    Get.put(DownloadsController());
-    Get.put(WalletController());
+    // Get.put(AuthController());
+    // Get.put(IntroController());
+    // Get.put(CongratulationsController());
+    // Get.put(AddAcountInfoController());
+    // Get.put(ProfileController());
+    // Get.put(FollowersController());
+    // Get.put(EpisodeController());
+    // Get.put(MotionController());
+    // Get.put(PlayListController());
+    // Get.put(ListeningStatisticsController());
+    // Get.put(ProlfileEditController());
+    // Get.put(MyCastsController());
+    // Get.put(AchivmentsController());
+    // Get.put(MarketController());
+    // Get.put(AnalyticsController());
+    // Get.put(UserListController());
+    // Get.put(DownloadsController());
+    // Get.put(WalletController());
     //Get.put(MonetizationController());
     Get.lazyPut(() => MonetizationController());
   }
