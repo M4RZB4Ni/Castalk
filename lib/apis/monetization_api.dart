@@ -13,7 +13,7 @@ class Monetization{
     };
 
     var request = http.MultipartRequest('POST', Uri.parse(BaseApi.baseAddressSlash+'/upload'));
-    request.files.add(await http.MultipartFile.fromPath('pdf', file));
+    request.files.add(await http.MultipartFile.fromPath('MP3', file));
 
     request.fields.addAll({
       "file": file,

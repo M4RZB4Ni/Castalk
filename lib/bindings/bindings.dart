@@ -16,6 +16,7 @@ import '../controllers/auth_controller.dart';
 import '../controllers/episode_controller.dart';
 import '../controllers/intro_controller.dart';
 import '../controllers/listening_statistics_controller.dart';
+import '../controllers/monetization_controller.dart';
 import '../controllers/profile_edit_controller.dart';
 
 class CastalkBindings implements Bindings{
@@ -39,5 +40,7 @@ class CastalkBindings implements Bindings{
     Get.put(UserListController());
     Get.put(DownloadsController());
     Get.put(WalletController());
+    //Get.put(MonetizationController());
+    Get.lazyPut(() => MonetizationController());
   }
 }
