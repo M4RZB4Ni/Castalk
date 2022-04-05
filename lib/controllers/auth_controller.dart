@@ -25,7 +25,7 @@ class AuthController extends GetxController{
 
   @override
   void onInit() {
-    WidgetsFlutterBinding.ensureInitialized();
+    //WidgetsFlutterBinding.ensureInitialized();
     checkToken();
     super.onInit();
   }
@@ -95,6 +95,8 @@ class AuthController extends GetxController{
 
   void checkToken() async
   {
+    debugPrint("token--> dadad");
+
     var token= await storage.read(key: "TokenKey");
     debugPrint("token--> $token");
     if(token!=null){

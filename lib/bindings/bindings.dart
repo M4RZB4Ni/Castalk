@@ -22,8 +22,8 @@ import '../controllers/profile_edit_controller.dart';
 class CastalkBindings implements Bindings{
   @override
   void dependencies(){
-    Get.lazyPut(() =>AuthController());
-    Get.lazyPut(() =>IntroController());
+    Get.put(AuthController());
+    Get.lazyPut(() => IntroController(),);
     Get.lazyPut(() =>CongratulationsController());
     Get.lazyPut(() =>AddAcountInfoController());
     Get.lazyPut(() =>ProfileController());
@@ -41,6 +41,6 @@ class CastalkBindings implements Bindings{
     Get.lazyPut(() =>DownloadsController());
     Get.lazyPut(() =>WalletController());
     Get.lazyPut(() =>MonetizationController());
-    Get.lazyPut(() => MonetizationController());
+    //Get.lazyPut(() => MonetizationController());
   }
 }

@@ -10,14 +10,16 @@ class CreateEpisodeModel with _$CreateEpisodeModel{
   const CreateEpisodeModel._();
 
   factory CreateEpisodeModel({
-    required String title,
+    required String name,
     required String description,
-    required String podcastId,
-    required String seasonId,
-    required String imageID,
-    required bool allowShare,
-    required bool allowComments,
-    required String fileID,
+    required String season_id,
+    required String allow_comments,
+    required String allow_share,
+    required String updated_at,
+    required String created_at,
+    required int comments_count,
+    required int likes_count,
+    required List comments,
   }) = _CreateEpisodeModel;
 
   factory CreateEpisodeModel.fromJson(Map<String, dynamic> map) => _$CreateEpisodeModelFromJson(map);
