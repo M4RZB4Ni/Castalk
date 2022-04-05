@@ -42,7 +42,7 @@ class MyCastsList extends GetView<UserListController> {
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  return controller.userList[0].data![index].seasons!.isEmpty ? 'There is no episode.' : _likedItem(Get.width,Get.height, index);
+                  return controller.userList[0].data![0].seasons!.isEmpty ? 'There is no episode.' : _likedItem(Get.width,Get.height, index);
                 }
               ),
               ),
@@ -268,9 +268,9 @@ class MyCastsList extends GetView<UserListController> {
       width: w,
       height: 220,
       child: ListView.builder(
-        itemCount: Get.find<EpisodeController>().viewEpisodeList[0].data!.season!.episodes!.length,
+        itemCount: controller.userList[0].data![0].seasons!.length,
         itemBuilder: (context, index) {
-          return  Get.find<EpisodeController>().viewEpisodeList[0].data!.season!.episodes!.isNotEmpty ? _podcastItem(index) : Text('Episode does not exist!', style: Get.textTheme.headline1!.copyWith(fontSize: 14));
+          return  controller.userList[0].data![0].seasons!.isNotEmpty ? _podcastItem(index) : Text('Episode does not exist!', style: Get.textTheme.headline1!.copyWith(fontSize: 14));
         },
         scrollDirection: Axis.horizontal,
       ),
@@ -397,14 +397,14 @@ _searchBar(w)
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(Get.find<EpisodeController>().viewEpisodeList[0].data!.podcast!.title!.toString().length > 30
-                    ? Get.find<EpisodeController>().viewEpisodeList[0].data!.podcast!.title!.toString().substring(0, 30) + "..."
-                    : Get.find<EpisodeController>().viewEpisodeList[0].data!.podcast!.title!.toString(), style: Style.t_500_14w,),
+                Text(controller.userList[0].data![0].seasons![index].podcast!.title!.toString().length > 30
+                    ? controller.userList[0].data![0].seasons![index].podcast!.title!.toString().substring(0, 30) + "..."
+                    : controller.userList[0].data![0].seasons![index].podcast!.title!.toString(), style: Style.t_500_14w,),
                 Padding(
                   padding: const EdgeInsets.only(top: 4),
-                  child: Text(Get.find<EpisodeController>().viewEpisodeList[0].data!.podcast!.description!.toString().length > 30
-                      ? Get.find<EpisodeController>().viewEpisodeList[0].data!.podcast!.description!.toString().substring(0, 30) + "..."
-                      : Get.find<EpisodeController>().viewEpisodeList[0].data!.podcast!.description!.toString(), style: Style.t_400_12_gray,),
+                  child: Text(controller.userList[0].data![0].seasons![index].podcast!.description!.toString().length > 30
+                      ? controller.userList[0].data![0].seasons![index].podcast!.description!.toString().substring(0, 30) + "..."
+                      : controller.userList[0].data![0].seasons![index].podcast!.description!.toString(), style: Style.t_400_12_gray,),
                 ),
               ],
             ),

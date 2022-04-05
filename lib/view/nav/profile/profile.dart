@@ -7,7 +7,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import '../../../cicon.dart';
 import '../../../controllers/episode_controller.dart';
 
 class Profile extends GetView<ProfileController>{

@@ -23,23 +23,27 @@ class _$CreateEpisodeModelTearOff {
   const _$CreateEpisodeModelTearOff();
 
   _CreateEpisodeModel call(
-      {required String title,
+      {required String name,
       required String description,
-      required String podcastId,
-      required String seasonId,
-      required String imageID,
-      required bool allowShare,
-      required bool allowComments,
-      required String fileID}) {
+      required String season_id,
+      required String allow_comments,
+      required String allow_share,
+      required String updated_at,
+      required String created_at,
+      required int comments_count,
+      required int likes_count,
+      required List<dynamic> comments}) {
     return _CreateEpisodeModel(
-      title: title,
+      name: name,
       description: description,
-      podcastId: podcastId,
-      seasonId: seasonId,
-      imageID: imageID,
-      allowShare: allowShare,
-      allowComments: allowComments,
-      fileID: fileID,
+      season_id: season_id,
+      allow_comments: allow_comments,
+      allow_share: allow_share,
+      updated_at: updated_at,
+      created_at: created_at,
+      comments_count: comments_count,
+      likes_count: likes_count,
+      comments: comments,
     );
   }
 
@@ -53,14 +57,16 @@ const $CreateEpisodeModel = _$CreateEpisodeModelTearOff();
 
 /// @nodoc
 mixin _$CreateEpisodeModel {
-  String get title => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get podcastId => throw _privateConstructorUsedError;
-  String get seasonId => throw _privateConstructorUsedError;
-  String get imageID => throw _privateConstructorUsedError;
-  bool get allowShare => throw _privateConstructorUsedError;
-  bool get allowComments => throw _privateConstructorUsedError;
-  String get fileID => throw _privateConstructorUsedError;
+  String get season_id => throw _privateConstructorUsedError;
+  String get allow_comments => throw _privateConstructorUsedError;
+  String get allow_share => throw _privateConstructorUsedError;
+  String get updated_at => throw _privateConstructorUsedError;
+  String get created_at => throw _privateConstructorUsedError;
+  int get comments_count => throw _privateConstructorUsedError;
+  int get likes_count => throw _privateConstructorUsedError;
+  List<dynamic> get comments => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -74,14 +80,16 @@ abstract class $CreateEpisodeModelCopyWith<$Res> {
           CreateEpisodeModel value, $Res Function(CreateEpisodeModel) then) =
       _$CreateEpisodeModelCopyWithImpl<$Res>;
   $Res call(
-      {String title,
+      {String name,
       String description,
-      String podcastId,
-      String seasonId,
-      String imageID,
-      bool allowShare,
-      bool allowComments,
-      String fileID});
+      String season_id,
+      String allow_comments,
+      String allow_share,
+      String updated_at,
+      String created_at,
+      int comments_count,
+      int likes_count,
+      List<dynamic> comments});
 }
 
 /// @nodoc
@@ -95,48 +103,58 @@ class _$CreateEpisodeModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? title = freezed,
+    Object? name = freezed,
     Object? description = freezed,
-    Object? podcastId = freezed,
-    Object? seasonId = freezed,
-    Object? imageID = freezed,
-    Object? allowShare = freezed,
-    Object? allowComments = freezed,
-    Object? fileID = freezed,
+    Object? season_id = freezed,
+    Object? allow_comments = freezed,
+    Object? allow_share = freezed,
+    Object? updated_at = freezed,
+    Object? created_at = freezed,
+    Object? comments_count = freezed,
+    Object? likes_count = freezed,
+    Object? comments = freezed,
   }) {
     return _then(_value.copyWith(
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      podcastId: podcastId == freezed
-          ? _value.podcastId
-          : podcastId // ignore: cast_nullable_to_non_nullable
+      season_id: season_id == freezed
+          ? _value.season_id
+          : season_id // ignore: cast_nullable_to_non_nullable
               as String,
-      seasonId: seasonId == freezed
-          ? _value.seasonId
-          : seasonId // ignore: cast_nullable_to_non_nullable
+      allow_comments: allow_comments == freezed
+          ? _value.allow_comments
+          : allow_comments // ignore: cast_nullable_to_non_nullable
               as String,
-      imageID: imageID == freezed
-          ? _value.imageID
-          : imageID // ignore: cast_nullable_to_non_nullable
+      allow_share: allow_share == freezed
+          ? _value.allow_share
+          : allow_share // ignore: cast_nullable_to_non_nullable
               as String,
-      allowShare: allowShare == freezed
-          ? _value.allowShare
-          : allowShare // ignore: cast_nullable_to_non_nullable
-              as bool,
-      allowComments: allowComments == freezed
-          ? _value.allowComments
-          : allowComments // ignore: cast_nullable_to_non_nullable
-              as bool,
-      fileID: fileID == freezed
-          ? _value.fileID
-          : fileID // ignore: cast_nullable_to_non_nullable
+      updated_at: updated_at == freezed
+          ? _value.updated_at
+          : updated_at // ignore: cast_nullable_to_non_nullable
               as String,
+      created_at: created_at == freezed
+          ? _value.created_at
+          : created_at // ignore: cast_nullable_to_non_nullable
+              as String,
+      comments_count: comments_count == freezed
+          ? _value.comments_count
+          : comments_count // ignore: cast_nullable_to_non_nullable
+              as int,
+      likes_count: likes_count == freezed
+          ? _value.likes_count
+          : likes_count // ignore: cast_nullable_to_non_nullable
+              as int,
+      comments: comments == freezed
+          ? _value.comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
     ));
   }
 }
@@ -149,14 +167,16 @@ abstract class _$CreateEpisodeModelCopyWith<$Res>
       __$CreateEpisodeModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String title,
+      {String name,
       String description,
-      String podcastId,
-      String seasonId,
-      String imageID,
-      bool allowShare,
-      bool allowComments,
-      String fileID});
+      String season_id,
+      String allow_comments,
+      String allow_share,
+      String updated_at,
+      String created_at,
+      int comments_count,
+      int likes_count,
+      List<dynamic> comments});
 }
 
 /// @nodoc
@@ -172,48 +192,58 @@ class __$CreateEpisodeModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? title = freezed,
+    Object? name = freezed,
     Object? description = freezed,
-    Object? podcastId = freezed,
-    Object? seasonId = freezed,
-    Object? imageID = freezed,
-    Object? allowShare = freezed,
-    Object? allowComments = freezed,
-    Object? fileID = freezed,
+    Object? season_id = freezed,
+    Object? allow_comments = freezed,
+    Object? allow_share = freezed,
+    Object? updated_at = freezed,
+    Object? created_at = freezed,
+    Object? comments_count = freezed,
+    Object? likes_count = freezed,
+    Object? comments = freezed,
   }) {
     return _then(_CreateEpisodeModel(
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      podcastId: podcastId == freezed
-          ? _value.podcastId
-          : podcastId // ignore: cast_nullable_to_non_nullable
+      season_id: season_id == freezed
+          ? _value.season_id
+          : season_id // ignore: cast_nullable_to_non_nullable
               as String,
-      seasonId: seasonId == freezed
-          ? _value.seasonId
-          : seasonId // ignore: cast_nullable_to_non_nullable
+      allow_comments: allow_comments == freezed
+          ? _value.allow_comments
+          : allow_comments // ignore: cast_nullable_to_non_nullable
               as String,
-      imageID: imageID == freezed
-          ? _value.imageID
-          : imageID // ignore: cast_nullable_to_non_nullable
+      allow_share: allow_share == freezed
+          ? _value.allow_share
+          : allow_share // ignore: cast_nullable_to_non_nullable
               as String,
-      allowShare: allowShare == freezed
-          ? _value.allowShare
-          : allowShare // ignore: cast_nullable_to_non_nullable
-              as bool,
-      allowComments: allowComments == freezed
-          ? _value.allowComments
-          : allowComments // ignore: cast_nullable_to_non_nullable
-              as bool,
-      fileID: fileID == freezed
-          ? _value.fileID
-          : fileID // ignore: cast_nullable_to_non_nullable
+      updated_at: updated_at == freezed
+          ? _value.updated_at
+          : updated_at // ignore: cast_nullable_to_non_nullable
               as String,
+      created_at: created_at == freezed
+          ? _value.created_at
+          : created_at // ignore: cast_nullable_to_non_nullable
+              as String,
+      comments_count: comments_count == freezed
+          ? _value.comments_count
+          : comments_count // ignore: cast_nullable_to_non_nullable
+              as int,
+      likes_count: likes_count == freezed
+          ? _value.likes_count
+          : likes_count // ignore: cast_nullable_to_non_nullable
+              as int,
+      comments: comments == freezed
+          ? _value.comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
     ));
   }
 }
@@ -223,39 +253,45 @@ class __$CreateEpisodeModelCopyWithImpl<$Res>
 class _$_CreateEpisodeModel extends _CreateEpisodeModel
     with DiagnosticableTreeMixin {
   _$_CreateEpisodeModel(
-      {required this.title,
+      {required this.name,
       required this.description,
-      required this.podcastId,
-      required this.seasonId,
-      required this.imageID,
-      required this.allowShare,
-      required this.allowComments,
-      required this.fileID})
+      required this.season_id,
+      required this.allow_comments,
+      required this.allow_share,
+      required this.updated_at,
+      required this.created_at,
+      required this.comments_count,
+      required this.likes_count,
+      required this.comments})
       : super._();
 
   factory _$_CreateEpisodeModel.fromJson(Map<String, dynamic> json) =>
       _$$_CreateEpisodeModelFromJson(json);
 
   @override
-  final String title;
+  final String name;
   @override
   final String description;
   @override
-  final String podcastId;
+  final String season_id;
   @override
-  final String seasonId;
+  final String allow_comments;
   @override
-  final String imageID;
+  final String allow_share;
   @override
-  final bool allowShare;
+  final String updated_at;
   @override
-  final bool allowComments;
+  final String created_at;
   @override
-  final String fileID;
+  final int comments_count;
+  @override
+  final int likes_count;
+  @override
+  final List<dynamic> comments;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CreateEpisodeModel(title: $title, description: $description, podcastId: $podcastId, seasonId: $seasonId, imageID: $imageID, allowShare: $allowShare, allowComments: $allowComments, fileID: $fileID)';
+    return 'CreateEpisodeModel(name: $name, description: $description, season_id: $season_id, allow_comments: $allow_comments, allow_share: $allow_share, updated_at: $updated_at, created_at: $created_at, comments_count: $comments_count, likes_count: $likes_count, comments: $comments)';
   }
 
   @override
@@ -263,14 +299,16 @@ class _$_CreateEpisodeModel extends _CreateEpisodeModel
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'CreateEpisodeModel'))
-      ..add(DiagnosticsProperty('title', title))
+      ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('podcastId', podcastId))
-      ..add(DiagnosticsProperty('seasonId', seasonId))
-      ..add(DiagnosticsProperty('imageID', imageID))
-      ..add(DiagnosticsProperty('allowShare', allowShare))
-      ..add(DiagnosticsProperty('allowComments', allowComments))
-      ..add(DiagnosticsProperty('fileID', fileID));
+      ..add(DiagnosticsProperty('season_id', season_id))
+      ..add(DiagnosticsProperty('allow_comments', allow_comments))
+      ..add(DiagnosticsProperty('allow_share', allow_share))
+      ..add(DiagnosticsProperty('updated_at', updated_at))
+      ..add(DiagnosticsProperty('created_at', created_at))
+      ..add(DiagnosticsProperty('comments_count', comments_count))
+      ..add(DiagnosticsProperty('likes_count', likes_count))
+      ..add(DiagnosticsProperty('comments', comments));
   }
 
   @override
@@ -278,30 +316,38 @@ class _$_CreateEpisodeModel extends _CreateEpisodeModel
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CreateEpisodeModel &&
-            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.podcastId, podcastId) &&
-            const DeepCollectionEquality().equals(other.seasonId, seasonId) &&
-            const DeepCollectionEquality().equals(other.imageID, imageID) &&
+            const DeepCollectionEquality().equals(other.season_id, season_id) &&
             const DeepCollectionEquality()
-                .equals(other.allowShare, allowShare) &&
+                .equals(other.allow_comments, allow_comments) &&
             const DeepCollectionEquality()
-                .equals(other.allowComments, allowComments) &&
-            const DeepCollectionEquality().equals(other.fileID, fileID));
+                .equals(other.allow_share, allow_share) &&
+            const DeepCollectionEquality()
+                .equals(other.updated_at, updated_at) &&
+            const DeepCollectionEquality()
+                .equals(other.created_at, created_at) &&
+            const DeepCollectionEquality()
+                .equals(other.comments_count, comments_count) &&
+            const DeepCollectionEquality()
+                .equals(other.likes_count, likes_count) &&
+            const DeepCollectionEquality().equals(other.comments, comments));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(podcastId),
-      const DeepCollectionEquality().hash(seasonId),
-      const DeepCollectionEquality().hash(imageID),
-      const DeepCollectionEquality().hash(allowShare),
-      const DeepCollectionEquality().hash(allowComments),
-      const DeepCollectionEquality().hash(fileID));
+      const DeepCollectionEquality().hash(season_id),
+      const DeepCollectionEquality().hash(allow_comments),
+      const DeepCollectionEquality().hash(allow_share),
+      const DeepCollectionEquality().hash(updated_at),
+      const DeepCollectionEquality().hash(created_at),
+      const DeepCollectionEquality().hash(comments_count),
+      const DeepCollectionEquality().hash(likes_count),
+      const DeepCollectionEquality().hash(comments));
 
   @JsonKey(ignore: true)
   @override
@@ -316,35 +362,41 @@ class _$_CreateEpisodeModel extends _CreateEpisodeModel
 
 abstract class _CreateEpisodeModel extends CreateEpisodeModel {
   factory _CreateEpisodeModel(
-      {required String title,
+      {required String name,
       required String description,
-      required String podcastId,
-      required String seasonId,
-      required String imageID,
-      required bool allowShare,
-      required bool allowComments,
-      required String fileID}) = _$_CreateEpisodeModel;
+      required String season_id,
+      required String allow_comments,
+      required String allow_share,
+      required String updated_at,
+      required String created_at,
+      required int comments_count,
+      required int likes_count,
+      required List<dynamic> comments}) = _$_CreateEpisodeModel;
   _CreateEpisodeModel._() : super._();
 
   factory _CreateEpisodeModel.fromJson(Map<String, dynamic> json) =
       _$_CreateEpisodeModel.fromJson;
 
   @override
-  String get title;
+  String get name;
   @override
   String get description;
   @override
-  String get podcastId;
+  String get season_id;
   @override
-  String get seasonId;
+  String get allow_comments;
   @override
-  String get imageID;
+  String get allow_share;
   @override
-  bool get allowShare;
+  String get updated_at;
   @override
-  bool get allowComments;
+  String get created_at;
   @override
-  String get fileID;
+  int get comments_count;
+  @override
+  int get likes_count;
+  @override
+  List<dynamic> get comments;
   @override
   @JsonKey(ignore: true)
   _$CreateEpisodeModelCopyWith<_CreateEpisodeModel> get copyWith =>
