@@ -54,6 +54,7 @@ class MonetizationController extends GetxController{
     FilePickerResult? result = await FilePicker.platform.pickFiles(allowMultiple: false);
     if(result != null && result.files.length <= 1000000){
       pickedFile = result.files.first.path!;
+      //use this line for convert to base64
       final bytes = await File(result.files.first.path!).readAsBytes();
       base64=base64Encode(bytes);
       debugPrint('_pickedFilebase64---> $base64');

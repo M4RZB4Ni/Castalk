@@ -40,7 +40,7 @@ class CastalkBindings implements Bindings{
     // Get.put(UserListController());
     // Get.put(DownloadsController());
     // Get.put(WalletController());
-    Get.put(MonetizationController());
-    //Get.lazyPut(() => MonetizationController());
+    //Get.put(MonetizationController());
+    Get.lazyPut(() => MonetizationController());
   }
 }
