@@ -1,15 +1,23 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
+
+import 'package:file_picker/file_picker.dart';
+import 'package:filesize/filesize.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import '../apis/monetization_api.dart';
 
 class MonetizationController extends GetxController{
 
-  //
-  @override
-  void onInit() {
-    super.onInit();
-  }
+
+  late PlatformFile file;
+  late String base64;
+  late String pickedFile;
+  late RxString pickedFileName=''.obs;
+  late String pickedFileSize;
+  late String pickedFileFormat;
+  final List pickedFilePack = [];
 
   monetizationUpload({required var file, required var castalkMonetizaion}) async
   {
@@ -31,6 +39,35 @@ class MonetizationController extends GetxController{
       Get.snackbar(
         'Warning',
         'Check number!',
+        duration: 3.seconds,
+        snackPosition: SnackPosition.BOTTOM,
+        margin: const EdgeInsets.all(20),
+        showProgressIndicator: true,
+        isDismissible: true,
+        backgroundColor: Colors.orange,
+        colorText: Colors.white,
+      );
+    }
+  }
+
+  pickFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(allowMultiple: false);
+    if(result != null && result.files.length <= 1000000){
+      pickedFile = result.files.first.path!;
+      final bytes = await File(result.files.first.path!).readAsBytes();
+      base64=base64Encode(bytes);
+      debugPrint('_pickedFilebase64---> $base64');
+      pickedFileName.value = result.files.first.name;
+      pickedFileSize = filesize(result.files.first.size);
+      pickedFileFormat = result.files.first.extension!;
+
+      pickedFilePack.add(pickedFile);
+      pickedFilePack.add(pickedFileFormat);
+    }
+    else{
+      Get.snackbar(
+        'Warning',
+        'The file size is more than 1MB!',
         duration: 3.seconds,
         snackPosition: SnackPosition.BOTTOM,
         margin: const EdgeInsets.all(20),

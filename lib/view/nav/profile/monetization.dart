@@ -10,53 +10,19 @@ import 'package:filesize/filesize.dart';
 
 import '../../../controllers/monetization_controller.dart';
 
-class Monetization extends StatefulWidget{
-  const Monetization({Key? key}) : super(key: key);
 
-  @override
-  State<StatefulWidget> createState() {
-    return MonetizationState();
-  }
-}
 
-class MonetizationState extends  State<Monetization>{
+class Monetization extends  GetView<MonetizationController>{
+
+  Monetization({Key? key}) : super(key: key);
 
   String svgPath = "assets/icons/";
   TextEditingController fileNameController = TextEditingController();
 
-  late String _pickedFile;
-  late String _pickedFileName;
-  late String _pickedFileSize;
-  late String _pickedFileFormat;
-  final List _pickedFilePack = [];
 
-  pickFile() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(allowMultiple: false);
-    if(result != null && result.files.length <= 1000000){
-      _pickedFile = result.files.first.path!;
-      debugPrint('_pickedFile---> ${result.files.first.path}');
-      setState(() {
-        fileNameController.text = result.files.first.name;
-        _pickedFileSize = filesize(result.files.first.size);
-        _pickedFileFormat = result.files.first.extension!;
-      });
-      _pickedFilePack.add(_pickedFile);
-      _pickedFilePack.add(_pickedFileFormat);
-    }
-    else{
-      Get.snackbar(
-        'Warning',
-        'The file size is more than 1MB!',
-        duration: 3.seconds,
-        snackPosition: SnackPosition.BOTTOM,
-        margin: const EdgeInsets.all(20),
-        showProgressIndicator: true,
-        isDismissible: true,
-        backgroundColor: Colors.orange,
-        colorText: Colors.white,
-      );
-    }
-  }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +82,7 @@ class MonetizationState extends  State<Monetization>{
                         Row(
                           children: [
                             InkWell(
-                              onTap: () => pickFile(),
+                              onTap: () => controller.pickFile(),
                               child: Container(
                                 width: 44,
                                 height: 44,
@@ -131,10 +97,10 @@ class MonetizationState extends  State<Monetization>{
                             Expanded(flex:12,child:  Padding(
                                 padding: const EdgeInsets.all(15),
                                 child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
-                                  child: TextField(
-                                      controller: fileNameController,
-                                      textAlign: TextAlign.left,maxLines: 1,
-                                      decoration: Style.inputTextDecorationFileName),
+                                  child: Obx(() => Center(
+                                    child: Text(controller.pickedFileName.value,
+                                      textAlign: TextAlign.left,maxLines: 1,),
+                                  )),
                                 )))
                           ],
                         ),
@@ -145,7 +111,7 @@ class MonetizationState extends  State<Monetization>{
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 45,left: 28,bottom: 28),
-                child: ElevatedButton(onPressed:() => Get.find<MonetizationController>().monetizationUpload(file: _pickedFile, castalkMonetizaion: fileNameController.text), child:const Text("Send Request",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+                child: ElevatedButton(onPressed:() => Get.find<MonetizationController>().monetizationUpload(file: controller.pickedFile, castalkMonetizaion: fileNameController.text), child:const Text("Send Request",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
                     padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
