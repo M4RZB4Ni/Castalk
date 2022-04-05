@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,9 @@ class ProlfileEditController extends GetxController{
   var profilePath = ''.obs;
   var profileSize = ''.obs;
   var editAbout = false.obs;
+  List<int> coverImgBytes = [];
+  List<int> profileImgBytes = [];
+  late String base64coverImg, base64profileImg;
   //
   @override
   void onInit() {
@@ -37,14 +41,20 @@ class ProlfileEditController extends GetxController{
   }
 
   void getImage(String type, ImageSource imageSource) async{
-    final pickedFile = await ImagePicker().pickImage(source: imageSource);
+    var pickedFile = await ImagePicker().pickImage(source: imageSource);
     //
     if(pickedFile != null && type == 'coverImg'){
       coverPath.value = pickedFile.path;
+      coverImgBytes = pickedFile.readAsBytes() as List<int>;
+      base64coverImg = base64Encode(coverImgBytes);
+      debugPrint('base64coverImg---> $base64coverImg');
       coverSize.value = ((File(coverPath.value)).lengthSync() / 364 / 134).toStringAsFixed(2) + 'Mb';
     }
     else if(pickedFile != null && type == 'profileImg'){
       profilePath.value = pickedFile.path;
+      profileImgBytes = pickedFile.readAsBytes() as List<int>;
+      base64profileImg = base64Encode(profileImgBytes);
+      debugPrint('base64profileImg---> $base64profileImg');
       profileSize.value = ((File(profilePath.value)).lengthSync() / 113 / 103).toStringAsFixed(2) + 'Mb';
     }
     else{

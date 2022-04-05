@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import '../../../../controllers/analytics_controller.dart';
 import '../../../../controllers/mycasts_controller.dart';
 
+
 class MyCastsAnalytics extends GetView<AnalyticsController>{
 
   TextEditingController numberController = TextEditingController();
