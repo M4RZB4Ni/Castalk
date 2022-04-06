@@ -14,9 +14,11 @@ class Other{
     var request = http.Request('GET', Uri.parse(BaseApi.baseAddressSlash+'api/rest/Castalk/CategoryIndex'));
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
+    var data = await response.stream.bytesToString();
+    debugPrint('dataffff-> $data');
 
     if (response.statusCode == 200) {
-      var data = await response.stream.bytesToString();
+      debugPrint('dataffff-> $data');
       Map<String,dynamic> resp = await jsonDecode(data);
       return resp['data']['data'];
     }

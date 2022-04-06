@@ -5,18 +5,13 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:multi_select_item/multi_select_item.dart';
 
-class Congratulations extends StatefulWidget{
-  const Congratulations({Key? key}) : super(key: key);
 
-  @override
-  State<StatefulWidget> createState() {
-    return CongratulationsState();
-  }
-}
 
-class CongratulationsState extends State<Congratulations>{
+class Congratulations extends GetView<CongratulationsController>{
 
+  Congratulations({Key? key}) : super(key: key);
   late List<int> finalCategoriesSelectedId = [];
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +31,7 @@ class CongratulationsState extends State<Congratulations>{
             ),
             Align(alignment: Alignment.centerLeft,child: Padding(
               padding: const EdgeInsets.only(left: 42,bottom: 8),
-              child: Text("${Get.find<CongratulationsController>().Controller.selectedIndexes.length} Item selected",
+              child: Text("${controller.multiSelectController.selectedIndexes.length} Item selected",
                   textAlign: TextAlign.center,
                   style: Get.textTheme.headline2),
             ),
@@ -49,29 +44,27 @@ class CongratulationsState extends State<Congratulations>{
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 42),
         child: GridView.builder(
-          itemCount: Get.find<CongratulationsController>().categoryList.length,
+          itemCount: controller.categoryList.length,
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 150,
             childAspectRatio: 2/3,
             mainAxisSpacing: 8,
             crossAxisSpacing: 7,
           ), itemBuilder: (BuildContext context, int index) {
-          return MultiSelectItem(
-            child: itemType(!Get.find<CongratulationsController>().Controller.isSelected(index), index),
-            isSelecting: Get.find<CongratulationsController>().Controller.isSelecting,
+          return GetBuilder<CongratulationsController>(builder: (controller) => MultiSelectItem(
+            child: itemType(!controller.multiSelectController.isSelected(index), index),
+            isSelecting: controller.multiSelectController.isSelecting,
             onSelected: () {
-              setState(() {
-                Get.find<CongratulationsController>().Controller.toggle(index);
-                //
-                if(Get.find<CongratulationsController>().categoryList.isNotEmpty){
-                  for(int count = 0; count < Get.find<CongratulationsController>().categoryList.length; count++){
-                    finalCategoriesSelectedId = finalCategoriesSelectedId + [Get.find<CongratulationsController>().categoryList[0].id!];
-                  }
-                  debugPrint('finalCategoriesSelectedId---> $finalCategoriesSelectedId');
+              controller.selectItems(index);
+              /*  controller.multiSelectController.toggle(index);
+              if(Get.find<CongratulationsController>().categoryList.isNotEmpty){
+                for(int count = 0; count < Get.find<CongratulationsController>().categoryList.length; count++){
+                  finalCategoriesSelectedId = finalCategoriesSelectedId + [Get.find<CongratulationsController>().categoryList[0].id!];
                 }
-              });
+                debugPrint('finalCategoriesSelectedId---> $finalCategoriesSelectedId');
+              }*/
             },
-          );
+          ),);
         },
         ),
       ),
@@ -101,7 +94,6 @@ class CongratulationsState extends State<Congratulations>{
           Visibility(visible: !onlyTitle,child: Container(width: 44,height: 44,child: const Icon(Icons.arrow_back_outlined) ,decoration: BoxDecoration(color: Colors.grey.shade500,shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(12)),)),
           Text("Congratulations!",style: Get.textTheme.headline1!.copyWith(color: const Color(0xffFFB800))),
           Visibility(visible: !onlyTitle,child:const SizedBox(width: 44,)),
-
         ],
       ),
     );

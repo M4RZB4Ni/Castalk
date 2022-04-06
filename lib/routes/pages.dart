@@ -75,7 +75,7 @@ class Pages{
     GetPage(name: Routes.SignIn, page: () =>  SignIn()),
     GetPage(name: Routes.EnterCode, page: () => EnterCode()),
     GetPage(name: Routes.AddAccountInfo, page: () => AddAccountInfo()),
-    GetPage(name: Routes.Congratulations, page: () => const Congratulations()),
+    GetPage(name: Routes.Congratulations, page: () =>  Congratulations()),
     GetPage(name: Routes.Player, page: () => Player()),
     GetPage(name: Routes.Profile, page: () => Profile()),
     GetPage(name: Routes.DriveMode, page: () => DriveMode()),

@@ -9,9 +9,10 @@ import '../routes/routes.dart';
 
 class CongratulationsController extends GetxController with StateMixin<List<CongratulationsModel>>{
 
-  final MultiSelectController Controller = MultiSelectController();
+  final MultiSelectController multiSelectController = MultiSelectController();
   final Other _other = Other();
-  late List<CongratulationsModel> categoryList = [];
+  late RxList<CongratulationsModel> categoryList = RxList();
+  late RxList<int> selectedItems = RxList();
   var finalSelectedIndex = 0.obs;
   //
   @override
@@ -23,9 +24,15 @@ class CongratulationsController extends GetxController with StateMixin<List<Cong
   categoryIndex() async{
 
     await _other.categoryIndex(token: GetStorage().read('token')).then((l) => {
-      categoryList = List<CongratulationsModel>.from(l.map((model) => CongratulationsModel.fromJson(model))),
-    debugPrint('categoryList---> $categoryList'),
+      categoryList.value = List<CongratulationsModel>.from(l.map((model) => CongratulationsModel.fromJson(model))),
+    debugPrint('categoryList---> ${categoryList}'),
     });
+  }
+  selectItems(int index)
+  {
+    selectedItems.add(index);
+    multiSelectController.toggle(index);
+    update();
   }
 
   updateCategories({required var categories, required var token}) async {
