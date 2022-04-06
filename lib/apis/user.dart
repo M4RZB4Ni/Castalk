@@ -1,11 +1,16 @@
 import 'dart:convert';
 import 'package:castalk/apis/base_api.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
+
+import '../routes/routes.dart';
 
 class User{
 
-  updateFavoriteCategories({required var token,required List categories}) async {
+  updateFavoriteCategories({required var token, required var categories}) async {
 
     var headers = {
       'Authorization': 'Bearer $token',
@@ -21,9 +26,31 @@ class User{
 
     if (response.statusCode == 200) {
       debugPrint(await response.stream.bytesToString());
+      Get.snackbar(
+        'Done',
+        'Request completed successfully.',
+        duration: 3.seconds,
+        snackPosition: SnackPosition.BOTTOM,
+        margin: const EdgeInsets.all(20),
+        showProgressIndicator: true,
+        isDismissible: true,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
+      Get.toNamed(Routes.NavMother);
     }
     else {
       debugPrint(response.reasonPhrase);
+      Get.snackbar(
+        'Error',
+        'Request failed!',
+        duration: 3.seconds,
+        snackPosition: SnackPosition.BOTTOM,
+        showProgressIndicator: true,
+        isDismissible: true,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
     }
   }
 

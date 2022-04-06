@@ -2,8 +2,8 @@ import 'package:castalk/controllers/congratulations_controller.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:multi_select_item/multi_select_item.dart';
-import '../../routes/routes.dart';
 
 class Congratulations extends StatefulWidget{
   const Congratulations({Key? key}) : super(key: key);
@@ -15,6 +15,8 @@ class Congratulations extends StatefulWidget{
 }
 
 class CongratulationsState extends State<Congratulations>{
+
+  late List<int> finalCategoriesSelectedId = [];
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +62,13 @@ class CongratulationsState extends State<Congratulations>{
             onSelected: () {
               setState(() {
                 Get.find<CongratulationsController>().Controller.toggle(index);
+                //
+                if(Get.find<CongratulationsController>().categoryList.isNotEmpty){
+                  for(int count = 0; count < Get.find<CongratulationsController>().categoryList.length; count++){
+                    finalCategoriesSelectedId = finalCategoriesSelectedId + [Get.find<CongratulationsController>().categoryList[0].id!];
+                  }
+                  debugPrint('finalCategoriesSelectedId---> $finalCategoriesSelectedId');
+                }
               });
             },
           );
@@ -69,7 +78,7 @@ class CongratulationsState extends State<Congratulations>{
       bottomSheet: Padding(
         padding: const EdgeInsets.only(bottom: 59,left: 26),
         child: ElevatedButton(
-          onPressed:() => Get.toNamed(Routes.NavMother),
+          onPressed:() => Get.find<CongratulationsController>().updateCategories(categories: finalCategoriesSelectedId, token: GetStorage().read('token')),
           child:const Text("Let’s Listen",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
             padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -115,6 +124,7 @@ class CongratulationsState extends State<Congratulations>{
             ],
           )),
           //Icon(Icons.four_g_mobiledata_outlined,color: isSelected ? const Color(0xff9D9D9D) : Colors.white,size: 50),
+          Text(Get.find<CongratulationsController>().categoryList[index].id!.toString(), style: Get.textTheme.headline2!.copyWith(fontWeight: FontWeight.w500,fontSize: !isSelected ? 18: 14,color:!isSelected ? Colors.white : Get.theme.focusColor ),),
           Padding(
             padding: const EdgeInsets.only(bottom: 15),
             child: Text(Get.find<CongratulationsController>().categoryList[index].title!, style: Get.textTheme.headline2!.copyWith(fontWeight: FontWeight.w500,fontSize: !isSelected ? 18: 14,color:!isSelected ? Colors.white : Get.theme.focusColor ),),

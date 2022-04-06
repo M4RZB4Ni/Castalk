@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
 import '../models/profile_single_model.dart';
+import '../routes/routes.dart';
 
 class AuthApi{
 
@@ -111,6 +112,7 @@ class AuthApi{
         backgroundColor: Colors.green,
         colorText: Colors.white,
       );
+      Get.toNamed(Routes.Congratulations);
     }
     else{
       debugPrint('updateProfileFailed---> ${response.reasonPhrase}');

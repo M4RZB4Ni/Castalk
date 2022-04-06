@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../routes/routes.dart';
 
 class AddAccountInfo extends GetView<AddAcountInfoController>{
 
@@ -151,7 +150,6 @@ class AddAccountInfo extends GetView<AddAcountInfoController>{
                       }
                       else{
                         controller.updateProfile(data: accountInfo, token: GetStorage().read('token'));
-                        Get.toNamed(Routes.Congratulations);
                       }
                     },
                     child:const Text("Accept and Save",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
