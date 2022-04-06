@@ -18,8 +18,8 @@ class AuthController extends GetxController{
   RxBool endTime = false.obs;
   //
   void endTimers() {
-    nextState.value = 'ResendOn';
     endTime.value = true;
+    nextState.value = 'ResendOn';
     update();
   }
 
@@ -39,7 +39,6 @@ class AuthController extends GetxController{
     if(mobile.isNotEmpty) {
       AuthModel token = await AuthApi().login(mobile: mobile, password: password);
       writeTokenValue(token.data.accessToken.toString());
-      Get.toNamed(Routes.EnterCode, arguments: [mobile]);
     }
     else{
       Get.snackbar(
@@ -86,10 +85,13 @@ class AuthController extends GetxController{
       nextState.value = "Next";
       return pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: const Color(0xff7CFF4E));
     }
-    else{
+    else if(submitted != '1234'){
       subtitleTextStyle.value = "Wrong";
       nextState.value = 'ResendOff';
       return pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: const Color(0xffFF5959));
+    }
+    else{
+      nextState.value = 'ResendOn';
     }
   }
 

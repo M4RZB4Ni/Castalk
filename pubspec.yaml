@@ -200,6 +200,7 @@ flutter:
   - assets/icons/market_golden.svg
   - assets/icons/promotion_golden.svg
   - assets/icons/downloads_golden.svg
+  - assets/icons/castalk.svg
 
   uses-material-design: true
 

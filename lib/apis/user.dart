@@ -10,10 +10,11 @@ import '../routes/routes.dart';
 
 class User{
 
-  updateFavoriteCategories({required var token, required var categories}) async {
+  updateFavoriteCategories({required var token, required List<int> categories}) async {
 
     var headers = {
       'Authorization': 'Bearer $token',
+      'Content-Type': 'application/json',
     };
 
     var request = http.Request('POST', Uri.parse(BaseApi.baseAddressSlash+'api/rest/Castalk/UpdateFavoriteCategories'));

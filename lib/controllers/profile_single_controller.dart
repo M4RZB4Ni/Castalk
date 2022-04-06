@@ -11,7 +11,7 @@ class ProfileController extends GetxController with StateMixin<List<ProfileSingl
   //
   @override
   void onInit() {
-    //getProfileData();
+    getProfileData();
     super.onInit();
   }
   //

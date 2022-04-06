@@ -9,8 +9,8 @@ import 'package:multi_select_item/multi_select_item.dart';
 
 class Congratulations extends GetView<CongratulationsController>{
 
-  Congratulations({Key? key}) : super(key: key);
-  late List<int> finalCategoriesSelectedId = [];
+  const Congratulations({Key? key}) : super(key: key);
+
 
 
   @override
@@ -31,9 +31,9 @@ class Congratulations extends GetView<CongratulationsController>{
             ),
             Align(alignment: Alignment.centerLeft,child: Padding(
               padding: const EdgeInsets.only(left: 42,bottom: 8),
-              child: Text("${controller.multiSelectController.selectedIndexes.length} Item selected",
-                  textAlign: TextAlign.center,
-                  style: Get.textTheme.headline2),
+              child: GetBuilder<CongratulationsController>(builder: (controller) =>
+                  Text("${controller.multiSelectController.selectedIndexes.length} Item selected", textAlign: TextAlign.center, style: Get.textTheme.headline2),
+            ),
             ),
             ),
           ]),
@@ -56,22 +56,15 @@ class Congratulations extends GetView<CongratulationsController>{
             isSelecting: controller.multiSelectController.isSelecting,
             onSelected: () {
               controller.selectItems(index);
-              /*  controller.multiSelectController.toggle(index);
-              if(Get.find<CongratulationsController>().categoryList.isNotEmpty){
-                for(int count = 0; count < Get.find<CongratulationsController>().categoryList.length; count++){
-                  finalCategoriesSelectedId = finalCategoriesSelectedId + [Get.find<CongratulationsController>().categoryList[0].id!];
-                }
-                debugPrint('finalCategoriesSelectedId---> $finalCategoriesSelectedId');
-              }*/
             },
-          ),);
+          ));
         },
         ),
       ),
       bottomSheet: Padding(
         padding: const EdgeInsets.only(bottom: 59,left: 26),
         child: ElevatedButton(
-          onPressed:() => Get.find<CongratulationsController>().updateCategories(categories: finalCategoriesSelectedId, token: GetStorage().read('token')),
+          onPressed:() => controller.updateCategories(token: GetStorage().read('token'), categories: controller.finalSelectedId),
           child:const Text("Let’s Listen",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
             padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -84,6 +77,7 @@ class Congratulations extends GetView<CongratulationsController>{
       ),
     );
   }
+
   header({required bool onlyTitle}) {
     return Padding(
       padding: const EdgeInsets.only(top: 24),
@@ -116,10 +110,10 @@ class Congratulations extends GetView<CongratulationsController>{
             ],
           )),
           //Icon(Icons.four_g_mobiledata_outlined,color: isSelected ? const Color(0xff9D9D9D) : Colors.white,size: 50),
-          Text(Get.find<CongratulationsController>().categoryList[index].id!.toString(), style: Get.textTheme.headline2!.copyWith(fontWeight: FontWeight.w500,fontSize: !isSelected ? 18: 14,color:!isSelected ? Colors.white : Get.theme.focusColor ),),
+          Text(controller.categoryList[index].id!.toString(), style: Get.textTheme.headline2!.copyWith(fontWeight: FontWeight.w500,fontSize: !isSelected ? 18: 14,color:!isSelected ? Colors.white : Get.theme.focusColor ),),
           Padding(
             padding: const EdgeInsets.only(bottom: 15),
-            child: Text(Get.find<CongratulationsController>().categoryList[index].title!, style: Get.textTheme.headline2!.copyWith(fontWeight: FontWeight.w500,fontSize: !isSelected ? 18: 14,color:!isSelected ? Colors.white : Get.theme.focusColor ),),
+            child: Text(controller.categoryList[index].title!, style: Get.textTheme.headline2!.copyWith(fontWeight: FontWeight.w500,fontSize: !isSelected ? 18: 14,color:!isSelected ? Colors.white : Get.theme.focusColor ),),
           )
         ],),);
   }

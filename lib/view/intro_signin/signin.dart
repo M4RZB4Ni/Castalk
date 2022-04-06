@@ -106,7 +106,8 @@ class SignIn extends StatelessWidget {
                     debugPrint("sentOTP");
                     numberController.text.length == 11 ? authService.login(mobile: numberController.text, password: '1234')
                         : numberController.text == '' ? Get.defaultDialog(title: 'Warning', middleTextStyle: Get.textTheme.displayMedium, middleText: 'Please enter your mobile number', titleStyle: Get.textTheme.bodyMedium)
-                        : numberController.text.length >= 11 || numberController.text.length <= 11 ? Get.snackbar(
+                        : numberController.text.length >= 11 || numberController.text.length <= 11 ?
+                    Get.snackbar(
                       'Warning',
                       'Mobile number is incorrect!',
                       duration: 3.seconds,

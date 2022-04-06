@@ -29,6 +29,7 @@ class AuthApi{
       var respo = await response.stream.bytesToString();
       var decoded = await jsonDecode(respo);
       debugPrint('AuthModel.fromJson(decoded) = ${AuthModel.fromJson(decoded)}');
+      Get.offAndToNamed(Routes.EnterCode, arguments: [mobile]);
       return AuthModel.fromJson(decoded);
   }
   else {

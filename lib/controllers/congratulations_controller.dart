@@ -12,8 +12,7 @@ class CongratulationsController extends GetxController with StateMixin<List<Cong
   final MultiSelectController multiSelectController = MultiSelectController();
   final Other _other = Other();
   late RxList<CongratulationsModel> categoryList = RxList();
-  late RxList<int> selectedItems = RxList();
-  var finalSelectedIndex = 0.obs;
+  late RxList<int> finalSelectedId = RxList();
   //
   @override
   void onInit() {
@@ -28,26 +27,28 @@ class CongratulationsController extends GetxController with StateMixin<List<Cong
     debugPrint('categoryList---> ${categoryList}'),
     });
   }
+
   selectItems(int index)
   {
-    selectedItems.add(index);
     multiSelectController.toggle(index);
+    multiSelectController.isSelected(index) ? finalSelectedId.add(categoryList[index].id!) : finalSelectedId.remove(categoryList[index].id!);
+    debugPrint('finalSelectedId---> $finalSelectedId');
     update();
   }
 
-  updateCategories({required var categories, required var token}) async {
+  updateCategories({required var token, required List<int> categories}) async {
     if(categories.isNotEmpty) {
-      await User().updateFavoriteCategories(categories: categories, token: token);
+      await User().updateFavoriteCategories(token: token, categories: categories);
     }
     else{
       Get.snackbar(
-        'Error',
-        'Check user!',
+        'Warning',
+        'Please select one or more items!',
         duration: 3.seconds,
         snackPosition: SnackPosition.BOTTOM,
         showProgressIndicator: true,
         isDismissible: true,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.orange,
         colorText: Colors.white,
       );
     }

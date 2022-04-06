@@ -139,12 +139,13 @@ class AddAccountInfo extends GetView<AddAcountInfoController>{
                       if(fullNameController.text.isEmpty || nameController.text.isEmpty){
                         Get.snackbar(
                           'Warning',
-                          'Please enter your Fields',
+                          'Please enter your Fields!',
                           duration: 3.seconds,
                           snackPosition: SnackPosition.BOTTOM,
+                          margin: const EdgeInsets.all(20),
                           showProgressIndicator: true,
                           isDismissible: true,
-                          backgroundColor: Colors.lightGreen,
+                          backgroundColor: Colors.orange,
                           colorText: Colors.white,
                         );
                       }
