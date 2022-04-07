@@ -9,6 +9,7 @@ import 'package:castalk/controllers/mycasts_controller.dart';
 import 'package:castalk/controllers/play_list_controller.dart';
 import 'package:castalk/controllers/profile_single_controller.dart';
 import 'package:castalk/controllers/user_list_controller.dart';
+import 'package:castalk/controllers/verify_badge_controller.dart';
 import 'package:castalk/controllers/wallet_controller.dart';
 import 'package:get/get.dart';
 import '../controllers/add_account_info_controller.dart';
@@ -41,5 +42,6 @@ class CastalkBindings implements Bindings{
     Get.put(DownloadsController());
     Get.put(WalletController());
     Get.put(MonetizationController());
+    Get.put(VerifyBadgeController());
   }
 }

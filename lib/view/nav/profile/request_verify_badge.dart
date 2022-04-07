@@ -4,12 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import '../../../controllers/verify_badge_controller.dart';
 
-class RequestVerifyBadge extends GetView<RequestVerifyBadge>{
+class RequestVerifyBadge extends GetView<VerifyBadgeController>{
 
   String svgPath = "assets/icons/";
-  late TextTheme _textTheme;
-  TextEditingController numberController = TextEditingController();
+  TextEditingController realNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,36 +41,36 @@ class RequestVerifyBadge extends GetView<RequestVerifyBadge>{
                 ),
                 Row(
                   children: [
-                    Container(
-                      width: 44,
-                      height: 44,
-                      padding: const EdgeInsets.all(10),
-                      child: SvgPicture.asset(Cicon.upload),
-                      decoration: BoxDecoration(
-                          color: Style.accentGold,
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(12)
+                    InkWell(
+                      onTap: () => controller.pickFile(),
+                      child: Container(
+                        width: 44,
+                        height: 44,
+                        padding: const EdgeInsets.all(15),
+                        child: SvgPicture.asset(svgPath+"upload.svg"),
+                        decoration: BoxDecoration(
+                            color: Style.accentGold,
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
-                    Expanded(flex:12,child:  Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
-                            child: TextField(
-                                controller: numberController,
-                                textAlign: TextAlign.left,maxLines: 1,decoration: Style.inputTextDecoration)
-
-                        )))
-                  ],
-                )
-
-
-
-              ],
-            ),
+                    Expanded(
+                        flex:12,
+                        child: Padding(padding: const EdgeInsets.all(15),
+                            child: Container(
+                              width: Get.width,
+                              height: 44,
+                              decoration: Style.inputBoxDecoration,
+                              child: Obx(() => Center(
+                                child: Text(controller.pickedFileName.value, textAlign: TextAlign.left,maxLines: 1),
+                              )),
+                            ))),
+                  ]),
+              ]),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 45,left: 28,bottom: 28),
-            child: ElevatedButton(onPressed:() => debugPrint(""), child:const Text("Send Request",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+            child: ElevatedButton(onPressed:() => controller.verifyBadgeUpload(token: GetStorage().read('token')), child:const Text("Send Request",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
                 padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
@@ -109,7 +110,7 @@ class RequestVerifyBadge extends GetView<RequestVerifyBadge>{
           ),
           Padding(
             padding: const EdgeInsets.only(left: 9),
-            child: Text("Request Verify badge", style: _textTheme.headline1),
+            child: Text("Request Verify badge", style: Get.textTheme.headline1),
           ),
           const SizedBox(
             width: 44,

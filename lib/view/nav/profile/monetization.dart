@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import '../../../controllers/monetization_controller.dart';
 
 class Monetization extends  GetView<MonetizationController>{
@@ -82,14 +83,17 @@ class Monetization extends  GetView<MonetizationController>{
                                     borderRadius: BorderRadius.circular(12)),
                               ),
                             ),
-                            Expanded(flex:12,child:  Padding(
-                                padding: const EdgeInsets.all(15),
-                                child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
+                            Expanded(
+                                flex:12,
+                                child: Padding(padding: const EdgeInsets.all(15),
+                                child: Container(
+                                  width: Get.width,
+                                  height: 44,
+                                  decoration: Style.inputBoxDecoration,
                                   child: Obx(() => Center(
-                                    child: Text(controller.pickedFileName.value,
-                                      textAlign: TextAlign.left,maxLines: 1,),
+                                    child: Text(controller.pickedFileName.value, textAlign: TextAlign.left,maxLines: 1),
                                   )),
-                                )))
+                                ))),
                           ],
                         ),
                       ],
@@ -99,7 +103,7 @@ class Monetization extends  GetView<MonetizationController>{
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 45,left: 28,bottom: 28),
-                child: ElevatedButton(onPressed:() => controller.monetizationUpload(file: controller.pickedFile), child:const Text("Send Request",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+                child: ElevatedButton(onPressed:() => controller.monetizationUpload(token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguc2VydmljZXMuY2FzdGFsay5keW5lZW1hZGV2LmNvbS9sb2dpbiIsImlhdCI6MTY0OTMwNzkyMSwiZXhwIjoxNjQ5MzQzOTIxLCJuYmYiOjE2NDkzMDc5MjEsImp0aSI6InU5TWFwbENQcnBrdHU5dFgiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.F9tfQ8B35Tgy_Lj_SIA5-lTQLrw0qPCaP4Mf55kX02A'), child:const Text("Send Request",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
                     padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(

@@ -5,9 +5,7 @@ import 'package:http/http.dart' as http;
 
 class FileApi{
 
-  uploadFile(
-      {required var token,required var path}) async
-  {
+  uploadFile({required var token,required var path}) async {
 
     var headers = {
       'Authorization': 'Bearer $token',

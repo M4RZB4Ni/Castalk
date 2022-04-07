@@ -1,10 +1,10 @@
+import 'package:castalk/apis/verify_badge_api.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:filesize/filesize.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../apis/monetization_api.dart';
 
-class MonetizationController extends GetxController{
+class VerifyBadgeController extends GetxController{
 
   late PlatformFile file;
   late String base64File;
@@ -63,9 +63,9 @@ class MonetizationController extends GetxController{
     }
   }
 
-  monetizationUpload({required var token}) async {
+  verifyBadgeUpload({required var token}) async {
     if(isSelectedFile == true) {
-      await Monetization().uploadFile(fileMonetizaion: pickedFile, token: token);
+      await VerifyBadge().uploadFile(fileVerifyBadge: pickedFile, token: token);
     }
     else{
       Get.snackbar(
