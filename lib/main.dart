@@ -1,3 +1,10 @@
+import 'package:castalk/controllers/add_account_info_controller.dart';
+import 'package:castalk/controllers/analytics_controller.dart';
+import 'package:castalk/controllers/auth_controller.dart';
+import 'package:castalk/controllers/congratulations_controller.dart';
+import 'package:castalk/controllers/intro_controller.dart';
+import 'package:castalk/controllers/monetization_controller.dart';
+import 'package:castalk/controllers/profile_single_controller.dart';
 import 'package:castalk/routes/pages.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +18,46 @@ void main() async{
 }
 
 class MyApp extends StatelessWidget {
+
+  void buildControllers(){
+    Get.lazyPut<AuthController>(
+          () => AuthController(),
+      fenix: true,
+    );
+    Get.lazyPut<ProfileController>(
+          () => ProfileController(),
+      fenix: true,
+    );
+    Get.lazyPut<MonetizationController>(
+          () => MonetizationController(),
+      fenix: true,
+    );
+    Get.lazyPut<IntroController>(
+          () => IntroController(),
+      fenix: true,
+    );
+    Get.lazyPut<CongratulationsController>(
+          () => CongratulationsController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<ProfileController>(
+          () => ProfileController(),
+      fenix: true,
+    );
+    Get.lazyPut<AnalyticsController>(
+          () => AnalyticsController(),
+      fenix: true,
+    );
+  }
+
+
   const MyApp({Key? key}) : super(key: key);
   //flutter pub run build_runner build --delete-conflicting-outputs
 
   @override
   Widget build(BuildContext context) {
+    buildControllers();
     return  GetMaterialApp(
       title: 'Castalk',
       initialRoute: Pages.INITIAL_ROUTE,

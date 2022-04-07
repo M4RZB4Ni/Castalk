@@ -20,28 +20,44 @@ import '../controllers/listening_statistics_controller.dart';
 import '../controllers/monetization_controller.dart';
 import '../controllers/profile_edit_controller.dart';
 
-class CastalkBindings implements Bindings{
+class CastalkBindings implements Bindings {
   @override
-  void dependencies(){
-    Get.put(AuthController());
-    Get.put(IntroController());
-    Get.put(CongratulationsController());
-    Get.put(AddAcountInfoController());
-    Get.put(ProfileController());
-    Get.put(FollowersController());
-    Get.put(EpisodeController());
-    Get.put(MotionController());
-    Get.put(PlayListController());
-    Get.put(ListeningStatisticsController());
-    Get.put(ProlfileEditController());
-    Get.put(MyCastsController());
-    Get.put(AchivmentsController());
-    Get.put(MarketController());
-    Get.put(AnalyticsController());
-    Get.put(UserListController());
-    Get.put(DownloadsController());
-    Get.put(WalletController());
-    Get.put(MonetizationController());
-    Get.put(VerifyBadgeController());
+  void dependencies() {
+   /* Get.lazyPut<AuthController>(
+      () => AuthController(),
+      fenix: true,
+    );
+    Get.lazyPut<IntroController>(
+          () => IntroController(),
+      fenix: true,
+    );
+    Get.lazyPut<CongratulationsController>(
+          () => CongratulationsController(),
+      fenix: true,
+    );
+    Get.lazyPut<AddAcountInfoController>(
+          () => AddAcountInfoController(),
+      fenix: true,
+    );
+    Get.lazyPut<ProfileController>(
+          () => ProfileController(),
+      fenix: true,
+    );*/
+
+    // Get.put(FollowersController());
+    // Get.put(EpisodeController());
+    // Get.put(MotionController());
+    // Get.put(PlayListController());
+    // Get.put(ListeningStatisticsController());
+    // Get.put(ProlfileEditController());
+    // Get.put(MyCastsController());
+    // Get.put(AchivmentsController());
+    // Get.put(MarketController());
+    // Get.put(AnalyticsController());
+    // Get.put(UserListController());
+    // Get.put(DownloadsController());
+    // Get.put(WalletController());
+    // Get.put(MonetizationController());
+    // Get.put(VerifyBadgeController());
   }
 }
