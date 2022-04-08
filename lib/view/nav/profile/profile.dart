@@ -15,9 +15,7 @@ class Profile extends GetView<ProfileController>{
   String svgPath="assets/icons/";
   Profile({Key? key}) : super(key: key);
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  var listensK = '${(Get.find<AnalyticsController>().analyticsList[0].data!.listens! / 1000).toStringAsFixed(0)}K';
-  var followersK = '${(Get.find<AnalyticsController>().analyticsList[0].data!.followers! / 1000).toStringAsFixed(0)}K';
-  var postsK = '${(Get.find<AnalyticsController>().analyticsList[0].data!.posts! / 1000).toStringAsFixed(0)}K';
+
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +85,7 @@ class Profile extends GetView<ProfileController>{
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text("Listens",style: Get.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
-                                Text(int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.listens!.toString()) < 1000 ? Get.find<AnalyticsController>().analyticsList[0].data!.listens!.toString() : int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.listens!.toString()) >= 1000 ? listensK : '', style: Get.textTheme.headline1),
+                                Text(int.parse(controller.analyticsList[0].data!.listens!.toString()) < 1000 ? controller.analyticsList[0].data!.listens!.toString() : int.parse(controller.analyticsList[0].data!.listens!.toString()) >= 1000 ? controller.listensK.value : '', style: Get.textTheme.headline1),
                               ],)),
                       ),
                       Padding(
@@ -98,7 +96,7 @@ class Profile extends GetView<ProfileController>{
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text("Followers",style: Get.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500)),
-                                Text(int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.followers!.toString()) < 1000 ? Get.find<AnalyticsController>().analyticsList[0].data!.followers!.toString() : int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.followers!.toString()) >= 1000 ? followersK : '',style: Get.textTheme.headline1),
+                                Text(int.parse(controller.analyticsList[0].data!.followers!.toString()) < 1000 ? controller.analyticsList[0].data!.followers!.toString() : int.parse(controller.analyticsList[0].data!.followers!.toString()) >= 1000 ? controller.followersK.value : '',style: Get.textTheme.headline1),
                               ],)),
                       ),
                       Padding(
@@ -109,7 +107,7 @@ class Profile extends GetView<ProfileController>{
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text("Posts",style: Get.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
-                                Text(int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.posts!.toString()) < 1000 ? Get.find<AnalyticsController>().analyticsList[0].data!.posts!.toString() : int.parse(Get.find<AnalyticsController>().analyticsList[0].data!.posts!.toString()) >= 1000 ? postsK : '',style: Get.textTheme.headline1),
+                                Text(int.parse(controller.analyticsList[0].data!.posts!.toString()) < 1000 ? controller.analyticsList[0].data!.posts!.toString() : int.parse(controller.analyticsList[0].data!.posts!.toString()) >= 1000 ? controller.postsK.value : '',style: Get.textTheme.headline1),
                               ],)),
                       ),
                     ]),

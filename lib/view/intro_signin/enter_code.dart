@@ -178,7 +178,7 @@ class EnterCode extends GetView<AuthController>
             backgroundColor:MaterialStateProperty.all(const Color(0xff484848)),textStyle: MaterialStateProperty.all(const TextStyle(color: Color(0xff5C5C5C),fontSize: 18,fontWeight: FontWeight.w500)) ),);
 
       case "Next":
-        return  ElevatedButton(onPressed:() => Get.offAllNamed(Routes.AddAccountInfo), child:const Text("Next",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+        return  ElevatedButton(onPressed:() => Get.toNamed(Routes.AddAccountInfo), child:const Text("Next",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
             padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(

@@ -14,13 +14,18 @@ class AuthController extends GetxController{
   RxString subtitleTextStyle = 'ResendOff'.obs;
   RxString nextState = 'ResendOff'.obs;
   TextStyle pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: Colors.white54);
-  RxInt timerCount = (DateTime.now().millisecondsSinceEpoch + const Duration(seconds: 30).inMilliseconds).obs;
+  late RxInt timerCount ;
   RxBool endTime = false.obs;
   //
   void endTimers() {
     endTime.value = true;
     nextState.value = 'ResendOn';
     update();
+  }
+  void startTimer(){
+
+    timerCount = (DateTime.now().millisecondsSinceEpoch + const Duration(seconds: 60).inMilliseconds).obs;
+
   }
 
   @override
@@ -39,6 +44,7 @@ class AuthController extends GetxController{
     if(mobile.isNotEmpty) {
       AuthModel token = await AuthApi().login(mobile: mobile, password: password);
       writeTokenValue(token.data.accessToken.toString());
+      startTimer();
     }
     else{
       Get.snackbar(

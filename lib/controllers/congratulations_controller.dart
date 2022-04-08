@@ -13,13 +13,13 @@ class CongratulationsController extends GetxController with StateMixin<List<Cong
   final Other _other = Other();
   late RxList<CongratulationsModel> categoryList = RxList();
   late RxList<int> finalSelectedId = RxList();
-  //
+
   @override
   void onInit() {
     categoryIndex();
     super.onInit();
   }
-  //
+
   categoryIndex() async{
 
     await _other.categoryIndex(token: GetStorage().read('token')).then((l) => {

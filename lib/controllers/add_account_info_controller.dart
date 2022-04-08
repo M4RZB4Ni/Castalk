@@ -10,6 +10,7 @@ class AddAcountInfoController extends GetxController{
  @override
  void onInit() {
    genderValue = cCodes.first;
+
    super.onInit();
  }
  //

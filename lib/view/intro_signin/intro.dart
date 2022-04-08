@@ -63,7 +63,7 @@ class Intro extends GetView<IntroController>  {
                         ),
                       )),
                       InkWell(child: Text("Skip",style: Get.textTheme.button,),onTap: (){
-                        Get.offAllNamed(Routes.SignIn);
+                        Get.toNamed(Routes.SignIn);
                       }),
 
                     ],
