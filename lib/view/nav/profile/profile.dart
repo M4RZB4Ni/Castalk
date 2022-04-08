@@ -141,7 +141,7 @@ class Profile extends GetView<ProfileController>{
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 17,right: 32,bottom: 17),
-                          child: Text(controller.playList.length.toString(),style: Get.textTheme.headline1!.copyWith(fontSize: 18),),
+                          child: Text(Get.find<PlayListController>().playList.length.toString(),style: Get.textTheme.headline1!.copyWith(fontSize: 18),),
                         ),
                       ]),
                 ),
@@ -171,8 +171,8 @@ class Profile extends GetView<ProfileController>{
                         Padding(
                           padding: const EdgeInsets.only(top: 17,right: 32,bottom: 17),
                           child: Text(
-                              controller.viewEpisodeList.length != 0
-                                  ? controller.viewEpisodeList.length.toString() : '0',
+                              Get.find<EpisodeController>().viewEpisodeList.isNotEmpty
+                                  ? Get.find<EpisodeController>().viewEpisodeList.length.toString() : '0',
                               style: Get.textTheme.headline1!.copyWith(fontSize: 18)),
                         ),
                       ]),
@@ -382,7 +382,7 @@ class Profile extends GetView<ProfileController>{
             ],
           ),
         ),
-      ) : const CircularProgressIndicator()),
+      ) : const CircularProgressIndicator(),),
     );
   }
 
@@ -402,7 +402,7 @@ class Profile extends GetView<ProfileController>{
               ),
               child: Align(alignment: Alignment.topLeft,
                 child: InkWell(
-                  onTap: () => _scaffoldKey.currentState!.openDrawer(),
+                  onTap: () => Scaffold.of(context).openEndDrawer(),
                   child: SizedBox(
                     width: 40,
                     height: 40,
