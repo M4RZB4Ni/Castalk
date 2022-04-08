@@ -15,7 +15,7 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
+    return Obx(() => controller.loadingListeningStatistics.value ? Scaffold(
       appBar: PreferredSize(preferredSize: Size(Get.width, 100), child: header(Get.width)),
       backgroundColor: Style.background,
       body: Column(children: [
@@ -27,24 +27,24 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text('${controller.listeningAnalyticsList[0].data!.total_listening_time!} min', style: Style.t_500_18w),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Text("Total listening time",style: Style.t_500_14_G9D),
-                    ),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text('${controller.listeningAnalyticsList[0].data!.episodes!}',style: Style.t_500_24w),
-                    Text("Episodes",style: Style.t_500_14_G9D),
-                  ],
-                )
-              ],)
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text('${controller.listeningAnalyticsList[0].data!.total_listening_time!} min', style: Style.t_500_18w),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Text("Total listening time",style: Style.t_500_14_G9D),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text('${controller.listeningAnalyticsList[0].data!.episodes!}',style: Style.t_500_24w),
+                      Text("Episodes",style: Style.t_500_14_G9D),
+                    ],
+                  )
+                ],)
           ),
         ),
         Padding(
@@ -74,7 +74,7 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
                     padding: const EdgeInsets.only(
                         right: 18.0, left: 12.0, top: 24, bottom: 12),
                     child: LineChart(
-                        mainData(),
+                      mainData(),
                     ),
                   ),
                 ),
@@ -121,24 +121,24 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
               ),
 
               Container(
-                width: Get.width/2,
-                height: 144,
-                color: Style.background,
-                child: Stack(children: [
-                  Center(child: SvgPicture.asset(svgPath+"chartcenter.svg")),
-                  PieChart(
-                    PieChartData(
-                        sectionsSpace: 5,
-                        centerSpaceRadius: 50,
-                        sections: showingSections()),
-                  ),
-                ],)
+                  width: Get.width/2,
+                  height: 144,
+                  color: Style.background,
+                  child: Stack(children: [
+                    Center(child: SvgPicture.asset(svgPath+"chartcenter.svg")),
+                    PieChart(
+                      PieChartData(
+                          sectionsSpace: 5,
+                          centerSpaceRadius: 50,
+                          sections: showingSections()),
+                    ),
+                  ],)
               ),
             ],
           ),
         ),
       ],),
-    );
+    ) : const CircularProgressIndicator());
   }
 
   List<PieChartSectionData> showingSections() {

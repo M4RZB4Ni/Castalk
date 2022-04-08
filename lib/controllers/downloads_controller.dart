@@ -8,6 +8,7 @@ class DownloadsController extends GetxController with StateMixin<List<DownloadsM
 
   final Downloads _downloads = Downloads();
   late List<DownloadsModel> downloadsList = [];
+  RxBool loadingDownloads = false.obs;
   //
   @override
   onInit() {
@@ -19,6 +20,7 @@ class DownloadsController extends GetxController with StateMixin<List<DownloadsM
     await _downloads.getDownload(episodeId: episodeId, token: GetStorage().read('token')).then((l) => {
       downloadsList = List<DownloadsModel>.from(l.map((model) => DownloadsModel.fromJson(model))),
       debugPrint('downloadsList---> $downloadsList'),
+      loadingDownloads.value = true,
     });
   }
 

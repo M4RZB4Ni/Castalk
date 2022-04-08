@@ -8,6 +8,7 @@ class ListeningStatisticsController extends GetxController with StateMixin<List<
 
   final Analytics _analytics = Analytics();
   late List<ListeningAnalyticsModel> listeningAnalyticsList = [];
+  RxBool loadingListeningStatistics = false.obs;
   //
   @override
   onInit() {
@@ -19,6 +20,7 @@ class ListeningStatisticsController extends GetxController with StateMixin<List<
     await _analytics.listeningAnalytics(token: GetStorage().read('token')).then((l) => {
       listeningAnalyticsList = List<ListeningAnalyticsModel>.from(l.map((model) => ListeningAnalyticsModel.fromJson(model))),
       debugPrint('listeningAnalyticsList---> $listeningAnalyticsList'),
+      loadingListeningStatistics.value = true,
     });
   }
 

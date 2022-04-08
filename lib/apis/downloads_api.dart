@@ -44,30 +44,9 @@ class Downloads{
 
     if (response.statusCode == 200) {
       debugPrint('addDownloadDone---> ${await response.stream.bytesToString()}');
-      Get.snackbar(
-        'Done',
-        'Request completed successfully.',
-        duration: 3.seconds,
-        snackPosition: SnackPosition.BOTTOM,
-        margin: const EdgeInsets.all(20),
-        showProgressIndicator: true,
-        isDismissible: true,
-        backgroundColor: Colors.green,
-        colorText: Colors.white,
-      );
     }
     else{
       debugPrint('updateProfileFailed---> ${response.reasonPhrase}');
-      Get.snackbar(
-        'Error',
-        'Request failed!',
-        duration: 3.seconds,
-        snackPosition: SnackPosition.BOTTOM,
-        showProgressIndicator: true,
-        isDismissible: true,
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-      );
     }
   }
 

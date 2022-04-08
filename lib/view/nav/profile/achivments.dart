@@ -15,7 +15,7 @@ class Achivments extends GetView<AchivmentsController>{
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
+    return Obx(() => controller.loadingAchivments.value ? Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(Get.width, 100), child: header(Get.width)),
       backgroundColor: Style.background,
@@ -24,38 +24,38 @@ class Achivments extends GetView<AchivmentsController>{
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-              Flexible(
-              child:ListView(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                   children: [
-                     _firstPlace(Get.width,Get.height),
-                  ])),
+            Flexible(
+                child:ListView(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      _firstPlace(Get.width,Get.height),
+                    ])),
             Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize:MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 12, left: 31,top: 31),
-                child: Text(
-                  "Achieved:",
-                  style: Style.t_500_14w,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize:MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 12, left: 31,top: 31),
+                  child: Text(
+                    "Achieved:",
+                    style: Style.t_500_14w,
+                  ),
                 ),
-              ),
-              Flexible(
-                child: ListView(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: [
-                    _achivedItem(Get.width,Get.height),
-                  ],
-                ),
-              )
-            ],
-          )],
+                Flexible(
+                  child: ListView(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      _achivedItem(Get.width,Get.height),
+                    ],
+                  ),
+                )
+              ],
+            )],
         ),
       )),
-    );
+    ) : const CircularProgressIndicator());
   }
 
   _firstPlace(w, h) {

@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../../../controllers/episode_controller.dart';
+import '../../../controllers/profile_single_controller.dart';
 
-class LikedEpisodes extends GetView<EpisodeController>
+class LikedEpisodes extends GetView<ProfileController>
 {
   String svgPath = "assets/icons/";
   late TextTheme _textTheme;
@@ -21,8 +21,8 @@ class LikedEpisodes extends GetView<EpisodeController>
       body: ListView.builder(
         itemCount: controller.viewEpisodeList.length,
         itemBuilder: (context, index) {
-         return _likedItem(index, Get.width, Get.height);
-      },),
+          return controller.viewEpisodeList.isNotEmpty ? _likedItem(index, Get.width, Get.height) : Text('LikedEpisode does not exist!', style: Get.textTheme.headline1!.copyWith(fontSize: 14));
+        },),
 
     );
   }
@@ -143,15 +143,6 @@ class LikedEpisodes extends GetView<EpisodeController>
     );
 
   }
-/*  Container(
-  height: 110,
-  padding: const EdgeInsets.only(top: 5,bottom: 5,right: 6,left: 6),
-  decoration: BoxDecoration(color: Style.gray48op50,borderRadius: BorderRadius.circular(12)),
-  child: SvgPicture.asset(
-  svgPath + "arrow_left.svg",
-  width: 24,
-  height: 12),
-  )*/
 
   header(w) {
     return Column(

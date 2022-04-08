@@ -13,8 +13,8 @@ class ProfileEdit extends GetView<ProlfileEditController> {
 
   String svgPath = "assets/icons/";
   late List<Map<String, String>> accountInfo = [
-    {"key"   : "cover_picture", "value" : controller.base64coverImg},
-    {"key"   : "user_picture", "value" : controller.base64profileImg},
+    {"key"   : "cover_picture", "value" : controller.coverPath.value},
+    {"key"   : "profile_picture", "value" : controller.profilePath.value},
     {"key"   : "name", "value" : controller.nameController.text},
     {"key"   : "episode_name", "value" : controller.episodeNameController.text},
     {"key"   : "about", "value" : controller.aboutController.text},

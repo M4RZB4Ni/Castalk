@@ -35,16 +35,13 @@ class AuthController extends GetxController{
     super.onInit();
   }
 
-  writeTokenValue(String value){
-    GetStorage().write('token', value);
-  }
-
   login({required String mobile, required var password}) async
   {
     if(mobile.isNotEmpty) {
       AuthModel token = await AuthApi().login(mobile: mobile, password: password);
-      writeTokenValue(token.data.accessToken.toString());
+      GetStorage().write('token', token.data.accessToken.toString());
       startTimer();
+      Get.offAndToNamed(Routes.EnterCode, arguments: [mobile]);
     }
     else{
       Get.snackbar(

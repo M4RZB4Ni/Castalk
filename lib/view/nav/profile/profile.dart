@@ -46,7 +46,9 @@ class Profile extends GetView<ProfileController>{
                 ),
                 Align(alignment: Alignment.topRight,
                   child: InkWell(
-                    onTap: () => Scaffold.of(context).openDrawer(),
+                    onTap: () {
+                        _scaffoldKey.currentState!.openEndDrawer();
+                    },
                     child: Container(
                         padding: const EdgeInsets.all(19),width: 44,height: 85,
                         child: SvgPicture.asset(svgPath+"moredots.svg"),
@@ -139,7 +141,7 @@ class Profile extends GetView<ProfileController>{
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 17,right: 32,bottom: 17),
-                          child: Text(Get.find<PlayListController>().playList.length.toString(),style: Get.textTheme.headline1!.copyWith(fontSize: 18),),
+                          child: Text(controller.playList.length.toString(),style: Get.textTheme.headline1!.copyWith(fontSize: 18),),
                         ),
                       ]),
                 ),
@@ -169,8 +171,8 @@ class Profile extends GetView<ProfileController>{
                         Padding(
                           padding: const EdgeInsets.only(top: 17,right: 32,bottom: 17),
                           child: Text(
-                              Get.find<EpisodeController>().viewEpisodeList.isNotEmpty
-                                  ? Get.find<EpisodeController>().viewEpisodeList.length.toString() : '0',
+                              controller.viewEpisodeList.length != 0
+                                  ? controller.viewEpisodeList.length.toString() : '0',
                               style: Get.textTheme.headline1!.copyWith(fontSize: 18)),
                         ),
                       ]),
@@ -380,7 +382,7 @@ class Profile extends GetView<ProfileController>{
             ],
           ),
         ),
-      ) : const CircularProgressIndicator(),),
+      ) : const CircularProgressIndicator()),
     );
   }
 
@@ -400,7 +402,7 @@ class Profile extends GetView<ProfileController>{
               ),
               child: Align(alignment: Alignment.topLeft,
                 child: InkWell(
-                  onTap: () => Scaffold.of(context).openEndDrawer(),
+                  onTap: () => _scaffoldKey.currentState!.openDrawer(),
                   child: SizedBox(
                     width: 40,
                     height: 40,

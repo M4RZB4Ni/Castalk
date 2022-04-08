@@ -8,6 +8,11 @@ class AnalyticsController extends GetxController with StateMixin<List<AnalyticsM
 
   final Analytics _analytics = Analytics();
   late List<AnalyticsModel> analyticsList = [];
+  late RxString listensK = '0'.obs;
+  late RxString followersK = '0'.obs;
+  late RxString postsK = '0'.obs;
+  late RxString playsK = '0'.obs;
+  RxBool loadingAnalytics = false.obs;
   //
   @override
   onInit() {
@@ -19,6 +24,11 @@ class AnalyticsController extends GetxController with StateMixin<List<AnalyticsM
     await _analytics.analytics(token: GetStorage().read('token')).then((l) => {
       analyticsList = List<AnalyticsModel>.from(l.map((model) => AnalyticsModel.fromJson(model))),
       debugPrint('analyticsList---> $analyticsList'),
+      listensK.value = '${(analyticsList[0].data!.listens! / 1000).toStringAsFixed(0)}K',
+      followersK.value = '${(analyticsList[0].data!.followers! / 1000).toStringAsFixed(0)}K',
+      postsK.value = '${(analyticsList[0].data!.posts! / 1000).toStringAsFixed(0)}K',
+      playsK.value = '${(analyticsList[0].data!.plays! / 1000).toStringAsFixed(0)}K',
+      loadingAnalytics.value = true,
     });
   }
 

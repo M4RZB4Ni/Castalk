@@ -8,6 +8,7 @@ class AchivmentsController extends GetxController with StateMixin<List<Achivment
 
   final Achivment _achivment = Achivment();
   late List<AchivmentsModel> achivmentList = [];
+  RxBool loadingAchivments = false.obs;
   //
   @override
   onInit() {
@@ -19,6 +20,7 @@ class AchivmentsController extends GetxController with StateMixin<List<Achivment
     await _achivment.getAchivment(token: GetStorage().read('token')).then((l) => {
       achivmentList = List<AchivmentsModel>.from(l.map((model) => AchivmentsModel.fromJson(model))),
       debugPrint('achivmentList---> $achivmentList'),
+      loadingAchivments.value = true,
     });
   }
 

@@ -14,14 +14,14 @@ class Downloads extends GetView<DownloadsController> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
+    return Obx(() => controller.loadingDownloads.value ? Scaffold(
       backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(Get.width, 150), child: header(Get.width)),
       body: SingleChildScrollView(child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [inProgress(Get.width, Get.height),downloaded(Get.width, Get.height)],
       )),
-    );
+    ) : const CircularProgressIndicator());
   }
 
   header(w) {

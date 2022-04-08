@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../../../controllers/episode_controller.dart';
 
 class PlayListEpisodes extends GetView<PlayListController> {
   String svgPath = "assets/icons/";
@@ -14,16 +13,16 @@ class PlayListEpisodes extends GetView<PlayListController> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
+    return Obx(() => controller.loadingPlayList.value ? Scaffold(
       backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(Get.width, 180), child: header(Get.width)),
       body: ListView.builder(
         itemCount: controller.playList[0].data!.data![0].episodes!.length,
         itemBuilder: (context, index) {
-        return controller.playList[0].data!.data![index].episodes!.isNotEmpty ? _likedItem(index, Get.width, Get.height) : Text('PlayList does not exist!', style: Get.textTheme.headline1!.copyWith(fontSize: 14));
-      },),
+          return controller.playList[0].data!.data![index].episodes!.isNotEmpty ? _likedItem(index, Get.width, Get.height) : Text('PlayList does not exist!', style: Get.textTheme.headline1!.copyWith(fontSize: 14));
+        },),
 
-    );
+    ) : const CircularProgressIndicator());
   }
 
   _likedItem(int index, w, h)

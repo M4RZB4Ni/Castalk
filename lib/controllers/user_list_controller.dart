@@ -8,6 +8,7 @@ class UserListController extends GetxController with StateMixin<List<UserListMod
 
   final User _user = User();
   late List<UserListModel> userList = [];
+  RxBool loadingUserList = false.obs;
   //
   @override
   onInit() {
@@ -19,6 +20,7 @@ class UserListController extends GetxController with StateMixin<List<UserListMod
     await _user.userList(token: GetStorage().read('token')).then((l) => {
       userList = List<UserListModel>.from(l.map((model) => UserListModel.fromJson(model))),
       debugPrint('userList---> $userList'),
+      loadingUserList.value = true,
     });
   }
 

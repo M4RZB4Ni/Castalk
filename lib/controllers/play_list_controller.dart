@@ -8,6 +8,7 @@ class PlayListController extends GetxController with StateMixin<List<PlayListMod
 
   late List<PlayListModel> playList = [];
   final PlaylistApi _playlistApi = PlaylistApi();
+  RxBool loadingPlayList = false.obs;
   //
   @override
   void onInit() {
@@ -19,6 +20,7 @@ class PlayListController extends GetxController with StateMixin<List<PlayListMod
     await _playlistApi.playListIndex(token: GetStorage().read('token')).then((l) => {
       playList = List<PlayListModel>.from(l.map((model) => PlayListModel.fromJson(model))),
       debugPrint('playList---> $playList'),
+      loadingPlayList.value = true
     });
   }
 

@@ -54,9 +54,7 @@ class FileApi{
 
   }
 
-  uploadImage(
-      {required var token,required var file}) async
-  {
+  uploadImage({required var token,required var file}) async {
 
     var headers = {
       'Authorization': 'Bearer $token',

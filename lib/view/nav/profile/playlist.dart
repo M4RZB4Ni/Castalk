@@ -13,7 +13,7 @@ class Playlist extends GetView<PlayListController> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
+    return Obx(() => controller.loadingPlayList.value ? Scaffold(
       backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(Get.width, 180), child: header(Get.width)),
       body: GridView.builder(
@@ -23,8 +23,8 @@ class Playlist extends GetView<PlayListController> {
           return SizedBox(width: 130, height: 180, child: playlistItem(index));
         },
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 2 / 2.1,mainAxisSpacing: 31,crossAxisSpacing: 33),
-        ),
-    );
+      ),
+    ) : const CircularProgressIndicator());
   }
 
   header(w) {

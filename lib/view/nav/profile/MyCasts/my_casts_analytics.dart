@@ -12,250 +12,246 @@ import '../../../../controllers/mycasts_controller.dart';
 class MyCastsAnalytics extends GetView<AnalyticsController>{
 
   TextEditingController numberController = TextEditingController();
-  var listensK = '${(Get.find<AnalyticsController>().analyticsList[0].data!.listens! / 1000).toStringAsFixed(0)}K';
-  var followersK = '${(Get.find<AnalyticsController>().analyticsList[0].data!.followers! / 1000).toStringAsFixed(0)}K';
-  var postsK = '${(Get.find<AnalyticsController>().analyticsList[0].data!.posts! / 1000).toStringAsFixed(0)}K';
-  var playsK = '${(Get.find<AnalyticsController>().analyticsList[0].data!.plays! / 1000).toStringAsFixed(0)}K';
 
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
+    return Obx(() => controller.loadingAnalytics.value ? Scaffold(
       backgroundColor: Style.background,
       body: SingleChildScrollView(child:
-          Column(
-            children: [
-              _tripleHeader(Get.width),
-              Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 28),
-              child: Row(children: [
-                Expanded(flex: 2,child:Text("Plays :", style: Style.t_500_16w)),
-                Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: Get.width,child:
-                DropdownButtonHideUnderline(
-                    child:  Padding(
-                      padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
-                      child: Theme(data: Get.theme.copyWith(
-                          canvasColor: Style.background),
-                          child: GetBuilder<MyCastsController>(builder: (controller){
-                            return DropdownButton(
-                                icon: const Padding(
-                                  padding: EdgeInsets.only(right: 15,bottom: 0),
-                                  child: Icon(Icons.keyboard_arrow_down_rounded,color: Color(0xffD1D1D1),size: 28,),
-                                ),
-                                isDense: false,
-                                value: controller.charDropValue.toString(),
-                                style: Get.textTheme.bodyText2,
-                                items: controller.cCodes.map((selectedValue) => DropdownMenuItem(child: Text(selectedValue.toString(),style: Style.t_400_12w),value: selectedValue)).toList(),
-                                onChanged: (newValue) {
-                                  controller.charDropSetSelected(newValue.toString());
-                                },
-                            );
-                          },),
-                      ),
-                    )
-                ))
-                )
-              ],),
-            ),
-              _firstChartSection(),
-              const Padding(
-              padding: EdgeInsets.only(top: 24,right: 12,left: 12,bottom: 30),
-              child: Divider(height: 1,color: Style.divider,thickness: 1,),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 28),
-              child: Row(children: [
-                Expanded(flex: 2,child:Text("Reaches :", style: Style.t_500_16w)),
-                Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: Get.width,child:
-                DropdownButtonHideUnderline(
-                    child:  Padding(
-                      padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
-                      child: Theme(data: Get.theme.copyWith(
-                          canvasColor: Style.background),
-                          child: GetBuilder<MyCastsController>(builder: (controller){
-                            return DropdownButton(
-                                icon: const Padding(
-                                  padding: EdgeInsets.only(right: 15,bottom: 0),
-                                  child: Icon(Icons.keyboard_arrow_down_rounded,color: Color(0xffD1D1D1),size: 28,),
-                                ),
-                                isDense: false,
-                                value: controller.reachesDropValue.toString(),
-                                style: Get.textTheme.bodyText2,
-                                items: controller.cCodes.map((selectedValue) => DropdownMenuItem(child: Text(selectedValue.toString(),style: Style.t_400_12w),value: selectedValue)).toList(),
-                                onChanged: (newValue) {
-                                  controller.reachesDropSetSelected(newValue.toString());
-                                },
-                            );
-                          },),
-                      ),
-                    )
-                ))
-                )
-              ],),
-            ),
-            _reachesHeader(Get.width),
-            _secondChartSection(),
-            const Padding(
-              padding: EdgeInsets.only(top: 24,right: 12,left: 12),
-              child: Divider(height: 1,color: Style.divider,thickness: 1,),
-            ),
-            _mostPlayedSection(Get.width, Get.height),
-            const Padding(
-              padding: EdgeInsets.only(top: 24,right: 12,left: 12),
-              child: Divider(height: 1,color: Style.divider,thickness: 1,),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 25,left: 25,top: 33),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 0,left: 0,bottom: 6),
-                    child: Text("Audience :",style: Style.t_500_16w,),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          Text('${Get.find<AnalyticsController>().analyticsList[0].data!.audience!.gender!.female!}% Female',style: Style.t_500_12w,),
-                          Container(
-                              width: Get.width/2,
-                              height: 144,
-                              color: Style.background,
-                              child: Stack(children: [
-                                Center(child: Text("Gender",style: Style.t_500_16g90,)),
-                                PieChart(
-                                  PieChartData(
-                                      sectionsSpace: 5,
-                                      centerSpaceRadius: 50,
-                                      sections: showingSections()),
-                                ),
-                              ],)
+      Column(
+        children: [
+          _tripleHeader(Get.width),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 28),
+            child: Row(children: [
+              Expanded(flex: 2,child:Text("Plays :", style: Style.t_500_16w)),
+              Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: Get.width,child:
+              DropdownButtonHideUnderline(
+                  child:  Padding(
+                    padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
+                    child: Theme(data: Get.theme.copyWith(
+                        canvasColor: Style.background),
+                      child: GetBuilder<MyCastsController>(builder: (controller){
+                        return DropdownButton(
+                          icon: const Padding(
+                            padding: EdgeInsets.only(right: 15,bottom: 0),
+                            child: Icon(Icons.keyboard_arrow_down_rounded,color: Color(0xffD1D1D1),size: 28,),
                           ),
-                          Text('${Get.find<AnalyticsController>().analyticsList[0].data!.audience!.gender!.male!}% Male',style: Style.t_500_12g,),
-                        ],
-                      ),
-                      Container(
-                          padding: const EdgeInsets.only(top: 14,bottom: 14),
-                          height: 144,
-                          width: Get.width/3,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text("50 > ------>",style: Style.t_400_14w),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 28),
-                                        child: Text('${(controller.analyticsList[0].data!.audience!.age!.age_50!)}%',style: Style.t_400_14g),
-                                      ),
-
-                                    ]),
+                          isDense: false,
+                          value: controller.charDropValue.toString(),
+                          style: Get.textTheme.bodyText2,
+                          items: controller.cCodes.map((selectedValue) => DropdownMenuItem(child: Text(selectedValue.toString(),style: Style.t_400_12w),value: selectedValue)).toList(),
+                          onChanged: (newValue) {
+                            controller.charDropSetSelected(newValue.toString());
+                          },
+                        );
+                      },),
+                    ),
+                  )
+              ))
+              )
+            ],),
+          ),
+          _firstChartSection(),
+          const Padding(
+            padding: EdgeInsets.only(top: 24,right: 12,left: 12,bottom: 30),
+            child: Divider(height: 1,color: Style.divider,thickness: 1,),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 28),
+            child: Row(children: [
+              Expanded(flex: 2,child:Text("Reaches :", style: Style.t_500_16w)),
+              Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: Get.width,child:
+              DropdownButtonHideUnderline(
+                  child:  Padding(
+                    padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
+                    child: Theme(data: Get.theme.copyWith(
+                        canvasColor: Style.background),
+                      child: GetBuilder<MyCastsController>(builder: (controller){
+                        return DropdownButton(
+                          icon: const Padding(
+                            padding: EdgeInsets.only(right: 15,bottom: 0),
+                            child: Icon(Icons.keyboard_arrow_down_rounded,color: Color(0xffD1D1D1),size: 28,),
+                          ),
+                          isDense: false,
+                          value: controller.reachesDropValue.toString(),
+                          style: Get.textTheme.bodyText2,
+                          items: controller.cCodes.map((selectedValue) => DropdownMenuItem(child: Text(selectedValue.toString(),style: Style.t_400_12w),value: selectedValue)).toList(),
+                          onChanged: (newValue) {
+                            controller.reachesDropSetSelected(newValue.toString());
+                          },
+                        );
+                      },),
+                    ),
+                  )
+              ))
+              )
+            ],),
+          ),
+          _reachesHeader(Get.width),
+          _secondChartSection(),
+          const Padding(
+            padding: EdgeInsets.only(top: 24,right: 12,left: 12),
+            child: Divider(height: 1,color: Style.divider,thickness: 1,),
+          ),
+          _mostPlayedSection(Get.width, Get.height),
+          const Padding(
+            padding: EdgeInsets.only(top: 24,right: 12,left: 12),
+            child: Divider(height: 1,color: Style.divider,thickness: 1,),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 25,left: 25,top: 33),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 0,left: 0,bottom: 6),
+                  child: Text("Audience :",style: Style.t_500_16w,),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        Text('${Get.find<AnalyticsController>().analyticsList[0].data!.audience!.gender!.female!}% Female',style: Style.t_500_12w,),
+                        Container(
+                            width: Get.width/2,
+                            height: 144,
+                            color: Style.background,
+                            child: Stack(children: [
+                              Center(child: Text("Gender",style: Style.t_500_16g90,)),
+                              PieChart(
+                                PieChartData(
+                                    sectionsSpace: 5,
+                                    centerSpaceRadius: 50,
+                                    sections: showingSections()),
                               ),
-                              Expanded(
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text("40 - 50 ------>",style: Style.t_400_14w),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 28),
-                                        child: Text('${(controller.analyticsList[0].data!.audience!.age!.age_40_50!)}%',style: Style.t_400_14g),
-                                      ),
+                            ],)
+                        ),
+                        Text('${Get.find<AnalyticsController>().analyticsList[0].data!.audience!.gender!.male!}% Male',style: Style.t_500_12g,),
+                      ],
+                    ),
+                    Container(
+                        padding: const EdgeInsets.only(top: 14,bottom: 14),
+                        height: 144,
+                        width: Get.width/3,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("50 > ------>",style: Style.t_400_14w),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 28),
+                                      child: Text('${(controller.analyticsList[0].data!.audience!.age!.age_50!)}%',style: Style.t_400_14g),
+                                    ),
 
-                                    ]),
-                              ),
-                              Expanded(
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text("30 - 40 ------>",style: Style.t_400_14w),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 28),
-                                        child: Text('${(controller.analyticsList[0].data!.audience!.age!.age_30_40!)}%',style: Style.t_400_14g),
-                                      ),
+                                  ]),
+                            ),
+                            Expanded(
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("40 - 50 ------>",style: Style.t_400_14w),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 28),
+                                      child: Text('${(controller.analyticsList[0].data!.audience!.age!.age_40_50!)}%',style: Style.t_400_14g),
+                                    ),
 
-                                    ]),
-                              ),
-                              Expanded(
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text("20 - 30 ------>",style: Style.t_400_14w),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 28),
-                                        child: Text('${(controller.analyticsList[0].data!.audience!.age!.age_20_30!)}%',style: Style.t_400_14g),
-                                      ),
+                                  ]),
+                            ),
+                            Expanded(
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("30 - 40 ------>",style: Style.t_400_14w),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 28),
+                                      child: Text('${(controller.analyticsList[0].data!.audience!.age!.age_30_40!)}%',style: Style.t_400_14g),
+                                    ),
 
-                                    ]),
-                              ),
-                              Expanded(
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text("12 - 20 ------>",style: Style.t_400_14w),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 28),
-                                        child: Text('${(controller.analyticsList[0].data!.audience!.age!.age_12_20!)}%',style: Style.t_400_14g),
-                                      ),
+                                  ]),
+                            ),
+                            Expanded(
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("20 - 30 ------>",style: Style.t_400_14w),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 28),
+                                      child: Text('${(controller.analyticsList[0].data!.audience!.age!.age_20_30!)}%',style: Style.t_400_14g),
+                                    ),
 
-                                    ]),
-                              ),
-                              Text("Age",style: Style.t_500_16w),
-                            ],
-                          )
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                                  ]),
+                            ),
+                            Expanded(
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("12 - 20 ------>",style: Style.t_400_14w),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 28),
+                                      child: Text('${(controller.analyticsList[0].data!.audience!.age!.age_12_20!)}%',style: Style.t_400_14g),
+                                    ),
+
+                                  ]),
+                            ),
+                            Text("Age",style: Style.t_500_16w),
+                          ],
+                        )
+                    ),
+                  ],
+                ),
+              ],
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 24,right: 12,left: 12,bottom: 33),
-              child: Divider(height: 1,color: Style.divider,thickness: 1,),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 28),
-              child: Row(children: [
-                Expanded(flex: 2,child:Text("Earnings :", style: Style.t_500_16w)),
-                Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: Get.width,child:
-                DropdownButtonHideUnderline(
-                    child:  Padding(
-                      padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
-                      child: Theme(data: Get.theme.copyWith(
-                          canvasColor: Style.background),
-                          child: GetBuilder<MyCastsController>(builder: (controller){
-                            return DropdownButton(
-                              icon: const Padding(
-                                padding: EdgeInsets.only(right: 15,bottom: 0),
-                                child: Icon(Icons.keyboard_arrow_down_rounded,color: Color(0xffD1D1D1),size: 28,),
-                              ),
-                              isDense: false,
-                              value: controller.earningsDropValue.toString(),
-                              style: Get.textTheme.bodyText2,
-                              items: controller.cCodes.map((selectedValue) => DropdownMenuItem(child: Text(selectedValue.toString(),style: Style.t_400_12w),value: selectedValue)).toList(),
-                              onChanged: (newValue) {
-                                controller.earningsDropSetSelected(newValue.toString());
-                              },
-                            );
-                          },),
-                      ),
-                    )
-                ))
-                )
-              ],),
-            ),
-            _thirdChartSection(),
-            const Padding(
-              padding: EdgeInsets.only(top: 0,right: 12,left: 12,bottom: 0),
-              child: Divider(height: 1,color: Style.divider,thickness: 1,),
-            ),
-            _bestSellingSection(Get.width, Get.height)
-          ],)
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 24,right: 12,left: 12,bottom: 33),
+            child: Divider(height: 1,color: Style.divider,thickness: 1,),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 28),
+            child: Row(children: [
+              Expanded(flex: 2,child:Text("Earnings :", style: Style.t_500_16w)),
+              Expanded(flex: 3,child: Container(height: 44,decoration:  Style.dropDownDecoration,width: Get.width,child:
+              DropdownButtonHideUnderline(
+                  child:  Padding(
+                    padding: const EdgeInsets.only(top: 0,bottom: 0,left: 15),
+                    child: Theme(data: Get.theme.copyWith(
+                        canvasColor: Style.background),
+                      child: GetBuilder<MyCastsController>(builder: (controller){
+                        return DropdownButton(
+                          icon: const Padding(
+                            padding: EdgeInsets.only(right: 15,bottom: 0),
+                            child: Icon(Icons.keyboard_arrow_down_rounded,color: Color(0xffD1D1D1),size: 28,),
+                          ),
+                          isDense: false,
+                          value: controller.earningsDropValue.toString(),
+                          style: Get.textTheme.bodyText2,
+                          items: controller.cCodes.map((selectedValue) => DropdownMenuItem(child: Text(selectedValue.toString(),style: Style.t_400_12w),value: selectedValue)).toList(),
+                          onChanged: (newValue) {
+                            controller.earningsDropSetSelected(newValue.toString());
+                          },
+                        );
+                      },),
+                    ),
+                  )
+              ))
+              )
+            ],),
+          ),
+          _thirdChartSection(),
+          const Padding(
+            padding: EdgeInsets.only(top: 0,right: 12,left: 12,bottom: 0),
+            child: Divider(height: 1,color: Style.divider,thickness: 1,),
+          ),
+          _bestSellingSection(Get.width, Get.height)
+        ],)
         ,),
-    );
+    ) : const CircularProgressIndicator());
   }
 
   List<PieChartSectionData> showingSections() {
@@ -361,7 +357,7 @@ class MyCastsAnalytics extends GetView<AnalyticsController>{
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 34),
-                        child: Text(playsK, style: Style.t_400_14wh),
+                        child: Text(controller.playsK.value, style: Style.t_400_14wh),
                       ),
                     ],),
                 ),
@@ -415,7 +411,7 @@ class MyCastsAnalytics extends GetView<AnalyticsController>{
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 34),
-                        child: Text(playsK, style: Style.t_400_14wh),
+                        child: Text(controller.playsK.value, style: Style.t_400_14wh),
                       ),
                     ],),
                 ),
@@ -453,7 +449,7 @@ class MyCastsAnalytics extends GetView<AnalyticsController>{
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(int.parse(controller.analyticsList[0].data!.listens!.toString()) < 1000 ? controller.analyticsList[0].data!.listens!.toString() : int.parse(controller.analyticsList[0].data!.listens!.toString()) >= 1000 ? listensK : '', style: Style.t_500_24w),
+                  Text(int.parse(controller.analyticsList[0].data!.listens!.toString()) < 1000 ? controller.analyticsList[0].data!.listens!.toString() : int.parse(controller.analyticsList[0].data!.listens!.toString()) >= 1000 ? controller.listensK.value : '', style: Style.t_500_24w),
                   Padding(
                     padding: const EdgeInsets.only(top: 5),
                     child: Text("Listens",style: Style.t_500_14_G9D),
@@ -463,7 +459,7 @@ class MyCastsAnalytics extends GetView<AnalyticsController>{
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(int.parse(controller.analyticsList[0].data!.followers!.toString()) < 1000 ? controller.analyticsList[0].data!.followers!.toString() : int.parse(controller.analyticsList[0].data!.followers!.toString()) >= 1000 ? followersK : '', style: Style.t_500_24w),
+                  Text(int.parse(controller.analyticsList[0].data!.followers!.toString()) < 1000 ? controller.analyticsList[0].data!.followers!.toString() : int.parse(controller.analyticsList[0].data!.followers!.toString()) >= 1000 ? controller.followersK.value : '', style: Style.t_500_24w),
                   Padding(
                     padding: const EdgeInsets.only(top: 5),
                     child: Text("Followers",style: Style.t_500_14_G9D),
@@ -473,7 +469,7 @@ class MyCastsAnalytics extends GetView<AnalyticsController>{
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(int.parse(controller.analyticsList[0].data!.posts!.toString()) < 1000 ? controller.analyticsList[0].data!.posts!.toString() : int.parse(controller.analyticsList[0].data!.posts!.toString()) >= 1000 ? postsK : '', style: Style.t_500_24w),
+                  Text(int.parse(controller.analyticsList[0].data!.posts!.toString()) < 1000 ? controller.analyticsList[0].data!.posts!.toString() : int.parse(controller.analyticsList[0].data!.posts!.toString()) >= 1000 ? controller.postsK.value : '', style: Style.t_500_24w),
                   Padding(
                     padding: const EdgeInsets.only(top: 5),
                     child: Text("Posts",style: Style.t_500_14_G9D),

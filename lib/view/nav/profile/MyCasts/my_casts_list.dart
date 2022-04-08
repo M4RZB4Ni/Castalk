@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../../../../controllers/episode_controller.dart';
 import '../../../../controllers/user_list_controller.dart';
 
 class MyCastsList extends GetView<UserListController> {
@@ -14,7 +13,7 @@ class MyCastsList extends GetView<UserListController> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
+    return Obx(() => controller.loadingUserList.value ? Scaffold(
         backgroundColor: Style.background,
         body: SingleChildScrollView(
           child: Column(
@@ -25,12 +24,12 @@ class MyCastsList extends GetView<UserListController> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 13,top: 35,left: 26),
-                  child: Text("Latest Podcasts:",style: Style.t_500_14g,),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 13,top: 35,left: 26),
+                    child: Text("Latest Podcasts:",style: Style.t_500_14g,),
+                  ),
                   _latestPodcastSection(Get.width),
-              ],),
+                ],),
               Padding(
                 padding: const EdgeInsets.only(top: 0,left: 27),
                 child: Text("All Episodes:",style: Style.t_500_14w),
@@ -38,17 +37,17 @@ class MyCastsList extends GetView<UserListController> {
               _searchBar(Get.width),
               Flexible(
                 child: ListView.builder(
-                itemCount: controller.userList[0].data![0].seasons!.length,
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return controller.userList[0].data![0].seasons!.isEmpty ? 'There is no episode.' : _likedItem(Get.width,Get.height, index);
-                }
-              ),
+                    itemCount: controller.userList[0].data![0].seasons!.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return controller.userList[0].data![0].seasons!.isEmpty ? 'There is no episode.' : _likedItem(Get.width,Get.height, index);
+                    }
+                ),
               ),
             ],
           ),
-        ));
+        )) : const CircularProgressIndicator());
   }
 
   _likedItem(w,h, int index) {
