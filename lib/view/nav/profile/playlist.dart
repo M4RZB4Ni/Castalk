@@ -24,7 +24,7 @@ class Playlist extends GetView<PlayListController> {
         },
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 2 / 2.1,mainAxisSpacing: 31,crossAxisSpacing: 33),
       ),
-    ) : const CircularProgressIndicator());
+    ) : Container(width: Get.width, height: Get.height, color: const Color(0xff242424)));
   }
 
   header(w) {

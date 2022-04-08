@@ -379,7 +379,7 @@ class Profile extends GetView<ProfileController>{
             ],
           ),
         ),
-      ) : const CircularProgressIndicator(),),
+      ) : Container(width: Get.width, height: Get.height, color: const Color(0xff242424))),
     );
   }
 

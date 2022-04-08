@@ -138,7 +138,7 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
           ),
         ),
       ],),
-    ) : const CircularProgressIndicator());
+    ) : Container(width: Get.width, height: Get.height, color: const Color(0xff242424)));
   }
 
   List<PieChartSectionData> showingSections() {

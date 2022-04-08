@@ -21,7 +21,7 @@ class Downloads extends GetView<DownloadsController> {
         mainAxisSize: MainAxisSize.min,
         children: [inProgress(Get.width, Get.height),downloaded(Get.width, Get.height)],
       )),
-    ) : const CircularProgressIndicator());
+    ) : Container(width: Get.width, height: Get.height, color: const Color(0xff242424)));
   }
 
   header(w) {

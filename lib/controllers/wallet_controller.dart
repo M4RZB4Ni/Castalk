@@ -8,6 +8,7 @@ class WalletController extends GetxController with StateMixin<List<WalletModel>>
 
   final Carts _carts = Carts();
   late List<WalletModel> walletList = [];
+  RxBool loadingWallet = false.obs;
   //
   @override
   onInit() {
@@ -19,6 +20,7 @@ class WalletController extends GetxController with StateMixin<List<WalletModel>>
     await _carts.getWallet(token: GetStorage().read('TokenKey')).then((l) => {
       walletList = List<WalletModel>.from(l.map((model) => WalletModel.fromJson(model))),
       debugPrint('walletList---> $walletList'),
+      loadingWallet.value = true,
     });
   }
 

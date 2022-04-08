@@ -15,7 +15,7 @@ class LikedEpisodes extends GetView<ProfileController>
   Widget build(BuildContext context) {
     _textTheme = Get.textTheme;
 
-    return Scaffold(
+    return Obx(() => controller.loadingProfile.value ? Scaffold(
       backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(Get.width, 150), child: header(Get.width)),
       body: ListView.builder(
@@ -24,7 +24,7 @@ class LikedEpisodes extends GetView<ProfileController>
           return controller.viewEpisodeList.isNotEmpty ? _likedItem(index, Get.width, Get.height) : Text('LikedEpisode does not exist!', style: Get.textTheme.headline1!.copyWith(fontSize: 14));
         },),
 
-    );
+    ) : Container(width: Get.width, height: Get.height, color: const Color(0xff242424)));
   }
 
   _likedItem(int index, w, h) {

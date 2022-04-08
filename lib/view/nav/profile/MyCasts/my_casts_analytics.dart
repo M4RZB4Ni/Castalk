@@ -251,7 +251,7 @@ class MyCastsAnalytics extends GetView<AnalyticsController>{
           _bestSellingSection(Get.width, Get.height)
         ],)
         ,),
-    ) : const CircularProgressIndicator());
+    ) : Container(width: Get.width, height: Get.height, color: const Color(0xff242424)));
   }
 
   List<PieChartSectionData> showingSections() {

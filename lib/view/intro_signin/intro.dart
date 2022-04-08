@@ -71,7 +71,7 @@ class Intro extends GetView<IntroController>  {
                 )
               ],
             ),
-            onLoading: const CircularProgressIndicator(),
+            onLoading: Container(width: Get.width, height: Get.height, color: const Color(0xff242424)),
           )
       ),
     );

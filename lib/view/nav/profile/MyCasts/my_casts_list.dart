@@ -47,7 +47,7 @@ class MyCastsList extends GetView<UserListController> {
               ),
             ],
           ),
-        )) : const CircularProgressIndicator());
+        )) : Container(width: Get.width, height: Get.height, color: const Color(0xff242424)));
   }
 
   _likedItem(w,h, int index) {

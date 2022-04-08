@@ -55,7 +55,7 @@ class Achivments extends GetView<AchivmentsController>{
             )],
         ),
       )),
-    ) : const CircularProgressIndicator());
+    ) : Container(width: Get.width, height: Get.height, color: const Color(0xff242424)));
   }
 
   _firstPlace(w, h) {

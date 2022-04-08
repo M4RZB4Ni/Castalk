@@ -13,25 +13,25 @@ class Wallet extends GetView<WalletController>{
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
+    return Obx(() => controller.loadingWallet.value ? Scaffold(
       backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(Get.width, 100), child: header(Get.width)),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 91),
-          child: Column(
-            children: [
-              Text("Wallet Balance",style: Style.t_500_18g,),
-              Padding(
-                padding: const EdgeInsets.only(top: 28),
-                child: Text('${controller.walletList[0].data![0].amount!} \$',style: Style.t_500_36g,),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(top: 91),
+            child: Column(
+              children: [
+                Text("Wallet Balance",style: Style.t_500_18g,),
+                Padding(
+                  padding: const EdgeInsets.only(top: 28),
+                  child: Text('${controller.walletList[0].data![0].amount!} \$',style: Style.t_500_36g,),
+                ),
+              ],
+            ),
           ),
-        ),
 
           Row(children: [
             Expanded(child:  Padding(
@@ -43,19 +43,19 @@ class Wallet extends GetView<WalletController>{
               child: _bigButton(iconName: Cicon.withdraw, text: "Withdraw", textColor: Style.t_500_18_5c, backColor: Colors.white),
             )),
           ],),
-        Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 29,vertical: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                Text("History",style: Style.t_500_14w,),
-                Text("All",style: Style.t_500_14g,),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 29,vertical: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("History",style: Style.t_500_14w,),
+                    Text("All",style: Style.t_500_14g,),
 
 
-              ],),
-            ),
+                  ],),
+              ),
               SizedBox(
                 height: Get.height/2.0,
                 child: ListView.builder(
@@ -66,14 +66,13 @@ class Wallet extends GetView<WalletController>{
                   },
                 ),
               ),
-          ],
-        )
+            ],
+          )
         ],
       ),
 
-    );
+    ) : Container(width: Get.width, height: Get.height, color: const Color(0xff242424)));
   }
-
 
 
     ElevatedButton  _bigButton({required iconName,required text,required var textColor,required backColor}){
