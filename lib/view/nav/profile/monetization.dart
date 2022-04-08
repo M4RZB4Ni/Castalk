@@ -103,7 +103,7 @@ class Monetization extends  GetView<MonetizationController>{
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 45,left: 28,bottom: 28),
-                child: ElevatedButton(onPressed:() => controller.monetizationUpload(token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguc2VydmljZXMuY2FzdGFsay5keW5lZW1hZGV2LmNvbS9sb2dpbiIsImlhdCI6MTY0OTMwNzkyMSwiZXhwIjoxNjQ5MzQzOTIxLCJuYmYiOjE2NDkzMDc5MjEsImp0aSI6InU5TWFwbENQcnBrdHU5dFgiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.F9tfQ8B35Tgy_Lj_SIA5-lTQLrw0qPCaP4Mf55kX02A'), child:const Text("Send Request",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
+                child: ElevatedButton(onPressed:() => controller.monetizationUpload(token: GetStorage().read('token')), child:const Text("Send Request",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(
                     padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(

@@ -4,6 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'bindings/bindings.dart';
+import 'controllers/achivments_controller.dart';
+import 'controllers/add_account_info_controller.dart';
+import 'controllers/analytics_controller.dart';
+import 'controllers/auth_controller.dart';
+import 'controllers/congratulations_controller.dart';
+import 'controllers/downloads_controller.dart';
+import 'controllers/episode_controller.dart';
+import 'controllers/followers_controller.dart';
+import 'controllers/intro_controller.dart';
+import 'controllers/listening_statistics_controller.dart';
+import 'controllers/market_controller.dart';
+import 'controllers/monetization_controller.dart';
+import 'controllers/motion_controller.dart';
+import 'controllers/mycasts_controller.dart';
+import 'controllers/play_list_controller.dart';
+import 'controllers/profile_edit_controller.dart';
+import 'controllers/profile_single_controller.dart';
+import 'controllers/user_list_controller.dart';
+import 'controllers/verify_badge_controller.dart';
+import 'controllers/wallet_controller.dart';
 
 void main() async{
   await GetStorage.init();
@@ -11,15 +31,118 @@ void main() async{
 }
 
 class MyApp extends StatelessWidget {
+
+  void buildControllers(){
+
+    Get.put<AuthController>(AuthController());
+
+    Get.lazyPut<IntroController>(
+          () => IntroController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<CongratulationsController>(
+          () => CongratulationsController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<AddAcountInfoController>(
+          () => AddAcountInfoController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<ProfileController>(
+          () => ProfileController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<FollowersController>(
+          () => FollowersController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<EpisodeController>(
+          () => EpisodeController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<MotionController>(
+          () => MotionController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<PlayListController>(
+          () => PlayListController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<ListeningStatisticsController>(
+          () => ListeningStatisticsController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<ProlfileEditController>(
+          () => ProlfileEditController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<MyCastsController>(
+          () => MyCastsController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<AchivmentsController>(
+          () => AchivmentsController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<MarketController>(
+          () => MarketController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<AnalyticsController>(
+          () => AnalyticsController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<UserListController>(
+          () => UserListController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<DownloadsController>(
+          () => DownloadsController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<WalletController>(
+          () => WalletController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<MonetizationController>(
+          () => MonetizationController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<VerifyBadgeController>(
+          () => VerifyBadgeController(),
+      fenix: true,
+    );
+
+  }
+
   const MyApp({Key? key}) : super(key: key);
   //flutter pub run build_runner build --delete-conflicting-outputs
 
   @override
   Widget build(BuildContext context) {
-    return  GetMaterialApp(
+    buildControllers();
+    return GetMaterialApp(
       title: 'Castalk',
       initialRoute: Pages.INITIAL_ROUTE,
-      initialBinding: CastalkBindings(),
+      //initialBinding: CastalkBindings(),
       getPages: Pages.pages,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
