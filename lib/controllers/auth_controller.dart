@@ -3,14 +3,14 @@ import 'package:castalk/apis/auth.dart';
 import 'package:castalk/models/auth_model.dart';
 import 'package:castalk/routes/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../models/auth_model.dart';
 
 class AuthController extends GetxController{
 
-  final storage = const FlutterSecureStorage();
+  GetStorage box = GetStorage();
+
   RxString subtitleTextStyle = 'ResendOff'.obs;
   RxString nextState = 'ResendOff'.obs;
   TextStyle pincodeStyle = Get.textTheme.subtitle1!.copyWith(color: Colors.white54);
@@ -39,7 +39,7 @@ class AuthController extends GetxController{
   {
     if(mobile.isNotEmpty) {
       AuthModel token = await AuthApi().login(mobile: mobile, password: password);
-      GetStorage().write('token', token.data.accessToken.toString());
+      await box.write('TokenKey', token.data.accessToken.toString());
       startTimer();
       Get.offAndToNamed(Routes.EnterCode, arguments: [mobile]);
     }
@@ -100,9 +100,8 @@ class AuthController extends GetxController{
 
   void checkToken() async
   {
-    debugPrint("token--> dadad");
 
-    var token= await storage.read(key: "TokenKey");
+    var token= await box.read('TokenKey');
     debugPrint("token--> $token");
     if(token!=null){
       Get.toNamed(Routes.Explore);

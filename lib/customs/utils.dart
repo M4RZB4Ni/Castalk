@@ -1,21 +1,20 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class Utils{
   BuildContext context;
   late double h;
   late double w;
-  final storage = const FlutterSecureStorage();
+  GetStorage box = GetStorage();
 
   void saveValue({required var key,required var value}) async {
-    await storage.write(key: key, value: value);
+    await box.write(key, value);
   }
 
 
-
   Future<String?> readValue({required var key}) async {
-    return await storage.read(key: key);
+    return box.read(key);
   }
 
   double getWidth ()
