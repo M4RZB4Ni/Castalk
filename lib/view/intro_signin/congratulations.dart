@@ -43,7 +43,7 @@ class Congratulations extends GetView<CongratulationsController>{
 
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 42),
-        child: GridView.builder(
+        child: Obx(() => GridView.builder(
           itemCount: controller.categoryList.length,
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 150,
@@ -59,7 +59,7 @@ class Congratulations extends GetView<CongratulationsController>{
             },
           ));
         },
-        ),
+        )),
       ),
       bottomSheet: Padding(
         padding: const EdgeInsets.only(bottom: 59,left: 26),

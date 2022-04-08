@@ -16,9 +16,11 @@ class ProfileController extends GetxController with StateMixin<List<ProfileSingl
   late RxString listensK='0'.obs;
   late RxString followersK='0'.obs;
   late RxString postsK='0'.obs;
+  RxBool loadingProfile=false.obs;
   //
   @override
   void onInit() {
+
     getProfileData();
     getAnalyticsData();
 
@@ -31,6 +33,8 @@ class ProfileController extends GetxController with StateMixin<List<ProfileSingl
         followersK.value = '${(analyticsList[0].data!.followers! / 1000).toStringAsFixed(0)}K',
     postsK.value = '${(analyticsList[0].data!.posts! / 1000).toStringAsFixed(0)}K',
       debugPrint('analyticsList---> $analyticsList'),
+      loadingProfile.value=true
+
     });
   }
 

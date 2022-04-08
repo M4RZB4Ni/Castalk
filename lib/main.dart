@@ -47,15 +47,21 @@ class MyApp extends StatelessWidget {
     );
 
 
-    Get.put(CongratulationsController());
-
+    //Get.put(CongratulationsController());
+    Get.lazyPut<CongratulationsController>(
+          () => CongratulationsController(),
+      fenix: true,
+    );
     Get.lazyPut<AnalyticsController>(
           () => AnalyticsController(),
       fenix: true,
     );
 
-    Get.put(ProfileController());
-
+    //Get.put(ProfileController());
+    Get.lazyPut<ProfileController>(
+          () => ProfileController(),
+      fenix: true,
+    );
     Get.lazyPut<FollowersController>(
           () => FollowersController(),
       fenix: true,

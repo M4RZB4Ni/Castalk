@@ -16,8 +16,15 @@ class CongratulationsController extends GetxController with StateMixin<List<Cong
 
   @override
   void onInit() {
-    categoryIndex();
     super.onInit();
+
+  }
+
+
+  @override
+  void onReady() {
+    categoryIndex();
+
   }
 
   categoryIndex() async{
@@ -25,6 +32,8 @@ class CongratulationsController extends GetxController with StateMixin<List<Cong
     await _other.categoryIndex(token: GetStorage().read('token')).then((l) => {
       categoryList.value = List<CongratulationsModel>.from(l.map((model) => CongratulationsModel.fromJson(model))),
     debugPrint('categoryList---> ${categoryList}'),
+      update()
+
     });
   }
 
