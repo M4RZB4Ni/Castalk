@@ -33,7 +33,9 @@ class NavMotherState extends State<NavMother>{
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async => false,
+      onWillPop: () async{
+        return false;
+      },
       child: Scaffold(
           extendBody: true,
           backgroundColor: const Color(0xff242424),
