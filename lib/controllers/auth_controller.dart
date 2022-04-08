@@ -103,8 +103,8 @@ class AuthController extends GetxController{
 
     var token= await box.read('TokenKey');
     debugPrint("token--> $token");
-    if(token!=null){
-      Get.toNamed(Routes.Explore);
+    if(token != null){
+      Get.toNamed(Routes.NavMother);
     }else{
       Get.toNamed(Routes.Intro);
     }

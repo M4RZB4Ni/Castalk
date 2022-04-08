@@ -10,8 +10,7 @@ class FileApi{
     var headers = {
       'Authorization': 'Bearer $token',
     };
-
-    var request = http.MultipartRequest('POST', Uri.parse(BaseApi.baseAddressSlash+'upload'));
+    var request = http.MultipartRequest('POST', Uri.parse('https://file.services.castalk.dyneemadev.com/upload'));
     request.fields.addAll({
       'project': 'castalk'
     });
@@ -21,7 +20,11 @@ class FileApi{
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      debugPrint(await response.stream.bytesToString());
+      var data = await response.stream.bytesToString();
+      Map<String,dynamic> resp = await jsonDecode(data);
+      String fileId = resp['data']['file_id'];
+      debugPrint('fileId---> $fileId');
+      return fileId;
     }
     else {
       debugPrint(response.reasonPhrase);
@@ -51,28 +54,6 @@ class FileApi{
     else {
       debugPrint(response.reasonPhrase);
     }
-
-  }
-
-  uploadImage({required var token,required var file}) async {
-
-    var headers = {
-      'Authorization': 'Bearer $token',
-    };
-
-    var request = http.MultipartRequest('POST', Uri.parse(BaseApi.baseAddressSlash+'upload'));
-    request.files.add(await http.MultipartFile.fromPath('image', file));
-    request.headers.addAll(headers);
-
-    http.StreamedResponse response = await request.send();
-
-    if (response.statusCode == 200) {
-      debugPrint(await response.stream.bytesToString());
-    }
-    else {
-      debugPrint(response.reasonPhrase);
-    }
-
 
   }
 

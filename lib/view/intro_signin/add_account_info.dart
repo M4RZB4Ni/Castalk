@@ -150,7 +150,7 @@ class AddAccountInfo extends GetView<AddAcountInfoController>{
                         );
                       }
                       else{
-                        controller.updateProfile(data: accountInfo, token: GetStorage().read('token'));
+                        controller.updateProfile(data: accountInfo, token: GetStorage().read('TokenKey'));
                       }
                     },
                     child:const Text("Accept and Save",style: TextStyle(color: Color(0xff283034)),) ,style: ButtonStyle(

@@ -21,7 +21,7 @@ class AnalyticsController extends GetxController with StateMixin<List<AnalyticsM
   }
   //
   getAnalyticsData() async{
-    await _analytics.analytics(token: GetStorage().read('token')).then((l) => {
+    await _analytics.analytics(token: GetStorage().read('TokenKey')).then((l) => {
       analyticsList = List<AnalyticsModel>.from(l.map((model) => AnalyticsModel.fromJson(model))),
       debugPrint('analyticsList---> $analyticsList'),
       listensK.value = '${(analyticsList[0].data!.listens! / 1000).toStringAsFixed(0)}K',

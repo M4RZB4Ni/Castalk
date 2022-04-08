@@ -112,7 +112,6 @@ class AuthApi{
         backgroundColor: Colors.green,
         colorText: Colors.white,
       );
-      Get.toNamed(Routes.Congratulations);
     }
     else{
       debugPrint('updateProfileFailed---> ${response.reasonPhrase}');

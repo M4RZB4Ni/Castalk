@@ -17,7 +17,7 @@ class DownloadsController extends GetxController with StateMixin<List<DownloadsM
   }
   //
   getDownloadData({required var episodeId}) async{
-    await _downloads.getDownload(episodeId: episodeId, token: GetStorage().read('token')).then((l) => {
+    await _downloads.getDownload(episodeId: episodeId, token: GetStorage().read('TokenKey')).then((l) => {
       downloadsList = List<DownloadsModel>.from(l.map((model) => DownloadsModel.fromJson(model))),
       debugPrint('downloadsList---> $downloadsList'),
       loadingDownloads.value = true,

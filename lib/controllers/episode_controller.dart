@@ -17,7 +17,7 @@ class EpisodeController extends GetxController with StateMixin<List<ViewEpisodeM
 
   getViewEpisodeData() async{
     await _singles.viewEpisode(
-      token: GetStorage().read('token'),
+      token: GetStorage().read('TokenKey'),
       id: GetStorage().read('userId'),
       title: 'Khodemoon Podcast',
       description: 'dore hami',

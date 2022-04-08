@@ -1,5 +1,3 @@
-import 'package:castalk/controllers/analytics_controller.dart';
-import 'package:castalk/controllers/play_list_controller.dart';
 import 'package:castalk/controllers/profile_single_controller.dart';
 import 'package:castalk/routes/routes.dart';
 import 'package:castalk/style.dart';
@@ -8,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../../../cicon.dart';
-import '../../../controllers/episode_controller.dart';
 
 class Profile extends GetView<ProfileController>{
 
@@ -141,7 +138,7 @@ class Profile extends GetView<ProfileController>{
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 17,right: 32,bottom: 17),
-                          child: Text(Get.find<PlayListController>().playList.length.toString(),style: Get.textTheme.headline1!.copyWith(fontSize: 18),),
+                          child: Text(controller.playList.length.toString(),style: Get.textTheme.headline1!.copyWith(fontSize: 18),),
                         ),
                       ]),
                 ),
@@ -171,8 +168,8 @@ class Profile extends GetView<ProfileController>{
                         Padding(
                           padding: const EdgeInsets.only(top: 17,right: 32,bottom: 17),
                           child: Text(
-                              Get.find<EpisodeController>().viewEpisodeList.isNotEmpty
-                                  ? Get.find<EpisodeController>().viewEpisodeList.length.toString() : '0',
+                              controller.viewEpisodeList.length != 0
+                                  ? controller.viewEpisodeList.length.toString() : '0',
                               style: Get.textTheme.headline1!.copyWith(fontSize: 18)),
                         ),
                       ]),

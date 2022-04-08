@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../apis/auth.dart';
+import '../routes/routes.dart';
 
 class AddAcountInfoController extends GetxController{
 
@@ -23,6 +24,7 @@ class AddAcountInfoController extends GetxController{
   {
     if(data.isNotEmpty) {
       await AuthApi().updateProfile(data: data, token: token);
+      Get.toNamed(Routes.Congratulations);
     }
     else{
       Get.snackbar(

@@ -39,7 +39,7 @@ class MyCastsController extends GetxController with GetSingleTickerProviderState
   }
 
   getFollowersData() async{
-    await _following.getFollowers(token: GetStorage().read('token'), id: GetStorage().read('userId')).then((l) => {
+    await _following.getFollowers(token: GetStorage().read('TokenKey'), id: GetStorage().read('userId')).then((l) => {
       followersList = List<FollowersModel>.from(l.map((model) => FollowersModel.fromJson(model))),
       debugPrint('followersList---> $followersList'),
     });

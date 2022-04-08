@@ -29,7 +29,7 @@ class CongratulationsController extends GetxController with StateMixin<List<Cong
 
   categoryIndex() async{
 
-    await _other.categoryIndex(token: GetStorage().read('token')).then((l) => {
+    await _other.categoryIndex(token: GetStorage().read('TokenKey')).then((l) => {
       categoryList.value = List<CongratulationsModel>.from(l.map((model) => CongratulationsModel.fromJson(model))),
     debugPrint('categoryList---> ${categoryList}'),
       update()

@@ -16,7 +16,7 @@ class WalletController extends GetxController with StateMixin<List<WalletModel>>
   }
   //
   getWalletData() async{
-    await _carts.getWallet(token: GetStorage().read('token')).then((l) => {
+    await _carts.getWallet(token: GetStorage().read('TokenKey')).then((l) => {
       walletList = List<WalletModel>.from(l.map((model) => WalletModel.fromJson(model))),
       debugPrint('walletList---> $walletList'),
     });

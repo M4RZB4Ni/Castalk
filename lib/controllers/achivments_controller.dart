@@ -17,7 +17,7 @@ class AchivmentsController extends GetxController with StateMixin<List<Achivment
   }
   //
   getAchivmentData() async{
-    await _achivment.getAchivment(token: GetStorage().read('token')).then((l) => {
+    await _achivment.getAchivment(token: GetStorage().read('TokenKey')).then((l) => {
       achivmentList = List<AchivmentsModel>.from(l.map((model) => AchivmentsModel.fromJson(model))),
       debugPrint('achivmentList---> $achivmentList'),
       loadingAchivments.value = true,

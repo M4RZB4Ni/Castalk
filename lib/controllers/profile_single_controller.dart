@@ -35,7 +35,7 @@ class ProfileController extends GetxController with StateMixin<List<ProfileSingl
   }
 
   getProfileData() async{
-    await _authApi.profileSingle(token: GetStorage().read('token')).then((l) => {
+    await _authApi.profileSingle(token: GetStorage().read('TokenKey')).then((l) => {
       profileSingleList = List<ProfileSingleModel>.from(l.map((model) => ProfileSingleModel.fromJson(model))),
       GetStorage().write('userId', profileSingleList[0].id.toString()),
       debugPrint('profileSingleList---> $profileSingleList'),
@@ -43,7 +43,7 @@ class ProfileController extends GetxController with StateMixin<List<ProfileSingl
   }
 
   playListIndex() async{
-    await _playlistApi.playListIndex(token: GetStorage().read('token')).then((l) => {
+    await _playlistApi.playListIndex(token: GetStorage().read('TokenKey')).then((l) => {
       playList = List<PlayListModel>.from(l.map((model) => PlayListModel.fromJson(model))),
       debugPrint('playList---> $playList'),
     });
@@ -51,7 +51,7 @@ class ProfileController extends GetxController with StateMixin<List<ProfileSingl
 
   getViewEpisodeData() async{
     await _singles.viewEpisode(
-      token: GetStorage().read('token'),
+      token: GetStorage().read('TokenKey'),
       id: GetStorage().read('userId'),
       title: 'Khodemoon Podcast',
       description: 'dore hami',
@@ -64,7 +64,7 @@ class ProfileController extends GetxController with StateMixin<List<ProfileSingl
   }
 
   getAnalyticsData() async{
-    await _analytics.analytics(token: GetStorage().read('token')).then((l) => {
+    await _analytics.analytics(token: GetStorage().read('TokenKey')).then((l) => {
       analyticsList =  List<AnalyticsModel>.from(l.map((model) => AnalyticsModel.fromJson(model))),
     listensK.value = '${(analyticsList[0].data!.listens! / 1000).toStringAsFixed(0)}K',
     followersK.value = '${(analyticsList[0].data!.followers! / 1000).toStringAsFixed(0)}K',

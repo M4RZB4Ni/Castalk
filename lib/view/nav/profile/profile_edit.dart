@@ -5,26 +5,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../controllers/profile_edit_controller.dart';
 
 class ProfileEdit extends GetView<ProlfileEditController> {
 
   String svgPath = "assets/icons/";
-  late List<Map<String, String>> accountInfo = [
-    {"key"   : "cover_picture", "value" : controller.coverPath.value},
-    {"key"   : "profile_picture", "value" : controller.profilePath.value},
-    {"key"   : "name", "value" : controller.nameController.text},
-    {"key"   : "episode_name", "value" : controller.episodeNameController.text},
-    {"key"   : "about", "value" : controller.aboutController.text},
-    {"key"   : "website", "value" : controller.webSiteController.text},
-    {"key"   : "twitter", "value" : controller.twitterController.text},
-    {"key"   : "youtube", "value" : controller.youTubeController.text},
-    {"key"   : "instagram", "value" : controller.instagramController.text},
-    {"key"   : "spotify", "value" : controller.spotifyController.text},
-    {"key"   : "soundcloud", "value" : controller.soundCloudController.text},
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -144,24 +130,30 @@ class ProfileEdit extends GetView<ProlfileEditController> {
                   ),
                   Row(
                     children: [
-                      Container(
-                        width: 44,
-                        height: 44,
-                        padding: const EdgeInsets.all(15),
-                        child: SvgPicture.asset(svgPath+"upload.svg"),
-                        decoration: BoxDecoration(
-                            color: Style.accentGold,
-                            shape: BoxShape.rectangle,
-                            borderRadius: BorderRadius.circular(12)),
-                      ),
-                      Expanded(flex:12,child:  Padding(
+                      InkWell(
+                        onTap: () => controller.pickFile(),
+                        child: Container(
+                          width: 44,
+                          height: 44,
                           padding: const EdgeInsets.all(15),
-                          child:Container(height: 44,decoration:  Style.inputBoxDecoration,width: Get.width,
-                              child: TextField(
-                                  controller: controller.episodeNameController,
-                                  textAlign: TextAlign.left,maxLines: 1,
-                                  decoration: Style.inputTextDecorationEpisodeNameProfile),
-                          )))
+                          child: SvgPicture.asset(svgPath+"upload.svg"),
+                          decoration: BoxDecoration(
+                              color: Style.accentGold,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.circular(12)),
+                        ),
+                      ),
+                      Expanded(
+                          flex:12,
+                          child: Padding(padding: const EdgeInsets.all(15),
+                              child: Container(
+                                width: Get.width,
+                                height: 44,
+                                decoration: Style.inputBoxDecoration,
+                                child: Obx(() => Center(
+                                  child: Text(controller.pickedFileName.value, textAlign: TextAlign.left,maxLines: 1),
+                                )),
+                              ))),
                     ],
                   ),
                 ],
@@ -347,7 +339,7 @@ class ProfileEdit extends GetView<ProlfileEditController> {
               ),
               Padding(padding: const EdgeInsets.only(top: 80, bottom: 30),
                 child: ElevatedButton(
-                  onPressed:() => controller.editProfile(data: accountInfo, token: GetStorage().read('token')),
+                  onPressed:() => controller.saveInfo(data: controller.accountInfo),
                   child:const Text("Save",style: TextStyle(color: Color(0xff283034))),
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17,horizontal: 58)),

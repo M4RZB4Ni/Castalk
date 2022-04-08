@@ -134,6 +134,11 @@ class MyApp extends StatelessWidget {
       fenix: true,
     );
 
+    Get.lazyPut<ProlfileEditController>(
+          () => ProlfileEditController(),
+      fenix: true,
+    );
+
   }
 
   const MyApp({Key? key}) : super(key: key);

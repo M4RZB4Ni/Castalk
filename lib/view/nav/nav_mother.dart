@@ -32,73 +32,76 @@ class NavMotherState extends State<NavMother>{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        extendBody: true,
-        backgroundColor: const Color(0xff242424),
-        body: _children[_currentIndex], // new
-        bottomNavigationBar: Container(
-          height: 64,
-          margin: const EdgeInsets.symmetric(horizontal: 16,vertical: 0),
-          decoration: BoxDecoration(color: Colors.transparent,borderRadius: BorderRadius.circular(15),shape: BoxShape.rectangle,boxShadow:  [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.10),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+          extendBody: true,
+          backgroundColor: const Color(0xff242424),
+          body: _children[_currentIndex], // new
+          bottomNavigationBar: Container(
+            height: 64,
+            margin: const EdgeInsets.symmetric(horizontal: 16,vertical: 0),
+            decoration: BoxDecoration(color: Colors.transparent,borderRadius: BorderRadius.circular(15),shape: BoxShape.rectangle,boxShadow:  [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.10),
+              ),
+              BoxShadow(
+                color: Colors.black.withOpacity(0.10),
+                spreadRadius: -12.0,
+                blurRadius: 12.0,
+              ),
+            ]),
+            child: ClipRRect(
+              borderRadius:  BorderRadius.circular(15),
+              child: BottomNavigationBar(
+                selectedLabelStyle: Style.t_400_12g,
+                selectedItemColor: Style.accentGold,
+                backgroundColor: Colors.transparent,
+                onTap: onTabTapped, // new
+                currentIndex: _currentIndex, // new
+                items:  [
+                  BottomNavigationBarItem(
+                    backgroundColor: Style.gray38,
+                    label: "Feed",
+                    icon: Padding(
+                      padding: const EdgeInsets.only(bottom: 6),
+                      child: SvgPicture.asset(svgPath+"headphone.svg",color: _currentIndex==0 ? Style.accentGold : Colors.white,),
+                    ),
+                  ),
+                  BottomNavigationBarItem(
+                    backgroundColor: Style.gray38,
+
+                    label: "Explore",
+                    icon: Padding(
+                      padding: const EdgeInsets.only(bottom: 6),
+                      child: SvgPicture.asset(svgPath+"search.svg",color: _currentIndex==1 ? Style.accentGold : Colors.white),
+                    ),
+                  ),
+                  BottomNavigationBarItem(
+                    backgroundColor: Style.gray38,
+
+                    label: "Notifications",
+                    icon: Padding(
+                      padding: const EdgeInsets.only(bottom: 6),
+                      child: SvgPicture.asset(svgPath+"notif.svg",color: _currentIndex==2 ? Style.accentGold : Colors.white),
+                    ),
+                  ),
+                  BottomNavigationBarItem(
+                    backgroundColor: Style.gray38,
+
+                    label: "Profile",
+                    icon: Padding(
+                      padding: const EdgeInsets.only(bottom: 6),
+                      child: SvgPicture.asset(svgPath+"profile.svg",color: _currentIndex==3 ? Style.accentGold : Colors.white),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            BoxShadow(
-              color: Colors.black.withOpacity(0.10),
-              spreadRadius: -12.0,
-              blurRadius: 12.0,
-            ),
-          ]),
-          child: ClipRRect(
-            borderRadius:  BorderRadius.circular(15),
-            child: BottomNavigationBar(
-              selectedLabelStyle: Style.t_400_12g,
-              selectedItemColor: Style.accentGold,
-              backgroundColor: Colors.transparent,
-              onTap: onTabTapped, // new
-              currentIndex: _currentIndex, // new
-              items:  [
-                BottomNavigationBarItem(
-                  backgroundColor: Style.gray38,
-                  label: "Feed",
-                  icon: Padding(
-                    padding: const EdgeInsets.only(bottom: 6),
-                    child: SvgPicture.asset(svgPath+"headphone.svg",color: _currentIndex==0 ? Style.accentGold : Colors.white,),
-                  ),
-                ),
-                BottomNavigationBarItem(
-                  backgroundColor: Style.gray38,
-
-                  label: "Explore",
-                  icon: Padding(
-                    padding: const EdgeInsets.only(bottom: 6),
-                    child: SvgPicture.asset(svgPath+"search.svg",color: _currentIndex==1 ? Style.accentGold : Colors.white),
-                  ),
-                ),
-                BottomNavigationBarItem(
-                  backgroundColor: Style.gray38,
-
-                  label: "Notifications",
-                  icon: Padding(
-                    padding: const EdgeInsets.only(bottom: 6),
-                    child: SvgPicture.asset(svgPath+"notif.svg",color: _currentIndex==2 ? Style.accentGold : Colors.white),
-                  ),
-                ),
-                BottomNavigationBarItem(
-                  backgroundColor: Style.gray38,
-
-                  label: "Profile",
-                  icon: Padding(
-                    padding: const EdgeInsets.only(bottom: 6),
-                    child: SvgPicture.asset(svgPath+"profile.svg",color: _currentIndex==3 ? Style.accentGold : Colors.white),
-                  ),
-                ),
-              ],
-            ),
-          ),
 
 
-        ));
+          )),
+    );
   }
 
   void onTabTapped(int index) {

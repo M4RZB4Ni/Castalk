@@ -17,7 +17,7 @@ class UserListController extends GetxController with StateMixin<List<UserListMod
   }
   //
   getUserListData() async{
-    await _user.userList(token: GetStorage().read('token')).then((l) => {
+    await _user.userList(token: GetStorage().read('TokenKey')).then((l) => {
       userList = List<UserListModel>.from(l.map((model) => UserListModel.fromJson(model))),
       debugPrint('userList---> $userList'),
       loadingUserList.value = true,

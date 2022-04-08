@@ -17,7 +17,7 @@ class PlayListController extends GetxController with StateMixin<List<PlayListMod
   }
 
   playListIndex() async{
-    await _playlistApi.playListIndex(token: GetStorage().read('token')).then((l) => {
+    await _playlistApi.playListIndex(token: GetStorage().read('TokenKey')).then((l) => {
       playList = List<PlayListModel>.from(l.map((model) => PlayListModel.fromJson(model))),
       debugPrint('playList---> $playList'),
       loadingPlayList.value = true
