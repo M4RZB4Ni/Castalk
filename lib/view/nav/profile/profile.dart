@@ -46,7 +46,10 @@ class Profile extends GetView<ProfileController>{
                 ),
                 Align(alignment: Alignment.topRight,
                   child: InkWell(
-                    onTap: () => Scaffold.of(context).openDrawer(),
+                    onTap:() {
+                      debugPrint('drawerOpen');
+                      _scaffoldKey.currentState!.openEndDrawer();
+                    },
                     child: Container(
                         padding: const EdgeInsets.all(19),width: 44,height: 85,
                         child: SvgPicture.asset(svgPath+"moredots.svg"),
