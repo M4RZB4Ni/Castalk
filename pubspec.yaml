@@ -57,7 +57,7 @@ dependencies:
   line_icons: ^2.0.1
   animated_bottom_navigation_bar: ^0.3.2
   image_picker: ^0.8.4+11
-  file_picker: ^4.5.1
+  file_picker: 4.5.1
   filesize: ^2.0.1
   d_chart: ^0.0.4
 

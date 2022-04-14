@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'playlist_model.dart';
+part of 'episodes_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,56 +14,54 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-PlayListModel _$PlayListModelFromJson(Map<String, dynamic> json) {
-  return _PlayListModel.fromJson(json);
+EpisodesModel _$EpisodesModelFromJson(Map<String, dynamic> json) {
+  return _EpisodesModel.fromJson(json);
 }
 
 /// @nodoc
-class _$PlayListModelTearOff {
-  const _$PlayListModelTearOff();
+class _$EpisodesModelTearOff {
+  const _$EpisodesModelTearOff();
 
-  _PlayListModel call({Data? data}) {
-    return _PlayListModel(
+  _EpisodesModel call({List<Data>? data}) {
+    return _EpisodesModel(
       data: data,
     );
   }
 
-  PlayListModel fromJson(Map<String, Object?> json) {
-    return PlayListModel.fromJson(json);
+  EpisodesModel fromJson(Map<String, Object?> json) {
+    return EpisodesModel.fromJson(json);
   }
 }
 
 /// @nodoc
-const $PlayListModel = _$PlayListModelTearOff();
+const $EpisodesModel = _$EpisodesModelTearOff();
 
 /// @nodoc
-mixin _$PlayListModel {
-  Data? get data => throw _privateConstructorUsedError;
+mixin _$EpisodesModel {
+  List<Data>? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PlayListModelCopyWith<PlayListModel> get copyWith =>
+  $EpisodesModelCopyWith<EpisodesModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PlayListModelCopyWith<$Res> {
-  factory $PlayListModelCopyWith(
-          PlayListModel value, $Res Function(PlayListModel) then) =
-      _$PlayListModelCopyWithImpl<$Res>;
-  $Res call({Data? data});
-
-  $DataCopyWith<$Res>? get data;
+abstract class $EpisodesModelCopyWith<$Res> {
+  factory $EpisodesModelCopyWith(
+          EpisodesModel value, $Res Function(EpisodesModel) then) =
+      _$EpisodesModelCopyWithImpl<$Res>;
+  $Res call({List<Data>? data});
 }
 
 /// @nodoc
-class _$PlayListModelCopyWithImpl<$Res>
-    implements $PlayListModelCopyWith<$Res> {
-  _$PlayListModelCopyWithImpl(this._value, this._then);
+class _$EpisodesModelCopyWithImpl<$Res>
+    implements $EpisodesModelCopyWith<$Res> {
+  _$EpisodesModelCopyWithImpl(this._value, this._then);
 
-  final PlayListModel _value;
+  final EpisodesModel _value;
   // ignore: unused_field
-  final $Res Function(PlayListModel) _then;
+  final $Res Function(EpisodesModel) _then;
 
   @override
   $Res call({
@@ -73,88 +71,66 @@ class _$PlayListModelCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Data?,
+              as List<Data>?,
     ));
   }
-
-  @override
-  $DataCopyWith<$Res>? get data {
-    if (_value.data == null) {
-      return null;
-    }
-
-    return $DataCopyWith<$Res>(_value.data!, (value) {
-      return _then(_value.copyWith(data: value));
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$PlayListModelCopyWith<$Res>
-    implements $PlayListModelCopyWith<$Res> {
-  factory _$PlayListModelCopyWith(
-          _PlayListModel value, $Res Function(_PlayListModel) then) =
-      __$PlayListModelCopyWithImpl<$Res>;
+abstract class _$EpisodesModelCopyWith<$Res>
+    implements $EpisodesModelCopyWith<$Res> {
+  factory _$EpisodesModelCopyWith(
+          _EpisodesModel value, $Res Function(_EpisodesModel) then) =
+      __$EpisodesModelCopyWithImpl<$Res>;
   @override
-  $Res call({Data? data});
-
-  @override
-  $DataCopyWith<$Res>? get data;
+  $Res call({List<Data>? data});
 }
 
 /// @nodoc
-class __$PlayListModelCopyWithImpl<$Res>
-    extends _$PlayListModelCopyWithImpl<$Res>
-    implements _$PlayListModelCopyWith<$Res> {
-  __$PlayListModelCopyWithImpl(
-      _PlayListModel _value, $Res Function(_PlayListModel) _then)
-      : super(_value, (v) => _then(v as _PlayListModel));
+class __$EpisodesModelCopyWithImpl<$Res>
+    extends _$EpisodesModelCopyWithImpl<$Res>
+    implements _$EpisodesModelCopyWith<$Res> {
+  __$EpisodesModelCopyWithImpl(
+      _EpisodesModel _value, $Res Function(_EpisodesModel) _then)
+      : super(_value, (v) => _then(v as _EpisodesModel));
 
   @override
-  _PlayListModel get _value => super._value as _PlayListModel;
+  _EpisodesModel get _value => super._value as _EpisodesModel;
 
   @override
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(_PlayListModel(
+    return _then(_EpisodesModel(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Data?,
+              as List<Data>?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_PlayListModel extends _PlayListModel with DiagnosticableTreeMixin {
-  const _$_PlayListModel({this.data}) : super._();
+class _$_EpisodesModel extends _EpisodesModel {
+  const _$_EpisodesModel({this.data}) : super._();
 
-  factory _$_PlayListModel.fromJson(Map<String, dynamic> json) =>
-      _$$_PlayListModelFromJson(json);
-
-  @override
-  final Data? data;
+  factory _$_EpisodesModel.fromJson(Map<String, dynamic> json) =>
+      _$$_EpisodesModelFromJson(json);
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PlayListModel(data: $data)';
-  }
+  final List<Data>? data;
 
   @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PlayListModel'))
-      ..add(DiagnosticsProperty('data', data));
+  String toString() {
+    return 'EpisodesModel(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PlayListModel &&
+            other is _EpisodesModel &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
@@ -164,27 +140,27 @@ class _$_PlayListModel extends _PlayListModel with DiagnosticableTreeMixin {
 
   @JsonKey(ignore: true)
   @override
-  _$PlayListModelCopyWith<_PlayListModel> get copyWith =>
-      __$PlayListModelCopyWithImpl<_PlayListModel>(this, _$identity);
+  _$EpisodesModelCopyWith<_EpisodesModel> get copyWith =>
+      __$EpisodesModelCopyWithImpl<_EpisodesModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PlayListModelToJson(this);
+    return _$$_EpisodesModelToJson(this);
   }
 }
 
-abstract class _PlayListModel extends PlayListModel {
-  const factory _PlayListModel({Data? data}) = _$_PlayListModel;
-  const _PlayListModel._() : super._();
+abstract class _EpisodesModel extends EpisodesModel {
+  const factory _EpisodesModel({List<Data>? data}) = _$_EpisodesModel;
+  const _EpisodesModel._() : super._();
 
-  factory _PlayListModel.fromJson(Map<String, dynamic> json) =
-      _$_PlayListModel.fromJson;
+  factory _EpisodesModel.fromJson(Map<String, dynamic> json) =
+      _$_EpisodesModel.fromJson;
 
   @override
-  Data? get data;
+  List<Data>? get data;
   @override
   @JsonKey(ignore: true)
-  _$PlayListModelCopyWith<_PlayListModel> get copyWith =>
+  _$EpisodesModelCopyWith<_EpisodesModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -196,9 +172,22 @@ Data _$DataFromJson(Map<String, dynamic> json) {
 class _$DataTearOff {
   const _$DataTearOff();
 
-  _Data call({List<Playlists>? playlists}) {
+  _Data call(
+      {int? id,
+      String? title,
+      String? description,
+      String? created_at,
+      List<String>? covers,
+      List<EpisodeItems>? episodes,
+      List<Tags>? tags}) {
     return _Data(
-      playlists: playlists,
+      id: id,
+      title: title,
+      description: description,
+      created_at: created_at,
+      covers: covers,
+      episodes: episodes,
+      tags: tags,
     );
   }
 
@@ -212,7 +201,13 @@ const $Data = _$DataTearOff();
 
 /// @nodoc
 mixin _$Data {
-  List<Playlists>? get playlists => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get created_at => throw _privateConstructorUsedError;
+  List<String>? get covers => throw _privateConstructorUsedError;
+  List<EpisodeItems>? get episodes => throw _privateConstructorUsedError;
+  List<Tags>? get tags => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -223,7 +218,14 @@ mixin _$Data {
 abstract class $DataCopyWith<$Res> {
   factory $DataCopyWith(Data value, $Res Function(Data) then) =
       _$DataCopyWithImpl<$Res>;
-  $Res call({List<Playlists>? playlists});
+  $Res call(
+      {int? id,
+      String? title,
+      String? description,
+      String? created_at,
+      List<String>? covers,
+      List<EpisodeItems>? episodes,
+      List<Tags>? tags});
 }
 
 /// @nodoc
@@ -236,13 +238,43 @@ class _$DataCopyWithImpl<$Res> implements $DataCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? playlists = freezed,
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? description = freezed,
+    Object? created_at = freezed,
+    Object? covers = freezed,
+    Object? episodes = freezed,
+    Object? tags = freezed,
   }) {
     return _then(_value.copyWith(
-      playlists: playlists == freezed
-          ? _value.playlists
-          : playlists // ignore: cast_nullable_to_non_nullable
-              as List<Playlists>?,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      created_at: created_at == freezed
+          ? _value.created_at
+          : created_at // ignore: cast_nullable_to_non_nullable
+              as String?,
+      covers: covers == freezed
+          ? _value.covers
+          : covers // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      episodes: episodes == freezed
+          ? _value.episodes
+          : episodes // ignore: cast_nullable_to_non_nullable
+              as List<EpisodeItems>?,
+      tags: tags == freezed
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<Tags>?,
     ));
   }
 }
@@ -252,7 +284,14 @@ abstract class _$DataCopyWith<$Res> implements $DataCopyWith<$Res> {
   factory _$DataCopyWith(_Data value, $Res Function(_Data) then) =
       __$DataCopyWithImpl<$Res>;
   @override
-  $Res call({List<Playlists>? playlists});
+  $Res call(
+      {int? id,
+      String? title,
+      String? description,
+      String? created_at,
+      List<String>? covers,
+      List<EpisodeItems>? episodes,
+      List<Tags>? tags});
 }
 
 /// @nodoc
@@ -266,227 +305,15 @@ class __$DataCopyWithImpl<$Res> extends _$DataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? playlists = freezed,
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? description = freezed,
+    Object? created_at = freezed,
+    Object? covers = freezed,
+    Object? episodes = freezed,
+    Object? tags = freezed,
   }) {
     return _then(_Data(
-      playlists: playlists == freezed
-          ? _value.playlists
-          : playlists // ignore: cast_nullable_to_non_nullable
-              as List<Playlists>?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_Data with DiagnosticableTreeMixin implements _Data {
-  const _$_Data({this.playlists});
-
-  factory _$_Data.fromJson(Map<String, dynamic> json) => _$$_DataFromJson(json);
-
-  @override
-  final List<Playlists>? playlists;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Data(playlists: $playlists)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Data'))
-      ..add(DiagnosticsProperty('playlists', playlists));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Data &&
-            const DeepCollectionEquality().equals(other.playlists, playlists));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(playlists));
-
-  @JsonKey(ignore: true)
-  @override
-  _$DataCopyWith<_Data> get copyWith =>
-      __$DataCopyWithImpl<_Data>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_DataToJson(this);
-  }
-}
-
-abstract class _Data implements Data {
-  const factory _Data({List<Playlists>? playlists}) = _$_Data;
-
-  factory _Data.fromJson(Map<String, dynamic> json) = _$_Data.fromJson;
-
-  @override
-  List<Playlists>? get playlists;
-  @override
-  @JsonKey(ignore: true)
-  _$DataCopyWith<_Data> get copyWith => throw _privateConstructorUsedError;
-}
-
-Playlists _$PlaylistsFromJson(Map<String, dynamic> json) {
-  return _Playlists.fromJson(json);
-}
-
-/// @nodoc
-class _$PlaylistsTearOff {
-  const _$PlaylistsTearOff();
-
-  _Playlists call(
-      {int? id,
-      String? title,
-      String? description,
-      String? created_at,
-      List<String>? covers,
-      List<EpisodeItems>? episodes,
-      List<Tags>? tags}) {
-    return _Playlists(
-      id: id,
-      title: title,
-      description: description,
-      created_at: created_at,
-      covers: covers,
-      episodes: episodes,
-      tags: tags,
-    );
-  }
-
-  Playlists fromJson(Map<String, Object?> json) {
-    return Playlists.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Playlists = _$PlaylistsTearOff();
-
-/// @nodoc
-mixin _$Playlists {
-  int? get id => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  String? get created_at => throw _privateConstructorUsedError;
-  List<String>? get covers => throw _privateConstructorUsedError;
-  List<EpisodeItems>? get episodes => throw _privateConstructorUsedError;
-  List<Tags>? get tags => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $PlaylistsCopyWith<Playlists> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PlaylistsCopyWith<$Res> {
-  factory $PlaylistsCopyWith(Playlists value, $Res Function(Playlists) then) =
-      _$PlaylistsCopyWithImpl<$Res>;
-  $Res call(
-      {int? id,
-      String? title,
-      String? description,
-      String? created_at,
-      List<String>? covers,
-      List<EpisodeItems>? episodes,
-      List<Tags>? tags});
-}
-
-/// @nodoc
-class _$PlaylistsCopyWithImpl<$Res> implements $PlaylistsCopyWith<$Res> {
-  _$PlaylistsCopyWithImpl(this._value, this._then);
-
-  final Playlists _value;
-  // ignore: unused_field
-  final $Res Function(Playlists) _then;
-
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? title = freezed,
-    Object? description = freezed,
-    Object? created_at = freezed,
-    Object? covers = freezed,
-    Object? episodes = freezed,
-    Object? tags = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      created_at: created_at == freezed
-          ? _value.created_at
-          : created_at // ignore: cast_nullable_to_non_nullable
-              as String?,
-      covers: covers == freezed
-          ? _value.covers
-          : covers // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      episodes: episodes == freezed
-          ? _value.episodes
-          : episodes // ignore: cast_nullable_to_non_nullable
-              as List<EpisodeItems>?,
-      tags: tags == freezed
-          ? _value.tags
-          : tags // ignore: cast_nullable_to_non_nullable
-              as List<Tags>?,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$PlaylistsCopyWith<$Res> implements $PlaylistsCopyWith<$Res> {
-  factory _$PlaylistsCopyWith(
-          _Playlists value, $Res Function(_Playlists) then) =
-      __$PlaylistsCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {int? id,
-      String? title,
-      String? description,
-      String? created_at,
-      List<String>? covers,
-      List<EpisodeItems>? episodes,
-      List<Tags>? tags});
-}
-
-/// @nodoc
-class __$PlaylistsCopyWithImpl<$Res> extends _$PlaylistsCopyWithImpl<$Res>
-    implements _$PlaylistsCopyWith<$Res> {
-  __$PlaylistsCopyWithImpl(_Playlists _value, $Res Function(_Playlists) _then)
-      : super(_value, (v) => _then(v as _Playlists));
-
-  @override
-  _Playlists get _value => super._value as _Playlists;
-
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? title = freezed,
-    Object? description = freezed,
-    Object? created_at = freezed,
-    Object? covers = freezed,
-    Object? episodes = freezed,
-    Object? tags = freezed,
-  }) {
-    return _then(_Playlists(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -521,8 +348,8 @@ class __$PlaylistsCopyWithImpl<$Res> extends _$PlaylistsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Playlists with DiagnosticableTreeMixin implements _Playlists {
-  const _$_Playlists(
+class _$_Data implements _Data {
+  const _$_Data(
       {this.id,
       this.title,
       this.description,
@@ -531,8 +358,7 @@ class _$_Playlists with DiagnosticableTreeMixin implements _Playlists {
       this.episodes,
       this.tags});
 
-  factory _$_Playlists.fromJson(Map<String, dynamic> json) =>
-      _$$_PlaylistsFromJson(json);
+  factory _$_Data.fromJson(Map<String, dynamic> json) => _$$_DataFromJson(json);
 
   @override
   final int? id;
@@ -550,29 +376,15 @@ class _$_Playlists with DiagnosticableTreeMixin implements _Playlists {
   final List<Tags>? tags;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Playlists(id: $id, title: $title, description: $description, created_at: $created_at, covers: $covers, episodes: $episodes, tags: $tags)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Playlists'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('created_at', created_at))
-      ..add(DiagnosticsProperty('covers', covers))
-      ..add(DiagnosticsProperty('episodes', episodes))
-      ..add(DiagnosticsProperty('tags', tags));
+  String toString() {
+    return 'Data(id: $id, title: $title, description: $description, created_at: $created_at, covers: $covers, episodes: $episodes, tags: $tags)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Playlists &&
+            other is _Data &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
@@ -597,27 +409,26 @@ class _$_Playlists with DiagnosticableTreeMixin implements _Playlists {
 
   @JsonKey(ignore: true)
   @override
-  _$PlaylistsCopyWith<_Playlists> get copyWith =>
-      __$PlaylistsCopyWithImpl<_Playlists>(this, _$identity);
+  _$DataCopyWith<_Data> get copyWith =>
+      __$DataCopyWithImpl<_Data>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PlaylistsToJson(this);
+    return _$$_DataToJson(this);
   }
 }
 
-abstract class _Playlists implements Playlists {
-  const factory _Playlists(
+abstract class _Data implements Data {
+  const factory _Data(
       {int? id,
       String? title,
       String? description,
       String? created_at,
       List<String>? covers,
       List<EpisodeItems>? episodes,
-      List<Tags>? tags}) = _$_Playlists;
+      List<Tags>? tags}) = _$_Data;
 
-  factory _Playlists.fromJson(Map<String, dynamic> json) =
-      _$_Playlists.fromJson;
+  factory _Data.fromJson(Map<String, dynamic> json) = _$_Data.fromJson;
 
   @override
   int? get id;
@@ -635,8 +446,7 @@ abstract class _Playlists implements Playlists {
   List<Tags>? get tags;
   @override
   @JsonKey(ignore: true)
-  _$PlaylistsCopyWith<_Playlists> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$DataCopyWith<_Data> get copyWith => throw _privateConstructorUsedError;
 }
 
 EpisodeItems _$EpisodeItemsFromJson(Map<String, dynamic> json) {
@@ -759,7 +569,7 @@ class __$EpisodeItemsCopyWithImpl<$Res> extends _$EpisodeItemsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EpisodeItems with DiagnosticableTreeMixin implements _EpisodeItems {
+class _$_EpisodeItems implements _EpisodeItems {
   const _$_EpisodeItems({this.id, this.name, this.cover});
 
   factory _$_EpisodeItems.fromJson(Map<String, dynamic> json) =>
@@ -773,18 +583,8 @@ class _$_EpisodeItems with DiagnosticableTreeMixin implements _EpisodeItems {
   final String? cover;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'EpisodeItems(id: $id, name: $name, cover: $cover)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'EpisodeItems'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('cover', cover));
   }
 
   @override
@@ -937,7 +737,7 @@ class __$TagsCopyWithImpl<$Res> extends _$TagsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Tags with DiagnosticableTreeMixin implements _Tags {
+class _$_Tags implements _Tags {
   const _$_Tags({this.id, this.title});
 
   factory _$_Tags.fromJson(Map<String, dynamic> json) => _$$_TagsFromJson(json);
@@ -948,17 +748,8 @@ class _$_Tags with DiagnosticableTreeMixin implements _Tags {
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Tags(id: $id, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Tags'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override

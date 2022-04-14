@@ -138,7 +138,7 @@ class Profile extends GetView<ProfileController>{
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 17,right: 32,bottom: 17),
-                          child: Text(controller.playList.length.toString(),style: Get.textTheme.headline1!.copyWith(fontSize: 18),),
+                          child: Text(controller.playList.data!.playlists!.length.toString(),style: Get.textTheme.headline1!.copyWith(fontSize: 18),),
                         ),
                       ]),
                 ),
