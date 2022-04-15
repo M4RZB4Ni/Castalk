@@ -13,74 +13,62 @@ class Achivments extends GetView<AchivmentsController> {
 
   @override
   Widget build(BuildContext context) {
-    return controller.obx(
-        (state) => Scaffold(
-              appBar: PreferredSize(
-                  preferredSize: Size(Get.width, 100),
-                  child: header(Get.width)),
-              backgroundColor: Style.background,
-              body: SingleChildScrollView(
-                  child: Padding(
-                padding: const EdgeInsets.only(top: 24),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Flexible(
-                        child: ListView(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            children: [
-                          _firstPlace(Get.width, Get.height),
-                        ])),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              bottom: 12, left: 31, top: 31),
-                          child: Text(
-                            "Achieved:",
-                            style: Style.t_500_14w,
-                          ),
+    return Obx(() => controller.loading.value
+        ? Scaffold(
+            appBar: PreferredSize(
+                preferredSize: Size(Get.width, 100), child: header(Get.width)),
+            backgroundColor: Style.background,
+            body: SingleChildScrollView(
+                child: Padding(
+              padding: const EdgeInsets.only(top: 24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(
+                      child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: controller.achivmentsModel.data!.pending!.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: _firstPlaceItem(Get.width, Get.height, index),
+                      );
+                    },
+                  )),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            bottom: 12, left: 31, top: 31),
+                        child: Text(
+                          "Achieved:",
+                          style: Style.t_500_14w,
                         ),
-                        Flexible(
-                          child: ListView(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            children: [
-                              _achivedItem(Get.width, Get.height),
-                            ],
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              )),
-            ),
-        onLoading: Container(
+                      ),
+                      Flexible(
+                        child: ListView.builder(
+                          itemCount:
+                              controller.achivmentsModel.data!.done!.length,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (BuildContext context, int index) {
+                            return _achivedItem(Get.width, Get.height, index);
+                          },
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )),
+          )
+        : Container(
             width: Get.width,
             height: Get.height,
             color: const Color(0xff242424)));
-  }
-
-  _firstPlace(w, h) {
-    return SizedBox(
-      width: w,
-      height: h / 2,
-      child: ListView.builder(
-        //itemCount: controller.achivmentList[0].data!.length,
-        itemCount: 0,
-        physics: const NeverScrollableScrollPhysics(),
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: _firstPlaceItem(w, h, index),
-          );
-        },
-      ),
-    );
   }
 
   _firstPlaceItem(w, h, int index) {
@@ -97,7 +85,8 @@ class Achivments extends GetView<AchivmentsController> {
           children: [
             Padding(
               padding: const EdgeInsets.all(20),
-              child: SvgPicture.asset(Cicon.newspaper),
+              child: Image.network(
+                  controller.achivmentsModel.data!.pending![index].icon!),
             ),
             Expanded(
                 child: Column(
@@ -108,21 +97,22 @@ class Achivments extends GetView<AchivmentsController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // Text(
-                      //   '${(controller.achivmentList[0].data![index].target!.toString())} Days in a row',
-                      //   style: Style.t_400_12w,
-                      // ),
+                      Text(
+                        controller
+                            .achivmentsModel.data!.pending![index].description!,
+                        style: Style.t_400_12w,
+                      ),
                       RichText(
                           text: TextSpan(children: [
-                        // TextSpan(
-                        //     text: controller
-                        //         .achivmentList[0].data![index].progress!
-                        //         .toString(),
-                        //     style: Style.t_500_14w),
-                        // TextSpan(
-                        //     text:
-                        //         ' / ${(controller.achivmentList[0].data![index].target!.toString())} Days',
-                        //     style: Style.t_500_14g)
+                        TextSpan(
+                            text: controller
+                                .achivmentsModel.data!.pending![index].progress
+                                .toString(),
+                            style: Style.t_500_14w),
+                        TextSpan(
+                            text:
+                                ' / ${controller.achivmentsModel.data!.pending![index].target!}',
+                            style: Style.t_500_14g)
                       ]))
                     ],
                   ),
@@ -149,34 +139,7 @@ class Achivments extends GetView<AchivmentsController> {
     );
   }
 
-  _achived(w, h) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 12, left: 31, top: 31),
-          child: Text(
-            "Achieved:",
-            style: Style.t_500_14w,
-          ),
-        ),
-        SizedBox(
-          width: w,
-          height: h / 2,
-          child: ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            itemBuilder: (context, index) {
-              return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: _achivedItem(w, h));
-            },
-          ),
-        )
-      ],
-    );
-  }
-
-  _achivedItem(w, h) {
+  _achivedItem(w, h, index) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 14),
       child: Container(
@@ -195,8 +158,9 @@ class Achivments extends GetView<AchivmentsController> {
                 width: 47,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  image: const DecorationImage(
-                    image: NetworkImage('https://picsum.photos/47/47'),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        controller.achivmentsModel.data!.done![index].icon!),
                     fit: BoxFit.cover,
                   ),
                 ), /* add child content here */
@@ -217,7 +181,8 @@ class Achivments extends GetView<AchivmentsController> {
                         child: SvgPicture.asset(Cicon.tick),
                       ),
                       Text(
-                        "You Reached 100 Followers",
+                        controller
+                            .achivmentsModel.data!.done![index].description!,
                         style: Style.t_400_12_gray,
                       ),
                     ],

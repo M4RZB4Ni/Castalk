@@ -8,6 +8,7 @@ class AchivmentsController extends GetxController
     with StateMixin<AchivmentsModel> {
   final Achivment _achivment = Achivment();
   late AchivmentsModel achivmentsModel;
+  RxBool loading = false.obs;
   //
   @override
   onInit() {
@@ -17,9 +18,8 @@ class AchivmentsController extends GetxController
 
   //
   getAchivmentData() async {
-    RxStatus.loading();
     achivmentsModel =
         await _achivment.getAchivment(token: GetStorage().read('TokenKey'));
-    RxStatus.success();
+    loading.value = true;
   }
 }

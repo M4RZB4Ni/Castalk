@@ -22,7 +22,7 @@ AchivmentsModel _$AchivmentsModelFromJson(Map<String, dynamic> json) {
 class _$AchivmentsModelTearOff {
   const _$AchivmentsModelTearOff();
 
-  _AchivmentsModel call({List<Data>? data}) {
+  _AchivmentsModel call({Data? data}) {
     return _AchivmentsModel(
       data: data,
     );
@@ -38,7 +38,7 @@ const $AchivmentsModel = _$AchivmentsModelTearOff();
 
 /// @nodoc
 mixin _$AchivmentsModel {
-  List<Data>? get data => throw _privateConstructorUsedError;
+  Data? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +51,9 @@ abstract class $AchivmentsModelCopyWith<$Res> {
   factory $AchivmentsModelCopyWith(
           AchivmentsModel value, $Res Function(AchivmentsModel) then) =
       _$AchivmentsModelCopyWithImpl<$Res>;
-  $Res call({List<Data>? data});
+  $Res call({Data? data});
+
+  $DataCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -71,8 +73,19 @@ class _$AchivmentsModelCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Data>?,
+              as Data?,
     ));
+  }
+
+  @override
+  $DataCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return $DataCopyWith<$Res>(_value.data!, (value) {
+      return _then(_value.copyWith(data: value));
+    });
   }
 }
 
@@ -83,7 +96,10 @@ abstract class _$AchivmentsModelCopyWith<$Res>
           _AchivmentsModel value, $Res Function(_AchivmentsModel) then) =
       __$AchivmentsModelCopyWithImpl<$Res>;
   @override
-  $Res call({List<Data>? data});
+  $Res call({Data? data});
+
+  @override
+  $DataCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -105,7 +121,7 @@ class __$AchivmentsModelCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Data>?,
+              as Data?,
     ));
   }
 }
@@ -119,7 +135,7 @@ class _$_AchivmentsModel extends _AchivmentsModel with DiagnosticableTreeMixin {
       _$$_AchivmentsModelFromJson(json);
 
   @override
-  final List<Data>? data;
+  final Data? data;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -158,14 +174,14 @@ class _$_AchivmentsModel extends _AchivmentsModel with DiagnosticableTreeMixin {
 }
 
 abstract class _AchivmentsModel extends AchivmentsModel {
-  const factory _AchivmentsModel({List<Data>? data}) = _$_AchivmentsModel;
+  const factory _AchivmentsModel({Data? data}) = _$_AchivmentsModel;
   const _AchivmentsModel._() : super._();
 
   factory _AchivmentsModel.fromJson(Map<String, dynamic> json) =
       _$_AchivmentsModel.fromJson;
 
   @override
-  List<Data>? get data;
+  Data? get data;
   @override
   @JsonKey(ignore: true)
   _$AchivmentsModelCopyWith<_AchivmentsModel> get copyWith =>
@@ -180,20 +196,10 @@ Data _$DataFromJson(Map<String, dynamic> json) {
 class _$DataTearOff {
   const _$DataTearOff();
 
-  _Data call(
-      {int? id,
-      int? progress,
-      int? target,
-      String? created_at,
-      String? updated_at,
-      int? user_id}) {
+  _Data call({List<Pending>? pending, List<Done>? done}) {
     return _Data(
-      id: id,
-      progress: progress,
-      target: target,
-      created_at: created_at,
-      updated_at: updated_at,
-      user_id: user_id,
+      pending: pending,
+      done: done,
     );
   }
 
@@ -207,12 +213,8 @@ const $Data = _$DataTearOff();
 
 /// @nodoc
 mixin _$Data {
-  int? get id => throw _privateConstructorUsedError;
-  int? get progress => throw _privateConstructorUsedError;
-  int? get target => throw _privateConstructorUsedError; //final String? class,
-  String? get created_at => throw _privateConstructorUsedError;
-  String? get updated_at => throw _privateConstructorUsedError;
-  int? get user_id => throw _privateConstructorUsedError;
+  List<Pending>? get pending => throw _privateConstructorUsedError;
+  List<Done>? get done => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -223,13 +225,7 @@ mixin _$Data {
 abstract class $DataCopyWith<$Res> {
   factory $DataCopyWith(Data value, $Res Function(Data) then) =
       _$DataCopyWithImpl<$Res>;
-  $Res call(
-      {int? id,
-      int? progress,
-      int? target,
-      String? created_at,
-      String? updated_at,
-      int? user_id});
+  $Res call({List<Pending>? pending, List<Done>? done});
 }
 
 /// @nodoc
@@ -242,12 +238,190 @@ class _$DataCopyWithImpl<$Res> implements $DataCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? pending = freezed,
+    Object? done = freezed,
+  }) {
+    return _then(_value.copyWith(
+      pending: pending == freezed
+          ? _value.pending
+          : pending // ignore: cast_nullable_to_non_nullable
+              as List<Pending>?,
+      done: done == freezed
+          ? _value.done
+          : done // ignore: cast_nullable_to_non_nullable
+              as List<Done>?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$DataCopyWith<$Res> implements $DataCopyWith<$Res> {
+  factory _$DataCopyWith(_Data value, $Res Function(_Data) then) =
+      __$DataCopyWithImpl<$Res>;
+  @override
+  $Res call({List<Pending>? pending, List<Done>? done});
+}
+
+/// @nodoc
+class __$DataCopyWithImpl<$Res> extends _$DataCopyWithImpl<$Res>
+    implements _$DataCopyWith<$Res> {
+  __$DataCopyWithImpl(_Data _value, $Res Function(_Data) _then)
+      : super(_value, (v) => _then(v as _Data));
+
+  @override
+  _Data get _value => super._value as _Data;
+
+  @override
+  $Res call({
+    Object? pending = freezed,
+    Object? done = freezed,
+  }) {
+    return _then(_Data(
+      pending: pending == freezed
+          ? _value.pending
+          : pending // ignore: cast_nullable_to_non_nullable
+              as List<Pending>?,
+      done: done == freezed
+          ? _value.done
+          : done // ignore: cast_nullable_to_non_nullable
+              as List<Done>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Data with DiagnosticableTreeMixin implements _Data {
+  const _$_Data({this.pending, this.done});
+
+  factory _$_Data.fromJson(Map<String, dynamic> json) => _$$_DataFromJson(json);
+
+  @override
+  final List<Pending>? pending;
+  @override
+  final List<Done>? done;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'Data(pending: $pending, done: $done)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Data'))
+      ..add(DiagnosticsProperty('pending', pending))
+      ..add(DiagnosticsProperty('done', done));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Data &&
+            const DeepCollectionEquality().equals(other.pending, pending) &&
+            const DeepCollectionEquality().equals(other.done, done));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(pending),
+      const DeepCollectionEquality().hash(done));
+
+  @JsonKey(ignore: true)
+  @override
+  _$DataCopyWith<_Data> get copyWith =>
+      __$DataCopyWithImpl<_Data>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_DataToJson(this);
+  }
+}
+
+abstract class _Data implements Data {
+  const factory _Data({List<Pending>? pending, List<Done>? done}) = _$_Data;
+
+  factory _Data.fromJson(Map<String, dynamic> json) = _$_Data.fromJson;
+
+  @override
+  List<Pending>? get pending;
+  @override
+  List<Done>? get done;
+  @override
+  @JsonKey(ignore: true)
+  _$DataCopyWith<_Data> get copyWith => throw _privateConstructorUsedError;
+}
+
+Done _$DoneFromJson(Map<String, dynamic> json) {
+  return _Done.fromJson(json);
+}
+
+/// @nodoc
+class _$DoneTearOff {
+  const _$DoneTearOff();
+
+  _Done call(
+      {int? id,
+      int? progress,
+      int? target,
+      String? description,
+      String? icon}) {
+    return _Done(
+      id: id,
+      progress: progress,
+      target: target,
+      description: description,
+      icon: icon,
+    );
+  }
+
+  Done fromJson(Map<String, Object?> json) {
+    return Done.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $Done = _$DoneTearOff();
+
+/// @nodoc
+mixin _$Done {
+  int? get id => throw _privateConstructorUsedError;
+  int? get progress => throw _privateConstructorUsedError;
+  int? get target => throw _privateConstructorUsedError; //final String? class,
+  String? get description => throw _privateConstructorUsedError;
+  String? get icon => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DoneCopyWith<Done> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DoneCopyWith<$Res> {
+  factory $DoneCopyWith(Done value, $Res Function(Done) then) =
+      _$DoneCopyWithImpl<$Res>;
+  $Res call(
+      {int? id, int? progress, int? target, String? description, String? icon});
+}
+
+/// @nodoc
+class _$DoneCopyWithImpl<$Res> implements $DoneCopyWith<$Res> {
+  _$DoneCopyWithImpl(this._value, this._then);
+
+  final Done _value;
+  // ignore: unused_field
+  final $Res Function(Done) _then;
+
+  @override
+  $Res call({
     Object? id = freezed,
     Object? progress = freezed,
     Object? target = freezed,
-    Object? created_at = freezed,
-    Object? updated_at = freezed,
-    Object? user_id = freezed,
+    Object? description = freezed,
+    Object? icon = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -262,55 +436,45 @@ class _$DataCopyWithImpl<$Res> implements $DataCopyWith<$Res> {
           ? _value.target
           : target // ignore: cast_nullable_to_non_nullable
               as int?,
-      created_at: created_at == freezed
-          ? _value.created_at
-          : created_at // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      updated_at: updated_at == freezed
-          ? _value.updated_at
-          : updated_at // ignore: cast_nullable_to_non_nullable
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
               as String?,
-      user_id: user_id == freezed
-          ? _value.user_id
-          : user_id // ignore: cast_nullable_to_non_nullable
-              as int?,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$DataCopyWith<$Res> implements $DataCopyWith<$Res> {
-  factory _$DataCopyWith(_Data value, $Res Function(_Data) then) =
-      __$DataCopyWithImpl<$Res>;
+abstract class _$DoneCopyWith<$Res> implements $DoneCopyWith<$Res> {
+  factory _$DoneCopyWith(_Done value, $Res Function(_Done) then) =
+      __$DoneCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int? id,
-      int? progress,
-      int? target,
-      String? created_at,
-      String? updated_at,
-      int? user_id});
+      {int? id, int? progress, int? target, String? description, String? icon});
 }
 
 /// @nodoc
-class __$DataCopyWithImpl<$Res> extends _$DataCopyWithImpl<$Res>
-    implements _$DataCopyWith<$Res> {
-  __$DataCopyWithImpl(_Data _value, $Res Function(_Data) _then)
-      : super(_value, (v) => _then(v as _Data));
+class __$DoneCopyWithImpl<$Res> extends _$DoneCopyWithImpl<$Res>
+    implements _$DoneCopyWith<$Res> {
+  __$DoneCopyWithImpl(_Done _value, $Res Function(_Done) _then)
+      : super(_value, (v) => _then(v as _Done));
 
   @override
-  _Data get _value => super._value as _Data;
+  _Done get _value => super._value as _Done;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? progress = freezed,
     Object? target = freezed,
-    Object? created_at = freezed,
-    Object? updated_at = freezed,
-    Object? user_id = freezed,
+    Object? description = freezed,
+    Object? icon = freezed,
   }) {
-    return _then(_Data(
+    return _then(_Done(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -323,34 +487,25 @@ class __$DataCopyWithImpl<$Res> extends _$DataCopyWithImpl<$Res>
           ? _value.target
           : target // ignore: cast_nullable_to_non_nullable
               as int?,
-      created_at: created_at == freezed
-          ? _value.created_at
-          : created_at // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      updated_at: updated_at == freezed
-          ? _value.updated_at
-          : updated_at // ignore: cast_nullable_to_non_nullable
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
               as String?,
-      user_id: user_id == freezed
-          ? _value.user_id
-          : user_id // ignore: cast_nullable_to_non_nullable
-              as int?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Data with DiagnosticableTreeMixin implements _Data {
-  const _$_Data(
-      {this.id,
-      this.progress,
-      this.target,
-      this.created_at,
-      this.updated_at,
-      this.user_id});
+class _$_Done with DiagnosticableTreeMixin implements _Done {
+  const _$_Done(
+      {this.id, this.progress, this.target, this.description, this.icon});
 
-  factory _$_Data.fromJson(Map<String, dynamic> json) => _$$_DataFromJson(json);
+  factory _$_Done.fromJson(Map<String, dynamic> json) => _$$_DoneFromJson(json);
 
   @override
   final int? id;
@@ -359,43 +514,38 @@ class _$_Data with DiagnosticableTreeMixin implements _Data {
   @override
   final int? target;
   @override //final String? class,
-  final String? created_at;
+  final String? description;
   @override
-  final String? updated_at;
-  @override
-  final int? user_id;
+  final String? icon;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Data(id: $id, progress: $progress, target: $target, created_at: $created_at, updated_at: $updated_at, user_id: $user_id)';
+    return 'Done(id: $id, progress: $progress, target: $target, description: $description, icon: $icon)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Data'))
+      ..add(DiagnosticsProperty('type', 'Done'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('progress', progress))
       ..add(DiagnosticsProperty('target', target))
-      ..add(DiagnosticsProperty('created_at', created_at))
-      ..add(DiagnosticsProperty('updated_at', updated_at))
-      ..add(DiagnosticsProperty('user_id', user_id));
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('icon', icon));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Data &&
+            other is _Done &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.progress, progress) &&
             const DeepCollectionEquality().equals(other.target, target) &&
             const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at) &&
-            const DeepCollectionEquality().equals(other.user_id, user_id));
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.icon, icon));
   }
 
   @override
@@ -404,31 +554,29 @@ class _$_Data with DiagnosticableTreeMixin implements _Data {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(progress),
       const DeepCollectionEquality().hash(target),
-      const DeepCollectionEquality().hash(created_at),
-      const DeepCollectionEquality().hash(updated_at),
-      const DeepCollectionEquality().hash(user_id));
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(icon));
 
   @JsonKey(ignore: true)
   @override
-  _$DataCopyWith<_Data> get copyWith =>
-      __$DataCopyWithImpl<_Data>(this, _$identity);
+  _$DoneCopyWith<_Done> get copyWith =>
+      __$DoneCopyWithImpl<_Done>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DataToJson(this);
+    return _$$_DoneToJson(this);
   }
 }
 
-abstract class _Data implements Data {
-  const factory _Data(
+abstract class _Done implements Done {
+  const factory _Done(
       {int? id,
       int? progress,
       int? target,
-      String? created_at,
-      String? updated_at,
-      int? user_id}) = _$_Data;
+      String? description,
+      String? icon}) = _$_Done;
 
-  factory _Data.fromJson(Map<String, dynamic> json) = _$_Data.fromJson;
+  factory _Done.fromJson(Map<String, dynamic> json) = _$_Done.fromJson;
 
   @override
   int? get id;
@@ -437,12 +585,250 @@ abstract class _Data implements Data {
   @override
   int? get target;
   @override //final String? class,
-  String? get created_at;
+  String? get description;
   @override
-  String? get updated_at;
-  @override
-  int? get user_id;
+  String? get icon;
   @override
   @JsonKey(ignore: true)
-  _$DataCopyWith<_Data> get copyWith => throw _privateConstructorUsedError;
+  _$DoneCopyWith<_Done> get copyWith => throw _privateConstructorUsedError;
+}
+
+Pending _$PendingFromJson(Map<String, dynamic> json) {
+  return _Pending.fromJson(json);
+}
+
+/// @nodoc
+class _$PendingTearOff {
+  const _$PendingTearOff();
+
+  _Pending call(
+      {int? id,
+      int? progress,
+      int? target,
+      String? description,
+      String? icon}) {
+    return _Pending(
+      id: id,
+      progress: progress,
+      target: target,
+      description: description,
+      icon: icon,
+    );
+  }
+
+  Pending fromJson(Map<String, Object?> json) {
+    return Pending.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $Pending = _$PendingTearOff();
+
+/// @nodoc
+mixin _$Pending {
+  int? get id => throw _privateConstructorUsedError;
+  int? get progress => throw _privateConstructorUsedError;
+  int? get target => throw _privateConstructorUsedError; //final String? class,
+  String? get description => throw _privateConstructorUsedError;
+  String? get icon => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PendingCopyWith<Pending> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PendingCopyWith<$Res> {
+  factory $PendingCopyWith(Pending value, $Res Function(Pending) then) =
+      _$PendingCopyWithImpl<$Res>;
+  $Res call(
+      {int? id, int? progress, int? target, String? description, String? icon});
+}
+
+/// @nodoc
+class _$PendingCopyWithImpl<$Res> implements $PendingCopyWith<$Res> {
+  _$PendingCopyWithImpl(this._value, this._then);
+
+  final Pending _value;
+  // ignore: unused_field
+  final $Res Function(Pending) _then;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? progress = freezed,
+    Object? target = freezed,
+    Object? description = freezed,
+    Object? icon = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      progress: progress == freezed
+          ? _value.progress
+          : progress // ignore: cast_nullable_to_non_nullable
+              as int?,
+      target: target == freezed
+          ? _value.target
+          : target // ignore: cast_nullable_to_non_nullable
+              as int?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$PendingCopyWith<$Res> implements $PendingCopyWith<$Res> {
+  factory _$PendingCopyWith(_Pending value, $Res Function(_Pending) then) =
+      __$PendingCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {int? id, int? progress, int? target, String? description, String? icon});
+}
+
+/// @nodoc
+class __$PendingCopyWithImpl<$Res> extends _$PendingCopyWithImpl<$Res>
+    implements _$PendingCopyWith<$Res> {
+  __$PendingCopyWithImpl(_Pending _value, $Res Function(_Pending) _then)
+      : super(_value, (v) => _then(v as _Pending));
+
+  @override
+  _Pending get _value => super._value as _Pending;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? progress = freezed,
+    Object? target = freezed,
+    Object? description = freezed,
+    Object? icon = freezed,
+  }) {
+    return _then(_Pending(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      progress: progress == freezed
+          ? _value.progress
+          : progress // ignore: cast_nullable_to_non_nullable
+              as int?,
+      target: target == freezed
+          ? _value.target
+          : target // ignore: cast_nullable_to_non_nullable
+              as int?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Pending with DiagnosticableTreeMixin implements _Pending {
+  const _$_Pending(
+      {this.id, this.progress, this.target, this.description, this.icon});
+
+  factory _$_Pending.fromJson(Map<String, dynamic> json) =>
+      _$$_PendingFromJson(json);
+
+  @override
+  final int? id;
+  @override
+  final int? progress;
+  @override
+  final int? target;
+  @override //final String? class,
+  final String? description;
+  @override
+  final String? icon;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'Pending(id: $id, progress: $progress, target: $target, description: $description, icon: $icon)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Pending'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('progress', progress))
+      ..add(DiagnosticsProperty('target', target))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('icon', icon));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Pending &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.progress, progress) &&
+            const DeepCollectionEquality().equals(other.target, target) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.icon, icon));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(progress),
+      const DeepCollectionEquality().hash(target),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(icon));
+
+  @JsonKey(ignore: true)
+  @override
+  _$PendingCopyWith<_Pending> get copyWith =>
+      __$PendingCopyWithImpl<_Pending>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PendingToJson(this);
+  }
+}
+
+abstract class _Pending implements Pending {
+  const factory _Pending(
+      {int? id,
+      int? progress,
+      int? target,
+      String? description,
+      String? icon}) = _$_Pending;
+
+  factory _Pending.fromJson(Map<String, dynamic> json) = _$_Pending.fromJson;
+
+  @override
+  int? get id;
+  @override
+  int? get progress;
+  @override
+  int? get target;
+  @override //final String? class,
+  String? get description;
+  @override
+  String? get icon;
+  @override
+  @JsonKey(ignore: true)
+  _$PendingCopyWith<_Pending> get copyWith =>
+      throw _privateConstructorUsedError;
 }
