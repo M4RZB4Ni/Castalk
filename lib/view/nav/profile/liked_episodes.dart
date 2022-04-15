@@ -1,12 +1,11 @@
+import 'package:castalk/controllers/likes_controller.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../../../controllers/profile_single_controller.dart';
 
-class LikedEpisodes extends GetView<ProfileController>
-{
+class LikedEpisodes extends GetView<LikesController> {
   String svgPath = "assets/icons/";
   late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
@@ -15,20 +14,28 @@ class LikedEpisodes extends GetView<ProfileController>
   Widget build(BuildContext context) {
     _textTheme = Get.textTheme;
 
-    return Obx(() => controller.loadingProfile.value ? Scaffold(
-      backgroundColor: Style.background,
-      appBar: PreferredSize(preferredSize: Size(Get.width, 150), child: header(Get.width)),
-      body: ListView.builder(
-        itemCount: controller.viewEpisodeList.length,
-        itemBuilder: (context, index) {
-          return controller.viewEpisodeList.isNotEmpty ? _likedItem(index, Get.width, Get.height) : Text('LikedEpisode does not exist!', style: Get.textTheme.headline1!.copyWith(fontSize: 14));
-        },),
-
-    ) : Container(width: Get.width, height: Get.height, color: const Color(0xff242424)));
+    return Obx(() => controller.loading.value == false
+        ? Scaffold(
+            backgroundColor: Style.background,
+            appBar: PreferredSize(
+                preferredSize: Size(Get.width, 150), child: header(Get.width)),
+            body: controller.likedEntityModel.data!.first.item!.isNotEmpty
+                ? ListView.builder(
+                    itemCount:
+                        controller.likedEntityModel.data!.first.item!.length,
+                    itemBuilder: (context, index) {
+                      return _likedItem(index, Get.width, Get.height);
+                    },
+                  )
+                : Text('LikedEpisode does not exist!',
+                    style: Get.textTheme.headline1!.copyWith(fontSize: 14)))
+        : Container(
+            width: Get.width,
+            height: Get.height,
+            color: const Color(0xff242424)));
   }
 
   _likedItem(int index, w, h) {
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -47,8 +54,9 @@ class LikedEpisodes extends GetView<ProfileController>
                       width: 96,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
-                        image: const DecorationImage(
-                          image: NetworkImage('https://picsum.photos/96/96'),
+                        image: DecorationImage(
+                          image: NetworkImage(controller.likedEntityModel.data!
+                              .first.item![index].cover!),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -68,16 +76,26 @@ class LikedEpisodes extends GetView<ProfileController>
                   ],
                 ),
               ),
-              Expanded(child: Padding(
+              Expanded(
+                  child: Padding(
                 padding: const EdgeInsets.only(left: 14),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      controller.viewEpisodeList[index].data!.podcast!.title!.toString().length > 30
-                          ? controller.viewEpisodeList[index].data!.podcast!.title!.toString().substring(0, 30) + "..."
-                          : controller.viewEpisodeList[index].data!.podcast!.title!.toString(),
+                      controller.likedEntityModel.data!.first.item![index].name!
+                                  .toString()
+                                  .length >
+                              30
+                          ? controller.likedEntityModel.data!.first.item![index]
+                                  .name!
+                                  .toString()
+                                  .substring(0, 30) +
+                              "..."
+                          : controller
+                              .likedEntityModel.data!.first.item![index].name!
+                              .toString(),
                       style: _textTheme.headline1!.copyWith(fontSize: 14),
                     ),
                     Column(
@@ -85,33 +103,44 @@ class LikedEpisodes extends GetView<ProfileController>
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 13),
+                          padding: const EdgeInsets.only(top: 18),
                           child: Row(
                             children: [
-                              SvgPicture.asset(svgPath+"timer.svg"),
-                              Padding(padding: const EdgeInsets.only(left: 5),
-                                child: Text("1 : 26 : 45", style: _textTheme.headline6),
+                              SvgPicture.asset(svgPath + "timer.svg"),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5),
+                                child: Text(
+                                    controller.likedEntityModel.data!.first
+                                        .item![index].episodeTime!,
+                                    style: _textTheme.headline6),
                               ),
                             ],
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 9),
+                          padding: const EdgeInsets.only(top: 18),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
                                 children: [
-                                  SvgPicture.asset(svgPath+"heart_white.svg"),
+                                  SvgPicture.asset(svgPath + "heart_white.svg"),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 5),
-                                    child: Text(controller.viewEpisodeList[index].data!.podcast!.likes_count!.toString(), style: _textTheme.headline6),
+                                    child: Text(
+                                        controller.likedEntityModel.data!.first
+                                            .item![index].likesCount
+                                            .toString(),
+                                        style: _textTheme.headline6),
                                   ),
                                 ],
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(right: 30),
-                                child: Text("2 days ago",style: Style.t_400_12_grayA1,),
+                                child: Text(
+                                  "2 days ago",
+                                  style: Style.t_400_12_grayA1,
+                                ),
                               )
                             ],
                           ),
@@ -124,37 +153,40 @@ class LikedEpisodes extends GetView<ProfileController>
               Container(
                 height: 96,
                 width: 44,
-
                 padding: const EdgeInsets.all(18),
-                decoration: BoxDecoration(color: Style.gray48op50,borderRadius: BorderRadius.circular(12)),
-                child: SvgPicture.asset(
-                    svgPath + "arrow_left.svg",
-                    width: 12,
-                    height: 6),
+                decoration: BoxDecoration(
+                    color: Style.gray48op50,
+                    borderRadius: BorderRadius.circular(12)),
+                child: SvgPicture.asset(svgPath + "arrow_left.svg",
+                    width: 12, height: 6),
               )
             ],
           ),
           const Padding(
-            padding: EdgeInsets.only(bottom: 12,right: 12,left: 12),
-            child: Divider(height: 1,color: Style.divider,thickness: 1,),
+            padding: EdgeInsets.only(bottom: 12, right: 12, left: 12),
+            child: Divider(
+              height: 1,
+              color: Style.divider,
+              thickness: 1,
+            ),
           )
         ],
       ),
     );
-
   }
 
   header(w) {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 36,right: 24,left: 24,bottom: 25),
+          padding:
+              const EdgeInsets.only(top: 36, right: 24, left: 24, bottom: 25),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               InkWell(
-                onTap: (){
+                onTap: () {
                   Get.back();
                 },
                 child: Container(
@@ -191,17 +223,16 @@ class LikedEpisodes extends GetView<ProfileController>
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(right: 15,left: 15),
+          padding: const EdgeInsets.only(right: 15, left: 15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
                   height: 44,
                   decoration: BoxDecoration(
-                      borderRadius:
-                      const BorderRadius.all(Radius.circular(12)),
-                      border: Border.all(
-                          width: 1, color: const Color(0xff484848))),
+                      borderRadius: const BorderRadius.all(Radius.circular(12)),
+                      border:
+                          Border.all(width: 1, color: const Color(0xff484848))),
                   width: w / 2,
                   child: TextField(
                       controller: numberController,
@@ -213,8 +244,7 @@ class LikedEpisodes extends GetView<ProfileController>
                           contentPadding: const EdgeInsets.only(
                               top: 12, bottom: 12, left: 19),
                           hintText: "Type to Search...",
-                          hintStyle:
-                          TextStyle(color: Get.theme.hintColor),
+                          hintStyle: TextStyle(color: Get.theme.hintColor),
                           fillColor: Colors.white))),
               Container(
                 padding: const EdgeInsets.all(12),
@@ -264,5 +294,4 @@ class LikedEpisodes extends GetView<ProfileController>
       ],
     );
   }
-
 }

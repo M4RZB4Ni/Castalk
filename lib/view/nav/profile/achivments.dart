@@ -70,7 +70,8 @@ class Achivments extends GetView<AchivmentsController> {
       width: w,
       height: h / 2,
       child: ListView.builder(
-        itemCount: controller.achivmentList[0].data!.length,
+        //itemCount: controller.achivmentList[0].data!.length,
+        itemCount: 0,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return Padding(
@@ -107,21 +108,21 @@ class Achivments extends GetView<AchivmentsController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        '${(controller.achivmentList[0].data![index].target!.toString())} Days in a row',
-                        style: Style.t_400_12w,
-                      ),
+                      // Text(
+                      //   '${(controller.achivmentList[0].data![index].target!.toString())} Days in a row',
+                      //   style: Style.t_400_12w,
+                      // ),
                       RichText(
                           text: TextSpan(children: [
-                        TextSpan(
-                            text: controller
-                                .achivmentList[0].data![index].progress!
-                                .toString(),
-                            style: Style.t_500_14w),
-                        TextSpan(
-                            text:
-                                ' / ${(controller.achivmentList[0].data![index].target!.toString())} Days',
-                            style: Style.t_500_14g)
+                        // TextSpan(
+                        //     text: controller
+                        //         .achivmentList[0].data![index].progress!
+                        //         .toString(),
+                        //     style: Style.t_500_14w),
+                        // TextSpan(
+                        //     text:
+                        //         ' / ${(controller.achivmentList[0].data![index].target!.toString())} Days',
+                        //     style: Style.t_500_14g)
                       ]))
                     ],
                   ),
