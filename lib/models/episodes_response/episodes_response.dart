@@ -37,6 +37,11 @@ class EpisodeItems with _$EpisodeItems {
     final int? id,
     final String? name,
     final String? cover,
+    final String? created_at,
+    final String? created_at_diff,
+    final String? episode_time,
+    final int? likes,
+    final bool? is_liked,
   }) = _EpisodeItems;
 
   factory EpisodeItems.fromJson(final Map<String, dynamic> json) =>

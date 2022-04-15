@@ -1,7 +1,6 @@
 import 'package:castalk/cicon.dart';
 import 'package:castalk/controllers/play_list_controller.dart';
 import 'package:castalk/style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -18,9 +17,9 @@ class PlayListEpisodes extends GetView<PlayListController> {
             appBar: PreferredSize(
                 preferredSize: Size(Get.width, 180), child: header(Get.width)),
             body: ListView.builder(
-              itemCount: controller.playList.data!.playlists!.length,
+              itemCount: controller.episodesModel.data!.first.episodes!.length,
               itemBuilder: (context, index) {
-                return controller.episodesModel.data!.isNotEmpty
+                return controller.episodesModel.data!.first.episodes!.isNotEmpty
                     ? _likedItem(index, Get.width, Get.height)
                     : Text('PlayList does not exist!',
                         style: Get.textTheme.headline1!.copyWith(fontSize: 14));
@@ -49,8 +48,9 @@ class PlayListEpisodes extends GetView<PlayListController> {
                       width: 96,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
-                        image: const DecorationImage(
-                          image: NetworkImage('https://picsum.photos/96/96'),
+                        image: DecorationImage(
+                          image: NetworkImage(controller.episodesModel.data!
+                              .first.episodes![index].cover!),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -78,7 +78,8 @@ class PlayListEpisodes extends GetView<PlayListController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      controller.episodesModel.data![index].title!,
+                      controller
+                          .episodesModel.data!.first.episodes![index].name!,
                       style: Get.textTheme.headline1!.copyWith(fontSize: 14),
                     ),
                     Column(
@@ -92,7 +93,9 @@ class PlayListEpisodes extends GetView<PlayListController> {
                                 SvgPicture.asset(Cicon.timer),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 5),
-                                  child: Text("1 : 26 : 45",
+                                  child: Text(
+                                      controller.episodesModel.data!.first
+                                          .episodes![index].episode_time!,
                                       style: Get.textTheme.headline6),
                                 ),
                               ],
@@ -109,7 +112,9 @@ class PlayListEpisodes extends GetView<PlayListController> {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 5),
                                       child: Text(
-                                          controller.episodesModel.data![index],
+                                          controller.episodesModel.data!.first
+                                              .episodes![index].likes
+                                              .toString(),
                                           style: Get.textTheme.headline6),
                                     ),
                                   ],
@@ -117,7 +122,8 @@ class PlayListEpisodes extends GetView<PlayListController> {
                                 Padding(
                                   padding: const EdgeInsets.only(right: 30),
                                   child: Text(
-                                    "2 days ago",
+                                    controller.episodesModel.data!.first
+                                        .episodes![index].created_at_diff!,
                                     style: Style.t_400_12_grayA1,
                                   ),
                                 )

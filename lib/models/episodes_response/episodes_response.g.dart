@@ -48,6 +48,11 @@ _$_EpisodeItems _$$_EpisodeItemsFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int?,
       name: json['name'] as String?,
       cover: json['cover'] as String?,
+      created_at: json['created_at'] as String?,
+      created_at_diff: json['created_at_diff'] as String?,
+      episode_time: json['episode_time'] as String?,
+      likes: json['likes'] as int?,
+      is_liked: json['is_liked'] as bool?,
     );
 
 Map<String, dynamic> _$$_EpisodeItemsToJson(_$_EpisodeItems instance) =>
@@ -55,6 +60,11 @@ Map<String, dynamic> _$$_EpisodeItemsToJson(_$_EpisodeItems instance) =>
       'id': instance.id,
       'name': instance.name,
       'cover': instance.cover,
+      'created_at': instance.created_at,
+      'created_at_diff': instance.created_at_diff,
+      'episode_time': instance.episode_time,
+      'likes': instance.likes,
+      'is_liked': instance.is_liked,
     };
 
 _$_Tags _$$_TagsFromJson(Map<String, dynamic> json) => _$_Tags(

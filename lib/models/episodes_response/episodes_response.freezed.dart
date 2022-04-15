@@ -457,11 +457,24 @@ EpisodeItems _$EpisodeItemsFromJson(Map<String, dynamic> json) {
 class _$EpisodeItemsTearOff {
   const _$EpisodeItemsTearOff();
 
-  _EpisodeItems call({int? id, String? name, String? cover}) {
+  _EpisodeItems call(
+      {int? id,
+      String? name,
+      String? cover,
+      String? created_at,
+      String? created_at_diff,
+      String? episode_time,
+      int? likes,
+      bool? is_liked}) {
     return _EpisodeItems(
       id: id,
       name: name,
       cover: cover,
+      created_at: created_at,
+      created_at_diff: created_at_diff,
+      episode_time: episode_time,
+      likes: likes,
+      is_liked: is_liked,
     );
   }
 
@@ -478,6 +491,11 @@ mixin _$EpisodeItems {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get cover => throw _privateConstructorUsedError;
+  String? get created_at => throw _privateConstructorUsedError;
+  String? get created_at_diff => throw _privateConstructorUsedError;
+  String? get episode_time => throw _privateConstructorUsedError;
+  int? get likes => throw _privateConstructorUsedError;
+  bool? get is_liked => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -490,7 +508,15 @@ abstract class $EpisodeItemsCopyWith<$Res> {
   factory $EpisodeItemsCopyWith(
           EpisodeItems value, $Res Function(EpisodeItems) then) =
       _$EpisodeItemsCopyWithImpl<$Res>;
-  $Res call({int? id, String? name, String? cover});
+  $Res call(
+      {int? id,
+      String? name,
+      String? cover,
+      String? created_at,
+      String? created_at_diff,
+      String? episode_time,
+      int? likes,
+      bool? is_liked});
 }
 
 /// @nodoc
@@ -506,6 +532,11 @@ class _$EpisodeItemsCopyWithImpl<$Res> implements $EpisodeItemsCopyWith<$Res> {
     Object? id = freezed,
     Object? name = freezed,
     Object? cover = freezed,
+    Object? created_at = freezed,
+    Object? created_at_diff = freezed,
+    Object? episode_time = freezed,
+    Object? likes = freezed,
+    Object? is_liked = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -520,6 +551,26 @@ class _$EpisodeItemsCopyWithImpl<$Res> implements $EpisodeItemsCopyWith<$Res> {
           ? _value.cover
           : cover // ignore: cast_nullable_to_non_nullable
               as String?,
+      created_at: created_at == freezed
+          ? _value.created_at
+          : created_at // ignore: cast_nullable_to_non_nullable
+              as String?,
+      created_at_diff: created_at_diff == freezed
+          ? _value.created_at_diff
+          : created_at_diff // ignore: cast_nullable_to_non_nullable
+              as String?,
+      episode_time: episode_time == freezed
+          ? _value.episode_time
+          : episode_time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      likes: likes == freezed
+          ? _value.likes
+          : likes // ignore: cast_nullable_to_non_nullable
+              as int?,
+      is_liked: is_liked == freezed
+          ? _value.is_liked
+          : is_liked // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -531,7 +582,15 @@ abstract class _$EpisodeItemsCopyWith<$Res>
           _EpisodeItems value, $Res Function(_EpisodeItems) then) =
       __$EpisodeItemsCopyWithImpl<$Res>;
   @override
-  $Res call({int? id, String? name, String? cover});
+  $Res call(
+      {int? id,
+      String? name,
+      String? cover,
+      String? created_at,
+      String? created_at_diff,
+      String? episode_time,
+      int? likes,
+      bool? is_liked});
 }
 
 /// @nodoc
@@ -549,6 +608,11 @@ class __$EpisodeItemsCopyWithImpl<$Res> extends _$EpisodeItemsCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? cover = freezed,
+    Object? created_at = freezed,
+    Object? created_at_diff = freezed,
+    Object? episode_time = freezed,
+    Object? likes = freezed,
+    Object? is_liked = freezed,
   }) {
     return _then(_EpisodeItems(
       id: id == freezed
@@ -563,6 +627,26 @@ class __$EpisodeItemsCopyWithImpl<$Res> extends _$EpisodeItemsCopyWithImpl<$Res>
           ? _value.cover
           : cover // ignore: cast_nullable_to_non_nullable
               as String?,
+      created_at: created_at == freezed
+          ? _value.created_at
+          : created_at // ignore: cast_nullable_to_non_nullable
+              as String?,
+      created_at_diff: created_at_diff == freezed
+          ? _value.created_at_diff
+          : created_at_diff // ignore: cast_nullable_to_non_nullable
+              as String?,
+      episode_time: episode_time == freezed
+          ? _value.episode_time
+          : episode_time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      likes: likes == freezed
+          ? _value.likes
+          : likes // ignore: cast_nullable_to_non_nullable
+              as int?,
+      is_liked: is_liked == freezed
+          ? _value.is_liked
+          : is_liked // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -570,7 +654,15 @@ class __$EpisodeItemsCopyWithImpl<$Res> extends _$EpisodeItemsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_EpisodeItems implements _EpisodeItems {
-  const _$_EpisodeItems({this.id, this.name, this.cover});
+  const _$_EpisodeItems(
+      {this.id,
+      this.name,
+      this.cover,
+      this.created_at,
+      this.created_at_diff,
+      this.episode_time,
+      this.likes,
+      this.is_liked});
 
   factory _$_EpisodeItems.fromJson(Map<String, dynamic> json) =>
       _$$_EpisodeItemsFromJson(json);
@@ -581,10 +673,20 @@ class _$_EpisodeItems implements _EpisodeItems {
   final String? name;
   @override
   final String? cover;
+  @override
+  final String? created_at;
+  @override
+  final String? created_at_diff;
+  @override
+  final String? episode_time;
+  @override
+  final int? likes;
+  @override
+  final bool? is_liked;
 
   @override
   String toString() {
-    return 'EpisodeItems(id: $id, name: $name, cover: $cover)';
+    return 'EpisodeItems(id: $id, name: $name, cover: $cover, created_at: $created_at, created_at_diff: $created_at_diff, episode_time: $episode_time, likes: $likes, is_liked: $is_liked)';
   }
 
   @override
@@ -594,7 +696,15 @@ class _$_EpisodeItems implements _EpisodeItems {
             other is _EpisodeItems &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.cover, cover));
+            const DeepCollectionEquality().equals(other.cover, cover) &&
+            const DeepCollectionEquality()
+                .equals(other.created_at, created_at) &&
+            const DeepCollectionEquality()
+                .equals(other.created_at_diff, created_at_diff) &&
+            const DeepCollectionEquality()
+                .equals(other.episode_time, episode_time) &&
+            const DeepCollectionEquality().equals(other.likes, likes) &&
+            const DeepCollectionEquality().equals(other.is_liked, is_liked));
   }
 
   @override
@@ -602,7 +712,12 @@ class _$_EpisodeItems implements _EpisodeItems {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(cover));
+      const DeepCollectionEquality().hash(cover),
+      const DeepCollectionEquality().hash(created_at),
+      const DeepCollectionEquality().hash(created_at_diff),
+      const DeepCollectionEquality().hash(episode_time),
+      const DeepCollectionEquality().hash(likes),
+      const DeepCollectionEquality().hash(is_liked));
 
   @JsonKey(ignore: true)
   @override
@@ -616,8 +731,15 @@ class _$_EpisodeItems implements _EpisodeItems {
 }
 
 abstract class _EpisodeItems implements EpisodeItems {
-  const factory _EpisodeItems({int? id, String? name, String? cover}) =
-      _$_EpisodeItems;
+  const factory _EpisodeItems(
+      {int? id,
+      String? name,
+      String? cover,
+      String? created_at,
+      String? created_at_diff,
+      String? episode_time,
+      int? likes,
+      bool? is_liked}) = _$_EpisodeItems;
 
   factory _EpisodeItems.fromJson(Map<String, dynamic> json) =
       _$_EpisodeItems.fromJson;
@@ -628,6 +750,16 @@ abstract class _EpisodeItems implements EpisodeItems {
   String? get name;
   @override
   String? get cover;
+  @override
+  String? get created_at;
+  @override
+  String? get created_at_diff;
+  @override
+  String? get episode_time;
+  @override
+  int? get likes;
+  @override
+  bool? get is_liked;
   @override
   @JsonKey(ignore: true)
   _$EpisodeItemsCopyWith<_EpisodeItems> get copyWith =>

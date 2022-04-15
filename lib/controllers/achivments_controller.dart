@@ -1,27 +1,25 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+
 import '../apis/achivments_api.dart';
 import '../models/achivments_model.dart';
 
-class AchivmentsController extends GetxController with StateMixin<List<AchivmentsModel>>{
-
+class AchivmentsController extends GetxController
+    with StateMixin<AchivmentsModel> {
   final Achivment _achivment = Achivment();
-  late List<AchivmentsModel> achivmentList = [];
-  RxBool loadingAchivments = false.obs;
+  late AchivmentsModel achivmentsModel;
   //
   @override
   onInit() {
     getAchivmentData();
     super.onInit();
   }
-  //
-  getAchivmentData() async{
-    await _achivment.getAchivment(token: GetStorage().read('TokenKey')).then((l) => {
-      achivmentList = List<AchivmentsModel>.from(l.map((model) => AchivmentsModel.fromJson(model))),
-      debugPrint('achivmentList---> $achivmentList'),
-      loadingAchivments.value = true,
-    });
-  }
 
+  //
+  getAchivmentData() async {
+    RxStatus.loading();
+    achivmentsModel =
+        await _achivment.getAchivment(token: GetStorage().read('TokenKey'));
+    RxStatus.success();
+  }
 }
