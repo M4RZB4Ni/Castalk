@@ -1,11 +1,11 @@
-import 'package:castalk/controllers/likes_controller.dart';
+import 'package:castalk/controllers/profile_single_controller.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class LikedEpisodes extends GetView<LikesController> {
+class LikedEpisodes extends GetView<ProfileController> {
   String svgPath = "assets/icons/";
   late TextTheme _textTheme;
   TextEditingController numberController = TextEditingController();
@@ -14,7 +14,7 @@ class LikedEpisodes extends GetView<LikesController> {
   Widget build(BuildContext context) {
     _textTheme = Get.textTheme;
 
-    return Obx(() => controller.loading.value == false
+    return Obx(() => controller.loadingLikedEpisodes.value == true
         ? Scaffold(
             backgroundColor: Style.background,
             appBar: PreferredSize(
@@ -111,7 +111,7 @@ class LikedEpisodes extends GetView<LikesController> {
                                 padding: const EdgeInsets.only(left: 5),
                                 child: Text(
                                     controller.likedEntityModel.data!.first
-                                        .item![index].episodeTime!,
+                                        .item![index].episode_time!,
                                     style: _textTheme.headline6),
                               ),
                             ],
@@ -129,7 +129,7 @@ class LikedEpisodes extends GetView<LikesController> {
                                     padding: const EdgeInsets.only(left: 5),
                                     child: Text(
                                         controller.likedEntityModel.data!.first
-                                            .item![index].likesCount
+                                            .item![index].likes_count
                                             .toString(),
                                         style: _textTheme.headline6),
                                   ),

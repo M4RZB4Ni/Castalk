@@ -83,8 +83,6 @@ class LikesApi {
 
   Future<LikedEntityModel> likedEntities(
       {required EntityType entityType}) async {
-    debugPrint('entityType ${entityType.name}');
-
     var request = http.MultipartRequest(
         'GET',
         Uri.parse(
@@ -102,8 +100,11 @@ class LikesApi {
 
       return LikedEntityModel.fromJson(resp);
     } else {
+      debugPrint('likedEntities zzzzzzzzzz');
+
       print(response.reasonPhrase);
       return LikedEntityModel();
     }
+    return const LikedEntityModel();
   }
 }

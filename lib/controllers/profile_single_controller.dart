@@ -26,32 +26,32 @@ class ProfileController extends GetxController
   late List<ViewEpisodeModel> viewEpisodeList = [];
   late List<ProfileSingleModel> profileSingleList = [];
   late List<AnalyticsModel> analyticsList = [];
-  late LikedEntityModel likedEntityModel = LikedEntityModel();
+  late LikedEntityModel likedEntityModel;
 
   late RxString listensK = '0'.obs;
   late RxString followersK = '0'.obs;
   late RxString postsK = '0'.obs;
   RxBool loadingProfile = false.obs;
+  RxBool loadingLikedEpisodes = false.obs;
   RxInt likesCount = 0.obs;
   //
   @override
   void onInit() {
     getProfileData();
     playListIndex();
-    getViewEpisodeData();
-    getAnalyticsData();
     getLikedEntity();
+    getAnalyticsData();
 
-    loadingProfile.value = true;
     super.onInit();
   }
 
   getLikedEntity() async {
     likedEntityModel =
         await _likesApi.likedEntities(entityType: EntityType.episode);
-    likesCount.value = likedEntityModel.data!.first.item!.isNotEmpty
-        ? likedEntityModel.data!.first.item!.length
-        : 0;
+    debugPrint(
+        'likedEntityModelFF ${likedEntityModel.data!.first.item!.length}');
+    likesCount.value = likedEntityModel.data!.first.item!.length;
+    loadingLikedEpisodes.value = true;
     debugPrint('getLikedEntity after');
   }
 
@@ -102,6 +102,7 @@ class ProfileController extends GetxController
               postsK.value =
                   '${(analyticsList[0].data!.posts! / 1000).toStringAsFixed(0)}K',
               debugPrint('analyticsList---> $analyticsList'),
+              loadingProfile.value = true
             });
   }
 }
