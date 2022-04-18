@@ -14,7 +14,7 @@ class Market extends GetView<MarketController> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
+    return Obx(() => controller.loading.value ?  Scaffold(
       backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(Get.width, 130), child: header(Get.width)),
       body: TabBarView(
@@ -23,7 +23,7 @@ class Market extends GetView<MarketController> {
           Purchases(),
           Products(),
       ],),
-    );
+    ) : Container(width: Get.width, height: Get.height, color: const Color(0xff242424)));
   }
 
   header(w) {

@@ -1,26 +1,34 @@
-import 'package:castalk/models/followers_model.dart';
+import 'package:castalk/apis/market.dart';
+import 'package:castalk/models/market/products/product_response.dart';
+import 'package:castalk/models/market/purchases/purchases_response.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import '../apis/following.dart';
 
-class MarketController extends GetxController with GetSingleTickerProviderStateMixin {
+class MarketController extends GetxController with GetSingleTickerProviderStateMixin{
 
-  final Following _following = Following();
-  late List<FollowersModel> followersList = [];
+  final MarketApi _marketApi = MarketApi();
+  late final ProductModel productModel;
+  late final PurchasesModel purchasesModel;
   late final TabController tabController = TabController(length: 2, vsync: this);
-  //
+  RxBool loading = false.obs;
+
   @override
   onInit() {
-    //getFollowersData();
+    getPurchases();
+    getPurchases();
     super.onInit();
   }
-  //
-  getFollowersData() async{
-    await _following.getFollowers(token: GetStorage().read('TokenKey'), id: GetStorage().read('userId')).then((l) => {
-      followersList = List<FollowersModel>.from(l.map((model) => FollowersModel.fromJson(model))),
-      debugPrint('followersList---> $followersList'),
-    });
+
+
+
+  getProducts() async{
+    productModel= await _marketApi.marketProducts(token: GetStorage().read('TokenKey'));
+  }
+
+  getPurchases() async{
+    purchasesModel= await _marketApi.marketPurchases(token: GetStorage().read('TokenKey'));
+    loading.value=true;
   }
 
 }

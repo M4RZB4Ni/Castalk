@@ -1,10 +1,11 @@
+import 'package:castalk/controllers/market_controller.dart';
 import 'package:castalk/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class Products extends GetView<Products> {
+class Products extends GetView<MarketController> {
 
   String svgPath = "assets/icons/";
   TextEditingController numberController = TextEditingController();
