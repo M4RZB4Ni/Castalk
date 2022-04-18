@@ -206,7 +206,7 @@ class _$DataTearOff {
       List<int>? total_listening_time_by_week,
       int? episodes,
       int? your_listening_routine,
-      FieldOfInterest? field_of_interest}) {
+      List<FieldOfInterest>? field_of_interest}) {
     return _Data(
       total_listening_time: total_listening_time,
       total_listening_time_by_week: total_listening_time_by_week,
@@ -231,7 +231,8 @@ mixin _$Data {
       throw _privateConstructorUsedError;
   int? get episodes => throw _privateConstructorUsedError;
   int? get your_listening_routine => throw _privateConstructorUsedError;
-  FieldOfInterest? get field_of_interest => throw _privateConstructorUsedError;
+  List<FieldOfInterest>? get field_of_interest =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -247,9 +248,7 @@ abstract class $DataCopyWith<$Res> {
       List<int>? total_listening_time_by_week,
       int? episodes,
       int? your_listening_routine,
-      FieldOfInterest? field_of_interest});
-
-  $FieldOfInterestCopyWith<$Res>? get field_of_interest;
+      List<FieldOfInterest>? field_of_interest});
 }
 
 /// @nodoc
@@ -288,19 +287,8 @@ class _$DataCopyWithImpl<$Res> implements $DataCopyWith<$Res> {
       field_of_interest: field_of_interest == freezed
           ? _value.field_of_interest
           : field_of_interest // ignore: cast_nullable_to_non_nullable
-              as FieldOfInterest?,
+              as List<FieldOfInterest>?,
     ));
-  }
-
-  @override
-  $FieldOfInterestCopyWith<$Res>? get field_of_interest {
-    if (_value.field_of_interest == null) {
-      return null;
-    }
-
-    return $FieldOfInterestCopyWith<$Res>(_value.field_of_interest!, (value) {
-      return _then(_value.copyWith(field_of_interest: value));
-    });
   }
 }
 
@@ -314,10 +302,7 @@ abstract class _$DataCopyWith<$Res> implements $DataCopyWith<$Res> {
       List<int>? total_listening_time_by_week,
       int? episodes,
       int? your_listening_routine,
-      FieldOfInterest? field_of_interest});
-
-  @override
-  $FieldOfInterestCopyWith<$Res>? get field_of_interest;
+      List<FieldOfInterest>? field_of_interest});
 }
 
 /// @nodoc
@@ -357,7 +342,7 @@ class __$DataCopyWithImpl<$Res> extends _$DataCopyWithImpl<$Res>
       field_of_interest: field_of_interest == freezed
           ? _value.field_of_interest
           : field_of_interest // ignore: cast_nullable_to_non_nullable
-              as FieldOfInterest?,
+              as List<FieldOfInterest>?,
     ));
   }
 }
@@ -383,7 +368,7 @@ class _$_Data with DiagnosticableTreeMixin implements _Data {
   @override
   final int? your_listening_routine;
   @override
-  final FieldOfInterest? field_of_interest;
+  final List<FieldOfInterest>? field_of_interest;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -447,7 +432,7 @@ abstract class _Data implements Data {
       List<int>? total_listening_time_by_week,
       int? episodes,
       int? your_listening_routine,
-      FieldOfInterest? field_of_interest}) = _$_Data;
+      List<FieldOfInterest>? field_of_interest}) = _$_Data;
 
   factory _Data.fromJson(Map<String, dynamic> json) = _$_Data.fromJson;
 
@@ -460,7 +445,7 @@ abstract class _Data implements Data {
   @override
   int? get your_listening_routine;
   @override
-  FieldOfInterest? get field_of_interest;
+  List<FieldOfInterest>? get field_of_interest;
   @override
   @JsonKey(ignore: true)
   _$DataCopyWith<_Data> get copyWith => throw _privateConstructorUsedError;
@@ -474,11 +459,10 @@ FieldOfInterest _$FieldOfInterestFromJson(Map<String, dynamic> json) {
 class _$FieldOfInterestTearOff {
   const _$FieldOfInterestTearOff();
 
-  _FieldOfInterest call({int? comedy, int? psychology, int? sport}) {
+  _FieldOfInterest call({String? item, int? values}) {
     return _FieldOfInterest(
-      comedy: comedy,
-      psychology: psychology,
-      sport: sport,
+      item: item,
+      values: values,
     );
   }
 
@@ -492,9 +476,8 @@ const $FieldOfInterest = _$FieldOfInterestTearOff();
 
 /// @nodoc
 mixin _$FieldOfInterest {
-  int? get comedy => throw _privateConstructorUsedError;
-  int? get psychology => throw _privateConstructorUsedError;
-  int? get sport => throw _privateConstructorUsedError;
+  String? get item => throw _privateConstructorUsedError;
+  int? get values => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -507,7 +490,7 @@ abstract class $FieldOfInterestCopyWith<$Res> {
   factory $FieldOfInterestCopyWith(
           FieldOfInterest value, $Res Function(FieldOfInterest) then) =
       _$FieldOfInterestCopyWithImpl<$Res>;
-  $Res call({int? comedy, int? psychology, int? sport});
+  $Res call({String? item, int? values});
 }
 
 /// @nodoc
@@ -521,22 +504,17 @@ class _$FieldOfInterestCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? comedy = freezed,
-    Object? psychology = freezed,
-    Object? sport = freezed,
+    Object? item = freezed,
+    Object? values = freezed,
   }) {
     return _then(_value.copyWith(
-      comedy: comedy == freezed
-          ? _value.comedy
-          : comedy // ignore: cast_nullable_to_non_nullable
-              as int?,
-      psychology: psychology == freezed
-          ? _value.psychology
-          : psychology // ignore: cast_nullable_to_non_nullable
-              as int?,
-      sport: sport == freezed
-          ? _value.sport
-          : sport // ignore: cast_nullable_to_non_nullable
+      item: item == freezed
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as String?,
+      values: values == freezed
+          ? _value.values
+          : values // ignore: cast_nullable_to_non_nullable
               as int?,
     ));
   }
@@ -549,7 +527,7 @@ abstract class _$FieldOfInterestCopyWith<$Res>
           _FieldOfInterest value, $Res Function(_FieldOfInterest) then) =
       __$FieldOfInterestCopyWithImpl<$Res>;
   @override
-  $Res call({int? comedy, int? psychology, int? sport});
+  $Res call({String? item, int? values});
 }
 
 /// @nodoc
@@ -565,22 +543,17 @@ class __$FieldOfInterestCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? comedy = freezed,
-    Object? psychology = freezed,
-    Object? sport = freezed,
+    Object? item = freezed,
+    Object? values = freezed,
   }) {
     return _then(_FieldOfInterest(
-      comedy: comedy == freezed
-          ? _value.comedy
-          : comedy // ignore: cast_nullable_to_non_nullable
-              as int?,
-      psychology: psychology == freezed
-          ? _value.psychology
-          : psychology // ignore: cast_nullable_to_non_nullable
-              as int?,
-      sport: sport == freezed
-          ? _value.sport
-          : sport // ignore: cast_nullable_to_non_nullable
+      item: item == freezed
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as String?,
+      values: values == freezed
+          ? _value.values
+          : values // ignore: cast_nullable_to_non_nullable
               as int?,
     ));
   }
@@ -591,21 +564,19 @@ class __$FieldOfInterestCopyWithImpl<$Res>
 class _$_FieldOfInterest
     with DiagnosticableTreeMixin
     implements _FieldOfInterest {
-  const _$_FieldOfInterest({this.comedy, this.psychology, this.sport});
+  const _$_FieldOfInterest({this.item, this.values});
 
   factory _$_FieldOfInterest.fromJson(Map<String, dynamic> json) =>
       _$$_FieldOfInterestFromJson(json);
 
   @override
-  final int? comedy;
+  final String? item;
   @override
-  final int? psychology;
-  @override
-  final int? sport;
+  final int? values;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FieldOfInterest(comedy: $comedy, psychology: $psychology, sport: $sport)';
+    return 'FieldOfInterest(item: $item, values: $values)';
   }
 
   @override
@@ -613,9 +584,8 @@ class _$_FieldOfInterest
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'FieldOfInterest'))
-      ..add(DiagnosticsProperty('comedy', comedy))
-      ..add(DiagnosticsProperty('psychology', psychology))
-      ..add(DiagnosticsProperty('sport', sport));
+      ..add(DiagnosticsProperty('item', item))
+      ..add(DiagnosticsProperty('values', values));
   }
 
   @override
@@ -623,18 +593,15 @@ class _$_FieldOfInterest
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _FieldOfInterest &&
-            const DeepCollectionEquality().equals(other.comedy, comedy) &&
-            const DeepCollectionEquality()
-                .equals(other.psychology, psychology) &&
-            const DeepCollectionEquality().equals(other.sport, sport));
+            const DeepCollectionEquality().equals(other.item, item) &&
+            const DeepCollectionEquality().equals(other.values, values));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(comedy),
-      const DeepCollectionEquality().hash(psychology),
-      const DeepCollectionEquality().hash(sport));
+      const DeepCollectionEquality().hash(item),
+      const DeepCollectionEquality().hash(values));
 
   @JsonKey(ignore: true)
   @override
@@ -648,18 +615,16 @@ class _$_FieldOfInterest
 }
 
 abstract class _FieldOfInterest implements FieldOfInterest {
-  const factory _FieldOfInterest({int? comedy, int? psychology, int? sport}) =
+  const factory _FieldOfInterest({String? item, int? values}) =
       _$_FieldOfInterest;
 
   factory _FieldOfInterest.fromJson(Map<String, dynamic> json) =
       _$_FieldOfInterest.fromJson;
 
   @override
-  int? get comedy;
+  String? get item;
   @override
-  int? get psychology;
-  @override
-  int? get sport;
+  int? get values;
   @override
   @JsonKey(ignore: true)
   _$FieldOfInterestCopyWith<_FieldOfInterest> get copyWith =>

@@ -30,7 +30,7 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text('${controller.listeningAnalyticsList[0].data!.total_listening_time!} min', style: Style.t_500_18w),
+                      Text('${controller.analyticsModel.data!.total_listening_time!} min', style: Style.t_500_18w),
                       Padding(
                         padding: const EdgeInsets.only(top: 5),
                         child: Text("Total listening time",style: Style.t_500_14_G9D),
@@ -40,7 +40,7 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text('${controller.listeningAnalyticsList[0].data!.episodes!}',style: Style.t_500_24w),
+                      Text('${controller.analyticsModel.data!.episodes}',style: Style.t_500_24w),
                       Text("Episodes",style: Style.t_500_14_G9D),
                     ],
                   )
@@ -57,7 +57,7 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
                   Text("Your listening routin :",style: Style.t_500_16w,),
                   RichText(text: TextSpan(
                       children: [
-                        TextSpan(text: '${controller.listeningAnalyticsList[0].data!.your_listening_routine!}', style: Style.t_400_12_green),
+                        TextSpan(text: '${controller.analyticsModel.data!.your_listening_routine!}', style: Style.t_400_12_green),
                         TextSpan(text:" from last week",style: Style.t_400_12_9D),
                       ]))
                 ],
@@ -82,7 +82,7 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
 
               RichText(text: TextSpan(
                   children: [
-                    TextSpan(text: '${controller.listeningAnalyticsList[0].data!.total_listening_time!} minutes',style: Style.t_400_14g),
+                    TextSpan(text: '${controller.analyticsModel.data!.total_listening_time!} minutes',style: Style.t_400_14g),
                     TextSpan(text:" Podcast Played in total this Week",style: Style.t_400_14w),
                   ]))
             ],
@@ -106,15 +106,15 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8),
-                    child: Text('${controller.listeningAnalyticsList[0].data!.field_of_interest!.comedy!}% Comedy', style: Style.t_500_14g,),
+                    child: Text('${controller.analyticsModel.data!.field_of_interest!.first.values}% ${controller.analyticsModel.data!.field_of_interest!.first.item}', style: Style.t_500_14g,),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8),
-                    child: Text('${controller.listeningAnalyticsList[0].data!.field_of_interest!.psychology!}% Pychology',style: Style.t_500_14w,),
+                    child: Text('${controller.analyticsModel.data!.field_of_interest![1].values}% ${controller.analyticsModel.data!.field_of_interest![1].item}', style: Style.t_500_14g,),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8),
-                    child: Text('${controller.listeningAnalyticsList[0].data!.field_of_interest!.sport!}% Sport',style: Style.t_500_14r,),
+                    child: Text('${controller.analyticsModel.data!.field_of_interest!.last.values}% ${controller.analyticsModel.data!.field_of_interest!.last.item}', style: Style.t_500_14g,),
                   ),
 
                 ],
@@ -219,13 +219,13 @@ class ListeningStatistics extends GetView<ListeningStatisticsController>{
           lineChartStepData: LineChartStepData(stepDirection: 1),
           spots: [
             const FlSpot(0, 2),
-            FlSpot(2, controller.listeningAnalyticsList[0].data!.total_listening_time_by_week![6].toDouble()),
-            FlSpot(4, controller.listeningAnalyticsList[0].data!.total_listening_time_by_week![0].toDouble()),
-            FlSpot(6, controller.listeningAnalyticsList[0].data!.total_listening_time_by_week![1].toDouble()),
-            FlSpot(8, controller.listeningAnalyticsList[0].data!.total_listening_time_by_week![2].toDouble()),
-            FlSpot(10, controller.listeningAnalyticsList[0].data!.total_listening_time_by_week![3].toDouble()),
-            FlSpot(12, controller.listeningAnalyticsList[0].data!.total_listening_time_by_week![4].toDouble()),
-            FlSpot(14, controller.listeningAnalyticsList[0].data!.total_listening_time_by_week![5].toDouble()),
+            FlSpot(2, controller.analyticsModel.data!.total_listening_time_by_week!.first.toDouble()),
+            FlSpot(4, controller.analyticsModel.data!.total_listening_time_by_week![1].toDouble()),
+            FlSpot(6, controller.analyticsModel.data!.total_listening_time_by_week![2].toDouble()),
+            FlSpot(8, controller.analyticsModel.data!.total_listening_time_by_week![3].toDouble()),
+            FlSpot(10, controller.analyticsModel.data!.total_listening_time_by_week![4].toDouble()),
+            FlSpot(12, controller.analyticsModel.data!.total_listening_time_by_week![5].toDouble()),
+            FlSpot(14, controller.analyticsModel.data!.total_listening_time_by_week![6].toDouble()),
           ],
           isCurved: true,
           colors: Style.chartGradiant,

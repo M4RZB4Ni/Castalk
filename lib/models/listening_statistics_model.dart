@@ -22,7 +22,7 @@ class Data with _$Data {
     final List<int>? total_listening_time_by_week,
     final int? episodes,
     final int? your_listening_routine,
-    final FieldOfInterest? field_of_interest,
+    final List<FieldOfInterest>? field_of_interest,
   }) = _Data;
 
   factory Data.fromJson(final Map<String, dynamic> json) => _$DataFromJson(json);
@@ -31,9 +31,8 @@ class Data with _$Data {
 @freezed
 class FieldOfInterest with _$FieldOfInterest {
   const factory FieldOfInterest({
-    final int? comedy,
-    final int? psychology,
-    final int? sport,
+    final String? item,
+    final int? values,
   }) = _FieldOfInterest;
 
   factory FieldOfInterest.fromJson(final Map<String, dynamic> json) => _$FieldOfInterestFromJson(json);

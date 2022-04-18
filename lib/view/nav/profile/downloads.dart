@@ -14,7 +14,8 @@ class Downloads extends GetView<DownloadsController> {
   @override
   Widget build(BuildContext context) {
 
-    return Obx(() => controller.loadingDownloads.value ? Scaffold(
+    return Obx(() => controller.loadingDownloads.value ?
+    Scaffold(
       backgroundColor: Style.background,
       appBar: PreferredSize(preferredSize: Size(Get.width, 150), child: header(Get.width)),
       body: SingleChildScrollView(child: Column(

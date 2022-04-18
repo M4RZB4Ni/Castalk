@@ -16,7 +16,6 @@ class Congratulations extends GetView<CongratulationsController>{
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size(w,200),
         child: Padding(

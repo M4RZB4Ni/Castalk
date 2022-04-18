@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:castalk/apis/base_api.dart';
+import 'package:castalk/models/listening_statistics_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
@@ -26,7 +27,7 @@ class Analytics{
     }
   }
 
-  listeningAnalytics({required var token}) async {
+  Future<ListeningAnalyticsModel> listeningAnalytics({required var token}) async {
 
     var headers = {
       'Authorization': 'Bearer $token',
@@ -39,10 +40,10 @@ class Analytics{
     if (response.statusCode == 200) {
       var data = await response.stream.bytesToString();
       Map<String,dynamic> resp = await jsonDecode(data);
-      return [resp];
+      return ListeningAnalyticsModel.fromJson(resp);
     }
     else {
-      debugPrint(response.reasonPhrase);
+      return const ListeningAnalyticsModel();
     }
   }
 

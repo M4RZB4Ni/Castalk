@@ -28,10 +28,9 @@ _$_Data _$$_DataFromJson(Map<String, dynamic> json) => _$_Data(
               .toList(),
       episodes: json['episodes'] as int?,
       your_listening_routine: json['your_listening_routine'] as int?,
-      field_of_interest: json['field_of_interest'] == null
-          ? null
-          : FieldOfInterest.fromJson(
-              json['field_of_interest'] as Map<String, dynamic>),
+      field_of_interest: (json['field_of_interest'] as List<dynamic>?)
+          ?.map((e) => FieldOfInterest.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_DataToJson(_$_Data instance) => <String, dynamic>{
@@ -44,14 +43,12 @@ Map<String, dynamic> _$$_DataToJson(_$_Data instance) => <String, dynamic>{
 
 _$_FieldOfInterest _$$_FieldOfInterestFromJson(Map<String, dynamic> json) =>
     _$_FieldOfInterest(
-      comedy: json['comedy'] as int?,
-      psychology: json['psychology'] as int?,
-      sport: json['sport'] as int?,
+      item: json['item'] as String?,
+      values: json['values'] as int?,
     );
 
 Map<String, dynamic> _$$_FieldOfInterestToJson(_$_FieldOfInterest instance) =>
     <String, dynamic>{
-      'comedy': instance.comedy,
-      'psychology': instance.psychology,
-      'sport': instance.sport,
+      'item': instance.item,
+      'values': instance.values,
     };
